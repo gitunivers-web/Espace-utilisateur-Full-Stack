@@ -1,0 +1,167 @@
+🧠 Prompt : Création d’un Espace Utilisateur Professionnel pour une Banque en Ligne
+
+Crée un espace utilisateur moderne, professionnel et haut de gamme pour une plateforme bancaire numérique appelée Altus Finance Group.
+L’objectif est de concevoir un dashboard complet, fluide, intuitif et élégant, adapté à une banque en ligne destinée à des professionnels.
+
+🎨 Direction artistique
+
+Style : premium, professionnel et minimaliste
+
+Palette principale :
+
+Bleu royal #0B3CFF (accent principal)
+
+Blanc pur #FFFFFF
+
+Gris clair #F5F7FA
+
+Gris foncé #1E293B pour le thème sombre
+
+Détails dorés légers #D4AF37 pour les accents (boutons spéciaux)
+
+Typographie sobre et moderne (ex. Inter, Poppins, Manrope)
+
+Effets :
+
+Ombres légères, coins arrondis (rounded-2xl)
+
+Transitions et animations douces (Framer Motion)
+
+Effet glassmorphism sur certaines cartes et la carte bancaire virtuelle
+
+🧩 Structure générale du tableau de bord
+1. Barre latérale (Sidebar)
+
+Logo Altus Finance Group en haut (en taille moyenne, bien visible)
+
+Liens principaux avec icônes claires :
+
+Tableau de bord
+
+Comptes & Cartes
+
+Prêts & Financements
+
+Transferts
+
+Historique
+
+Paramètres
+
+Bouton de thème clair/sombre en forme de croissant de lune 🌙
+
+Zone inférieure :
+
+Carte utilisateur (nom, type de compte)
+
+Bouton “Se déconnecter”
+
+2. Barre supérieure (Topbar)
+
+Message de bienvenue : “Bonjour, [Prénom] 👋”
+
+Icônes :
+
+🔔 Notifications
+
+🌐 Sélecteur de langue (FR / EN)
+
+🧍 Avatar utilisateur (photo ou initiales, menu déroulant)
+
+3. Contenu principal (Dashboard)
+
+Cartes de statistiques dynamiques :
+
+Solde actuel
+
+Crédit disponible
+
+Capacité d’emprunt (avec barre de progression)
+
+Total emprunté
+
+Section “Aperçu rapide” avec graphiques (revenus, dépenses, remboursements)
+
+Une carte virtuelle Altus à droite :
+
+Effet 3D / glassmorphism
+
+Affichage du nom et numéro de compte partiel
+
+Animation au survol
+
+4. Bande d’informations défilante (InfoTicker)
+
+Toujours visible en haut du tableau de bord, sur toutes les pages
+
+Affiche des messages dynamiques tels que :
+
+“Nouvelle offre : 0% frais sur vos premiers transferts 💸”
+
+“Vos données sont protégées grâce au chiffrement AES-256 🔐”
+
+“Altus Finance Group : la confiance, notre priorité depuis 2020 💼”
+
+Défilement fluide et élégant
+
+5. Section secondaire (selon la page)
+
+Historique des transactions (tableau filtrable)
+
+Détails du prêt ou du compte
+
+Paramètres du profil utilisateur
+
+Activation de l’authentification à deux facteurs (2FA)
+
+Option d’ajout de document (KYC, justificatifs)
+
+⚙️ Spécifications techniques
+
+Framework : React + Vite + TypeScript
+
+Style : Tailwind CSS + Shadcn/UI
+
+Icônes : Lucide React
+
+Animation : Framer Motion
+
+Graphiques : Recharts
+
+Données : gérées via TanStack Query (React Query)
+
+État global : Zustand
+
+Validation : Zod
+
+Composants modulaires et réutilisables (Sidebar.tsx, Topbar.tsx, DashboardCard.tsx, InfoTicker.tsx, CreditCard.tsx, etc.)
+
+Architecture claire :
+
+src/
+ ┣ components/
+ ┣ pages/dashboard/
+ ┣ layouts/
+ ┣ hooks/
+ ┗ main.tsx
+
+✅ Critères de réussite
+
+Interface visuellement cohérente et moderne
+
+Navigation fluide, transitions douces
+
+Lisibilité parfaite en thème clair et sombre
+
+Les cartes et boutons doivent inspirer la confiance et la solidité financière
+
+Responsive design (mobile, tablette, desktop)
+
+Intégration d’une bande d’informations défilante professionnelle
+
+Le code doit être propre, bien organisé et documenté
+
+💬 À la fin
+
+Le projet doit afficher un tableau de bord bancaire élégant, fonctionnel, et prêt à être connecté au backend.
+L’objectif : que l’utilisateur se sente dans un espace professionnel, sécurisé et haut de gamme.
