@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { User, Shield, Bell, FileText, Upload } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useUser, useUpdateUser } from "@/lib/api";
 
@@ -14,12 +14,20 @@ export default function Parametres() {
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState(true);
   const { toast } = useToast();
-  const { data: user, isLoading } = useUser();
+  const { data: user, isLoading, error } = useUser();
   const updateUserMutation = useUpdateUser();
   
-  const [fullName, setFullName] = useState(user?.fullName || '');
-  const [email, setEmail] = useState(user?.email || '');
-  const [phone, setPhone] = useState(user?.phone || '');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      setFullName(user.fullName || '');
+      setEmail(user.email || '');
+      setPhone(user.phone || '');
+    }
+  }, [user]);
 
   const handleSaveProfile = async () => {
     try {
@@ -61,6 +69,12 @@ export default function Parametres() {
           </p>
         </div>
 
+        {error && (
+          <div className="p-4 border border-destructive bg-destructive/10 rounded-lg text-destructive">
+            Une erreur est survenue lors du chargement de vos paramètres.
+          </div>
+        )}
+
         <div className="grid gap-6 lg:grid-cols-2">
           <Card data-testid="card-profile-settings">
             <CardHeader>
@@ -90,9 +104,10 @@ export default function Parametres() {
                 <Label htmlFor="name">Nom complet</Label>
                 <Input 
                   id="name" 
-                  value={fullName || user?.fullName || ''} 
+                  value={fullName} 
                   onChange={(e) => setFullName(e.target.value)}
                   disabled={isLoading}
+                  placeholder="Votre nom complet"
                   data-testid="input-name" 
                 />
               </div>
@@ -102,9 +117,10 @@ export default function Parametres() {
                 <Input 
                   id="email" 
                   type="email" 
-                  value={email || user?.email || ''} 
+                  value={email} 
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
+                  placeholder="votre.email@exemple.fr"
                   data-testid="input-email" 
                 />
               </div>
@@ -114,9 +130,10 @@ export default function Parametres() {
                 <Input 
                   id="phone" 
                   type="tel" 
-                  value={phone || user?.phone || ''} 
+                  value={phone} 
                   onChange={(e) => setPhone(e.target.value)}
                   disabled={isLoading}
+                  placeholder="+33 6 12 34 56 78"
                   data-testid="input-phone" 
                 />
               </div>

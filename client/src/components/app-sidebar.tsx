@@ -43,6 +43,10 @@ export function AppSidebar() {
       title: "Déconnexion",
       description: "Vous avez été déconnecté avec succès.",
     });
+    
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 1000);
   };
 
   return (
