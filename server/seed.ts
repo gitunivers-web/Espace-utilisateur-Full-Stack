@@ -7,7 +7,7 @@ async function seed() {
   const user = await storage.createUser({
     fullName: "Sophie Martin",
     email: "sophie.martin@altusfinance.fr",
-    password: "$2b$10$X7ZvQnYvVYXQJ5QqXKJ.XuGZJ8vQNqEZFqGmZ3mZ3mZ3mZ3mZ3mZ3m",
+    password: "$2b$10$LZU9IYfsRNDvYTTM20sqsuZI2mh45JsRQPt28h8B7w.d9Uuu688zu",
     phone: "+33 6 12 34 56 78",
     accountType: "pro",
   });
