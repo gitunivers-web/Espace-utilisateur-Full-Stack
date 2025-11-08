@@ -9,11 +9,11 @@ export default function StatsChart() {
     return (
       <Card className="col-span-full lg:col-span-2" data-testid="card-stats-chart">
         <CardHeader>
-          <CardTitle>Aperçu rapide</CardTitle>
+          <CardTitle className="text-base sm:text-lg">Aperçu rapide</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-[300px] flex items-center justify-center">
-            <p className="text-muted-foreground">Chargement...</p>
+          <div className="h-[200px] sm:h-[250px] md:h-[300px] flex items-center justify-center">
+            <p className="text-muted-foreground text-sm">Chargement...</p>
           </div>
         </CardContent>
       </Card>
@@ -25,10 +25,10 @@ export default function StatsChart() {
   return (
     <Card className="col-span-full lg:col-span-2" data-testid="card-stats-chart">
       <CardHeader>
-        <CardTitle>Aperçu rapide</CardTitle>
+        <CardTitle className="text-base sm:text-lg">Aperçu rapide</CardTitle>
       </CardHeader>
       <CardContent>
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={200} className="sm:h-[250px] md:h-[300px]">
           <AreaChart data={chartData}>
             <defs>
               <linearGradient id="colorRevenus" x1="0" y1="0" x2="0" y2="1">
@@ -43,13 +43,15 @@ export default function StatsChart() {
             <XAxis 
               dataKey="month" 
               stroke="hsl(var(--muted-foreground))"
-              fontSize={12}
+              fontSize={10}
+              className="sm:text-xs"
               tickLine={false}
               axisLine={false}
             />
             <YAxis 
               stroke="hsl(var(--muted-foreground))"
-              fontSize={12}
+              fontSize={10}
+              className="sm:text-xs"
               tickLine={false}
               axisLine={false}
               tickFormatter={(value) => `${value / 1000}k`}
@@ -59,6 +61,7 @@ export default function StatsChart() {
                 backgroundColor: "hsl(var(--popover))",
                 border: "1px solid hsl(var(--popover-border))",
                 borderRadius: "6px",
+                fontSize: "12px",
               }}
               formatter={(value: number) => `${value.toLocaleString('fr-FR')} €`}
             />
@@ -80,14 +83,14 @@ export default function StatsChart() {
             />
           </AreaChart>
         </ResponsiveContainer>
-        <div className="flex items-center justify-center gap-6 mt-4">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 mt-3 sm:mt-4 flex-wrap">
           <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-chart-1" />
-            <span className="text-sm text-muted-foreground">Revenus</span>
+            <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-chart-1" />
+            <span className="text-xs sm:text-sm text-muted-foreground">Revenus</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-chart-5" />
-            <span className="text-sm text-muted-foreground">Dépenses</span>
+            <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-chart-5" />
+            <span className="text-xs sm:text-sm text-muted-foreground">Dépenses</span>
           </div>
         </div>
       </CardContent>

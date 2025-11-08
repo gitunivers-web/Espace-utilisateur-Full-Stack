@@ -31,13 +31,13 @@ export default function DashboardCard({
     >
       <Card className={`hover-elevate ${className}`} data-testid={`card-${title.toLowerCase().replace(/\s+/g, '-')}`}>
         <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
-          <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
-          <div className="h-8 w-8 rounded-md bg-primary/10 flex items-center justify-center">
-            <Icon className="h-4 w-4 text-primary" />
+          <h3 className="text-xs sm:text-sm font-medium text-muted-foreground">{title}</h3>
+          <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
           </div>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold" data-testid={`text-${title.toLowerCase().replace(/\s+/g, '-')}-value`}>{value}</div>
+          <div className="text-xl sm:text-2xl font-bold break-words" data-testid={`text-${title.toLowerCase().replace(/\s+/g, '-')}-value`}>{value}</div>
           {trend && (
             <p className={`text-xs mt-1 ${trend.isPositive ? 'text-chart-3' : 'text-destructive'}`}>
               {trend.isPositive ? '↑' : '↓'} {trend.value}

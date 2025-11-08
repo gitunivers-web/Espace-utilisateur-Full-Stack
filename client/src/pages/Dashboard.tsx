@@ -20,15 +20,15 @@ export default function Dashboard() {
     <div className="flex flex-col min-h-screen">
       <InfoTicker />
       
-      <div className="flex-1 p-6 space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold">Tableau de bord</h1>
-          <p className="text-muted-foreground mt-1">
+      <div className="flex-1 p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6">
+        <div className="space-y-1">
+          <h1 className="text-2xl sm:text-3xl font-bold">Tableau de bord</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Aperçu de votre activité financière
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
           <DashboardCard
             title="Solde actuel"
             value={accountsLoading ? "..." : `${totalBalance.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`}
@@ -55,11 +55,11 @@ export default function Dashboard() {
           />
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 lg:grid-cols-3">
           <StatsChart />
           <div className="lg:col-span-1">
             {cardsLoading || !firstCard ? (
-              <div className="h-full flex items-center justify-center text-muted-foreground">
+              <div className="h-full min-h-[240px] sm:min-h-[280px] flex items-center justify-center text-muted-foreground">
                 Chargement...
               </div>
             ) : (

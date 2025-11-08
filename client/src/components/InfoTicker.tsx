@@ -14,9 +14,9 @@ const messages: TickerMessage[] = [
 
 export default function InfoTicker() {
   return (
-    <div className="bg-primary text-primary-foreground overflow-hidden py-2 px-4">
+    <div className="bg-primary text-primary-foreground overflow-hidden py-1.5 sm:py-2 px-2 sm:px-4">
       <motion.div
-        className="flex gap-12 whitespace-nowrap"
+        className="flex gap-8 sm:gap-12 whitespace-nowrap"
         animate={{
           x: [0, -1000],
         }}
@@ -30,7 +30,7 @@ export default function InfoTicker() {
         }}
       >
         {[...messages, ...messages, ...messages].map((msg, index) => (
-          <span key={`${msg.id}-${index}`} className="text-sm font-medium">
+          <span key={`${msg.id}-${index}`} className="text-xs sm:text-sm font-medium">
             {msg.text}
           </span>
         ))}
