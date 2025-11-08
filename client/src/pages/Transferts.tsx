@@ -8,25 +8,56 @@ import { ArrowRightLeft, Clock, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useAccounts, useTransfer, useTransactions } from "@/lib/api";
 
 export default function Transferts() {
   const [amount, setAmount] = useState('');
   const [recipient, setRecipient] = useState('');
+  const [reference, setReference] = useState('');
+  const [selectedAccount, setSelectedAccount] = useState<string>('');
   const { toast } = useToast();
+  const { data: accounts, isLoading: accountsLoading } = useAccounts();
+  const transferMutation = useTransfer();
+  const firstAccount = accounts?.[0];
+  const { data: transactions } = useTransactions(firstAccount?.id);
 
-  const recentTransfers = [
-    { id: '1', recipient: 'ABC Corp', amount: 15000, date: '2024-01-15', status: 'completed' },
-    { id: '2', recipient: 'DEF Ltd', amount: 22000, date: '2024-01-12', status: 'completed' },
-    { id: '3', recipient: 'GHI Services', amount: 8500, date: '2024-01-10', status: 'pending' },
-  ];
+  const recentTransfers = transactions
+    ?.filter(t => t.type === 'debit' && t.category === 'Virement')
+    .slice(0, 3)
+    .map(t => ({
+      id: t.id,
+      recipient: t.description.replace('Virement - ', ''),
+      amount: Math.abs(parseFloat(t.amount)),
+      date: new Date(t.date).toLocaleDateString('fr-FR'),
+      status: t.status,
+    })) || [];
 
-  const handleTransfer = () => {
-    toast({
-      title: "Transfert initié",
-      description: `Transfert de ${amount} € vers ${recipient} en cours de traitement.`,
-    });
-    setAmount('');
-    setRecipient('');
+  const handleTransfer = async () => {
+    if (!selectedAccount && !firstAccount) return;
+
+    try {
+      await transferMutation.mutateAsync({
+        fromAccountId: selectedAccount || firstAccount!.id,
+        toAccountNumber: recipient,
+        amount: amount,
+        description: reference || `Virement vers ${recipient}`,
+      });
+
+      toast({
+        title: "Transfert effectué",
+        description: `Transfert de ${amount} € vers ${recipient} effectué avec succès.`,
+      });
+      
+      setAmount('');
+      setRecipient('');
+      setReference('');
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue lors du transfert.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -54,13 +85,16 @@ export default function Transferts() {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="from-account">Depuis le compte</Label>
-                <Select defaultValue="compte1">
+                <Select value={selectedAccount || firstAccount?.id} onValueChange={setSelectedAccount} disabled={accountsLoading}>
                   <SelectTrigger id="from-account" data-testid="select-from-account">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="compte1">Compte Courant Pro - 48 750,00 €</SelectItem>
-                    <SelectItem value="compte2">Compte Épargne - 125 000,00 €</SelectItem>
+                    {accounts?.map((account) => (
+                      <SelectItem key={account.id} value={account.id}>
+                        {account.name} - {parseFloat(account.balance).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -98,6 +132,8 @@ export default function Transferts() {
                 <Input
                   id="reference"
                   placeholder="Motif du virement"
+                  value={reference}
+                  onChange={(e) => setReference(e.target.value)}
                   data-testid="input-reference"
                 />
               </div>
@@ -105,7 +141,7 @@ export default function Transferts() {
               <Button 
                 className="w-full" 
                 onClick={handleTransfer}
-                disabled={!amount || !recipient}
+                disabled={!amount || !recipient || transferMutation.isPending}
                 data-testid="button-submit-transfer"
               >
                 Effectuer le transfert

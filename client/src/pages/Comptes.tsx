@@ -3,17 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Building2, CreditCard, Plus } from "lucide-react";
+import { useAccounts, useCards } from "@/lib/api";
 
 export default function Comptes() {
-  const accounts = [
-    { id: '1', name: 'Compte Courant Pro', number: 'FR76 3000 2034 5678 9012 3456 789', balance: 48750.00, type: 'Courant' },
-    { id: '2', name: 'Compte Épargne', number: 'FR76 3000 2034 5678 9012 3456 790', balance: 125000.00, type: 'Épargne' },
-  ];
-
-  const cards = [
-    { id: '1', name: 'Carte Business', number: '**** **** **** 4829', type: 'Visa Premier', status: 'Active' },
-    { id: '2', name: 'Carte Virtuelle', number: '**** **** **** 7312', type: 'Mastercard', status: 'Active' },
-  ];
+  const { data: accounts, isLoading: accountsLoading } = useAccounts();
+  const { data: cards, isLoading: cardsLoading } = useCards();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -36,66 +30,74 @@ export default function Comptes() {
         <div className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">Mes Comptes</h2>
-            <div className="grid gap-4 md:grid-cols-2">
-              {accounts.map((account) => (
-                <Card key={account.id} className="hover-elevate" data-testid={`card-account-${account.id}`}>
-                  <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
-                    <CardTitle className="text-base font-medium">{account.name}</CardTitle>
-                    <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center">
-                      <Building2 className="h-5 w-5 text-primary" />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2">
-                      <p className="text-sm text-muted-foreground font-mono">{account.number}</p>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-2xl font-bold">{account.balance.toLocaleString('fr-FR')} €</p>
-                          <Badge variant="secondary" className="mt-2">{account.type}</Badge>
-                        </div>
-                        <Button variant="outline" size="sm" data-testid={`button-view-account-${account.id}`}>
-                          Détails
-                        </Button>
+            {accountsLoading ? (
+              <div className="text-center text-muted-foreground py-8">Chargement...</div>
+            ) : (
+              <div className="grid gap-4 md:grid-cols-2">
+                {accounts?.map((account) => (
+                  <Card key={account.id} className="hover-elevate" data-testid={`card-account-${account.id}`}>
+                    <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
+                      <CardTitle className="text-base font-medium">{account.name}</CardTitle>
+                      <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center">
+                        <Building2 className="h-5 w-5 text-primary" />
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2">
+                        <p className="text-sm text-muted-foreground font-mono">{account.accountNumber}</p>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="text-2xl font-bold">{parseFloat(account.balance).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</p>
+                            <Badge variant="secondary" className="mt-2">{account.type}</Badge>
+                          </div>
+                          <Button variant="outline" size="sm" data-testid={`button-view-account-${account.id}`}>
+                            Détails
+                          </Button>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>
             <h2 className="text-xl font-semibold mb-4">Mes Cartes</h2>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {cards.map((card) => (
-                <Card key={card.id} className="hover-elevate" data-testid={`card-payment-card-${card.id}`}>
-                  <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0">
-                    <CardTitle className="text-base font-medium">{card.name}</CardTitle>
-                    <CreditCard className="h-5 w-5 text-primary" />
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <p className="text-lg font-mono">{card.number}</p>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-sm text-muted-foreground">{card.type}</p>
-                        <Badge variant="default" className="mt-1">{card.status}</Badge>
+            {cardsLoading ? (
+              <div className="text-center text-muted-foreground py-8">Chargement...</div>
+            ) : (
+              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {cards?.map((card) => (
+                  <Card key={card.id} className="hover-elevate" data-testid={`card-payment-card-${card.id}`}>
+                    <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0">
+                      <CardTitle className="text-base font-medium">{card.name}</CardTitle>
+                      <CreditCard className="h-5 w-5 text-primary" />
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <p className="text-lg font-mono">{card.cardNumber}</p>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm text-muted-foreground">{card.cardType}</p>
+                          <Badge variant="default" className="mt-1">{card.status}</Badge>
+                        </div>
+                        <Button variant="ghost" size="sm" data-testid={`button-manage-card-${card.id}`}>
+                          Gérer
+                        </Button>
                       </div>
-                      <Button variant="ghost" size="sm" data-testid={`button-manage-card-${card.id}`}>
-                        Gérer
-                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+                <Card className="hover-elevate border-dashed flex items-center justify-center min-h-[200px]" data-testid="card-add-card">
+                  <Button variant="ghost" className="h-full w-full" data-testid="button-add-card">
+                    <div className="text-center">
+                      <Plus className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                      <p className="text-sm text-muted-foreground">Ajouter une carte</p>
                     </div>
-                  </CardContent>
+                  </Button>
                 </Card>
-              ))}
-              <Card className="hover-elevate border-dashed flex items-center justify-center min-h-[200px]" data-testid="card-add-card">
-                <Button variant="ghost" className="h-full w-full" data-testid="button-add-card">
-                  <div className="text-center">
-                    <Plus className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground">Ajouter une carte</p>
-                  </div>
-                </Button>
-              </Card>
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

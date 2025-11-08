@@ -8,17 +8,38 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { User, Shield, Bell, FileText, Upload } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useUser, useUpdateUser } from "@/lib/api";
 
 export default function Parametres() {
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState(true);
   const { toast } = useToast();
+  const { data: user, isLoading } = useUser();
+  const updateUserMutation = useUpdateUser();
+  
+  const [fullName, setFullName] = useState(user?.fullName || '');
+  const [email, setEmail] = useState(user?.email || '');
+  const [phone, setPhone] = useState(user?.phone || '');
 
-  const handleSaveProfile = () => {
-    toast({
-      title: "Profil mis à jour",
-      description: "Vos modifications ont été enregistrées avec succès.",
-    });
+  const handleSaveProfile = async () => {
+    try {
+      await updateUserMutation.mutateAsync({
+        fullName,
+        email,
+        phone,
+      });
+      
+      toast({
+        title: "Profil mis à jour",
+        description: "Vos modifications ont été enregistrées avec succès.",
+      });
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue lors de la mise à jour.",
+        variant: "destructive",
+      });
+    }
   };
 
   const handleUploadDocument = () => {
@@ -67,20 +88,45 @@ export default function Parametres() {
 
               <div className="space-y-2">
                 <Label htmlFor="name">Nom complet</Label>
-                <Input id="name" defaultValue="Sophie Martin" data-testid="input-name" />
+                <Input 
+                  id="name" 
+                  value={fullName || user?.fullName || ''} 
+                  onChange={(e) => setFullName(e.target.value)}
+                  disabled={isLoading}
+                  data-testid="input-name" 
+                />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" defaultValue="sophie.martin@altusfinance.fr" data-testid="input-email" />
+                <Input 
+                  id="email" 
+                  type="email" 
+                  value={email || user?.email || ''} 
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isLoading}
+                  data-testid="input-email" 
+                />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="phone">Téléphone</Label>
-                <Input id="phone" type="tel" defaultValue="+33 6 12 34 56 78" data-testid="input-phone" />
+                <Input 
+                  id="phone" 
+                  type="tel" 
+                  value={phone || user?.phone || ''} 
+                  onChange={(e) => setPhone(e.target.value)}
+                  disabled={isLoading}
+                  data-testid="input-phone" 
+                />
               </div>
 
-              <Button className="w-full" onClick={handleSaveProfile} data-testid="button-save-profile">
+              <Button 
+                className="w-full" 
+                onClick={handleSaveProfile} 
+                disabled={isLoading || updateUserMutation.isPending}
+                data-testid="button-save-profile"
+              >
                 Enregistrer les modifications
               </Button>
             </CardContent>

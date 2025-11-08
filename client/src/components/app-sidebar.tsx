@@ -23,6 +23,7 @@ import {
   Building2,
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
+import { useToast } from "@/hooks/use-toast";
 
 const menuItems = [
   { title: "Tableau de bord", url: "/", icon: LayoutDashboard },
@@ -35,6 +36,14 @@ const menuItems = [
 
 export function AppSidebar() {
   const [location] = useLocation();
+  const { toast } = useToast();
+
+  const handleLogout = () => {
+    toast({
+      title: "Déconnexion",
+      description: "Vous avez été déconnecté avec succès.",
+    });
+  };
 
   return (
     <Sidebar>
@@ -87,7 +96,7 @@ export function AppSidebar() {
           className="w-full justify-start mt-2" 
           size="sm"
           data-testid="button-logout"
-          onClick={() => console.log('Déconnexion')}
+          onClick={handleLogout}
         >
           <LogOut className="h-4 w-4 mr-2" />
           Se déconnecter

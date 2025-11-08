@@ -4,20 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Calendar, Euro } from "lucide-react";
+import { useLoans } from "@/lib/api";
 
 export default function Prets() {
-  const loans = [
-    {
-      id: '1',
-      name: 'Prêt Professionnel',
-      amount: 100000,
-      borrowed: 97500,
-      monthly: 5000,
-      rate: 2.5,
-      endDate: '2026-12-31',
-      status: 'active',
-    },
-  ];
+  const { data: loans, isLoading: loansLoading } = useLoans();
 
   const loanOffers = [
     { id: '1', name: 'Prêt Expansion', rate: 2.3, maxAmount: 200000, duration: '5 ans' },
@@ -39,8 +29,11 @@ export default function Prets() {
         <div className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">Mes Prêts en cours</h2>
-            <div className="grid gap-4">
-              {loans.map((loan) => (
+            {loansLoading ? (
+              <div className="text-center text-muted-foreground py-8">Chargement...</div>
+            ) : (
+              <div className="grid gap-4">
+              {loans?.map((loan) => (
                 <Card key={loan.id} className="hover-elevate" data-testid={`card-loan-${loan.id}`}>
                   <CardHeader className="flex flex-row items-center justify-between gap-2 space-y-0 pb-2">
                     <div className="flex items-center gap-3">
@@ -60,35 +53,36 @@ export default function Prets() {
                     <div className="grid gap-6 md:grid-cols-3 mb-4">
                       <div>
                         <p className="text-sm text-muted-foreground mb-1">Montant total</p>
-                        <p className="text-2xl font-bold">{loan.amount.toLocaleString('fr-FR')} €</p>
+                        <p className="text-2xl font-bold">{parseFloat(loan.amount).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</p>
                       </div>
                       <div>
                         <p className="text-sm text-muted-foreground mb-1">Mensualité</p>
-                        <p className="text-2xl font-bold">{loan.monthly.toLocaleString('fr-FR')} €</p>
+                        <p className="text-2xl font-bold">{parseFloat(loan.monthlyPayment).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €</p>
                       </div>
                       <div>
                         <p className="text-sm text-muted-foreground mb-1">Taux</p>
-                        <p className="text-2xl font-bold">{loan.rate}%</p>
+                        <p className="text-2xl font-bold">{parseFloat(loan.interestRate)}%</p>
                       </div>
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-muted-foreground">Progression</span>
-                        <span className="font-medium">{((loan.borrowed / loan.amount) * 100).toFixed(0)}% remboursé</span>
+                        <span className="font-medium">{((parseFloat(loan.borrowed) / parseFloat(loan.amount)) * 100).toFixed(0)}% remboursé</span>
                       </div>
-                      <Progress value={(loan.borrowed / loan.amount) * 100} className="h-2" data-testid={`progress-loan-${loan.id}`} />
+                      <Progress value={(parseFloat(loan.borrowed) / parseFloat(loan.amount)) * 100} className="h-2" data-testid={`progress-loan-${loan.id}`} />
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-muted-foreground flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
                           Fin prévue : {new Date(loan.endDate).toLocaleDateString('fr-FR')}
                         </span>
-                        <span className="font-medium">{(loan.amount - loan.borrowed).toLocaleString('fr-FR')} € restant</span>
+                        <span className="font-medium">{(parseFloat(loan.amount) - parseFloat(loan.borrowed)).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} € restant</span>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               ))}
             </div>
+            )}
           </div>
 
           <div>

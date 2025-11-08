@@ -12,6 +12,7 @@ import {
 import { Bell, Globe, Moon, Sun, User, Settings, LogOut } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useBankStore } from "@/lib/store";
+import { useToast } from "@/hooks/use-toast";
 
 interface TopbarProps {
   userName: string;
@@ -19,6 +20,14 @@ interface TopbarProps {
 
 export default function Topbar({ userName }: TopbarProps) {
   const { theme, language, toggleTheme, setLanguage } = useBankStore();
+  const { toast } = useToast();
+
+  const handleLogout = () => {
+    toast({
+      title: "Déconnexion",
+      description: "Vous avez été déconnecté avec succès.",
+    });
+  };
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -118,7 +127,7 @@ export default function Topbar({ userName }: TopbarProps) {
               Paramètres
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem data-testid="button-logout-menu">
+            <DropdownMenuItem onClick={handleLogout} data-testid="button-logout-menu">
               <LogOut className="mr-2 h-4 w-4" />
               Se déconnecter
             </DropdownMenuItem>
