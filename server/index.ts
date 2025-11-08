@@ -1,6 +1,8 @@
 import express, { type Request, Response, NextFunction } from "express";
+import session from "express-session";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import passport from "./auth";
 
 const app = express();
 
@@ -9,6 +11,28 @@ declare module 'http' {
     rawBody: unknown
   }
 }
+
+if (!process.env.SESSION_SECRET && process.env.NODE_ENV === "production") {
+  throw new Error("SESSION_SECRET must be set in production");
+}
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "dev-secret-DO-NOT-USE-IN-PRODUCTION",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      sameSite: "lax",
+    },
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.json({
   verify: (req, _res, buf) => {
     req.rawBody = buf;

@@ -7,6 +7,7 @@ export const users = pgTable("users", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   fullName: text("full_name").notNull(),
   email: text("email").notNull().unique(),
+  password: text("password").notNull(),
   phone: text("phone"),
   accountType: text("account_type").notNull().default("pro"),
   createdAt: timestamp("created_at").defaultNow(),
@@ -17,8 +18,22 @@ export const insertUserSchema = createInsertSchema(users).omit({
   createdAt: true,
 });
 
+export const registerUserSchema = z.object({
+  fullName: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
+  email: z.string().email("Email invalide"),
+  password: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères"),
+  phone: z.string().optional(),
+  accountType: z.string().default("pro"),
+});
+
+export const loginUserSchema = z.object({
+  email: z.string().email("Email invalide"),
+  password: z.string().min(1, "Mot de passe requis"),
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
+export type UserWithoutPassword = Omit<User, "password">;
 
 export const accounts = pgTable("accounts", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),

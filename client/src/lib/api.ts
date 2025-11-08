@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import type { User, Account, Card, Transaction, Loan } from "@shared/schema";
+import type { User, Account, Card, Transaction, Loan, UserWithoutPassword } from "@shared/schema";
 
 const API_BASE = "/api";
 
@@ -202,5 +202,66 @@ export function useMonthlyStats() {
   return useQuery<MonthlyStats[]>({
     queryKey: ["stats", "monthly"],
     queryFn: () => fetchApi("/stats/monthly"),
+  });
+}
+
+export function useAuth() {
+  return useQuery<{ user: UserWithoutPassword }>({
+    queryKey: ["auth", "me"],
+    queryFn: () => fetchApi("/auth/me"),
+    retry: false,
+    staleTime: Infinity,
+  });
+}
+
+export function useLogin() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (credentials: { email: string; password: string }) =>
+      fetchApi<{ user: UserWithoutPassword }>("/auth/login", {
+        method: "POST",
+        body: JSON.stringify(credentials),
+      }),
+    onSuccess: (data) => {
+      queryClient.setQueryData(["auth", "me"], data);
+      queryClient.invalidateQueries();
+    },
+  });
+}
+
+export function useRegister() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: {
+      fullName: string;
+      email: string;
+      password: string;
+      phone?: string;
+    }) =>
+      fetchApi<{ user: UserWithoutPassword }>("/auth/register", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    onSuccess: (data) => {
+      queryClient.setQueryData(["auth", "me"], data);
+      queryClient.invalidateQueries();
+    },
+  });
+}
+
+export function useLogout() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: () =>
+      fetchApi<{ success: boolean }>("/auth/logout", {
+        method: "POST",
+      }),
+    onSuccess: () => {
+      queryClient.clear();
+      window.location.href = "/login";
+    },
   });
 }

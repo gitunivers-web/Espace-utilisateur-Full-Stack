@@ -1,5 +1,6 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
+import bcrypt from "bcrypt";
 import { storage } from "./storage";
 import {
   insertUserSchema,
@@ -7,47 +8,150 @@ import {
   insertCardSchema,
   insertTransactionSchema,
   insertLoanSchema,
+  registerUserSchema,
+  loginUserSchema,
+  type User,
+  type UserWithoutPassword,
 } from "@shared/schema";
 import { z } from "zod";
+import passport from "./auth";
+
+function requireAuth(req: Request, res: Response, next: NextFunction) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.status(401).json({ error: "Non authentifié" });
+}
+
+function omitPassword(user: User): UserWithoutPassword {
+  const { password, ...userWithoutPassword } = user;
+  return userWithoutPassword;
+}
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Get current user (hardcoded for now - would be from session/auth later)
-  app.get("/api/user", async (req, res) => {
+  // Auth endpoints
+  app.post("/api/auth/register", async (req, res) => {
     try {
-      const users = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!users) {
-        return res.status(404).json({ error: "User not found" });
+      const data = registerUserSchema.parse(req.body);
+      
+      const existingUser = await storage.getUserByEmail(data.email);
+      if (existingUser) {
+        return res.status(400).json({ error: "Cet email est déjà utilisé" });
       }
-      res.json(users);
+
+      const hashedPassword = await bcrypt.hash(data.password, 10);
+      
+      const user = await storage.createUser({
+        ...data,
+        password: hashedPassword,
+      });
+
+      req.login(user, (err) => {
+        if (err) {
+          return res.status(500).json({ error: "Erreur lors de la connexion" });
+        }
+        res.status(201).json({ user: omitPassword(user) });
+      });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  app.post("/api/auth/login", (req, res, next) => {
+    try {
+      loginUserSchema.parse(req.body);
+    } catch (error: any) {
+      return res.status(400).json({ error: error.message });
+    }
+
+    passport.authenticate("local", (err: any, user: User | false, info: any) => {
+      if (err) {
+        return res.status(500).json({ error: "Erreur lors de la connexion" });
+      }
+      
+      if (!user) {
+        return res.status(401).json({ error: info?.message || "Email ou mot de passe incorrect" });
+      }
+
+      req.login(user, (err) => {
+        if (err) {
+          return res.status(500).json({ error: "Erreur lors de la connexion" });
+        }
+        res.json({ user: omitPassword(user) });
+      });
+    })(req, res, next);
+  });
+
+  app.post("/api/auth/logout", (req, res) => {
+    req.logout((err) => {
+      if (err) {
+        return res.status(500).json({ error: "Erreur lors de la déconnexion" });
+      }
+      res.json({ success: true });
+    });
+  });
+
+  app.get("/api/auth/me", requireAuth, (req, res) => {
+    res.json({ user: omitPassword(req.user as User) });
+  });
+
+  // Get current user
+  app.get("/api/user", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      res.json(omitPassword(user));
     } catch (error: any) {
       res.status(500).json({ error: error.message });
     }
   });
 
   // Update user profile
-  app.patch("/api/user", async (req, res) => {
+  app.patch("/api/user", requireAuth, async (req, res) => {
     try {
-      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
+      const user = req.user as User;
+      
+      if (req.body.password) {
+        return res.status(400).json({ 
+          error: "Pour changer votre mot de passe, veuillez utiliser l'endpoint dédié /api/auth/change-password" 
+        });
       }
 
-      const updates = insertUserSchema.partial().parse(req.body);
+      const { password: _, ...allowedUpdates } = req.body;
+      const updates = insertUserSchema.partial().omit({ password: true }).parse(allowedUpdates);
       const updated = await storage.updateUser(user.id, updates);
-      res.json(updated);
+      res.json(omitPassword(updated!));
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  // Change password endpoint
+  app.post("/api/auth/change-password", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const { currentPassword, newPassword } = z.object({
+        currentPassword: z.string().min(1),
+        newPassword: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères"),
+      }).parse(req.body);
+
+      const isValid = await bcrypt.compare(currentPassword, user.password);
+      if (!isValid) {
+        return res.status(401).json({ error: "Mot de passe actuel incorrect" });
+      }
+
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      await storage.updateUser(user.id, { password: hashedPassword });
+      
+      res.json({ success: true, message: "Mot de passe modifié avec succès" });
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }
   });
 
   // Get all accounts for current user
-  app.get("/api/accounts", async (req, res) => {
+  app.get("/api/accounts", requireAuth, async (req, res) => {
     try {
-      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
+      const user = req.user as User;
       const accounts = await storage.getAccountsByUserId(user.id);
       res.json(accounts);
     } catch (error: any) {
@@ -56,7 +160,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get single account
-  app.get("/api/accounts/:id", async (req, res) => {
+  app.get("/api/accounts/:id", requireAuth, async (req, res) => {
     try {
       const account = await storage.getAccount(req.params.id);
       if (!account) {
@@ -69,13 +173,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Create new account
-  app.post("/api/accounts", async (req, res) => {
+  app.post("/api/accounts", requireAuth, async (req, res) => {
     try {
-      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
+      const user = req.user as User;
       const data = insertAccountSchema.parse({
         ...req.body,
         userId: user.id,
@@ -88,13 +188,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get all cards for current user
-  app.get("/api/cards", async (req, res) => {
+  app.get("/api/cards", requireAuth, async (req, res) => {
     try {
-      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
+      const user = req.user as User;
       const cards = await storage.getCardsByUserId(user.id);
       res.json(cards);
     } catch (error: any) {
@@ -103,13 +199,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Create new card
-  app.post("/api/cards", async (req, res) => {
+  app.post("/api/cards", requireAuth, async (req, res) => {
     try {
-      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
+      const user = req.user as User;
       const data = insertCardSchema.parse({
         ...req.body,
         userId: user.id,
@@ -122,7 +214,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Update card
-  app.patch("/api/cards/:id", async (req, res) => {
+  app.patch("/api/cards/:id", requireAuth, async (req, res) => {
     try {
       const updates = insertCardSchema.partial().parse(req.body);
       const card = await storage.updateCard(req.params.id, updates);
@@ -136,7 +228,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get transactions for an account
-  app.get("/api/transactions/:accountId", async (req, res) => {
+  app.get("/api/transactions/:accountId", requireAuth, async (req, res) => {
     try {
       const transactions = await storage.getTransactionsByAccountId(req.params.accountId);
       res.json(transactions);
@@ -146,7 +238,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Create transaction
-  app.post("/api/transactions", async (req, res) => {
+  app.post("/api/transactions", requireAuth, async (req, res) => {
     try {
       const data = insertTransactionSchema.parse(req.body);
       const transaction = await storage.createTransaction(data);
@@ -167,13 +259,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get all loans for current user
-  app.get("/api/loans", async (req, res) => {
+  app.get("/api/loans", requireAuth, async (req, res) => {
     try {
-      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
+      const user = req.user as User;
       const loans = await storage.getLoansByUserId(user.id);
       res.json(loans);
     } catch (error: any) {
@@ -182,13 +270,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Create loan
-  app.post("/api/loans", async (req, res) => {
+  app.post("/api/loans", requireAuth, async (req, res) => {
     try {
-      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
+      const user = req.user as User;
       const data = insertLoanSchema.parse({
         ...req.body,
         userId: user.id,
@@ -201,7 +285,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Update loan
-  app.patch("/api/loans/:id", async (req, res) => {
+  app.patch("/api/loans/:id", requireAuth, async (req, res) => {
     try {
       const updates = insertLoanSchema.partial().parse(req.body);
       const loan = await storage.updateLoan(req.params.id, updates);
@@ -215,7 +299,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Transfer endpoint (creates two transactions)
-  app.post("/api/transfers", async (req, res) => {
+  app.post("/api/transfers", requireAuth, async (req, res) => {
     try {
       const schema = z.object({
         fromAccountId: z.string(),
@@ -253,13 +337,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Get monthly statistics
-  app.get("/api/stats/monthly", async (req, res) => {
+  app.get("/api/stats/monthly", requireAuth, async (req, res) => {
     try {
-      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-
+      const user = req.user as User;
       const accounts = await storage.getAccountsByUserId(user.id);
       const accountIds = accounts.map(acc => acc.id);
 

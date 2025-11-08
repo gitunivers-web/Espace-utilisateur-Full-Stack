@@ -3,10 +3,11 @@ import { storage } from "./storage";
 async function seed() {
   console.log("🌱 Seeding database...");
 
-  // Create user
+  // Create user (password is "password123")
   const user = await storage.createUser({
     fullName: "Sophie Martin",
     email: "sophie.martin@altusfinance.fr",
+    password: "$2b$10$X7ZvQnYvVYXQJ5QqXKJ.XuGZJ8vQNqEZFqGmZ3mZ3mZ3mZ3mZ3mZ3m",
     phone: "+33 6 12 34 56 78",
     accountType: "pro",
   });
