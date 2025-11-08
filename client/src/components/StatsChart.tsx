@@ -1,23 +1,27 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Area, AreaChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-
-interface ChartDataPoint {
-  month: string;
-  revenus: number;
-  dépenses: number;
-  remboursements: number;
-}
-
-const mockData: ChartDataPoint[] = [
-  { month: "Jan", revenus: 45000, dépenses: 32000, remboursements: 5000 },
-  { month: "Fév", revenus: 52000, dépenses: 38000, remboursements: 5000 },
-  { month: "Mar", revenus: 48000, dépenses: 35000, remboursements: 5000 },
-  { month: "Avr", revenus: 61000, dépenses: 42000, remboursements: 5000 },
-  { month: "Mai", revenus: 55000, dépenses: 39000, remboursements: 5000 },
-  { month: "Juin", revenus: 67000, dépenses: 45000, remboursements: 5000 },
-];
+import { useMonthlyStats } from "@/lib/api";
 
 export default function StatsChart() {
+  const { data: stats, isLoading } = useMonthlyStats();
+
+  if (isLoading) {
+    return (
+      <Card className="col-span-full lg:col-span-2" data-testid="card-stats-chart">
+        <CardHeader>
+          <CardTitle>Aperçu rapide</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-[300px] flex items-center justify-center">
+            <p className="text-muted-foreground">Chargement...</p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  const chartData = stats || [];
+
   return (
     <Card className="col-span-full lg:col-span-2" data-testid="card-stats-chart">
       <CardHeader>
@@ -25,7 +29,7 @@ export default function StatsChart() {
       </CardHeader>
       <CardContent>
         <ResponsiveContainer width="100%" height={300}>
-          <AreaChart data={mockData}>
+          <AreaChart data={chartData}>
             <defs>
               <linearGradient id="colorRevenus" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="hsl(var(--chart-1))" stopOpacity={0.3} />

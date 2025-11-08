@@ -252,6 +252,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Get monthly statistics
+  app.get("/api/stats/monthly", async (req, res) => {
+    try {
+      const user = await storage.getUserByEmail("sophie.martin@altusfinance.fr");
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const accounts = await storage.getAccountsByUserId(user.id);
+      const accountIds = accounts.map(acc => acc.id);
+
+      const stats = await storage.getMonthlyStats(accountIds);
+      res.json(stats);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   const httpServer = createServer(app);
 
   return httpServer;

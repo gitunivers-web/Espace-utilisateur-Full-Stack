@@ -12,6 +12,12 @@ import {
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
+export interface MonthlyStats {
+  month: string;
+  revenus: number;
+  dépenses: number;
+}
+
 export interface IStorage {
   // User methods
   getUser(id: string): Promise<User | undefined>;
@@ -41,6 +47,9 @@ export interface IStorage {
   getLoansByUserId(userId: string): Promise<Loan[]>;
   createLoan(loan: InsertLoan): Promise<Loan>;
   updateLoan(id: string, updates: Partial<InsertLoan>): Promise<Loan | undefined>;
+
+  // Stats methods
+  getMonthlyStats(accountIds: string[]): Promise<MonthlyStats[]>;
 }
 
 import { db } from "./db";
@@ -145,6 +154,43 @@ export class DbStorage implements IStorage {
   async updateLoan(id: string, updates: Partial<InsertLoan>): Promise<Loan | undefined> {
     const [loan] = await db.update(loans).set(updates).where(eq(loans.id, id)).returning();
     return loan;
+  }
+
+  async getMonthlyStats(accountIds: string[]): Promise<MonthlyStats[]> {
+    if (accountIds.length === 0) {
+      return [];
+    }
+
+    const allTransactions = await db.select()
+      .from(transactions)
+      .where(eq(transactions.accountId, accountIds[0]));
+
+    const monthlyMap = new Map<string, { revenus: number; dépenses: number }>();
+    const monthNames = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
+
+    allTransactions.forEach(txn => {
+      const date = new Date(txn.date);
+      const monthKey = `${monthNames[date.getMonth()]}`;
+      const amount = parseFloat(txn.amount);
+
+      if (!monthlyMap.has(monthKey)) {
+        monthlyMap.set(monthKey, { revenus: 0, dépenses: 0 });
+      }
+
+      const stats = monthlyMap.get(monthKey)!;
+      if (amount > 0) {
+        stats.revenus += amount;
+      } else {
+        stats.dépenses += Math.abs(amount);
+      }
+    });
+
+    const last6Months = monthNames.slice(0, 6);
+    return last6Months.map(month => ({
+      month,
+      revenus: monthlyMap.get(month)?.revenus || 0,
+      dépenses: monthlyMap.get(month)?.dépenses || 0,
+    }));
   }
 }
 

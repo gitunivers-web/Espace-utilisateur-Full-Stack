@@ -187,6 +187,20 @@ export function useTransfer() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["transactions"] });
       queryClient.invalidateQueries({ queryKey: ["accounts"] });
+      queryClient.invalidateQueries({ queryKey: ["stats"] });
     },
+  });
+}
+
+export interface MonthlyStats {
+  month: string;
+  revenus: number;
+  dépenses: number;
+}
+
+export function useMonthlyStats() {
+  return useQuery<MonthlyStats[]>({
+    queryKey: ["stats", "monthly"],
+    queryFn: () => fetchApi("/stats/monthly"),
   });
 }
