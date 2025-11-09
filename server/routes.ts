@@ -11,11 +11,15 @@ import {
   registerUserSchema,
   loginUserSchema,
   createLoanApplicationSchema,
+  forgotPasswordSchema,
+  resetPasswordSchema,
   type User,
   type UserWithoutPassword,
 } from "@shared/schema";
 import { z } from "zod";
 import passport from "./auth";
+import { sendPasswordResetEmail } from "./email";
+import { randomBytes } from "crypto";
 
 function requireAuth(req: Request, res: Response, next: NextFunction) {
   if (req.isAuthenticated()) {
@@ -144,6 +148,110 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.updateUser(user.id, { password: hashedPassword });
       
       res.json({ success: true, message: "Mot de passe modifié avec succès" });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  // Forgot password - send reset email
+  app.post("/api/auth/forgot-password", async (req, res) => {
+    try {
+      const { email } = forgotPasswordSchema.parse(req.body);
+      
+      const user = await storage.getUserByEmail(email);
+      if (!user) {
+        return res.json({ 
+          success: true, 
+          message: "Si cet email existe, un lien de réinitialisation a été envoyé" 
+        });
+      }
+
+      await storage.deleteExpiredPasswordResetTokens();
+      
+      const token = randomBytes(32).toString("hex");
+      const hashedToken = await bcrypt.hash(token, 10);
+      const expiresAt = new Date(Date.now() + 60 * 60 * 1000);
+      
+      await storage.createPasswordResetToken({
+        userId: user.id,
+        token: hashedToken,
+        expiresAt,
+      });
+
+      const resetLink = `${process.env.REPLIT_DEV_DOMAIN ? `https://${process.env.REPLIT_DEV_DOMAIN}` : 'http://localhost:5000'}/reset-password?token=${token}`;
+      
+      await sendPasswordResetEmail({
+        to: user.email,
+        resetLink,
+        userName: user.fullName,
+      });
+
+      res.json({ 
+        success: true, 
+        message: "Si cet email existe, un lien de réinitialisation a été envoyé" 
+      });
+    } catch (error: any) {
+      console.error("Error in forgot-password:", error);
+      res.status(500).json({ error: "Une erreur est survenue" });
+    }
+  });
+
+  // Verify reset token
+  app.get("/api/auth/verify-reset-token/:token", async (req, res) => {
+    try {
+      const { token } = req.params;
+      
+      await storage.deleteExpiredPasswordResetTokens();
+      
+      const allTokens = await storage.getAllPasswordResetTokens();
+      let validToken = null;
+      
+      for (const dbToken of allTokens) {
+        const isValid = await bcrypt.compare(token, dbToken.token);
+        if (isValid && new Date() <= dbToken.expiresAt) {
+          validToken = dbToken;
+          break;
+        }
+      }
+      
+      if (!validToken) {
+        return res.status(400).json({ error: "Token invalide ou expiré" });
+      }
+
+      res.json({ valid: true });
+    } catch (error: any) {
+      res.status(500).json({ error: "Une erreur est survenue" });
+    }
+  });
+
+  // Reset password with token
+  app.post("/api/auth/reset-password", async (req, res) => {
+    try {
+      const { token, password } = resetPasswordSchema.parse(req.body);
+      
+      await storage.deleteExpiredPasswordResetTokens();
+      
+      const allTokens = await storage.getAllPasswordResetTokens();
+      let validToken = null;
+      
+      for (const dbToken of allTokens) {
+        const isValid = await bcrypt.compare(token, dbToken.token);
+        if (isValid && new Date() <= dbToken.expiresAt) {
+          validToken = dbToken;
+          break;
+        }
+      }
+      
+      if (!validToken) {
+        return res.status(400).json({ error: "Token invalide ou expiré" });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      await storage.updateUser(validToken.userId, { password: hashedPassword });
+      
+      await storage.deletePasswordResetTokenById(validToken.id);
+
+      res.json({ success: true, message: "Mot de passe réinitialisé avec succès" });
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }

@@ -23,6 +23,11 @@ import HowItWorks from "@/pages/how-it-works";
 import LoanApplication from "@/pages/loan-application";
 import LegalNotice from "@/pages/legal-notice";
 import PrivacyPolicy from "@/pages/privacy-policy";
+import ForgotPassword from "@/pages/forgot-password";
+import ResetPassword from "@/pages/reset-password";
+import Register from "@/pages/register";
+import RegisterParticular from "@/pages/register-particular";
+import RegisterProfessional from "@/pages/register-professional";
 import NotFound from "@/pages/not-found";
 import { useAuth } from "@/lib/api";
 
@@ -120,6 +125,11 @@ function AppRoutes() {
   return (
     <Switch>
       <Route path="/auth/connexion" component={Login} />
+      <Route path="/forgot-password" component={ForgotPassword} />
+      <Route path="/reset-password" component={ResetPassword} />
+      <Route path="/register" component={Register} />
+      <Route path="/register/particular" component={RegisterParticular} />
+      <Route path="/register/professional" component={RegisterProfessional} />
       <Route path="/mon-espace/:rest*">
         {() => <ProtectedRouter />}
       </Route>
