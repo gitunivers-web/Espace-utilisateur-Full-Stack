@@ -52,14 +52,6 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
               <LanguageSelector />
               <Link href="/auth/connexion">
                 <div
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2"
-                  data-testid="button-connexion"
-                >
-                  {t('nav.login')}
-                </div>
-              </Link>
-              <Link href="/auth/connexion">
-                <div
                   className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 bg-primary text-primary-foreground"
                   data-testid="button-demander-pret"
                 >
@@ -95,14 +87,6 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                 <div className="px-4 py-2">
                   <LanguageSelector />
                 </div>
-                <Link href="/auth/connexion">
-                  <div
-                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 w-full"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {t('nav.login')}
-                  </div>
-                </Link>
                 <Link href="/auth/connexion">
                   <div
                     className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 w-full bg-primary text-primary-foreground"
