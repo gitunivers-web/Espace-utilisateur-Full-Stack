@@ -45,11 +45,7 @@ export default function RegisterProfessional() {
       });
     },
     onSuccess: () => {
-      toast({
-        title: "Compte créé",
-        description: "Votre compte professionnel a été créé avec succès.",
-      });
-      navigate("/mon-espace");
+      navigate("/email-confirmation");
     },
     onError: (error: Error) => {
       toast({

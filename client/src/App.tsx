@@ -28,6 +28,8 @@ import ResetPassword from "@/pages/reset-password";
 import Register from "@/pages/register";
 import RegisterParticular from "@/pages/register-particular";
 import RegisterProfessional from "@/pages/register-professional";
+import EmailConfirmation from "@/pages/email-confirmation";
+import VerifyEmail from "@/pages/verify-email";
 import NotFound from "@/pages/not-found";
 import { useAuth } from "@/lib/api";
 
@@ -130,6 +132,8 @@ function AppRoutes() {
       <Route path="/register" component={Register} />
       <Route path="/register/particular" component={RegisterParticular} />
       <Route path="/register/professional" component={RegisterProfessional} />
+      <Route path="/email-confirmation" component={EmailConfirmation} />
+      <Route path="/verify-email" component={VerifyEmail} />
       <Route path="/mon-espace/:rest*">
         {() => <ProtectedRouter />}
       </Route>

@@ -45,11 +45,7 @@ export default function RegisterParticular() {
       });
     },
     onSuccess: () => {
-      toast({
-        title: "Compte créé",
-        description: "Votre compte particulier a été créé avec succès.",
-      });
-      navigate("/mon-espace");
+      navigate("/email-confirmation");
     },
     onError: (error: Error) => {
       toast({
