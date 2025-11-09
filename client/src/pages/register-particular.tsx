@@ -183,9 +183,9 @@ export default function RegisterParticular() {
               <div className="text-center space-y-2">
                 <p className="text-sm text-muted-foreground">
                   Vous avez déjà un compte ?{" "}
-                  <Button variant="link" asChild className="p-0 h-auto" data-testid="link-login">
-                    <Link href="/auth/connexion">Se connecter</Link>
-                  </Button>
+                  <Link href="/auth/connexion" data-testid="link-login" className="text-primary hover:underline">
+                    Se connecter
+                  </Link>
                 </p>
               </div>
             </form>
