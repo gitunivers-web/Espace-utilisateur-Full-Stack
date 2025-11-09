@@ -149,6 +149,60 @@ Données de démonstration créées pour "Sophie Martin" (sophie.martin@altusfin
 - Fichiers de configuration : vercel.json, .env.example
 - Guide de déploiement complet : DEPLOYMENT.md
 
+### Internationalisation (i18n) - 9 nov 2024
+
+**Implémentation complète sur 7 langues:**
+- 🇫🇷 Français (FR) - Langue par défaut
+- 🇬🇧 English (EN)
+- 🇵🇹 Português (PT)
+- 🇪🇸 Español (ES)
+- 🇮🇹 Italiano (IT)
+- 🇭🇺 Magyar (HU)
+- 🇵🇱 Polski (PL)
+
+**Architecture i18n:**
+- Bibliothèque: `i18next` + `react-i18next`
+- Configuration: `client/src/i18n/index.ts`
+- Fichiers de traduction: `client/src/i18n/locales/{lang}.json` (340-350 clés par langue)
+- Détection de langue: localStorage + navigateur
+- Hook principal: `useTranslation()` pour accéder aux traductions dans les composants
+
+**Organisation des traductions:**
+```
+{
+  "app": { "name": "..." },
+  "nav": { "home", "offers", "simulator", ... },
+  "home": { "hero", "solutions", "professional", "whyUs" },
+  "simulator": { "title", "loanType", "amount", ... },
+  "loanApplication": { "step", "stepLoanType", "stepSimulation", ... },
+  "legal": { "warning", "representativeExample", ... },
+  "employmentStatus": { "cdi", "cdd", "freelance", ... },
+  "loanStatus": { "pending", "under_review", "approved", ... }
+}
+```
+
+**Composants traduits:**
+- ✅ `home.tsx` - Page d'accueil avec hero et sections
+- ✅ `LoanCard` - Cartes de produits de prêt
+- ✅ `LoanSimulator` - Simulateur interactif
+- ✅ `Stepper` - Barre de progression multi-étapes
+- ✅ `StepLoanType` - Sélection du type de prêt
+- ✅ `StepSimulation` - Simulation financière
+- ✅ `StepConfirmation` - Confirmation de la demande
+- ✅ `LegalNotice` - Mentions légales
+
+**Validation architecte:**
+- Toutes les chaînes codées en dur converties vers i18n
+- Hiérarchie de clés bien organisée avec espaces de noms
+- Traductions complètes et cohérentes sur les 7 langues
+- Aucun littéral français orphelin dans les composants traduits
+- Hot reloading fonctionnel
+
+**Recommandations futures:**
+- [ ] Tests automatisés de changement de locale
+- [ ] Descriptions de loanType localisées dans le backend (si nécessaire)
+- [ ] Documenter le workflow de traduction pour futurs contributeurs
+
 ### Prochaines étapes
 - [ ] Formulaire de demande de prêt multi-étapes
 - [ ] Adapter dashboard "Mon Espace" pour afficher et gérer les demandes de prêts
