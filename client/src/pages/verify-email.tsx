@@ -86,7 +86,7 @@ export default function VerifyEmail() {
           {status === "error" && (
             <div className="flex flex-col gap-2">
               <Button 
-                onClick={() => setLocation("/connexion")} 
+                onClick={() => setLocation("/auth/connexion")} 
                 variant="outline" 
                 className="w-full"
                 data-testid="button-login"

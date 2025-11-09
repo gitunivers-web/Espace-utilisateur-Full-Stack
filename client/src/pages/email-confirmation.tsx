@@ -27,7 +27,7 @@ export default function EmailConfirmation() {
             Si vous ne voyez pas l'email, vérifiez votre dossier spam.
           </p>
           <div className="flex flex-col gap-2 pt-4">
-            <Link href="/connexion">
+            <Link href="/auth/connexion">
               <Button variant="outline" className="w-full" data-testid="button-login">
                 Retour à la connexion
               </Button>
