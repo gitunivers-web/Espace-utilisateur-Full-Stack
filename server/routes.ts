@@ -18,7 +18,7 @@ import {
 } from "@shared/schema";
 import { z } from "zod";
 import passport from "./auth";
-import { sendPasswordResetEmail } from "./email";
+import { sendPasswordResetEmail, sendVerificationEmail } from "./email";
 import { randomBytes } from "crypto";
 
 function requireAuth(req: Request, res: Response, next: NextFunction) {
@@ -45,17 +45,69 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const hashedPassword = await bcrypt.hash(data.password, 10);
+      const verificationToken = randomBytes(32).toString('hex');
+      const verificationTokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
       
       const user = await storage.createUser({
         ...data,
         password: hashedPassword,
+        emailVerified: false,
+        verificationToken,
+        verificationTokenExpiry,
+      });
+
+      const baseUrl = process.env.REPLIT_DEV_DOMAIN 
+        ? `https://${process.env.REPLIT_DEV_DOMAIN}` 
+        : `http://localhost:${process.env.PORT || 5000}`;
+      const verificationLink = `${baseUrl}/verify-email?token=${verificationToken}`;
+
+      await sendVerificationEmail({
+        to: user.email,
+        verificationLink,
+        userName: user.fullName,
+      });
+
+      res.status(201).json({ 
+        message: "Inscription réussie ! Veuillez vérifier votre email pour activer votre compte." 
+      });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  app.get("/api/auth/verify-email", async (req, res) => {
+    try {
+      const { token } = req.query;
+      
+      if (!token || typeof token !== 'string') {
+        return res.status(400).json({ error: "Token manquant" });
+      }
+
+      const user = await storage.getUserByVerificationToken(token);
+      
+      if (!user) {
+        return res.status(400).json({ error: "Token invalide" });
+      }
+
+      if (!user.verificationTokenExpiry || new Date() > user.verificationTokenExpiry) {
+        return res.status(400).json({ error: "Token expiré" });
+      }
+
+      await storage.updateUser(user.id, {
+        emailVerified: true,
+        verificationToken: null,
+        verificationTokenExpiry: null,
       });
 
       req.login(user, (err) => {
         if (err) {
           return res.status(500).json({ error: "Erreur lors de la connexion" });
         }
-        res.status(201).json({ user: omitPassword(user) });
+        res.json({ 
+          success: true, 
+          message: "Email vérifié avec succès",
+          user: omitPassword(user)
+        });
       });
     } catch (error: any) {
       res.status(400).json({ error: error.message });
