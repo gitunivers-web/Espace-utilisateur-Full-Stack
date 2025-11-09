@@ -9,13 +9,13 @@ import {
 import { Globe } from "lucide-react";
 
 const languages = [
-  { code: 'fr', name: 'Français', flag: '🇫🇷' },
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'pt', name: 'Português', flag: '🇵🇹' },
-  { code: 'es', name: 'Español', flag: '🇪🇸' },
-  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-  { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
-  { code: 'pl', name: 'Polski', flag: '🇵🇱' },
+  { code: 'fr', name: 'Français' },
+  { code: 'en', name: 'English' },
+  { code: 'pt', name: 'Português' },
+  { code: 'es', name: 'Español' },
+  { code: 'it', name: 'Italiano' },
+  { code: 'hu', name: 'Magyar' },
+  { code: 'pl', name: 'Polski' },
 ];
 
 export function LanguageSelector() {
@@ -32,10 +32,7 @@ export function LanguageSelector() {
       <SelectTrigger className="w-[180px]" data-testid="select-language">
         <div className="flex items-center gap-2">
           <Globe className="h-4 w-4" />
-          <SelectValue>
-            <span className="mr-2">{currentLanguage.flag}</span>
-            {currentLanguage.name}
-          </SelectValue>
+          <SelectValue>{currentLanguage.name}</SelectValue>
         </div>
       </SelectTrigger>
       <SelectContent>
@@ -45,10 +42,7 @@ export function LanguageSelector() {
             value={language.code}
             data-testid={`language-option-${language.code}`}
           >
-            <div className="flex items-center gap-2">
-              <span>{language.flag}</span>
-              <span>{language.name}</span>
-            </div>
+            {language.name}
           </SelectItem>
         ))}
       </SelectContent>

@@ -41,7 +41,17 @@
     "amount": "Importo",
     "duration": "Durata",
     "months": "mesi",
-    "calculate": "Calcola"
+    "calculate": "Calcola",
+    "calculating": "Calcolo in corso...",
+    "error": "Errore",
+    "pleaseSelectLoanType": "Seleziona un tipo di prestito",
+    "from": "Da",
+    "to": "a",
+    "fixedAPR": "TAEG Fisso",
+    "monthlyPayment": "Rata Mensile",
+    "totalCreditCost": "Costo Totale del Credito",
+    "totalAmountDue": "Importo Totale Dovuto",
+    "interest": "Interessi"
   },
   "footer": {
     "tagline": "Il tuo partner di fiducia per tutti i tuoi progetti di finanziamento",

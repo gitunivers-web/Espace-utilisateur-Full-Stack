@@ -41,7 +41,17 @@
     "amount": "Összeg",
     "duration": "Időtartam",
     "months": "hónap",
-    "calculate": "Számítás"
+    "calculate": "Számítás",
+    "calculating": "Számítás folyamatban...",
+    "error": "Hiba",
+    "pleaseSelectLoanType": "Kérjük, válasszon hitel típust",
+    "from": "Tól",
+    "to": "ig",
+    "fixedAPR": "Fix THM",
+    "monthlyPayment": "Havi Törlesztés",
+    "totalCreditCost": "Teljes Hitelköltség",
+    "totalAmountDue": "Összes Tartozás",
+    "interest": "Kamat"
   },
   "footer": {
     "tagline": "Megbízható partnerük minden finanszírozási projekthez",

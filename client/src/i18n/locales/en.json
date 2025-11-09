@@ -41,7 +41,17 @@
     "amount": "Amount",
     "duration": "Duration",
     "months": "months",
-    "calculate": "Calculate"
+    "calculate": "Calculate",
+    "calculating": "Calculating...",
+    "error": "Error",
+    "pleaseSelectLoanType": "Please select a loan type",
+    "from": "From",
+    "to": "to",
+    "fixedAPR": "Fixed APR",
+    "monthlyPayment": "Monthly Payment",
+    "totalCreditCost": "Total Credit Cost",
+    "totalAmountDue": "Total Amount Due",
+    "interest": "Interest"
   },
   "footer": {
     "tagline": "Your trusted partner for all your financing projects",

@@ -41,7 +41,17 @@
     "amount": "Kwota",
     "duration": "Czas trwania",
     "months": "miesięcy",
-    "calculate": "Oblicz"
+    "calculate": "Oblicz",
+    "calculating": "Obliczanie...",
+    "error": "Błąd",
+    "pleaseSelectLoanType": "Proszę wybrać typ kredytu",
+    "from": "Od",
+    "to": "do",
+    "fixedAPR": "Stała RRSO",
+    "monthlyPayment": "Rata Miesięczna",
+    "totalCreditCost": "Całkowity Koszt Kredytu",
+    "totalAmountDue": "Całkowita Kwota Do Spłaty",
+    "interest": "Odsetki"
   },
   "footer": {
     "tagline": "Twój zaufany partner dla wszystkich projektów finansowych",

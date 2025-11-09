@@ -14,11 +14,13 @@ import { useLoanTypes, useLoanSimulation } from "@/lib/queries";
 import { Loader2, Calculator } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { LegalDisclaimers } from "@/components/legal/LegalNotice";
+import { useTranslation } from "react-i18next";
 
 export function LoanSimulator() {
   const { data: loanTypes, isLoading } = useLoanTypes();
   const simulate = useLoanSimulation();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const [selectedLoanTypeId, setSelectedLoanTypeId] = useState<string>("");
   const [amount, setAmount] = useState<number>(10000);
@@ -52,8 +54,8 @@ export function LoanSimulator() {
     if (!selectedLoanTypeId) {
       toast({
         variant: "destructive",
-        title: "Erreur",
-        description: "Veuillez sélectionner un type de prêt",
+        title: t('simulator.error'),
+        description: t('simulator.pleaseSelectLoanType'),
       });
       return;
     }
@@ -76,15 +78,15 @@ export function LoanSimulator() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Calculator className="h-5 w-5" />
-          Simulateur de Prêt
+          {t('simulator.title')}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-2">
-          <Label>Type de prêt</Label>
+          <Label>{t('simulator.loanType')}</Label>
           <Select value={selectedLoanTypeId} onValueChange={setSelectedLoanTypeId}>
             <SelectTrigger data-testid="select-loan-type">
-              <SelectValue placeholder="Sélectionnez un type de prêt" />
+              <SelectValue placeholder={t('simulator.selectLoanType')} />
             </SelectTrigger>
             <SelectContent>
               {loanTypes?.map((loanType) => (
@@ -98,7 +100,7 @@ export function LoanSimulator() {
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label>Montant</Label>
+            <Label>{t('simulator.amount')}</Label>
             <div className="text-2xl font-bold text-primary">{amount.toLocaleString()}€</div>
           </div>
           <Slider
@@ -111,7 +113,7 @@ export function LoanSimulator() {
           />
           {selectedLoanType && (
             <div className="text-xs text-muted-foreground">
-              De {parseFloat(selectedLoanType.minAmount).toLocaleString()}€ à{" "}
+              {t('simulator.from')} {parseFloat(selectedLoanType.minAmount).toLocaleString()}€ {t('simulator.to')}{" "}
               {parseFloat(selectedLoanType.maxAmount).toLocaleString()}€
             </div>
           )}
@@ -119,8 +121,8 @@ export function LoanSimulator() {
 
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label>Durée</Label>
-            <div className="text-2xl font-bold text-primary">{durationMonths} mois</div>
+            <Label>{t('simulator.duration')}</Label>
+            <div className="text-2xl font-bold text-primary">{durationMonths} {t('simulator.months')}</div>
           </div>
           <Slider
             value={[durationMonths]}
@@ -132,7 +134,7 @@ export function LoanSimulator() {
           />
           {selectedLoanType && (
             <div className="text-xs text-muted-foreground">
-              De {selectedLoanType.minDurationMonths} à {selectedLoanType.maxDurationMonths} mois
+              {t('simulator.from')} {selectedLoanType.minDurationMonths} {t('simulator.to')} {selectedLoanType.maxDurationMonths} {t('simulator.months')}
             </div>
           )}
         </div>
@@ -146,10 +148,10 @@ export function LoanSimulator() {
           {simulate.isPending ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Calcul en cours...
+              {t('simulator.calculating')}
             </>
           ) : (
-            "Calculer"
+            t('simulator.calculate')
           )}
         </Button>
 
@@ -158,31 +160,31 @@ export function LoanSimulator() {
             <div className="p-6 bg-primary/5 rounded-lg space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2 text-center pb-4 border-b">
-                  <div className="text-sm text-muted-foreground mb-1">TAEG Fixe</div>
+                  <div className="text-sm text-muted-foreground mb-1">{t('simulator.fixedAPR')}</div>
                   <div className="text-4xl font-bold text-primary">
                     {simulate.data.taeg.toFixed(2)}%
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Mensualité</div>
+                  <div className="text-sm text-muted-foreground">{t('simulator.monthlyPayment')}</div>
                   <div className="text-3xl font-bold text-primary">
                     {simulate.data.monthlyPayment.toLocaleString()}€
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Coût total du crédit</div>
+                  <div className="text-sm text-muted-foreground">{t('simulator.totalCreditCost')}</div>
                   <div className="text-2xl font-semibold">
                     {simulate.data.totalInterest.toLocaleString()}€
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Montant total dû</div>
+                  <div className="text-sm text-muted-foreground">{t('simulator.totalAmountDue')}</div>
                   <div className="text-lg font-semibold">
                     {simulate.data.totalCost.toLocaleString()}€
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground">Intérêts</div>
+                  <div className="text-sm text-muted-foreground">{t('simulator.interest')}</div>
                   <div className="text-lg font-semibold">
                     {simulate.data.totalInterest.toLocaleString()}€
                   </div>

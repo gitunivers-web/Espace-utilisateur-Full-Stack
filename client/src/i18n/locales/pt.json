@@ -41,7 +41,17 @@
     "amount": "Montante",
     "duration": "Duração",
     "months": "meses",
-    "calculate": "Calcular"
+    "calculate": "Calcular",
+    "calculating": "Calculando...",
+    "error": "Erro",
+    "pleaseSelectLoanType": "Por favor, selecione um tipo de empréstimo",
+    "from": "De",
+    "to": "a",
+    "fixedAPR": "TAEG Fixo",
+    "monthlyPayment": "Mensalidade",
+    "totalCreditCost": "Custo Total do Crédito",
+    "totalAmountDue": "Montante Total Devido",
+    "interest": "Juros"
   },
   "footer": {
     "tagline": "Seu parceiro de confiança para todos os seus projetos de financiamento",

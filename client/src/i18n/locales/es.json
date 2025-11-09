@@ -41,7 +41,17 @@
     "amount": "Cantidad",
     "duration": "Duración",
     "months": "meses",
-    "calculate": "Calcular"
+    "calculate": "Calcular",
+    "calculating": "Calculando...",
+    "error": "Error",
+    "pleaseSelectLoanType": "Por favor, seleccione un tipo de préstamo",
+    "from": "Desde",
+    "to": "hasta",
+    "fixedAPR": "TAE Fija",
+    "monthlyPayment": "Pago Mensual",
+    "totalCreditCost": "Costo Total del Crédito",
+    "totalAmountDue": "Monto Total Adeudado",
+    "interest": "Intereses"
   },
   "footer": {
     "tagline": "Su socio de confianza para todos sus proyectos de financiación",
