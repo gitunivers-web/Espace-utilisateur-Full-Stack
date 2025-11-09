@@ -1,6 +1,8 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 export interface SendPasswordResetEmailParams {
   to: string;
@@ -9,6 +11,12 @@ export interface SendPasswordResetEmailParams {
 }
 
 export async function sendPasswordResetEmail({ to, resetLink, userName }: SendPasswordResetEmailParams) {
+  if (!resend) {
+    console.warn("Resend API key not configured. Email sending is disabled.");
+    console.log(`Password reset link for ${to} (${userName}): ${resetLink}`);
+    return null;
+  }
+  
   try {
     const { data, error } = await resend.emails.send({
       from: "Altus Finance <onboarding@resend.dev>",
