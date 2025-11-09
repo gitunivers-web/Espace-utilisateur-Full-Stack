@@ -1,0 +1,730 @@
+{
+  "fr": {
+    "loanTypes": {
+      "personal": {
+        "name": "Prêt Personnel",
+        "description": "Financement flexible jusqu'à 75 000€ pour tous vos projets personnels, sans justificatif d'utilisation. Réponse rapide sous 48h et déblocage des fonds en 72h.",
+        "features": {
+          "noproof": "Sans justificatif d'utilisation",
+          "freeuse": "Utilisation libre des fonds",
+          "fastresponse": "Réponse rapide sous 48h",
+          "earlyrepayment": "Remboursement anticipé gratuit"
+        }
+      },
+      "auto": {
+        "name": "Crédit Auto",
+        "description": "Financez votre véhicule neuf ou d'occasion jusqu'à 75 000€ avec des taux compétitifs dès 0,90%. Déblocage rapide et assurance incluse.",
+        "features": {
+          "newused": "Véhicules neufs et occasion",
+          "zerodownpayment": "Possible sans apport",
+          "dedicated": "Taux dédiés au crédit auto",
+          "insurance": "Assurance emprunteur incluse"
+        }
+      },
+      "motorcycle": {
+        "name": "Crédit Moto",
+        "description": "Financez votre deux-roues de 500€ à 50 000€. Toutes marques acceptées, neuves ou occasion. Financement des équipements possible.",
+        "features": {
+          "allbrands": "Toutes marques acceptées",
+          "newused": "Neuf ou occasion",
+          "equipment": "Financement équipements",
+          "fastapproval": "Accord rapide en ligne"
+        }
+      },
+      "home": {
+        "name": "Prêt Travaux",
+        "description": "Rénovez votre logement avec un financement de 1 000€ à 75 000€. Transition énergétique, rénovation, aménagement. Crédit d'impôt possible.",
+        "features": {
+          "renovation": "Rénovation et aménagement",
+          "energytransition": "Transition énergétique",
+          "taxcredit": "Crédit d'impôt possible",
+          "longerterm": "Durées jusqu'à 120 mois"
+        }
+      },
+      "business": {
+        "name": "Prêt Professionnel",
+        "description": "Financement pour le développement de votre activité de 10 000€ à 500 000€. Taux PME compétitifs dès 2,50%. Garantie BPI France possible.",
+        "features": {
+          "development": "Développement d'activité",
+          "bpibackup": "Garantie BPI France possible",
+          "nodownpayment": "Possible sans apport",
+          "taxdeductible": "Intérêts déductibles"
+        }
+      },
+      "cashflow": {
+        "name": "Crédit Trésorerie",
+        "description": "Gérez votre trésorerie avec un financement de 5 000€ à 250 000€. Flexible et rapide, pour faire face aux besoins ponctuels ou saisonniers.",
+        "features": {
+          "quickaccess": "Accès rapide aux fonds",
+          "flexible": "Montant et durée flexibles",
+          "seasonal": "Adaptation à la saisonnalité",
+          "renewable": "Ligne de crédit renouvelable"
+        }
+      },
+      "equipment": {
+        "name": "Financement Équipement",
+        "description": "Équipez votre entreprise avec un financement jusqu'à 1 000 000€. Machines, véhicules, matériel informatique. Amortissement sur la durée de vie.",
+        "features": {
+          "allequipment": "Tous types d'équipements",
+          "amortization": "Amortissement adapté",
+          "assetbacked": "Garantie sur le bien",
+          "taxoptimized": "Optimisation fiscale"
+        }
+      },
+      "commercial": {
+        "name": "Crédit Immobilier Pro",
+        "description": "Acquérez vos locaux professionnels avec un financement de 50 000€ à 2 000 000€. Bureaux, entrepôts, commerces. Taux fixes sur 20 ans.",
+        "features": {
+          "officewarehouse": "Bureaux, entrepôts, commerces",
+          "longterm": "Durées jusqu'à 20 ans",
+          "fixedrate": "Taux fixes disponibles",
+          "patrimony": "Constitution de patrimoine"
+        }
+      },
+      "startup": {
+        "name": "Création d'Entreprise",
+        "description": "Lancez votre projet avec un financement de 5 000€ à 150 000€. Accompagnement BPI France. Garantie d'honneur possible. Différé de remboursement.",
+        "features": {
+          "zerotothree": "Entreprises 0 à 3 ans",
+          "honorguarantee": "Garantie d'honneur acceptée",
+          "bpisupport": "Accompagnement BPI France",
+          "deferredpayment": "Différé de remboursement"
+        }
+      },
+      "acquisition": {
+        "name": "Reprise d'Entreprise",
+        "description": "Reprenez une entreprise avec un financement de 20 000€ à 1 000 000€. Fonds de commerce, parts sociales, murs commerciaux. Montage structuré.",
+        "features": {
+          "fullacquisition": "Reprise totale ou partielle",
+          "equity": "Financement des parts",
+          "guarantee": "Garantie sur l'actif",
+          "structured": "Montage financier structuré"
+        }
+      }
+    }
+  },
+  "en": {
+    "loanTypes": {
+      "personal": {
+        "name": "Personal Loan",
+        "description": "Flexible financing up to €75,000 for all your personal projects, no proof of use required. Quick response within 48h and funds released in 72h.",
+        "features": {
+          "noproof": "No proof of use required",
+          "freeuse": "Free use of funds",
+          "fastresponse": "Fast response within 48h",
+          "earlyrepayment": "Free early repayment"
+        }
+      },
+      "auto": {
+        "name": "Auto Loan",
+        "description": "Finance your new or used vehicle up to €75,000 with competitive rates from 0.90%. Fast release and insurance included.",
+        "features": {
+          "newused": "New and used vehicles",
+          "zerodownpayment": "Possible without down payment",
+          "dedicated": "Dedicated auto loan rates",
+          "insurance": "Borrower insurance included"
+        }
+      },
+      "motorcycle": {
+        "name": "Motorcycle Loan",
+        "description": "Finance your two-wheeler from €500 to €50,000. All brands accepted, new or used. Equipment financing available.",
+        "features": {
+          "allbrands": "All brands accepted",
+          "newused": "New or used",
+          "equipment": "Equipment financing",
+          "fastapproval": "Fast online approval"
+        }
+      },
+      "home": {
+        "name": "Home Improvement Loan",
+        "description": "Renovate your home with financing from €1,000 to €75,000. Energy transition, renovation, development. Tax credit possible.",
+        "features": {
+          "renovation": "Renovation and development",
+          "energytransition": "Energy transition",
+          "taxcredit": "Tax credit possible",
+          "longerterm": "Terms up to 120 months"
+        }
+      },
+      "business": {
+        "name": "Business Loan",
+        "description": "Financing for your business development from €10,000 to €500,000. Competitive SME rates from 2.50%. BPI France guarantee possible.",
+        "features": {
+          "development": "Business development",
+          "bpibackup": "BPI France guarantee possible",
+          "nodownpayment": "Possible without down payment",
+          "taxdeductible": "Tax-deductible interest"
+        }
+      },
+      "cashflow": {
+        "name": "Working Capital",
+        "description": "Manage your cash flow with financing from €5,000 to €250,000. Flexible and fast, for short-term or seasonal needs.",
+        "features": {
+          "quickaccess": "Quick access to funds",
+          "flexible": "Flexible amount and duration",
+          "seasonal": "Seasonal adaptation",
+          "renewable": "Renewable credit line"
+        }
+      },
+      "equipment": {
+        "name": "Equipment Financing",
+        "description": "Equip your business with financing up to €1,000,000. Machinery, vehicles, IT equipment. Amortization over asset life.",
+        "features": {
+          "allequipment": "All types of equipment",
+          "amortization": "Adapted amortization",
+          "assetbacked": "Asset-backed guarantee",
+          "taxoptimized": "Tax optimization"
+        }
+      },
+      "commercial": {
+        "name": "Commercial Real Estate",
+        "description": "Acquire your professional premises with financing from €50,000 to €2,000,000. Offices, warehouses, shops. Fixed rates over 20 years.",
+        "features": {
+          "officewarehouse": "Offices, warehouses, shops",
+          "longterm": "Terms up to 20 years",
+          "fixedrate": "Fixed rates available",
+          "patrimony": "Asset building"
+        }
+      },
+      "startup": {
+        "name": "Business Creation",
+        "description": "Launch your project with financing from €5,000 to €150,000. BPI France support. Honor guarantee possible. Payment deferral.",
+        "features": {
+          "zerotothree": "Companies 0 to 3 years old",
+          "honorguarantee": "Honor guarantee accepted",
+          "bpisupport": "BPI France support",
+          "deferredpayment": "Payment deferral"
+        }
+      },
+      "acquisition": {
+        "name": "Business Acquisition",
+        "description": "Acquire a business with financing from €20,000 to €1,000,000. Goodwill, shares, commercial walls. Structured financing.",
+        "features": {
+          "fullacquisition": "Total or partial acquisition",
+          "equity": "Share financing",
+          "guarantee": "Asset guarantee",
+          "structured": "Structured financial package"
+        }
+      }
+    }
+  },
+  "pt": {
+    "loanTypes": {
+      "personal": {
+        "name": "Empréstimo Pessoal",
+        "description": "Financiamento flexível até 75.000€ para todos os seus projetos pessoais, sem comprovativo de utilização. Resposta rápida em 48h e liberação de fundos em 72h.",
+        "features": {
+          "noproof": "Sem comprovativo de utilização",
+          "freeuse": "Uso livre dos fundos",
+          "fastresponse": "Resposta rápida em 48h",
+          "earlyrepayment": "Reembolso antecipado gratuito"
+        }
+      },
+      "auto": {
+        "name": "Crédito Automóvel",
+        "description": "Finance o seu veículo novo ou usado até 75.000€ com taxas competitivas desde 0,90%. Liberação rápida e seguro incluído.",
+        "features": {
+          "newused": "Veículos novos e usados",
+          "zerodownpayment": "Possível sem entrada",
+          "dedicated": "Taxas dedicadas ao crédito auto",
+          "insurance": "Seguro de mutuário incluído"
+        }
+      },
+      "motorcycle": {
+        "name": "Crédito Motocicleta",
+        "description": "Finance a sua moto de 500€ a 50.000€. Todas as marcas aceites, novas ou usadas. Financiamento de equipamentos possível.",
+        "features": {
+          "allbrands": "Todas as marcas aceites",
+          "newused": "Novas ou usadas",
+          "equipment": "Financiamento de equipamentos",
+          "fastapproval": "Aprovação rápida online"
+        }
+      },
+      "home": {
+        "name": "Empréstimo para Obras",
+        "description": "Renove a sua habitação com financiamento de 1.000€ a 75.000€. Transição energética, renovação, melhorias. Crédito fiscal possível.",
+        "features": {
+          "renovation": "Renovação e melhorias",
+          "energytransition": "Transição energética",
+          "taxcredit": "Crédito fiscal possível",
+          "longerterm": "Prazos até 120 meses"
+        }
+      },
+      "business": {
+        "name": "Empréstimo Profissional",
+        "description": "Financiamento para o desenvolvimento da sua atividade de 10.000€ a 500.000€. Taxas PME competitivas desde 2,50%. Garantia BPI França possível.",
+        "features": {
+          "development": "Desenvolvimento de atividade",
+          "bpibackup": "Garantia BPI França possível",
+          "nodownpayment": "Possível sem entrada",
+          "taxdeductible": "Juros dedutíveis"
+        }
+      },
+      "cashflow": {
+        "name": "Crédito de Tesouraria",
+        "description": "Gerir a sua tesouraria com financiamento de 5.000€ a 250.000€. Flexível e rápido, para necessidades pontuais ou sazonais.",
+        "features": {
+          "quickaccess": "Acesso rápido aos fundos",
+          "flexible": "Montante e duração flexíveis",
+          "seasonal": "Adaptação à sazonalidade",
+          "renewable": "Linha de crédito renovável"
+        }
+      },
+      "equipment": {
+        "name": "Financiamento de Equipamentos",
+        "description": "Equipe a sua empresa com financiamento até 1.000.000€. Máquinas, veículos, equipamento informático. Amortização sobre a vida útil.",
+        "features": {
+          "allequipment": "Todos os tipos de equipamentos",
+          "amortization": "Amortização adaptada",
+          "assetbacked": "Garantia sobre o bem",
+          "taxoptimized": "Otimização fiscal"
+        }
+      },
+      "commercial": {
+        "name": "Crédito Imobiliário Profissional",
+        "description": "Adquira os seus locais profissionais com financiamento de 50.000€ a 2.000.000€. Escritórios, armazéns, comércios. Taxas fixas a 20 anos.",
+        "features": {
+          "officewarehouse": "Escritórios, armazéns, comércios",
+          "longterm": "Prazos até 20 anos",
+          "fixedrate": "Taxas fixas disponíveis",
+          "patrimony": "Constituição de património"
+        }
+      },
+      "startup": {
+        "name": "Criação de Empresa",
+        "description": "Lance o seu projeto com financiamento de 5.000€ a 150.000€. Acompanhamento BPI França. Garantia de honra possível. Diferimento de reembolso.",
+        "features": {
+          "zerotothree": "Empresas de 0 a 3 anos",
+          "honorguarantee": "Garantia de honra aceite",
+          "bpisupport": "Acompanhamento BPI França",
+          "deferredpayment": "Diferimento de reembolso"
+        }
+      },
+      "acquisition": {
+        "name": "Aquisição de Empresa",
+        "description": "Adquira uma empresa com financiamento de 20.000€ a 1.000.000€. Fundo de comércio, quotas sociais, paredes comerciais. Montagem estruturada.",
+        "features": {
+          "fullacquisition": "Aquisição total ou parcial",
+          "equity": "Financiamento de quotas",
+          "guarantee": "Garantia sobre o ativo",
+          "structured": "Montagem financeira estruturada"
+        }
+      }
+    }
+  },
+  "es": {
+    "loanTypes": {
+      "personal": {
+        "name": "Préstamo Personal",
+        "description": "Financiación flexible hasta 75.000€ para todos sus proyectos personales, sin justificante de uso. Respuesta rápida en 48h y desembolso de fondos en 72h.",
+        "features": {
+          "noproof": "Sin justificante de uso",
+          "freeuse": "Uso libre de los fondos",
+          "fastresponse": "Respuesta rápida en 48h",
+          "earlyrepayment": "Amortización anticipada gratuita"
+        }
+      },
+      "auto": {
+        "name": "Crédito Auto",
+        "description": "Finance su vehículo nuevo o usado hasta 75.000€ con tasas competitivas desde 0,90%. Desembolso rápido y seguro incluido.",
+        "features": {
+          "newused": "Vehículos nuevos y usados",
+          "zerodownpayment": "Posible sin entrada",
+          "dedicated": "Tasas dedicadas al crédito auto",
+          "insurance": "Seguro de prestatario incluido"
+        }
+      },
+      "motorcycle": {
+        "name": "Crédito Moto",
+        "description": "Finance su moto de 500€ a 50.000€. Todas las marcas aceptadas, nuevas o usadas. Financiación de equipos posible.",
+        "features": {
+          "allbrands": "Todas las marcas aceptadas",
+          "newused": "Nuevas o usadas",
+          "equipment": "Financiación de equipos",
+          "fastapproval": "Aprobación rápida en línea"
+        }
+      },
+      "home": {
+        "name": "Préstamo Reformas",
+        "description": "Renueve su vivienda con financiación de 1.000€ a 75.000€. Transición energética, renovación, mejoras. Crédito fiscal posible.",
+        "features": {
+          "renovation": "Renovación y mejoras",
+          "energytransition": "Transición energética",
+          "taxcredit": "Crédito fiscal posible",
+          "longerterm": "Plazos hasta 120 meses"
+        }
+      },
+      "business": {
+        "name": "Préstamo Profesional",
+        "description": "Financiación para el desarrollo de su actividad de 10.000€ a 500.000€. Tasas PYME competitivas desde 2,50%. Garantía BPI Francia posible.",
+        "features": {
+          "development": "Desarrollo de actividad",
+          "bpibackup": "Garantía BPI Francia posible",
+          "nodownpayment": "Posible sin entrada",
+          "taxdeductible": "Intereses deducibles"
+        }
+      },
+      "cashflow": {
+        "name": "Crédito Tesorería",
+        "description": "Gestione su tesorería con financiación de 5.000€ a 250.000€. Flexible y rápido, para necesidades puntuales o estacionales.",
+        "features": {
+          "quickaccess": "Acceso rápido a los fondos",
+          "flexible": "Importe y duración flexibles",
+          "seasonal": "Adaptación a la estacionalidad",
+          "renewable": "Línea de crédito renovable"
+        }
+      },
+      "equipment": {
+        "name": "Financiación Equipos",
+        "description": "Equipe su empresa con financiación hasta 1.000.000€. Máquinas, vehículos, equipos informáticos. Amortización sobre la vida útil.",
+        "features": {
+          "allequipment": "Todos los tipos de equipos",
+          "amortization": "Amortización adaptada",
+          "assetbacked": "Garantía sobre el bien",
+          "taxoptimized": "Optimización fiscal"
+        }
+      },
+      "commercial": {
+        "name": "Crédito Inmobiliario Profesional",
+        "description": "Adquiera sus locales profesionales con financiación de 50.000€ a 2.000.000€. Oficinas, almacenes, comercios. Tasas fijas a 20 años.",
+        "features": {
+          "officewarehouse": "Oficinas, almacenes, comercios",
+          "longterm": "Plazos hasta 20 años",
+          "fixedrate": "Tasas fijas disponibles",
+          "patrimony": "Constitución de patrimonio"
+        }
+      },
+      "startup": {
+        "name": "Creación de Empresa",
+        "description": "Lance su proyecto con financiación de 5.000€ a 150.000€. Acompañamiento BPI Francia. Garantía de honor posible. Diferimiento de reembolso.",
+        "features": {
+          "zerotothree": "Empresas de 0 a 3 años",
+          "honorguarantee": "Garantía de honor aceptada",
+          "bpisupport": "Acompañamiento BPI Francia",
+          "deferredpayment": "Diferimiento de reembolso"
+        }
+      },
+      "acquisition": {
+        "name": "Adquisición de Empresa",
+        "description": "Adquiera una empresa con financiación de 20.000€ a 1.000.000€. Fondo de comercio, participaciones sociales, locales comerciales. Montaje estructurado.",
+        "features": {
+          "fullacquisition": "Adquisición total o parcial",
+          "equity": "Financiación de participaciones",
+          "guarantee": "Garantía sobre el activo",
+          "structured": "Montaje financiero estructurado"
+        }
+      }
+    }
+  },
+  "it": {
+    "loanTypes": {
+      "personal": {
+        "name": "Prestito Personale",
+        "description": "Finanziamento flessibile fino a 75.000€ per tutti i tuoi progetti personali, senza giustificativo di utilizzo. Risposta rapida entro 48h e erogazione fondi in 72h.",
+        "features": {
+          "noproof": "Senza giustificativo di utilizzo",
+          "freeuse": "Uso libero dei fondi",
+          "fastresponse": "Risposta rapida entro 48h",
+          "earlyrepayment": "Rimborso anticipato gratuito"
+        }
+      },
+      "auto": {
+        "name": "Credito Auto",
+        "description": "Finanzia il tuo veicolo nuovo o usato fino a 75.000€ con tassi competitivi dal 0,90%. Erogazione rapida e assicurazione inclusa.",
+        "features": {
+          "newused": "Veicoli nuovi e usati",
+          "zerodownpayment": "Possibile senza anticipo",
+          "dedicated": "Tassi dedicati al credito auto",
+          "insurance": "Assicurazione mutuatario inclusa"
+        }
+      },
+      "motorcycle": {
+        "name": "Credito Moto",
+        "description": "Finanzia la tua moto da 500€ a 50.000€. Tutte le marche accettate, nuove o usate. Finanziamento equipaggiamenti possibile.",
+        "features": {
+          "allbrands": "Tutte le marche accettate",
+          "newused": "Nuove o usate",
+          "equipment": "Finanziamento equipaggiamenti",
+          "fastapproval": "Approvazione rapida online"
+        }
+      },
+      "home": {
+        "name": "Prestito Ristrutturazione",
+        "description": "Rinnova la tua abitazione con finanziamento da 1.000€ a 75.000€. Transizione energetica, ristrutturazione, migliorie. Detrazione fiscale possibile.",
+        "features": {
+          "renovation": "Ristrutturazione e migliorie",
+          "energytransition": "Transizione energetica",
+          "taxcredit": "Detrazione fiscale possibile",
+          "longerterm": "Durate fino a 120 mesi"
+        }
+      },
+      "business": {
+        "name": "Prestito Professionale",
+        "description": "Finanziamento per lo sviluppo della tua attività da 10.000€ a 500.000€. Tassi PMI competitivi dal 2,50%. Garanzia BPI Francia possibile.",
+        "features": {
+          "development": "Sviluppo di attività",
+          "bpibackup": "Garanzia BPI Francia possibile",
+          "nodownpayment": "Possibile senza anticipo",
+          "taxdeductible": "Interessi deducibili"
+        }
+      },
+      "cashflow": {
+        "name": "Credito di Tesoreria",
+        "description": "Gestisci la tua tesoreria con finanziamento da 5.000€ a 250.000€. Flessibile e rapido, per esigenze puntuali o stagionali.",
+        "features": {
+          "quickaccess": "Accesso rapido ai fondi",
+          "flexible": "Importo e durata flessibili",
+          "seasonal": "Adattamento alla stagionalità",
+          "renewable": "Linea di credito rinnovabile"
+        }
+      },
+      "equipment": {
+        "name": "Finanziamento Attrezzature",
+        "description": "Attrezza la tua azienda con finanziamento fino a 1.000.000€. Macchinari, veicoli, attrezzature informatiche. Ammortamento sulla vita utile.",
+        "features": {
+          "allequipment": "Tutti i tipi di attrezzature",
+          "amortization": "Ammortamento adattato",
+          "assetbacked": "Garanzia sul bene",
+          "taxoptimized": "Ottimizzazione fiscale"
+        }
+      },
+      "commercial": {
+        "name": "Credito Immobiliare Professionale",
+        "description": "Acquista i tuoi locali professionali con finanziamento da 50.000€ a 2.000.000€. Uffici, magazzini, negozi. Tassi fissi su 20 anni.",
+        "features": {
+          "officewarehouse": "Uffici, magazzini, negozi",
+          "longterm": "Durate fino a 20 anni",
+          "fixedrate": "Tassi fissi disponibili",
+          "patrimony": "Costituzione di patrimonio"
+        }
+      },
+      "startup": {
+        "name": "Creazione d'Impresa",
+        "description": "Lancia il tuo progetto con finanziamento da 5.000€ a 150.000€. Accompagnamento BPI Francia. Garanzia d'onore possibile. Differimento rimborso.",
+        "features": {
+          "zerotothree": "Aziende da 0 a 3 anni",
+          "honorguarantee": "Garanzia d'onore accettata",
+          "bpisupport": "Accompagnamento BPI Francia",
+          "deferredpayment": "Differimento rimborso"
+        }
+      },
+      "acquisition": {
+        "name": "Acquisizione d'Impresa",
+        "description": "Acquista un'azienda con finanziamento da 20.000€ a 1.000.000€. Avviamento, quote sociali, locali commerciali. Strutturazione finanziaria.",
+        "features": {
+          "fullacquisition": "Acquisizione totale o parziale",
+          "equity": "Finanziamento quote",
+          "guarantee": "Garanzia sull'attivo",
+          "structured": "Strutturazione finanziaria"
+        }
+      }
+    }
+  },
+  "hu": {
+    "loanTypes": {
+      "personal": {
+        "name": "Személyi Kölcsön",
+        "description": "Rugalmas finanszírozás akár 75 000 € összegig minden személyes projektjéhez, használati igazolás nélkül. Gyors válasz 48 órán belül és források folyósítása 72 órán belül.",
+        "features": {
+          "noproof": "Használati igazolás nélkül",
+          "freeuse": "A források szabad felhasználása",
+          "fastresponse": "Gyors válasz 48 órán belül",
+          "earlyrepayment": "Ingyenes előtörlesztés"
+        }
+      },
+      "auto": {
+        "name": "Autóhitel",
+        "description": "Finanszírozza új vagy használt járművét akár 75 000 €-ig versenyképes kamatokkal 0,90%-tól. Gyors folyósítás és biztosítás mellékelve.",
+        "features": {
+          "newused": "Új és használt járművek",
+          "zerodownpayment": "Lehetséges önerő nélkül",
+          "dedicated": "Dedikált autóhitel kamatok",
+          "insurance": "Hitelfelvevő biztosítása mellékelve"
+        }
+      },
+      "motorcycle": {
+        "name": "Motorkerékpár Hitel",
+        "description": "Finanszírozza motorkerékpárját 500 € és 50 000 € között. Minden márka elfogadott, új vagy használt. Felszerelések finanszírozása lehetséges.",
+        "features": {
+          "allbrands": "Minden márka elfogadott",
+          "newused": "Új vagy használt",
+          "equipment": "Felszerelések finanszírozása",
+          "fastapproval": "Gyors online jóváhagyás"
+        }
+      },
+      "home": {
+        "name": "Felújítási Kölcsön",
+        "description": "Újítsa fel otthonát 1 000 € és 75 000 € közötti finanszírozással. Energiaátmenet, felújítás, fejlesztés. Adókedvezmény lehetséges.",
+        "features": {
+          "renovation": "Felújítás és fejlesztés",
+          "energytransition": "Energiaátmenet",
+          "taxcredit": "Adókedvezmény lehetséges",
+          "longerterm": "Futamidők akár 120 hónapig"
+        }
+      },
+      "business": {
+        "name": "Üzleti Kölcsön",
+        "description": "Finanszírozás tevékenysége fejlesztéséhez 10 000 € és 500 000 € között. Versenyképes KKV kamatok 2,50%-tól. BPI France garancia lehetséges.",
+        "features": {
+          "development": "Tevékenységfejlesztés",
+          "bpibackup": "BPI France garancia lehetséges",
+          "nodownpayment": "Lehetséges önerő nélkül",
+          "taxdeductible": "Levonható kamatok"
+        }
+      },
+      "cashflow": {
+        "name": "Forgótőke Hitel",
+        "description": "Kezelje forgótőkéjét 5 000 € és 250 000 € közötti finanszírozással. Rugalmas és gyors, eseti vagy szezonális igényekhez.",
+        "features": {
+          "quickaccess": "Gyors hozzáférés a forrásokhoz",
+          "flexible": "Rugalmas összeg és futamidő",
+          "seasonal": "Alkalmazkodás a szezonalitáshoz",
+          "renewable": "Megújítható hitelkeret"
+        }
+      },
+      "equipment": {
+        "name": "Eszköz Finanszírozás",
+        "description": "Szerezze be vállalkozása eszközeit akár 1 000 000 € finanszírozással. Gépek, járművek, informatikai berendezések. Amortizáció az élettartam alatt.",
+        "features": {
+          "allequipment": "Minden típusú eszköz",
+          "amortization": "Alkalmazott amortizáció",
+          "assetbacked": "Garancia az eszközre",
+          "taxoptimized": "Adóoptimalizálás"
+        }
+      },
+      "commercial": {
+        "name": "Kereskedelmi Ingatlan Hitel",
+        "description": "Szerezze be szakmai helyiségeit 50 000 € és 2 000 000 € közötti finanszírozással. Irodák, raktárak, üzletek. Fix kamatok 20 évre.",
+        "features": {
+          "officewarehouse": "Irodák, raktárak, üzletek",
+          "longterm": "Futamidők akár 20 évig",
+          "fixedrate": "Fix kamatok elérhetők",
+          "patrimony": "Vagyon alkotása"
+        }
+      },
+      "startup": {
+        "name": "Vállalkozás Indítás",
+        "description": "Indítsa el projektjét 5 000 € és 150 000 € közötti finanszírozással. BPI France támogatás. Becsületgarancia lehetséges. Törlesztés halasztása.",
+        "features": {
+          "zerotothree": "0-3 éves vállalkozások",
+          "honorguarantee": "Becsületgarancia elfogadott",
+          "bpisupport": "BPI France támogatás",
+          "deferredpayment": "Törlesztés halasztása"
+        }
+      },
+      "acquisition": {
+        "name": "Vállalkozás Felvásárlás",
+        "description": "Vásároljon meg egy vállalkozást 20 000 € és 1 000 000 € közötti finanszírozással. Üzleti goodwill, üzletrészek, kereskedelmi falak. Strukturált összeállítás.",
+        "features": {
+          "fullacquisition": "Teljes vagy részleges felvásárlás",
+          "equity": "Üzletrészek finanszírozása",
+          "guarantee": "Garancia az eszközre",
+          "structured": "Strukturált pénzügyi összeállítás"
+        }
+      }
+    }
+  },
+  "pl": {
+    "loanTypes": {
+      "personal": {
+        "name": "Pożyczka Osobista",
+        "description": "Elastyczne finansowanie do 75 000 € na wszystkie Twoje projekty osobiste, bez potwierdzenia wykorzystania. Szybka odpowiedź w ciągu 48h i wypłata środków w 72h.",
+        "features": {
+          "noproof": "Bez potwierdzenia wykorzystania",
+          "freeuse": "Swobodne wykorzystanie środków",
+          "fastresponse": "Szybka odpowiedź w 48h",
+          "earlyrepayment": "Darmowa wcześniejsza spłata"
+        }
+      },
+      "auto": {
+        "name": "Kredyt Samochodowy",
+        "description": "Sfinansuj swój nowy lub używany pojazd do 75 000 € z konkurencyjnymi stawkami od 0,90%. Szybka wypłata i ubezpieczenie wliczone.",
+        "features": {
+          "newused": "Pojazdy nowe i używane",
+          "zerodownpayment": "Możliwe bez wkładu własnego",
+          "dedicated": "Dedykowane stawki kredytu samochodowego",
+          "insurance": "Ubezpieczenie kredytobiorcy wliczone"
+        }
+      },
+      "motorcycle": {
+        "name": "Kredyt Motocyklowy",
+        "description": "Sfinansuj swój motocykl od 500 € do 50 000 €. Wszystkie marki akceptowane, nowe lub używane. Możliwe finansowanie wyposażenia.",
+        "features": {
+          "allbrands": "Wszystkie marki akceptowane",
+          "newused": "Nowe lub używane",
+          "equipment": "Finansowanie wyposażenia",
+          "fastapproval": "Szybka akceptacja online"
+        }
+      },
+      "home": {
+        "name": "Pożyczka Remontowa",
+        "description": "Odnów swój dom z finansowaniem od 1 000 € do 75 000 €. Transformacja energetyczna, renowacja, ulepszenia. Możliwa ulga podatkowa.",
+        "features": {
+          "renovation": "Renowacja i ulepszenia",
+          "energytransition": "Transformacja energetyczna",
+          "taxcredit": "Możliwa ulga podatkowa",
+          "longerterm": "Okresy do 120 miesięcy"
+        }
+      },
+      "business": {
+        "name": "Pożyczka Biznesowa",
+        "description": "Finansowanie rozwoju Twojej działalności od 10 000 € do 500 000 €. Konkurencyjne stawki MŚP od 2,50%. Możliwa gwarancja BPI Francja.",
+        "features": {
+          "development": "Rozwój działalności",
+          "bpibackup": "Możliwa gwarancja BPI Francja",
+          "nodownpayment": "Możliwe bez wkładu własnego",
+          "taxdeductible": "Odliczalne odsetki"
+        }
+      },
+      "cashflow": {
+        "name": "Kredyt Obrotowy",
+        "description": "Zarządzaj swoją płynnością z finansowaniem od 5 000 € do 250 000 €. Elastyczne i szybkie, na potrzeby doraźne lub sezonowe.",
+        "features": {
+          "quickaccess": "Szybki dostęp do środków",
+          "flexible": "Elastyczna kwota i okres",
+          "seasonal": "Dostosowanie do sezonowości",
+          "renewable": "Odnawialna linia kredytowa"
+        }
+      },
+      "equipment": {
+        "name": "Finansowanie Sprzętu",
+        "description": "Wyposaż swoją firmę z finansowaniem do 1 000 000 €. Maszyny, pojazdy, sprzęt IT. Amortyzacja przez okres użytkowania.",
+        "features": {
+          "allequipment": "Wszystkie rodzaje sprzętu",
+          "amortization": "Dostosowana amortyzacja",
+          "assetbacked": "Gwarancja na majątku",
+          "taxoptimized": "Optymalizacja podatkowa"
+        }
+      },
+      "commercial": {
+        "name": "Kredyt Nieruchomości Komercyjnej",
+        "description": "Nabądź swoje lokale biznesowe z finansowaniem od 50 000 € do 2 000 000 €. Biura, magazyny, sklepy. Stałe stawki na 20 lat.",
+        "features": {
+          "officewarehouse": "Biura, magazyny, sklepy",
+          "longterm": "Okresy do 20 lat",
+          "fixedrate": "Dostępne stałe stawki",
+          "patrimony": "Budowa majątku"
+        }
+      },
+      "startup": {
+        "name": "Rozpoczęcie Działalności",
+        "description": "Rozpocznij swój projekt z finansowaniem od 5 000 € do 150 000 €. Wsparcie BPI Francja. Możliwa gwarancja honorowa. Odroczenie spłaty.",
+        "features": {
+          "zerotothree": "Firmy 0-3 lata",
+          "honorguarantee": "Akceptowana gwarancja honorowa",
+          "bpisupport": "Wsparcie BPI Francja",
+          "deferredpayment": "Odroczenie spłaty"
+        }
+      },
+      "acquisition": {
+        "name": "Przejęcie Firmy",
+        "description": "Przejmij firmę z finansowaniem od 20 000 € do 1 000 000 €. Wartość firmy, udziały, lokale handlowe. Ustrukturyzowany montaż.",
+        "features": {
+          "fullacquisition": "Całkowite lub częściowe przejęcie",
+          "equity": "Finansowanie udziałów",
+          "guarantee": "Gwarancja na majątku",
+          "structured": "Ustrukturyzowany montaż finansowy"
+        }
+      }
+    }
+  }
+}

@@ -350,83 +350,103 @@
   "loanTypes": {
     "personal": {
       "name": "Personal Loan",
-      "description": "Quick financing for your personal projects without usage justification",
-      "feature1": "Response within 48h",
-      "feature2": "100% online",
-      "feature3": "No processing fees",
-      "feature4": "Free early repayment"
+      "description": "Flexible financing up to €75,000 for all your personal projects, no proof of use required. Quick response within 48h and funds released in 72h.",
+      "features": {
+        "noproof": "No proof of use required",
+        "freeuse": "Free use of funds",
+        "fastresponse": "Fast response within 48h",
+        "earlyrepayment": "Free early repayment"
+      }
     },
     "auto": {
       "name": "Auto Loan",
-      "description": "Finance the purchase of your new or used vehicle",
-      "feature1": "Competitive rates from 3.9%",
-      "feature2": "Up to 7 years repayment",
-      "feature3": "Optional insurance",
-      "feature4": "First payment deferral possible"
+      "description": "Finance your new or used vehicle up to €75,000 with competitive rates from 0.90%. Fast release and insurance included.",
+      "features": {
+        "newused": "New and used vehicles",
+        "zerodownpayment": "Possible without down payment",
+        "dedicated": "Dedicated auto loan rates",
+        "insurance": "Borrower insurance included"
+      }
     },
-    "renovation": {
+    "motorcycle": {
+      "name": "Motorcycle Loan",
+      "description": "Finance your two-wheeler from €500 to €50,000. All brands accepted, new or used. Equipment financing available.",
+      "features": {
+        "allbrands": "All brands accepted",
+        "newused": "New or used",
+        "equipment": "Equipment financing",
+        "fastapproval": "Fast online approval"
+      }
+    },
+    "home": {
       "name": "Home Improvement Loan",
-      "description": "Complete your renovation and home improvement projects",
-      "feature1": "Financing up to €75,000",
-      "feature2": "Progressive fund disbursement",
-      "feature3": "Advantageous rates from 3.8%",
-      "feature4": "Personalized support"
+      "description": "Renovate your home with financing from €1,000 to €75,000. Energy transition, renovation, development. Tax credit possible.",
+      "features": {
+        "renovation": "Renovation and development",
+        "energytransition": "Energy transition",
+        "taxcredit": "Tax credit possible",
+        "longerterm": "Terms up to 120 months"
+      }
     },
-    "student": {
-      "name": "Student Loan",
-      "description": "Finance your higher education with advantageous conditions",
-      "feature1": "Preferential rates from 0.9%",
-      "feature2": "Repayment deferral during studies",
-      "feature3": "No guarantor with State guarantee",
-      "feature4": "Up to 10 years repayment"
+    "business": {
+      "name": "Business Loan",
+      "description": "Financing for your business development from €10,000 to €500,000. Competitive SME rates from 2.50%. BPI France guarantee possible.",
+      "features": {
+        "development": "Business development",
+        "bpibackup": "BPI France guarantee possible",
+        "nodownpayment": "Possible without down payment",
+        "taxdeductible": "Tax-deductible interest"
+      }
     },
-    "businessLoan": {
-      "name": "Amortizing Business Loan",
-      "description": "Classic loan to finance your professional investments",
-      "feature1": "Adapted duration from 2 to 15 years",
-      "feature2": "Fixed rates from 3.2%",
-      "feature3": "Financing up to €500,000",
-      "feature4": "BPI France guarantee possible"
-    },
-    "leasing": {
-      "name": "Leasing / Hire Purchase",
-      "description": "Rent your equipment with purchase option at end of contract",
-      "feature1": "Cash flow preservation",
-      "feature2": "Tax-deductible rental payments",
-      "feature3": "Purchase option at end of contract",
-      "feature4": "Easy equipment renewal"
-    },
-    "cashAdvance": {
-      "name": "Cash Advance",
-      "description": "Quick solution for urgent cash flow needs",
-      "feature1": "Disbursement in 48h",
-      "feature2": "Amounts from €1,000 to €100,000",
-      "feature3": "Flexible use",
-      "feature4": "Repayment adapted to your activity"
-    },
-    "commercialRealEstate": {
-      "name": "Commercial Real Estate Loan",
-      "description": "Finance the purchase of your commercial premises, offices or warehouses",
-      "feature1": "Fixed rates from 1.9%",
-      "feature2": "Duration up to 20 years",
-      "feature3": "Financing up to €2M",
-      "feature4": "Down payment from 20%"
+    "cashflow": {
+      "name": "Working Capital",
+      "description": "Manage your cash flow with financing from €5,000 to €250,000. Flexible and fast, for short-term or seasonal needs.",
+      "features": {
+        "quickaccess": "Quick access to funds",
+        "flexible": "Flexible amount and duration",
+        "seasonal": "Seasonal adaptation",
+        "renewable": "Renewable credit line"
+      }
     },
     "equipment": {
       "name": "Equipment Financing",
-      "description": "Equip your business with machinery, vehicles or IT equipment",
-      "feature1": "Exceptional rates from 3.5%",
-      "feature2": "Financing up to 100%",
-      "feature3": "Duration adapted to depreciation",
-      "feature4": "Tax deduction of interest"
+      "description": "Equip your business with financing up to €1,000,000. Machinery, vehicles, IT equipment. Amortization over asset life.",
+      "features": {
+        "allequipment": "All types of equipment",
+        "amortization": "Adapted amortization",
+        "assetbacked": "Asset-backed guarantee",
+        "taxoptimized": "Tax optimization"
+      }
+    },
+    "commercial": {
+      "name": "Commercial Real Estate",
+      "description": "Acquire your professional premises with financing from €50,000 to €2,000,000. Offices, warehouses, shops. Fixed rates over 20 years.",
+      "features": {
+        "officewarehouse": "Offices, warehouses, shops",
+        "longterm": "Terms up to 20 years",
+        "fixedrate": "Fixed rates available",
+        "patrimony": "Asset building"
+      }
     },
     "startup": {
-      "name": "Business Startup Loan",
-      "description": "Finance your business launch with personalized support",
-      "feature1": "No guarantee with BPI France",
-      "feature2": "Down payment from 20%",
-      "feature3": "Deferral period possible",
-      "feature4": "Dedicated advisor"
+      "name": "Business Creation",
+      "description": "Launch your project with financing from €5,000 to €150,000. BPI France support. Honor guarantee possible. Payment deferral.",
+      "features": {
+        "zerotothree": "Companies 0 to 3 years old",
+        "honorguarantee": "Honor guarantee accepted",
+        "bpisupport": "BPI France support",
+        "deferredpayment": "Payment deferral"
+      }
+    },
+    "acquisition": {
+      "name": "Business Acquisition",
+      "description": "Acquire a business with financing from €20,000 to €1,000,000. Goodwill, shares, commercial walls. Structured financing.",
+      "features": {
+        "fullacquisition": "Total or partial acquisition",
+        "equity": "Share financing",
+        "guarantee": "Asset guarantee",
+        "structured": "Structured financial package"
+      }
     }
   }
 }

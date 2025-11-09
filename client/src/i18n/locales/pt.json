@@ -336,5 +336,107 @@
     "approved": "Aprovado",
     "rejected": "Rejeitado",
     "funded": "Financiado"
+  },
+  "loanTypes": {
+    "personal": {
+      "name": "Empréstimo Pessoal",
+      "description": "Financiamento flexível até 75.000€ para todos os seus projetos pessoais, sem comprovativo de utilização. Resposta rápida em 48h e liberação de fundos em 72h.",
+      "features": {
+        "noproof": "Sem comprovativo de utilização",
+        "freeuse": "Uso livre dos fundos",
+        "fastresponse": "Resposta rápida em 48h",
+        "earlyrepayment": "Reembolso antecipado gratuito"
+      }
+    },
+    "auto": {
+      "name": "Crédito Automóvel",
+      "description": "Finance o seu veículo novo ou usado até 75.000€ com taxas competitivas desde 0,90%. Liberação rápida e seguro incluído.",
+      "features": {
+        "newused": "Veículos novos e usados",
+        "zerodownpayment": "Possível sem entrada",
+        "dedicated": "Taxas dedicadas ao crédito auto",
+        "insurance": "Seguro de mutuário incluído"
+      }
+    },
+    "motorcycle": {
+      "name": "Crédito Motocicleta",
+      "description": "Finance a sua moto de 500€ a 50.000€. Todas as marcas aceites, novas ou usadas. Financiamento de equipamentos possível.",
+      "features": {
+        "allbrands": "Todas as marcas aceites",
+        "newused": "Novas ou usadas",
+        "equipment": "Financiamento de equipamentos",
+        "fastapproval": "Aprovação rápida online"
+      }
+    },
+    "home": {
+      "name": "Empréstimo para Obras",
+      "description": "Renove a sua habitação com financiamento de 1.000€ a 75.000€. Transição energética, renovação, melhorias. Crédito fiscal possível.",
+      "features": {
+        "renovation": "Renovação e melhorias",
+        "energytransition": "Transição energética",
+        "taxcredit": "Crédito fiscal possível",
+        "longerterm": "Prazos até 120 meses"
+      }
+    },
+    "business": {
+      "name": "Empréstimo Profissional",
+      "description": "Financiamento para o desenvolvimento da sua atividade de 10.000€ a 500.000€. Taxas PME competitivas desde 2,50%. Garantia BPI França possível.",
+      "features": {
+        "development": "Desenvolvimento de atividade",
+        "bpibackup": "Garantia BPI França possível",
+        "nodownpayment": "Possível sem entrada",
+        "taxdeductible": "Juros dedutíveis"
+      }
+    },
+    "cashflow": {
+      "name": "Crédito de Tesouraria",
+      "description": "Gerir a sua tesouraria com financiamento de 5.000€ a 250.000€. Flexível e rápido, para necessidades pontuais ou sazonais.",
+      "features": {
+        "quickaccess": "Acesso rápido aos fundos",
+        "flexible": "Montante e duração flexíveis",
+        "seasonal": "Adaptação à sazonalidade",
+        "renewable": "Linha de crédito renovável"
+      }
+    },
+    "equipment": {
+      "name": "Financiamento de Equipamentos",
+      "description": "Equipe a sua empresa com financiamento até 1.000.000€. Máquinas, veículos, equipamento informático. Amortização sobre a vida útil.",
+      "features": {
+        "allequipment": "Todos os tipos de equipamentos",
+        "amortization": "Amortização adaptada",
+        "assetbacked": "Garantia sobre o bem",
+        "taxoptimized": "Otimização fiscal"
+      }
+    },
+    "commercial": {
+      "name": "Crédito Imobiliário Profissional",
+      "description": "Adquira os seus locais profissionais com financiamento de 50.000€ a 2.000.000€. Escritórios, armazéns, comércios. Taxas fixas a 20 anos.",
+      "features": {
+        "officewarehouse": "Escritórios, armazéns, comércios",
+        "longterm": "Prazos até 20 anos",
+        "fixedrate": "Taxas fixas disponíveis",
+        "patrimony": "Constituição de património"
+      }
+    },
+    "startup": {
+      "name": "Criação de Empresa",
+      "description": "Lance o seu projeto com financiamento de 5.000€ a 150.000€. Acompanhamento BPI França. Garantia de honra possível. Diferimento de reembolso.",
+      "features": {
+        "zerotothree": "Empresas de 0 a 3 anos",
+        "honorguarantee": "Garantia de honra aceite",
+        "bpisupport": "Acompanhamento BPI França",
+        "deferredpayment": "Diferimento de reembolso"
+      }
+    },
+    "acquisition": {
+      "name": "Aquisição de Empresa",
+      "description": "Adquira uma empresa com financiamento de 20.000€ a 1.000.000€. Fundo de comércio, quotas sociais, paredes comerciais. Montagem estruturada.",
+      "features": {
+        "fullacquisition": "Aquisição total ou parcial",
+        "equity": "Financiamento de quotas",
+        "guarantee": "Garantia sobre o ativo",
+        "structured": "Montagem financeira estruturada"
+      }
+    }
   }
 }

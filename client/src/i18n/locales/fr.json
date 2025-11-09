@@ -350,83 +350,103 @@
   "loanTypes": {
     "personal": {
       "name": "Prêt Personnel",
-      "description": "Financement rapide pour vos projets personnels sans justificatif d'utilisation",
-      "feature1": "Réponse sous 48h",
-      "feature2": "100% en ligne",
-      "feature3": "Sans frais de dossier",
-      "feature4": "Remboursement anticipé gratuit"
+      "description": "Financement flexible jusqu'à 75 000€ pour tous vos projets personnels, sans justificatif d'utilisation. Réponse rapide sous 48h et déblocage des fonds en 72h.",
+      "features": {
+        "noproof": "Sans justificatif d'utilisation",
+        "freeuse": "Utilisation libre des fonds",
+        "fastresponse": "Réponse rapide sous 48h",
+        "earlyrepayment": "Remboursement anticipé gratuit"
+      }
     },
     "auto": {
       "name": "Crédit Auto",
-      "description": "Financez l'achat de votre véhicule neuf ou d'occasion",
-      "feature1": "Taux compétitifs dès 3,9%",
-      "feature2": "Jusqu'à 7 ans de remboursement",
-      "feature3": "Assurance optionnelle",
-      "feature4": "Report de première échéance possible"
+      "description": "Financez votre véhicule neuf ou d'occasion jusqu'à 75 000€ avec des taux compétitifs dès 0,90%. Déblocage rapide et assurance incluse.",
+      "features": {
+        "newused": "Véhicules neufs et occasion",
+        "zerodownpayment": "Possible sans apport",
+        "dedicated": "Taux dédiés au crédit auto",
+        "insurance": "Assurance emprunteur incluse"
+      }
     },
-    "renovation": {
+    "motorcycle": {
+      "name": "Crédit Moto",
+      "description": "Financez votre deux-roues de 500€ à 50 000€. Toutes marques acceptées, neuves ou occasion. Financement des équipements possible.",
+      "features": {
+        "allbrands": "Toutes marques acceptées",
+        "newused": "Neuf ou occasion",
+        "equipment": "Financement équipements",
+        "fastapproval": "Accord rapide en ligne"
+      }
+    },
+    "home": {
       "name": "Prêt Travaux",
-      "description": "Réalisez vos projets de rénovation et d'amélioration de l'habitat",
-      "feature1": "Financement jusqu'à 75 000€",
-      "feature2": "Déblocage progressif des fonds",
-      "feature3": "Taux avantageux dès 3,8%",
-      "feature4": "Accompagnement personnalisé"
+      "description": "Rénovez votre logement avec un financement de 1 000€ à 75 000€. Transition énergétique, rénovation, aménagement. Crédit d'impôt possible.",
+      "features": {
+        "renovation": "Rénovation et aménagement",
+        "energytransition": "Transition énergétique",
+        "taxcredit": "Crédit d'impôt possible",
+        "longerterm": "Durées jusqu'à 120 mois"
+      }
     },
-    "student": {
-      "name": "Prêt Étudiant",
-      "description": "Financez vos études supérieures avec des conditions avantageuses",
-      "feature1": "Taux préférentiels dès 0,9%",
-      "feature2": "Différé de remboursement pendant études",
-      "feature3": "Sans caution avec garantie État",
-      "feature4": "Jusqu'à 10 ans de remboursement"
+    "business": {
+      "name": "Prêt Professionnel",
+      "description": "Financement pour le développement de votre activité de 10 000€ à 500 000€. Taux PME compétitifs dès 2,50%. Garantie BPI France possible.",
+      "features": {
+        "development": "Développement d'activité",
+        "bpibackup": "Garantie BPI France possible",
+        "nodownpayment": "Possible sans apport",
+        "taxdeductible": "Intérêts déductibles"
+      }
     },
-    "businessLoan": {
-      "name": "Prêt Amortissable Pro",
-      "description": "Prêt classique pour financer vos investissements professionnels",
-      "feature1": "Durée adaptée de 2 à 15 ans",
-      "feature2": "Taux fixes dès 3,2%",
-      "feature3": "Financement jusqu'à 500 000€",
-      "feature4": "Garantie BPI France possible"
-    },
-    "leasing": {
-      "name": "Crédit-Bail / Leasing",
-      "description": "Louez votre équipement avec option d'achat en fin de contrat",
-      "feature1": "Préservation de la trésorerie",
-      "feature2": "Loyers déductibles fiscalement",
-      "feature3": "Option d'achat en fin de contrat",
-      "feature4": "Renouvellement facilité du matériel"
-    },
-    "cashAdvance": {
-      "name": "Avance de Trésorerie",
-      "description": "Solution rapide pour faire face à vos besoins de trésorerie urgents",
-      "feature1": "Déblocage en 48h",
-      "feature2": "Montants de 1 000€ à 100 000€",
-      "feature3": "Utilisation flexible",
-      "feature4": "Remboursement adapté à votre activité"
-    },
-    "commercialRealEstate": {
-      "name": "Crédit Immobilier Professionnel",
-      "description": "Financez l'achat de vos locaux commerciaux, bureaux ou entrepôts",
-      "feature1": "Taux fixes dès 1,9%",
-      "feature2": "Durée jusqu'à 20 ans",
-      "feature3": "Financement jusqu'à 2M€",
-      "feature4": "Apport personnel à partir de 20%"
+    "cashflow": {
+      "name": "Crédit Trésorerie",
+      "description": "Gérez votre trésorerie avec un financement de 5 000€ à 250 000€. Flexible et rapide, pour faire face aux besoins ponctuels ou saisonniers.",
+      "features": {
+        "quickaccess": "Accès rapide aux fonds",
+        "flexible": "Montant et durée flexibles",
+        "seasonal": "Adaptation à la saisonnalité",
+        "renewable": "Ligne de crédit renouvelable"
+      }
     },
     "equipment": {
       "name": "Financement Équipement",
-      "description": "Équipez votre entreprise en machines, véhicules ou matériel informatique",
-      "feature1": "Taux exceptionnels dès 3,5%",
-      "feature2": "Financement jusqu'à 100%",
-      "feature3": "Durée adaptée à l'amortissement",
-      "feature4": "Déduction fiscale des intérêts"
+      "description": "Équipez votre entreprise avec un financement jusqu'à 1 000 000€. Machines, véhicules, matériel informatique. Amortissement sur la durée de vie.",
+      "features": {
+        "allequipment": "Tous types d'équipements",
+        "amortization": "Amortissement adapté",
+        "assetbacked": "Garantie sur le bien",
+        "taxoptimized": "Optimisation fiscale"
+      }
+    },
+    "commercial": {
+      "name": "Crédit Immobilier Pro",
+      "description": "Acquérez vos locaux professionnels avec un financement de 50 000€ à 2 000 000€. Bureaux, entrepôts, commerces. Taux fixes sur 20 ans.",
+      "features": {
+        "officewarehouse": "Bureaux, entrepôts, commerces",
+        "longterm": "Durées jusqu'à 20 ans",
+        "fixedrate": "Taux fixes disponibles",
+        "patrimony": "Constitution de patrimoine"
+      }
     },
     "startup": {
-      "name": "Prêt Création d'Entreprise",
-      "description": "Financez le démarrage de votre activité avec un accompagnement personnalisé",
-      "feature1": "Sans garantie avec BPI France",
-      "feature2": "Apport personnel à partir de 20%",
-      "feature3": "Période de différé possible",
-      "feature4": "Conseiller dédié"
+      "name": "Création d'Entreprise",
+      "description": "Lancez votre projet avec un financement de 5 000€ à 150 000€. Accompagnement BPI France. Garantie d'honneur possible. Différé de remboursement.",
+      "features": {
+        "zerotothree": "Entreprises 0 à 3 ans",
+        "honorguarantee": "Garantie d'honneur acceptée",
+        "bpisupport": "Accompagnement BPI France",
+        "deferredpayment": "Différé de remboursement"
+      }
+    },
+    "acquisition": {
+      "name": "Reprise d'Entreprise",
+      "description": "Reprenez une entreprise avec un financement de 20 000€ à 1 000 000€. Fonds de commerce, parts sociales, murs commerciaux. Montage structuré.",
+      "features": {
+        "fullacquisition": "Reprise totale ou partielle",
+        "equity": "Financement des parts",
+        "guarantee": "Garantie sur l'actif",
+        "structured": "Montage financier structuré"
+      }
     }
   }
 }

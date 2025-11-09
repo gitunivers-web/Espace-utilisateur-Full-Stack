@@ -1,113 +1,442 @@
 {
-  "app": {"name": "Altus Finance"},
-  "nav": {"home": "Inicio", "offers": "Nuestras Ofertas", "simulator": "Simulador", "howItWorks": "Cómo Funciona", "about": "Acerca de", "contact": "Contacto", "login": "Iniciar sesión", "createAccount": "Crear mi cuenta"},
+  "app": {
+    "name": "Altus Finance"
+  },
+  "nav": {
+    "home": "Inicio",
+    "offers": "Nuestras Ofertas",
+    "simulator": "Simulador",
+    "howItWorks": "Cómo Funciona",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "login": "Iniciar sesión",
+    "createAccount": "Crear mi cuenta"
+  },
   "home": {
-    "hero": {"title": "Financie sus proyectos con total", "titleHighlight": "simplicidad", "subtitle": "Soluciones de financiación para particulares y profesionales, con tasas competitivas desde el 3,5% y respuesta rápida", "ctaAccount": "Crear mi cuenta", "ctaSimulator": "Simular mi préstamo", "response": "Respuesta", "responseTime": "en 48h", "acceptanceValue": "97%", "acceptance": "de aceptación", "rateFrom": "Tasas desde", "rateValue": "3,5%"},
-    "solutions": {"title": "Nuestras Soluciones de Financiación", "subtitle": "Encuentre el préstamo adaptado a su situación", "viewAll": "Ver todas nuestras ofertas"},
-    "professional": {"title": "Financiación Profesional", "subtitle": "Soluciones adaptadas para pequeñas y medianas empresas y emprendedores", "avgRates": "Tasas promedio 2025", "avgRatesValue": "3,39%", "avgRatesDesc": "Disminución significativa respecto a 2024", "acceptanceRate": "Tasa de aceptación", "acceptanceRateValue": "97%", "acceptanceRateDesc": "Para créditos de inversión PYME", "bpiGuarantee": "Garantía BPI", "bpiGuaranteeValue": "Hasta el 90%", "bpiGuaranteeDesc": "Facilita el acceso a la financiación", "amounts": "Cantidades", "amountsValue": "5K€ a 2M€", "amountsDesc": "Según su proyecto y perfil", "discoverOffers": "Descubra nuestras ofertas profesionales"},
-    "whyUs": {"title": "¿Por qué Altus Finance?", "fast": "Rápido", "fastDesc": "Respuesta inicial en 48h y desembolso de fondos en 72h", "transparent": "Transparente", "transparentDesc": "Tasas y tarifas claramente mostradas, sin cargos ocultos", "flexible": "Flexible", "flexibleDesc": "Reembolso anticipado gratuito y opciones de aplazamiento de pago", "advantageous": "Ventajoso", "advantageousDesc": "Tasas competitivas y condiciones negociadas"}
+    "hero": {
+      "title": "Financie sus proyectos con total",
+      "titleHighlight": "simplicidad",
+      "subtitle": "Soluciones de financiación para particulares y profesionales, con tasas competitivas desde el 3,5% y respuesta rápida",
+      "ctaAccount": "Crear mi cuenta",
+      "ctaSimulator": "Simular mi préstamo",
+      "response": "Respuesta",
+      "responseTime": "en 48h",
+      "acceptanceValue": "97%",
+      "acceptance": "de aceptación",
+      "rateFrom": "Tasas desde",
+      "rateValue": "3,5%"
+    },
+    "solutions": {
+      "title": "Nuestras Soluciones de Financiación",
+      "subtitle": "Encuentre el préstamo adaptado a su situación",
+      "viewAll": "Ver todas nuestras ofertas"
+    },
+    "professional": {
+      "title": "Financiación Profesional",
+      "subtitle": "Soluciones adaptadas para pequeñas y medianas empresas y emprendedores",
+      "avgRates": "Tasas promedio 2025",
+      "avgRatesValue": "3,39%",
+      "avgRatesDesc": "Disminución significativa respecto a 2024",
+      "acceptanceRate": "Tasa de aceptación",
+      "acceptanceRateValue": "97%",
+      "acceptanceRateDesc": "Para créditos de inversión PYME",
+      "bpiGuarantee": "Garantía BPI",
+      "bpiGuaranteeValue": "Hasta el 90%",
+      "bpiGuaranteeDesc": "Facilita el acceso a la financiación",
+      "amounts": "Cantidades",
+      "amountsValue": "5K€ a 2M€",
+      "amountsDesc": "Según su proyecto y perfil",
+      "discoverOffers": "Descubra nuestras ofertas profesionales"
+    },
+    "whyUs": {
+      "title": "¿Por qué Altus Finance?",
+      "fast": "Rápido",
+      "fastDesc": "Respuesta inicial en 48h y desembolso de fondos en 72h",
+      "transparent": "Transparente",
+      "transparentDesc": "Tasas y tarifas claramente mostradas, sin cargos ocultos",
+      "flexible": "Flexible",
+      "flexibleDesc": "Reembolso anticipado gratuito y opciones de aplazamiento de pago",
+      "advantageous": "Ventajoso",
+      "advantageousDesc": "Tasas competitivas y condiciones negociadas"
+    }
   },
-  "simulator": {"title": "Simulador de Préstamo", "loanType": "Tipo de préstamo", "selectLoanType": "Seleccione un tipo de préstamo", "amount": "Cantidad", "duration": "Duración", "months": "meses", "calculate": "Calcular", "calculating": "Calculando...", "error": "Error", "pleaseSelectLoanType": "Por favor, seleccione un tipo de préstamo", "from": "Desde", "to": "hasta", "fixedAPR": "TAE Fija", "monthlyPayment": "Pago Mensual", "totalCreditCost": "Costo Total del Crédito", "totalAmountDue": "Monto Total Adeudado", "interest": "Intereses"},
-  "about": {"title": "Acerca de Altus Finance", "subtitle": "Su socio de confianza para todos sus proyectos de financiación desde 2020", "intro1": "Altus Finance Group es una plataforma de financiación en línea especializada en préstamos personales y profesionales. Nuestra misión es hacer que el acceso al crédito sea simple, rápido y transparente para todos.", "intro2": "Fundada en 2020, nuestra empresa tiene como objetivo democratizar el acceso a la financiación a través de la tecnología y un enfoque centrado en el cliente. Creemos que cada proyecto merece apoyo, por eso ofrecemos soluciones de financiación adaptadas tanto a particulares como a profesionales.", "security": "Seguridad", "securityDesc": "Datos protegidos y transacciones seguras", "clients": "+10.000 clientes", "clientsDesc": "Nos apoyan cada año", "expertise": "Experiencia", "expertiseDesc": "Un equipo de profesionales a su servicio", "innovation": "Innovación", "innovationDesc": "Tecnología de vanguardia para su comodidad", "commitment": "Nuestro Compromiso", "commitmentText": "En Altus Finance, nos comprometemos a brindar un servicio de calidad basado en la transparencia, la capacidad de respuesta y el apoyo personalizado. Cada solicitud es cuidadosamente revisada por nuestros expertos para ofrecerle la mejor solución de financiación.", "values": "Nuestros Valores", "transparency": "Transparencia", "transparencyDesc": "Tasas y condiciones claramente mostradas, sin tarifas ocultas", "speed": "Rapidez", "speedDesc": "Respuesta inicial en 48h y desembolso en 72h", "support": "Apoyo", "supportDesc": "Un equipo dedicado para asesorarle en cada paso", "flexibility": "Flexibilidad", "flexibilityDesc": "Soluciones adaptadas a su situación personal o profesional", "innovationValue": "Innovación", "innovationValueDesc": "Una plataforma 100% en línea para simplificar sus trámites", "legalInfo": "Información Legal", "companyName": "Nombre de la Empresa", "companyNameValue": "Altus Finance Group SAS", "headquarters": "Sede", "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 París, Francia", "siret": "SIREN / SIRET", "siretValue": "123 456 789 00012", "capital": "Capital Social", "capitalValue": "€500.000", "accreditation": "Acreditación ACPR", "accreditationValue": "Nº 12345 - Entidad de crédito", "contact": "Contacto", "contactValue": "contact@altusfinance.fr<br />01 23 45 67 89", "legalDisclaimer": "Altus Finance Group es una entidad de crédito aprobada por la Autorité de Contrôle Prudentiel et de Résolution (ACPR). Sujeto al control de ACPR - 4 Place de Budapest, CS 92459, 75436 París Cedex 09."},
-  "contact": {"title": "Contáctenos", "subtitle": "Nuestro equipo está a su disposición para responder sus preguntas", "sendMessage": "Envíenos un mensaje", "fullName": "Nombre completo", "fullNamePlaceholder": "Juan Pérez", "email": "Correo electrónico", "emailPlaceholder": "juan@ejemplo.com", "phone": "Teléfono", "phonePlaceholder": "+33 6 12 34 56 78", "subject": "Asunto", "subjectPlaceholder": "Pregunta sobre un préstamo personal", "message": "Mensaje", "messagePlaceholder": "Su mensaje...", "send": "Enviar mensaje", "phoneLabel": "Teléfono", "phoneValue": "01 23 45 67 89", "schedule": "Lun-Vie 9h-18h", "emailLabel": "Correo electrónico", "emailValue": "contact@altusfinance.fr", "responseTime": "Respuesta en 24h", "address": "Dirección", "addressValue": "123 Avenue des Champs-Élysées<br />75008 París, Francia", "hours": "Horario", "hoursValue": "Lunes - Viernes: 9h - 18h<br />Sábado - Domingo: Cerrado"},
-  "howItWorks": {"pageTitle": "Cómo obtener un préstamo | Altus Finance", "pageDescription": "Descubra cómo obtener un préstamo en 4 sencillos pasos con Altus Finance. Simulación gratuita, respuesta rápida en 48h, desembolso de fondos en 72h.", "title": "Cómo obtener su préstamo en", "titleHighlight": "4 sencillos pasos", "subtitle": "Un proceso 100% en línea, rápido y transparente para financiar sus proyectos", "step1Title": "1. Simule su préstamo", "step1Desc": "Use nuestro simulador en línea para estimar sus pagos mensuales y encontrar la oferta que se ajuste a su presupuesto.", "step1Duration": "2 min", "step2Title": "2. Regístrese en unos clics", "step2Desc": "Cree su cuenta en segundos para acceder a su espacio personal seguro y enviar su solicitud de préstamo.", "step2Duration": "1 min", "step3Title": "3. Complete su solicitud desde Mi Cuenta", "step3Desc": "Inicie sesión en su panel y complete el formulario de solicitud con su información. Todo se hace 100% en línea.", "step3Duration": "10 min", "step4Title": "4. Reciba una respuesta rápida", "step4Desc": "Nuestro equipo analiza su solicitud y le da una respuesta inicial en 48h. Siga el progreso en tiempo real en su cuenta.", "step4Duration": "48h", "startCta": "Crear mi cuenta y comenzar", "whyUs": "¿Por qué elegir Altus Finance?", "whyUsSubtitle": "Una plataforma moderna diseñada para simplificar su acceso a la financiación", "fast": "Rápido y eficiente", "fastDesc": "Respuesta en 48h y desembolso en 72h", "secure": "100% seguro", "secureDesc": "Sus datos están protegidos y encriptados", "online": "100% en línea", "onlineDesc": "Sin necesidad de desplazamientos", "personalized": "Apoyo personalizado", "personalizedDesc": "Un equipo dedicado para asesorarle", "faq": "Preguntas Frecuentes", "faqQ1": "¿Qué documentos se requieren?", "faqA1": "Para una solicitud de préstamo, necesitará un documento de identidad, un comprobante de domicilio reciente y sus últimas 3 nóminas (o comprobante de ingresos para profesionales).", "faqQ2": "¿Puedo reembolsar anticipadamente?", "faqA2": "Sí, el reembolso anticipado es gratuito en Altus Finance. Puede reembolsar total o parcialmente su préstamo en cualquier momento sin cargos adicionales.", "faqQ3": "¿Cuál es la tasa de aceptación?", "faqA3": "Nuestra tasa de aceptación varía según los perfiles, pero revisamos cuidadosamente cada solicitud. Incluso si ha sido rechazado en otro lugar, no dude en hacer una simulación.", "faqQ4": "¿Cómo sigo mi solicitud?", "faqA4": "Una vez enviada su solicitud, puede seguir su progreso en tiempo real en su área de cliente 'Mi Cuenta'. También recibirá notificaciones por correo electrónico en cada paso.", "readyTitle": "¿Listo para comenzar su proyecto?", "readySubtitle": "Obtenga una respuesta inicial en 48h", "simulateCta": "Simular mi préstamo", "createAccountCta": "Crear mi cuenta"},
-  "offers": {"title": "Nuestras Ofertas de Financiación", "subtitle": "Descubra todas nuestras soluciones de préstamo adaptadas a sus necesidades", "allOffers": "Todas las ofertas", "individuals": "Particulares", "professionals": "Profesionales"},
-  "footer": {"tagline": "Su socio de confianza para todos sus proyectos de financiación", "ourLoans": "Nuestros Préstamos", "personalLoan": "Préstamo Personal", "autoLoan": "Crédito Auto", "renovationLoan": "Préstamo Reformas", "businessLoan": "Préstamo Empresarial", "help": "Ayuda", "legal": "Legal", "legalNotice": "Aviso Legal", "privacyPolicy": "Política de Privacidad", "copyright": "Todos los derechos reservados"},
-  "legal": {"warning": "Un préstamo le compromete y debe ser reembolsado. Verifique su capacidad de reembolso antes de comprometerse.", "sectionTitle": "Información Legal", "sectionSubtitle": "Transparencia y cumplimiento para su tranquilidad", "representativeExample": "Ejemplo Representativo", "borrowedAmount": "Cantidad Prestada", "duration": "Duración", "months": "meses", "fixed": "fija", "variable": "variable", "monthlyPayment": "Pago Mensual", "totalCreditCost": "Costo Total del Crédito", "totalAmountDue": "Monto Total Adeudado", "withdrawalRight": "Derecho de desistimiento", "withdrawalRightText": "Tiene un período de 14 días para ejercer su derecho de desistimiento desde la firma del contrato de crédito.", "taegTitle": "TAE (Tasa Anual Equivalente)", "taegText": "La TAE representa el costo total del crédito para el prestatario, expresado como un porcentaje anual del monto total del crédito. Incluye la tasa de interés nominal así como todas las tarifas obligatorias relacionadas con el crédito (tarifas de solicitud, seguro obligatorio, etc.).", "offerDisclaimer": "Oferta de préstamo sujeta a la aceptación de su solicitud por Altus Finance Group. Tiene un período de reflexión de 14 días para aceptar la oferta de crédito. Un préstamo le compromete y debe ser reembolsado. Verifique su capacidad de reembolso antes de comprometerse."},
-  "language": {"select": "Idioma"},
-  "common": {"years": "años"},
-  "loan": {"amount": "Cantidad", "rate": "Tasa", "rateFrom": "Tasa desde", "duration": "Duración", "particular": "Particular", "professional": "Profesional", "selectOffer": "Seleccionar esta oferta", "noOffers": "No hay ofertas disponibles para esta categoría"},
+  "simulator": {
+    "title": "Simulador de Préstamo",
+    "loanType": "Tipo de préstamo",
+    "selectLoanType": "Seleccione un tipo de préstamo",
+    "amount": "Cantidad",
+    "duration": "Duración",
+    "months": "meses",
+    "calculate": "Calcular",
+    "calculating": "Calculando...",
+    "error": "Error",
+    "pleaseSelectLoanType": "Por favor, seleccione un tipo de préstamo",
+    "from": "Desde",
+    "to": "hasta",
+    "fixedAPR": "TAE Fija",
+    "monthlyPayment": "Pago Mensual",
+    "totalCreditCost": "Costo Total del Crédito",
+    "totalAmountDue": "Monto Total Adeudado",
+    "interest": "Intereses"
+  },
+  "about": {
+    "title": "Acerca de Altus Finance",
+    "subtitle": "Su socio de confianza para todos sus proyectos de financiación desde 2020",
+    "intro1": "Altus Finance Group es una plataforma de financiación en línea especializada en préstamos personales y profesionales. Nuestra misión es hacer que el acceso al crédito sea simple, rápido y transparente para todos.",
+    "intro2": "Fundada en 2020, nuestra empresa tiene como objetivo democratizar el acceso a la financiación a través de la tecnología y un enfoque centrado en el cliente. Creemos que cada proyecto merece apoyo, por eso ofrecemos soluciones de financiación adaptadas tanto a particulares como a profesionales.",
+    "security": "Seguridad",
+    "securityDesc": "Datos protegidos y transacciones seguras",
+    "clients": "+10.000 clientes",
+    "clientsDesc": "Nos apoyan cada año",
+    "expertise": "Experiencia",
+    "expertiseDesc": "Un equipo de profesionales a su servicio",
+    "innovation": "Innovación",
+    "innovationDesc": "Tecnología de vanguardia para su comodidad",
+    "commitment": "Nuestro Compromiso",
+    "commitmentText": "En Altus Finance, nos comprometemos a brindar un servicio de calidad basado en la transparencia, la capacidad de respuesta y el apoyo personalizado. Cada solicitud es cuidadosamente revisada por nuestros expertos para ofrecerle la mejor solución de financiación.",
+    "values": "Nuestros Valores",
+    "transparency": "Transparencia",
+    "transparencyDesc": "Tasas y condiciones claramente mostradas, sin tarifas ocultas",
+    "speed": "Rapidez",
+    "speedDesc": "Respuesta inicial en 48h y desembolso en 72h",
+    "support": "Apoyo",
+    "supportDesc": "Un equipo dedicado para asesorarle en cada paso",
+    "flexibility": "Flexibilidad",
+    "flexibilityDesc": "Soluciones adaptadas a su situación personal o profesional",
+    "innovationValue": "Innovación",
+    "innovationValueDesc": "Una plataforma 100% en línea para simplificar sus trámites",
+    "legalInfo": "Información Legal",
+    "companyName": "Nombre de la Empresa",
+    "companyNameValue": "Altus Finance Group SAS",
+    "headquarters": "Sede",
+    "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 París, Francia",
+    "siret": "SIREN / SIRET",
+    "siretValue": "123 456 789 00012",
+    "capital": "Capital Social",
+    "capitalValue": "€500.000",
+    "accreditation": "Acreditación ACPR",
+    "accreditationValue": "Nº 12345 - Entidad de crédito",
+    "contact": "Contacto",
+    "contactValue": "contact@altusfinance.fr<br />01 23 45 67 89",
+    "legalDisclaimer": "Altus Finance Group es una entidad de crédito aprobada por la Autorité de Contrôle Prudentiel et de Résolution (ACPR). Sujeto al control de ACPR - 4 Place de Budapest, CS 92459, 75436 París Cedex 09."
+  },
+  "contact": {
+    "title": "Contáctenos",
+    "subtitle": "Nuestro equipo está a su disposición para responder sus preguntas",
+    "sendMessage": "Envíenos un mensaje",
+    "fullName": "Nombre completo",
+    "fullNamePlaceholder": "Juan Pérez",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "juan@ejemplo.com",
+    "phone": "Teléfono",
+    "phonePlaceholder": "+33 6 12 34 56 78",
+    "subject": "Asunto",
+    "subjectPlaceholder": "Pregunta sobre un préstamo personal",
+    "message": "Mensaje",
+    "messagePlaceholder": "Su mensaje...",
+    "send": "Enviar mensaje",
+    "phoneLabel": "Teléfono",
+    "phoneValue": "01 23 45 67 89",
+    "schedule": "Lun-Vie 9h-18h",
+    "emailLabel": "Correo electrónico",
+    "emailValue": "contact@altusfinance.fr",
+    "responseTime": "Respuesta en 24h",
+    "address": "Dirección",
+    "addressValue": "123 Avenue des Champs-Élysées<br />75008 París, Francia",
+    "hours": "Horario",
+    "hoursValue": "Lunes - Viernes: 9h - 18h<br />Sábado - Domingo: Cerrado"
+  },
+  "howItWorks": {
+    "pageTitle": "Cómo obtener un préstamo | Altus Finance",
+    "pageDescription": "Descubra cómo obtener un préstamo en 4 sencillos pasos con Altus Finance. Simulación gratuita, respuesta rápida en 48h, desembolso de fondos en 72h.",
+    "title": "Cómo obtener su préstamo en",
+    "titleHighlight": "4 sencillos pasos",
+    "subtitle": "Un proceso 100% en línea, rápido y transparente para financiar sus proyectos",
+    "step1Title": "1. Simule su préstamo",
+    "step1Desc": "Use nuestro simulador en línea para estimar sus pagos mensuales y encontrar la oferta que se ajuste a su presupuesto.",
+    "step1Duration": "2 min",
+    "step2Title": "2. Regístrese en unos clics",
+    "step2Desc": "Cree su cuenta en segundos para acceder a su espacio personal seguro y enviar su solicitud de préstamo.",
+    "step2Duration": "1 min",
+    "step3Title": "3. Complete su solicitud desde Mi Cuenta",
+    "step3Desc": "Inicie sesión en su panel y complete el formulario de solicitud con su información. Todo se hace 100% en línea.",
+    "step3Duration": "10 min",
+    "step4Title": "4. Reciba una respuesta rápida",
+    "step4Desc": "Nuestro equipo analiza su solicitud y le da una respuesta inicial en 48h. Siga el progreso en tiempo real en su cuenta.",
+    "step4Duration": "48h",
+    "startCta": "Crear mi cuenta y comenzar",
+    "whyUs": "¿Por qué elegir Altus Finance?",
+    "whyUsSubtitle": "Una plataforma moderna diseñada para simplificar su acceso a la financiación",
+    "fast": "Rápido y eficiente",
+    "fastDesc": "Respuesta en 48h y desembolso en 72h",
+    "secure": "100% seguro",
+    "secureDesc": "Sus datos están protegidos y encriptados",
+    "online": "100% en línea",
+    "onlineDesc": "Sin necesidad de desplazamientos",
+    "personalized": "Apoyo personalizado",
+    "personalizedDesc": "Un equipo dedicado para asesorarle",
+    "faq": "Preguntas Frecuentes",
+    "faqQ1": "¿Qué documentos se requieren?",
+    "faqA1": "Para una solicitud de préstamo, necesitará un documento de identidad, un comprobante de domicilio reciente y sus últimas 3 nóminas (o comprobante de ingresos para profesionales).",
+    "faqQ2": "¿Puedo reembolsar anticipadamente?",
+    "faqA2": "Sí, el reembolso anticipado es gratuito en Altus Finance. Puede reembolsar total o parcialmente su préstamo en cualquier momento sin cargos adicionales.",
+    "faqQ3": "¿Cuál es la tasa de aceptación?",
+    "faqA3": "Nuestra tasa de aceptación varía según los perfiles, pero revisamos cuidadosamente cada solicitud. Incluso si ha sido rechazado en otro lugar, no dude en hacer una simulación.",
+    "faqQ4": "¿Cómo sigo mi solicitud?",
+    "faqA4": "Una vez enviada su solicitud, puede seguir su progreso en tiempo real en su área de cliente 'Mi Cuenta'. También recibirá notificaciones por correo electrónico en cada paso.",
+    "readyTitle": "¿Listo para comenzar su proyecto?",
+    "readySubtitle": "Obtenga una respuesta inicial en 48h",
+    "simulateCta": "Simular mi préstamo",
+    "createAccountCta": "Crear mi cuenta"
+  },
+  "offers": {
+    "title": "Nuestras Ofertas de Financiación",
+    "subtitle": "Descubra todas nuestras soluciones de préstamo adaptadas a sus necesidades",
+    "allOffers": "Todas las ofertas",
+    "individuals": "Particulares",
+    "professionals": "Profesionales"
+  },
+  "footer": {
+    "tagline": "Su socio de confianza para todos sus proyectos de financiación",
+    "ourLoans": "Nuestros Préstamos",
+    "personalLoan": "Préstamo Personal",
+    "autoLoan": "Crédito Auto",
+    "renovationLoan": "Préstamo Reformas",
+    "businessLoan": "Préstamo Empresarial",
+    "help": "Ayuda",
+    "legal": "Legal",
+    "legalNotice": "Aviso Legal",
+    "privacyPolicy": "Política de Privacidad",
+    "copyright": "Todos los derechos reservados"
+  },
+  "legal": {
+    "warning": "Un préstamo le compromete y debe ser reembolsado. Verifique su capacidad de reembolso antes de comprometerse.",
+    "sectionTitle": "Información Legal",
+    "sectionSubtitle": "Transparencia y cumplimiento para su tranquilidad",
+    "representativeExample": "Ejemplo Representativo",
+    "borrowedAmount": "Cantidad Prestada",
+    "duration": "Duración",
+    "months": "meses",
+    "fixed": "fija",
+    "variable": "variable",
+    "monthlyPayment": "Pago Mensual",
+    "totalCreditCost": "Costo Total del Crédito",
+    "totalAmountDue": "Monto Total Adeudado",
+    "withdrawalRight": "Derecho de desistimiento",
+    "withdrawalRightText": "Tiene un período de 14 días para ejercer su derecho de desistimiento desde la firma del contrato de crédito.",
+    "taegTitle": "TAE (Tasa Anual Equivalente)",
+    "taegText": "La TAE representa el costo total del crédito para el prestatario, expresado como un porcentaje anual del monto total del crédito. Incluye la tasa de interés nominal así como todas las tarifas obligatorias relacionadas con el crédito (tarifas de solicitud, seguro obligatorio, etc.).",
+    "offerDisclaimer": "Oferta de préstamo sujeta a la aceptación de su solicitud por Altus Finance Group. Tiene un período de reflexión de 14 días para aceptar la oferta de crédito. Un préstamo le compromete y debe ser reembolsado. Verifique su capacidad de reembolso antes de comprometerse."
+  },
+  "language": {
+    "select": "Idioma"
+  },
+  "common": {
+    "years": "años"
+  },
+  "loan": {
+    "amount": "Cantidad",
+    "rate": "Tasa",
+    "rateFrom": "Tasa desde",
+    "duration": "Duración",
+    "particular": "Particular",
+    "professional": "Profesional",
+    "selectOffer": "Seleccionar esta oferta",
+    "noOffers": "No hay ofertas disponibles para esta categoría"
+  },
   "loanApplication": {
-    "title": "Solicitud de Préstamo", "step": "Paso", "of": "de", "previous": "Anterior", "next": "Siguiente", "submit": "Enviar Solicitud",
-    "stepLoanType": {"title": "Selección del Tipo de Préstamo", "youAre": "Usted es *", "chooseLoanType": "Elija el tipo de préstamo *"},
-    "stepSimulation": {"title": "Simulación de Préstamo", "loanAmount": "Cantidad del préstamo *", "loanDuration": "Duración del préstamo *", "amountBetween": "Cantidad entre", "and": "y", "durationBetween": "Duración entre", "estimatedRate": "Tasa de interés estimada", "perYear": " / año", "estimatedMonthly": "Pago mensual estimado", "perMonth": "/mes", "totalCost": "Costo total", "includingInterest": "Incluidos intereses"},
-    "stepInformation": {"title": "Su Información", "personalInfo": "Información Personal", "companyInfo": "Información de la Empresa", "monthlyIncome": "Ingresos mensuales netos", "employmentStatus": "Situación laboral", "loanPurpose": "Propósito del préstamo", "companyName": "Nombre de la empresa", "siret": "SIRET", "annualRevenue": "Ingresos anuales"},
-    "stepConfirmation": {"title": "Confirmación", "verifyInfo": "Verifique su información", "verifyInfoDesc": "Asegúrese de que toda la información sea correcta antes de enviar su solicitud. Una vez enviada, su solicitud será revisada por nuestro equipo en 48 horas.", "selectedLoan": "Préstamo seleccionado", "loanType": "Tipo de préstamo", "category": "Categoría", "loanNotSelected": "Tipo de préstamo no seleccionado", "financialSimulation": "Simulación Financiera", "requestedAmount": "Cantidad solicitada", "interestRate": "Tasa de interés", "estimatedMonthly": "Pago mensual estimado", "including": "Incluidos", "yourInfo": "Su información", "companyInfo": "Información de la empresa", "importantInfo": "Información importante:", "reviewTime": "Su solicitud será revisada dentro de 48 horas hábiles", "documentsRequired": "Se requerirán documentos (documento de identidad, comprobante de domicilio, comprobante de ingresos)", "finalApproval": "La aprobación final está sujeta a la revisión de su expediente completo"},
-    "success": {"title": "¡Solicitud enviada con éxito!", "message": "Su solicitud de préstamo ha sido enviada. La revisaremos y le responderemos en 48 horas.", "viewApplications": "Ver mis solicitudes"}
+    "title": "Solicitud de Préstamo",
+    "step": "Paso",
+    "of": "de",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "submit": "Enviar Solicitud",
+    "stepLoanType": {
+      "title": "Selección del Tipo de Préstamo",
+      "youAre": "Usted es *",
+      "chooseLoanType": "Elija el tipo de préstamo *"
+    },
+    "stepSimulation": {
+      "title": "Simulación de Préstamo",
+      "loanAmount": "Cantidad del préstamo *",
+      "loanDuration": "Duración del préstamo *",
+      "amountBetween": "Cantidad entre",
+      "and": "y",
+      "durationBetween": "Duración entre",
+      "estimatedRate": "Tasa de interés estimada",
+      "perYear": " / año",
+      "estimatedMonthly": "Pago mensual estimado",
+      "perMonth": "/mes",
+      "totalCost": "Costo total",
+      "includingInterest": "Incluidos intereses"
+    },
+    "stepInformation": {
+      "title": "Su Información",
+      "personalInfo": "Información Personal",
+      "companyInfo": "Información de la Empresa",
+      "monthlyIncome": "Ingresos mensuales netos",
+      "employmentStatus": "Situación laboral",
+      "loanPurpose": "Propósito del préstamo",
+      "companyName": "Nombre de la empresa",
+      "siret": "SIRET",
+      "annualRevenue": "Ingresos anuales"
+    },
+    "stepConfirmation": {
+      "title": "Confirmación",
+      "verifyInfo": "Verifique su información",
+      "verifyInfoDesc": "Asegúrese de que toda la información sea correcta antes de enviar su solicitud. Una vez enviada, su solicitud será revisada por nuestro equipo en 48 horas.",
+      "selectedLoan": "Préstamo seleccionado",
+      "loanType": "Tipo de préstamo",
+      "category": "Categoría",
+      "loanNotSelected": "Tipo de préstamo no seleccionado",
+      "financialSimulation": "Simulación Financiera",
+      "requestedAmount": "Cantidad solicitada",
+      "interestRate": "Tasa de interés",
+      "estimatedMonthly": "Pago mensual estimado",
+      "including": "Incluidos",
+      "yourInfo": "Su información",
+      "companyInfo": "Información de la empresa",
+      "importantInfo": "Información importante:",
+      "reviewTime": "Su solicitud será revisada dentro de 48 horas hábiles",
+      "documentsRequired": "Se requerirán documentos (documento de identidad, comprobante de domicilio, comprobante de ingresos)",
+      "finalApproval": "La aprobación final está sujeta a la revisión de su expediente completo"
+    },
+    "success": {
+      "title": "¡Solicitud enviada con éxito!",
+      "message": "Su solicitud de préstamo ha sido enviada. La revisaremos y le responderemos en 48 horas.",
+      "viewApplications": "Ver mis solicitudes"
+    }
   },
-  "employmentStatus": {"cdi": "Contrato Indefinido (CDI)", "cdd": "Contrato Temporal (CDD)", "freelance": "Autónomo / Freelance", "retired": "Jubilado", "student": "Estudiante", "unemployed": "Desempleado", "other": "Otro"},
-  "loanApplications": {"title": "Mis Solicitudes de Préstamo", "subtitle": "Siga y gestione sus solicitudes de préstamo", "noApplications": "Aún no hay solicitudes de préstamo", "noApplicationsDesc": "Todavía no ha enviado ninguna solicitud de préstamo. Comience simulando un préstamo.", "startSimulation": "Simular un préstamo", "newApplication": "Nueva solicitud", "loanApplication": "Solicitud de préstamo", "status": "Estado", "requestedOn": "Solicitado el", "amount": "Cantidad", "duration": "Duración", "viewDetails": "Ver detalles"},
-  "loanStatus": {"pending": "Pendiente", "under_review": "En revisión", "approved": "Aprobado", "rejected": "Rechazado", "funded": "Financiado"},
+  "employmentStatus": {
+    "cdi": "Contrato Indefinido (CDI)",
+    "cdd": "Contrato Temporal (CDD)",
+    "freelance": "Autónomo / Freelance",
+    "retired": "Jubilado",
+    "student": "Estudiante",
+    "unemployed": "Desempleado",
+    "other": "Otro"
+  },
+  "loanApplications": {
+    "title": "Mis Solicitudes de Préstamo",
+    "subtitle": "Siga y gestione sus solicitudes de préstamo",
+    "noApplications": "Aún no hay solicitudes de préstamo",
+    "noApplicationsDesc": "Todavía no ha enviado ninguna solicitud de préstamo. Comience simulando un préstamo.",
+    "startSimulation": "Simular un préstamo",
+    "newApplication": "Nueva solicitud",
+    "loanApplication": "Solicitud de préstamo",
+    "status": "Estado",
+    "requestedOn": "Solicitado el",
+    "amount": "Cantidad",
+    "duration": "Duración",
+    "viewDetails": "Ver detalles"
+  },
+  "loanStatus": {
+    "pending": "Pendiente",
+    "under_review": "En revisión",
+    "approved": "Aprobado",
+    "rejected": "Rechazado",
+    "funded": "Financiado"
+  },
   "loanTypes": {
     "personal": {
       "name": "Préstamo Personal",
-      "description": "Financiación rápida para sus proyectos personales sin justificación de uso",
-      "feature1": "Respuesta en 48h",
-      "feature2": "100% en línea",
-      "feature3": "Sin gastos de gestión",
-      "feature4": "Reembolso anticipado gratuito"
+      "description": "Financiación flexible hasta 75.000€ para todos sus proyectos personales, sin justificante de uso. Respuesta rápida en 48h y desembolso de fondos en 72h.",
+      "features": {
+        "noproof": "Sin justificante de uso",
+        "freeuse": "Uso libre de los fondos",
+        "fastresponse": "Respuesta rápida en 48h",
+        "earlyrepayment": "Amortización anticipada gratuita"
+      }
     },
     "auto": {
       "name": "Crédito Auto",
-      "description": "Financie la compra de su vehículo nuevo o usado",
-      "feature1": "Tasas competitivas desde 3,9%",
-      "feature2": "Hasta 7 años de reembolso",
-      "feature3": "Seguro opcional",
-      "feature4": "Aplazamiento del primer pago posible"
+      "description": "Finance su vehículo nuevo o usado hasta 75.000€ con tasas competitivas desde 0,90%. Desembolso rápido y seguro incluido.",
+      "features": {
+        "newused": "Vehículos nuevos y usados",
+        "zerodownpayment": "Posible sin entrada",
+        "dedicated": "Tasas dedicadas al crédito auto",
+        "insurance": "Seguro de prestatario incluido"
+      }
     },
-    "renovation": {
+    "motorcycle": {
+      "name": "Crédito Moto",
+      "description": "Finance su moto de 500€ a 50.000€. Todas las marcas aceptadas, nuevas o usadas. Financiación de equipos posible.",
+      "features": {
+        "allbrands": "Todas las marcas aceptadas",
+        "newused": "Nuevas o usadas",
+        "equipment": "Financiación de equipos",
+        "fastapproval": "Aprobación rápida en línea"
+      }
+    },
+    "home": {
       "name": "Préstamo Reformas",
-      "description": "Realice sus proyectos de renovación y mejora del hogar",
-      "feature1": "Financiación hasta 75.000€",
-      "feature2": "Desembolso progresivo de fondos",
-      "feature3": "Tasas ventajosas desde 3,8%",
-      "feature4": "Apoyo personalizado"
+      "description": "Renueve su vivienda con financiación de 1.000€ a 75.000€. Transición energética, renovación, mejoras. Crédito fiscal posible.",
+      "features": {
+        "renovation": "Renovación y mejoras",
+        "energytransition": "Transición energética",
+        "taxcredit": "Crédito fiscal posible",
+        "longerterm": "Plazos hasta 120 meses"
+      }
     },
-    "student": {
-      "name": "Préstamo Estudiantil",
-      "description": "Financie sus estudios superiores con condiciones ventajosas",
-      "feature1": "Tasas preferenciales desde 0,9%",
-      "feature2": "Diferimiento de reembolso durante estudios",
-      "feature3": "Sin aval con garantía del Estado",
-      "feature4": "Hasta 10 años de reembolso"
+    "business": {
+      "name": "Préstamo Profesional",
+      "description": "Financiación para el desarrollo de su actividad de 10.000€ a 500.000€. Tasas PYME competitivas desde 2,50%. Garantía BPI Francia posible.",
+      "features": {
+        "development": "Desarrollo de actividad",
+        "bpibackup": "Garantía BPI Francia posible",
+        "nodownpayment": "Posible sin entrada",
+        "taxdeductible": "Intereses deducibles"
+      }
     },
-    "businessLoan": {
-      "name": "Préstamo Amortizable Profesional",
-      "description": "Préstamo clásico para financiar sus inversiones profesionales",
-      "feature1": "Duración adaptada de 2 a 15 años",
-      "feature2": "Tasas fijas desde 3,2%",
-      "feature3": "Financiación hasta 500.000€",
-      "feature4": "Garantía BPI France posible"
-    },
-    "leasing": {
-      "name": "Arrendamiento / Leasing",
-      "description": "Alquile su equipo con opción de compra al final del contrato",
-      "feature1": "Preservación de tesorería",
-      "feature2": "Pagos de alquiler deducibles",
-      "feature3": "Opción de compra al final del contrato",
-      "feature4": "Renovación facilitada del equipo"
-    },
-    "cashAdvance": {
-      "name": "Anticipo de Tesorería",
-      "description": "Solución rápida para necesidades urgentes de tesorería",
-      "feature1": "Desembolso en 48h",
-      "feature2": "Cantidades de 1.000€ a 100.000€",
-      "feature3": "Uso flexible",
-      "feature4": "Reembolso adaptado a su actividad"
-    },
-    "commercialRealEstate": {
-      "name": "Crédito Inmobiliario Comercial",
-      "description": "Financie la compra de sus locales comerciales, oficinas o almacenes",
-      "feature1": "Tasas fijas desde 1,9%",
-      "feature2": "Duración hasta 20 años",
-      "feature3": "Financiación hasta 2M€",
-      "feature4": "Entrada desde el 20%"
+    "cashflow": {
+      "name": "Crédito Tesorería",
+      "description": "Gestione su tesorería con financiación de 5.000€ a 250.000€. Flexible y rápido, para necesidades puntuales o estacionales.",
+      "features": {
+        "quickaccess": "Acceso rápido a los fondos",
+        "flexible": "Importe y duración flexibles",
+        "seasonal": "Adaptación a la estacionalidad",
+        "renewable": "Línea de crédito renovable"
+      }
     },
     "equipment": {
-      "name": "Financiación de Equipo",
-      "description": "Equipe su empresa con maquinaria, vehículos o equipos informáticos",
-      "feature1": "Tasas excepcionales desde 3,5%",
-      "feature2": "Financiación hasta el 100%",
-      "feature3": "Duración adaptada a la amortización",
-      "feature4": "Deducción fiscal de intereses"
+      "name": "Financiación Equipos",
+      "description": "Equipe su empresa con financiación hasta 1.000.000€. Máquinas, vehículos, equipos informáticos. Amortización sobre la vida útil.",
+      "features": {
+        "allequipment": "Todos los tipos de equipos",
+        "amortization": "Amortización adaptada",
+        "assetbacked": "Garantía sobre el bien",
+        "taxoptimized": "Optimización fiscal"
+      }
+    },
+    "commercial": {
+      "name": "Crédito Inmobiliario Profesional",
+      "description": "Adquiera sus locales profesionales con financiación de 50.000€ a 2.000.000€. Oficinas, almacenes, comercios. Tasas fijas a 20 años.",
+      "features": {
+        "officewarehouse": "Oficinas, almacenes, comercios",
+        "longterm": "Plazos hasta 20 años",
+        "fixedrate": "Tasas fijas disponibles",
+        "patrimony": "Constitución de patrimonio"
+      }
     },
     "startup": {
-      "name": "Préstamo Creación de Empresa",
-      "description": "Financie el lanzamiento de su actividad con apoyo personalizado",
-      "feature1": "Sin garantía con BPI France",
-      "feature2": "Entrada desde el 20%",
-      "feature3": "Período de diferimiento posible",
-      "feature4": "Asesor dedicado"
+      "name": "Creación de Empresa",
+      "description": "Lance su proyecto con financiación de 5.000€ a 150.000€. Acompañamiento BPI Francia. Garantía de honor posible. Diferimiento de reembolso.",
+      "features": {
+        "zerotothree": "Empresas de 0 a 3 años",
+        "honorguarantee": "Garantía de honor aceptada",
+        "bpisupport": "Acompañamiento BPI Francia",
+        "deferredpayment": "Diferimiento de reembolso"
+      }
+    },
+    "acquisition": {
+      "name": "Adquisición de Empresa",
+      "description": "Adquiera una empresa con financiación de 20.000€ a 1.000.000€. Fondo de comercio, participaciones sociales, locales comerciales. Montaje estructurado.",
+      "features": {
+        "fullacquisition": "Adquisición total o parcial",
+        "equity": "Financiación de participaciones",
+        "guarantee": "Garantía sobre el activo",
+        "structured": "Montaje financiero estructurado"
+      }
     }
   }
 }

@@ -4,6 +4,7 @@ import cors from "cors";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import passport from "./auth";
+import { seedRouter } from "./seed-api";
 
 const app = express();
 
@@ -87,6 +88,11 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// Seed endpoint (development only)
+if (process.env.NODE_ENV === 'development') {
+  app.use(seedRouter);
+}
 
 (async () => {
   const server = await registerRoutes(app);
