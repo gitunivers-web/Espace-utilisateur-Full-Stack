@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Altus Finance"
+  },
+  "nav": {
+    "home": "Home",
+    "offers": "Le Nostre Offerte",
+    "simulator": "Simulatore",
+    "howItWorks": "Come Funziona",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "login": "Accedi",
+    "createAccount": "Crea il mio account"
+  },
+  "home": {
+    "hero": {
+      "title": "Finanzia i tuoi progetti in tutta",
+      "titleHighlight": "semplicità",
+      "subtitle": "Soluzioni di finanziamento per privati e professionisti, con tassi competitivi dal 3,5% e risposta rapida",
+      "ctaAccount": "Crea il mio account",
+      "ctaSimulator": "Simula il mio prestito",
+      "response": "Risposta",
+      "responseTime": "entro 48h",
+      "acceptance": "di accettazione",
+      "rateFrom": "Tassi da"
+    },
+    "solutions": {
+      "title": "Le Nostre Soluzioni di Finanziamento",
+      "subtitle": "Trova il prestito adatto alla tua situazione",
+      "viewAll": "Vedi tutte le nostre offerte"
+    },
+    "professional": {
+      "title": "Finanziamento Professionale",
+      "subtitle": "Soluzioni su misura per piccole e medie imprese e imprenditori"
+    }
+  },
+  "simulator": {
+    "title": "Simulatore di Prestito",
+    "loanType": "Tipo di prestito",
+    "selectLoanType": "Seleziona un tipo di prestito",
+    "amount": "Importo",
+    "duration": "Durata",
+    "months": "mesi",
+    "calculate": "Calcola"
+  },
+  "footer": {
+    "tagline": "Il tuo partner di fiducia per tutti i tuoi progetti di finanziamento",
+    "ourLoans": "I Nostri Prestiti",
+    "personalLoan": "Prestito Personale",
+    "autoLoan": "Credito Auto",
+    "renovationLoan": "Prestito Ristrutturazione",
+    "businessLoan": "Prestito Aziendale",
+    "help": "Aiuto",
+    "legal": "Legale",
+    "legalNotice": "Note Legali",
+    "privacyPolicy": "Politica sulla Privacy",
+    "copyright": "Tutti i diritti riservati"
+  },
+  "legal": {
+    "warning": "Un prestito ti impegna e deve essere rimborsato. Verifica la tua capacità di rimborso prima di impegnarti."
+  },
+  "language": {
+    "select": "Lingua"
+  }
+}

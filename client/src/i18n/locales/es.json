@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Altus Finance"
+  },
+  "nav": {
+    "home": "Inicio",
+    "offers": "Nuestras Ofertas",
+    "simulator": "Simulador",
+    "howItWorks": "Cómo Funciona",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "login": "Iniciar sesión",
+    "createAccount": "Crear mi cuenta"
+  },
+  "home": {
+    "hero": {
+      "title": "Financie sus proyectos con total",
+      "titleHighlight": "simplicidad",
+      "subtitle": "Soluciones de financiación para particulares y profesionales, con tasas competitivas desde el 3,5% y respuesta rápida",
+      "ctaAccount": "Crear mi cuenta",
+      "ctaSimulator": "Simular mi préstamo",
+      "response": "Respuesta",
+      "responseTime": "en 48h",
+      "acceptance": "de aceptación",
+      "rateFrom": "Tasas desde"
+    },
+    "solutions": {
+      "title": "Nuestras Soluciones de Financiación",
+      "subtitle": "Encuentre el préstamo adaptado a su situación",
+      "viewAll": "Ver todas nuestras ofertas"
+    },
+    "professional": {
+      "title": "Financiación Profesional",
+      "subtitle": "Soluciones adaptadas para pequeñas y medianas empresas y emprendedores"
+    }
+  },
+  "simulator": {
+    "title": "Simulador de Préstamo",
+    "loanType": "Tipo de préstamo",
+    "selectLoanType": "Seleccione un tipo de préstamo",
+    "amount": "Cantidad",
+    "duration": "Duración",
+    "months": "meses",
+    "calculate": "Calcular"
+  },
+  "footer": {
+    "tagline": "Su socio de confianza para todos sus proyectos de financiación",
+    "ourLoans": "Nuestros Préstamos",
+    "personalLoan": "Préstamo Personal",
+    "autoLoan": "Crédito Auto",
+    "renovationLoan": "Préstamo Reformas",
+    "businessLoan": "Préstamo Empresarial",
+    "help": "Ayuda",
+    "legal": "Legal",
+    "legalNotice": "Aviso Legal",
+    "privacyPolicy": "Política de Privacidad",
+    "copyright": "Todos los derechos reservados"
+  },
+  "legal": {
+    "warning": "Un préstamo le compromete y debe ser reembolsado. Verifique su capacidad de reembolso antes de comprometerse."
+  },
+  "language": {
+    "select": "Idioma"
+  }
+}

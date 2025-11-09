@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Altus Finance"
+  },
+  "nav": {
+    "home": "Accueil",
+    "offers": "Nos Offres",
+    "simulator": "Simulateur",
+    "howItWorks": "Comment ça marche",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "createAccount": "Créer mon compte"
+  },
+  "home": {
+    "hero": {
+      "title": "Financez vos projets en toute",
+      "titleHighlight": "simplicité",
+      "subtitle": "Solutions de financement pour particuliers et professionnels, avec des taux compétitifs dès 3,5% et une réponse rapide",
+      "ctaAccount": "Créer mon compte",
+      "ctaSimulator": "Simuler mon prêt",
+      "response": "Réponse",
+      "responseTime": "sous 48h",
+      "acceptance": "d'acceptation",
+      "rateFrom": "Taux dès"
+    },
+    "solutions": {
+      "title": "Nos Solutions de Financement",
+      "subtitle": "Trouvez le prêt adapté à votre situation",
+      "viewAll": "Voir toutes nos offres"
+    },
+    "professional": {
+      "title": "Financement Professionnel",
+      "subtitle": "Des solutions adaptées aux TPE, PME et entrepreneurs"
+    }
+  },
+  "simulator": {
+    "title": "Simulateur de Prêt",
+    "loanType": "Type de prêt",
+    "selectLoanType": "Sélectionnez un type de prêt",
+    "amount": "Montant",
+    "duration": "Durée",
+    "months": "mois",
+    "calculate": "Calculer"
+  },
+  "footer": {
+    "tagline": "Votre partenaire de confiance pour tous vos projets de financement",
+    "ourLoans": "Nos Prêts",
+    "personalLoan": "Prêt Personnel",
+    "autoLoan": "Crédit Auto",
+    "renovationLoan": "Prêt Travaux",
+    "businessLoan": "Prêt Professionnel",
+    "help": "Aide",
+    "legal": "Légal",
+    "legalNotice": "Mentions légales",
+    "privacyPolicy": "Politique de confidentialité",
+    "copyright": "Tous droits réservés"
+  },
+  "legal": {
+    "warning": "Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager."
+  },
+  "language": {
+    "select": "Langue"
+  }
+}

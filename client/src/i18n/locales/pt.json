@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Altus Finance"
+  },
+  "nav": {
+    "home": "Início",
+    "offers": "Nossas Ofertas",
+    "simulator": "Simulador",
+    "howItWorks": "Como Funciona",
+    "about": "Sobre",
+    "contact": "Contato",
+    "login": "Entrar",
+    "createAccount": "Criar minha conta"
+  },
+  "home": {
+    "hero": {
+      "title": "Financie seus projetos com total",
+      "titleHighlight": "simplicidade",
+      "subtitle": "Soluções de financiamento para particulares e profissionais, com taxas competitivas a partir de 3,5% e resposta rápida",
+      "ctaAccount": "Criar minha conta",
+      "ctaSimulator": "Simular meu empréstimo",
+      "response": "Resposta",
+      "responseTime": "em 48h",
+      "acceptance": "de aceitação",
+      "rateFrom": "Taxas a partir de"
+    },
+    "solutions": {
+      "title": "Nossas Soluções de Financiamento",
+      "subtitle": "Encontre o empréstimo adequado à sua situação",
+      "viewAll": "Ver todas as nossas ofertas"
+    },
+    "professional": {
+      "title": "Financiamento Profissional",
+      "subtitle": "Soluções adaptadas para pequenas e médias empresas e empreendedores"
+    }
+  },
+  "simulator": {
+    "title": "Simulador de Empréstimo",
+    "loanType": "Tipo de empréstimo",
+    "selectLoanType": "Selecione um tipo de empréstimo",
+    "amount": "Montante",
+    "duration": "Duração",
+    "months": "meses",
+    "calculate": "Calcular"
+  },
+  "footer": {
+    "tagline": "Seu parceiro de confiança para todos os seus projetos de financiamento",
+    "ourLoans": "Nossos Empréstimos",
+    "personalLoan": "Empréstimo Pessoal",
+    "autoLoan": "Crédito Auto",
+    "renovationLoan": "Empréstimo Reforma",
+    "businessLoan": "Empréstimo Empresarial",
+    "help": "Ajuda",
+    "legal": "Legal",
+    "legalNotice": "Aviso Legal",
+    "privacyPolicy": "Política de Privacidade",
+    "copyright": "Todos os direitos reservados"
+  },
+  "legal": {
+    "warning": "Um empréstimo compromete você e deve ser reembolsado. Verifique sua capacidade de pagamento antes de se comprometer."
+  },
+  "language": {
+    "select": "Idioma"
+  }
+}

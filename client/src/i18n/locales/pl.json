@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Altus Finance"
+  },
+  "nav": {
+    "home": "Strona główna",
+    "offers": "Nasze Oferty",
+    "simulator": "Symulator",
+    "howItWorks": "Jak to działa",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "login": "Zaloguj się",
+    "createAccount": "Utwórz konto"
+  },
+  "home": {
+    "hero": {
+      "title": "Sfinansuj swoje projekty z całkowitą",
+      "titleHighlight": "prostotą",
+      "subtitle": "Rozwiązania finansowe dla osób prywatnych i profesjonalistów, z konkurencyjnymi stawkami od 3,5% i szybką odpowiedzią",
+      "ctaAccount": "Utwórz konto",
+      "ctaSimulator": "Symuluj kredyt",
+      "response": "Odpowiedź",
+      "responseTime": "w ciągu 48h",
+      "acceptance": "akceptacji",
+      "rateFrom": "Stawki od"
+    },
+    "solutions": {
+      "title": "Nasze Rozwiązania Finansowe",
+      "subtitle": "Znajdź kredyt dopasowany do Twojej sytuacji",
+      "viewAll": "Zobacz wszystkie nasze oferty"
+    },
+    "professional": {
+      "title": "Finansowanie Profesjonalne",
+      "subtitle": "Rozwiązania dostosowane dla małych i średnich przedsiębiorstw oraz przedsiębiorców"
+    }
+  },
+  "simulator": {
+    "title": "Symulator Kredytu",
+    "loanType": "Typ kredytu",
+    "selectLoanType": "Wybierz typ kredytu",
+    "amount": "Kwota",
+    "duration": "Czas trwania",
+    "months": "miesięcy",
+    "calculate": "Oblicz"
+  },
+  "footer": {
+    "tagline": "Twój zaufany partner dla wszystkich projektów finansowych",
+    "ourLoans": "Nasze Kredyty",
+    "personalLoan": "Kredyt Osobisty",
+    "autoLoan": "Kredyt Samochodowy",
+    "renovationLoan": "Kredyt Remontowy",
+    "businessLoan": "Kredyt Biznesowy",
+    "help": "Pomoc",
+    "legal": "Prawne",
+    "legalNotice": "Informacje prawne",
+    "privacyPolicy": "Polityka prywatności",
+    "copyright": "Wszelkie prawa zastrzeżone"
+  },
+  "legal": {
+    "warning": "Kredyt zobowiązuje i musi zostać spłacony. Sprawdź swoją zdolność kredytową przed zaciągnięciem zobowiązania."
+  },
+  "language": {
+    "select": "Język"
+  }
+}

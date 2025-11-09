@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Altus Finance"
+  },
+  "nav": {
+    "home": "Home",
+    "offers": "Our Offers",
+    "simulator": "Simulator",
+    "howItWorks": "How it Works",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "createAccount": "Create my account"
+  },
+  "home": {
+    "hero": {
+      "title": "Finance your projects with complete",
+      "titleHighlight": "simplicity",
+      "subtitle": "Financing solutions for individuals and professionals, with competitive rates from 3.5% and quick response",
+      "ctaAccount": "Create my account",
+      "ctaSimulator": "Simulate my loan",
+      "response": "Response",
+      "responseTime": "within 48h",
+      "acceptance": "acceptance",
+      "rateFrom": "Rates from"
+    },
+    "solutions": {
+      "title": "Our Financing Solutions",
+      "subtitle": "Find the loan that fits your situation",
+      "viewAll": "View all our offers"
+    },
+    "professional": {
+      "title": "Professional Financing",
+      "subtitle": "Solutions tailored for small and medium businesses and entrepreneurs"
+    }
+  },
+  "simulator": {
+    "title": "Loan Simulator",
+    "loanType": "Loan type",
+    "selectLoanType": "Select a loan type",
+    "amount": "Amount",
+    "duration": "Duration",
+    "months": "months",
+    "calculate": "Calculate"
+  },
+  "footer": {
+    "tagline": "Your trusted partner for all your financing projects",
+    "ourLoans": "Our Loans",
+    "personalLoan": "Personal Loan",
+    "autoLoan": "Auto Loan",
+    "renovationLoan": "Renovation Loan",
+    "businessLoan": "Business Loan",
+    "help": "Help",
+    "legal": "Legal",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "copyright": "All rights reserved"
+  },
+  "legal": {
+    "warning": "A loan commits you and must be repaid. Check your repayment capacity before committing."
+  },
+  "language": {
+    "select": "Language"
+  }
+}
