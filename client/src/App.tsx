@@ -17,7 +17,6 @@ import LoanApplicationsList from "@/pages/loan-applications-list";
 import Login from "@/pages/Login";
 import Home from "@/pages/home";
 import Offers from "@/pages/offers";
-import Simulator from "@/pages/simulator";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
 import HowItWorks from "@/pages/how-it-works";
@@ -51,7 +50,6 @@ function PublicRouter() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/offres" component={Offers} />
-        <Route path="/simulateur" component={Simulator} />
         <Route path="/a-propos" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/comment-ca-marche" component={HowItWorks} />

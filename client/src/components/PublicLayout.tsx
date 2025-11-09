@@ -14,7 +14,6 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
   const navigation = [
     { name: t('nav.home'), href: "/" },
     { name: t('nav.offers'), href: "/offres" },
-    { name: t('nav.simulator'), href: "/simulateur" },
     { name: t('nav.howItWorks'), href: "/comment-ca-marche" },
     { name: t('nav.about'), href: "/a-propos" },
     { name: t('nav.contact'), href: "/contact" },
