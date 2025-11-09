@@ -6,10 +6,12 @@ import { LoanSimulator } from "@/components/loan/LoanSimulator";
 import { LegalDisclaimers, RepresentativeExample } from "@/components/legal/LegalNotice";
 import { useLoanTypes } from "@/lib/queries";
 import { ArrowRight, Shield, Clock, Check, TrendingUp, FileText, UserCheck, Euro } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const { data: loanTypes } = useLoanTypes();
   const featuredLoans = loanTypes?.slice(0, 3);
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -18,23 +20,22 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                Financez vos projets en toute{" "}
-                <span className="text-primary">simplicité</span>
+                {t('home.hero.title')}{" "}
+                <span className="text-primary">{t('home.hero.titleHighlight')}</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                Solutions de financement pour particuliers et professionnels, 
-                avec des taux compétitifs dès 3,5% et une réponse rapide
+                {t('home.hero.subtitle')}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/auth/connexion">
                   <Button size="lg" className="gap-2" data-testid="button-hero-cta">
-                    Créer mon compte
+                    {t('home.hero.ctaAccount')}
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/simulateur">
                   <Button size="lg" variant="outline" data-testid="button-hero-simulator">
-                    Simuler mon prêt
+                    {t('home.hero.ctaSimulator')}
                   </Button>
                 </Link>
               </div>
@@ -45,8 +46,8 @@ export default function Home() {
                     <Clock className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold">Réponse</div>
-                    <div className="text-sm text-muted-foreground">sous 48h</div>
+                    <div className="font-semibold">{t('home.hero.response')}</div>
+                    <div className="text-sm text-muted-foreground">{t('home.hero.responseTime')}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -55,7 +56,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="font-semibold">97%</div>
-                    <div className="text-sm text-muted-foreground">d'acceptation</div>
+                    <div className="text-sm text-muted-foreground">{t('home.hero.acceptance')}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -63,7 +64,7 @@ export default function Home() {
                     <TrendingUp className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold">Taux dès</div>
+                    <div className="font-semibold">{t('home.hero.rateFrom')}</div>
                     <div className="text-sm text-muted-foreground">3,5%</div>
                   </div>
                 </div>
@@ -80,9 +81,9 @@ export default function Home() {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nos Solutions de Financement</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.solutions.title')}</h2>
             <p className="text-xl text-muted-foreground">
-              Trouvez le prêt adapté à votre situation
+              {t('home.solutions.subtitle')}
             </p>
           </div>
 
@@ -97,7 +98,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Link href="/offres">
               <Button variant="outline" size="lg" data-testid="button-view-all-offers">
-                Voir toutes nos offres
+                {t('home.solutions.viewAll')}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -108,9 +109,9 @@ export default function Home() {
       <section className="py-20 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Financement Professionnel</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.professional.title')}</h2>
             <p className="text-xl text-muted-foreground">
-              Des solutions adaptées aux TPE, PME et entrepreneurs
+              {t('home.professional.subtitle')}
             </p>
           </div>
 
