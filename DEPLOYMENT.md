@@ -109,13 +109,14 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 
 ### Étape 3.1 : Préparer le projet pour Vercel
 
-1. Créez un fichier `vercel.json` à la racine du projet :
+1. Le fichier `vercel.json` est déjà configuré à la racine du projet :
 
 ```json
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/public",
-  "framework": "vite",
+  "buildCommand": "npm install && npm run build:client",
+  "outputDirectory": "client/dist",
+  "framework": null,
+  "installCommand": "npm install",
   "rewrites": [
     {
       "source": "/(.*)",
@@ -124,6 +125,8 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
   ]
 }
 ```
+
+✅ Ce fichier est déjà créé - aucune action nécessaire.
 
 2. Créez un fichier `.env.production` :
 
@@ -148,10 +151,12 @@ const API_URL = import.meta.env.VITE_API_URL || '';
 2. Cliquez sur **"Add New..."** → **"Project"**
 3. Importez votre dépôt Git
 4. Configurez :
-   - **Framework Preset** : Vite
-   - **Root Directory** : `client`
-   - **Build Command** : `npm run build`
-   - **Output Directory** : `dist`
+   - **Framework Preset** : Other
+   - **Root Directory** : (laissez vide - la racine du projet)
+   - **Build Command** : `npm run build:client`
+   - **Output Directory** : `client/dist`
+   
+   ⚠️ **Note** : Vercel devrait détecter automatiquement la configuration depuis `vercel.json`.
 
 5. **Variables d'environnement** :
 
