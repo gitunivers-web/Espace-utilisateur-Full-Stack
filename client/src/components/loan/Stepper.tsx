@@ -28,6 +28,7 @@
  */
 
 import { Check } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 
 export interface Step {
@@ -63,9 +64,11 @@ function getStepStatus(stepId: number, currentStep: number): 'completed' | 'curr
 }
 
 export function Stepper({ steps, currentStep, onStepClick, className }: StepperProps) {
+  const { t } = useTranslation();
+  
   return (
     <nav 
-      aria-label="Progression du formulaire" 
+      aria-label={t('stepper.progressLabel')} 
       className={cn("w-full", className)}
       data-testid="stepper"
     >
@@ -103,7 +106,7 @@ export function Stepper({ steps, currentStep, onStepClick, className }: StepperP
                     }
                   )}
                   aria-current={status === 'current' ? 'step' : undefined}
-                  aria-label={`Étape ${step.id}: ${step.label}${status === 'completed' ? ' (terminée)' : ''}`}
+                  aria-label={`${step.id}: ${step.label}${status === 'completed' ? ' ' + t('stepper.completed') : ''}`}
                   data-testid={`step-button-${step.id}`}
                 >
                   {status === 'completed' ? (
@@ -159,7 +162,7 @@ export function Stepper({ steps, currentStep, onStepClick, className }: StepperP
 
       {/* Affichage mobile simplifié */}
       <div className="sm:hidden mt-4 text-center text-sm text-muted-foreground">
-        Étape {currentStep} sur {steps.length}: {steps.find(s => s.id === currentStep)?.label}
+        {t('loanApplication.step')} {currentStep} {t('loanApplication.of')} {steps.length}: {steps.find(s => s.id === currentStep)?.label}
       </div>
     </nav>
   );

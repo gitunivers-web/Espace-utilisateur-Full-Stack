@@ -19,6 +19,7 @@ import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calculator } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import type { LoanType } from "@shared/schema";
 import type { CreateLoanApplication } from "@shared/schema";
 
@@ -43,6 +44,7 @@ function calculateMonthlyPayment(amount: number, durationMonths: number, annualR
 }
 
 export function StepSimulation({ form, selectedLoanType }: StepSimulationProps) {
+  const { t } = useTranslation();
   const amount = form.watch("amount");
   const durationMonths = form.watch("durationMonths");
 
@@ -61,7 +63,7 @@ export function StepSimulation({ form, selectedLoanType }: StepSimulationProps) 
     return (
       <Card>
         <CardContent className="p-8 text-center text-muted-foreground">
-          Veuillez d'abord sélectionner un type de prêt
+          {t('simulator.pleaseSelectLoanType')}
         </CardContent>
       </Card>
     );
@@ -85,7 +87,7 @@ export function StepSimulation({ form, selectedLoanType }: StepSimulationProps) 
             <Calculator className="h-4 w-4 text-primary" />
             <span className="font-medium">{selectedLoanType.name}</span>
             <span className="text-muted-foreground">
-              - Taux à partir de {selectedLoanType.minRate}%
+              - {t('loan.rateFrom')} {selectedLoanType.minRate}%
             </span>
           </div>
         </CardContent>
@@ -97,7 +99,7 @@ export function StepSimulation({ form, selectedLoanType }: StepSimulationProps) 
         name="amount"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Montant du prêt *</FormLabel>
+            <FormLabel>{t('loanApplication.stepSimulation.loanAmount')}</FormLabel>
             <div className="space-y-4">
               <FormControl>
                 <Input
@@ -128,7 +130,7 @@ export function StepSimulation({ form, selectedLoanType }: StepSimulationProps) 
               </div>
             </div>
             <FormDescription>
-              Montant entre {minAmount.toLocaleString()}€ et {maxAmount.toLocaleString()}€
+              {t('loanApplication.stepSimulation.amountBetween')} {minAmount.toLocaleString()}€ {t('loanApplication.stepSimulation.and')} {maxAmount.toLocaleString()}€
             </FormDescription>
             <FormMessage />
           </FormItem>
@@ -141,7 +143,7 @@ export function StepSimulation({ form, selectedLoanType }: StepSimulationProps) 
         name="durationMonths"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Durée du prêt *</FormLabel>
+            <FormLabel>{t('loanApplication.stepSimulation.loanDuration')}</FormLabel>
             <div className="space-y-4">
               <FormControl>
                 <Input
@@ -164,15 +166,15 @@ export function StepSimulation({ form, selectedLoanType }: StepSimulationProps) 
                 data-testid="slider-duration"
               />
               <div className="flex justify-between text-xs text-muted-foreground">
-                <span>{minDuration} mois</span>
+                <span>{minDuration} {t('simulator.months')}</span>
                 <span className="font-semibold text-primary text-lg">
-                  {field.value} mois ({Math.round(field.value / 12 * 10) / 10} ans)
+                  {field.value} {t('simulator.months')} ({Math.round(field.value / 12 * 10) / 10} {t('common.years')})
                 </span>
-                <span>{maxDuration} mois</span>
+                <span>{maxDuration} {t('simulator.months')}</span>
               </div>
             </div>
             <FormDescription>
-              Durée entre {minDuration} et {maxDuration} mois
+              {t('loanApplication.stepSimulation.durationBetween')} {minDuration} {t('loanApplication.stepSimulation.and')} {maxDuration} {t('simulator.months')}
             </FormDescription>
             <FormMessage />
           </FormItem>
@@ -182,24 +184,24 @@ export function StepSimulation({ form, selectedLoanType }: StepSimulationProps) 
       {/* Récapitulatif de la simulation */}
       <Card className="bg-card">
         <CardContent className="p-6 space-y-4">
-          <h3 className="font-semibold text-lg">Récapitulatif</h3>
+          <h3 className="font-semibold text-lg">{t('loanApplication.stepSimulation.title')}</h3>
           <div className="grid gap-3">
             <div className="flex justify-between items-center">
-              <span className="text-muted-foreground">Mensualité estimée</span>
+              <span className="text-muted-foreground">{t('loanApplication.stepSimulation.estimatedMonthly')}</span>
               <span className="text-2xl font-bold text-primary">
-                {monthlyPayment.toLocaleString()}€/mois
+                {monthlyPayment.toLocaleString()}€{t('loanApplication.stepSimulation.perMonth')}
               </span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Taux d'intérêt</span>
-              <span className="font-medium">{selectedLoanType.minRate}% / an</span>
+              <span className="text-muted-foreground">{t('loanApplication.stepSimulation.estimatedRate')}</span>
+              <span className="font-medium">{selectedLoanType.minRate}%{t('loanApplication.stepSimulation.perYear')}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Coût total du crédit</span>
+              <span className="text-muted-foreground">{t('loanApplication.stepSimulation.totalCost')}</span>
               <span className="font-medium">{totalCost.toLocaleString()}€</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Dont intérêts</span>
+              <span className="text-muted-foreground">{t('loanApplication.stepSimulation.includingInterest')}</span>
               <span className="font-medium">{totalInterest.toLocaleString()}€</span>
             </div>
           </div>

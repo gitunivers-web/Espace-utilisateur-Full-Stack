@@ -18,6 +18,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, User } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import type { LoanType } from "@shared/schema";
 import type { CreateLoanApplication } from "@shared/schema";
 
@@ -27,6 +28,7 @@ interface StepLoanTypeProps {
 }
 
 export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
+  const { t } = useTranslation();
   const selectedType = form.watch("applicationType");
   const selectedLoanTypeId = form.watch("loanTypeId");
 
@@ -45,7 +47,7 @@ export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
         name="applicationType"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Vous êtes *</FormLabel>
+            <FormLabel>{t('loanApplication.stepLoanType.youAre')}</FormLabel>
             <FormControl>
               <RadioGroup
                 value={field.value}
@@ -64,7 +66,7 @@ export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
                       <RadioGroupItem value="particular" id="particular" />
                       <div className="flex items-center gap-2">
                         <User className="h-5 w-5 text-primary" />
-                        <span className="font-medium">Particulier</span>
+                        <span className="font-medium">{t('loan.particular')}</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -81,7 +83,7 @@ export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
                       <RadioGroupItem value="professional" id="professional" />
                       <div className="flex items-center gap-2">
                         <Building2 className="h-5 w-5 text-primary" />
-                        <span className="font-medium">Professionnel</span>
+                        <span className="font-medium">{t('loan.professional')}</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -99,7 +101,7 @@ export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
         name="loanTypeId"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Choisissez le type de prêt *</FormLabel>
+            <FormLabel>{t('loanApplication.stepLoanType.chooseLoanType')}</FormLabel>
             <FormControl>
               <RadioGroup
                 value={field.value}
@@ -123,7 +125,7 @@ export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
                             <div className="flex items-center justify-between gap-2 flex-wrap">
                               <h4 className="font-semibold">{loanType.name}</h4>
                               <Badge variant="secondary">
-                                Taux dès {loanType.minRate}%
+                                {t('loan.rateFrom')} {loanType.minRate}%
                               </Badge>
                             </div>
                             <p className="text-sm text-muted-foreground">
@@ -131,12 +133,12 @@ export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
                             </p>
                             <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
                               <span>
-                                Montant: {Number(loanType.minAmount).toLocaleString()}€ -{" "}
+                                {t('loan.amount')}: {Number(loanType.minAmount).toLocaleString()}€ -{" "}
                                 {Number(loanType.maxAmount).toLocaleString()}€
                               </span>
                               <span>•</span>
                               <span>
-                                Durée: {loanType.minDurationMonths} - {loanType.maxDurationMonths} mois
+                                {t('loan.duration')}: {loanType.minDurationMonths} - {loanType.maxDurationMonths} {t('simulator.months')}
                               </span>
                             </div>
                           </div>
@@ -149,7 +151,7 @@ export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
                 {filteredLoanTypes.length === 0 && (
                   <Card>
                     <CardContent className="p-8 text-center text-muted-foreground">
-                      Aucune offre disponible pour cette catégorie
+                      {t('loan.noOffers')}
                     </CardContent>
                   </Card>
                 )}

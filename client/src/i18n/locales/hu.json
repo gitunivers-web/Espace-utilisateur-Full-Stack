@@ -1,75 +1,31 @@
 {
-  "app": {
-    "name": "Altus Finance"
-  },
-  "nav": {
-    "home": "Kezdőlap",
-    "offers": "Ajánlataink",
-    "simulator": "Szimulátor",
-    "howItWorks": "Hogyan működik",
-    "about": "Rólunk",
-    "contact": "Kapcsolat",
-    "login": "Bejelentkezés",
-    "createAccount": "Fiók létrehozása"
-  },
+  "app": {"name": "Altus Finance"},
+  "nav": {"home": "Kezdőlap", "offers": "Ajánlataink", "simulator": "Szimulátor", "howItWorks": "Hogyan működik", "about": "Rólunk", "contact": "Kapcsolat", "login": "Bejelentkezés", "createAccount": "Fiók létrehozása"},
   "home": {
-    "hero": {
-      "title": "Finanszírozza projektjeit teljes",
-      "titleHighlight": "egyszerűséggel",
-      "subtitle": "Finanszírozási megoldások magánszemélyek és szakemberek számára, versenyképes 3,5%-os kamattal és gyors válasszal",
-      "ctaAccount": "Fiók létrehozása",
-      "ctaSimulator": "Hitel szimulálása",
-      "response": "Válasz",
-      "responseTime": "48 órán belül",
-      "acceptance": "elfogadási arány",
-      "rateFrom": "Kamatok már"
-    },
-    "solutions": {
-      "title": "Finanszírozási Megoldásaink",
-      "subtitle": "Találja meg az Önnek megfelelő hitelt",
-      "viewAll": "Összes ajánlat megtekintése"
-    },
-    "professional": {
-      "title": "Professzionális Finanszírozás",
-      "subtitle": "Kisvállalkozások, középvállalkozások és vállalkozók számára szabott megoldások"
-    }
+    "hero": {"title": "Finanszírozza projektjeit teljes", "titleHighlight": "egyszerűséggel", "subtitle": "Finanszírozási megoldások magánszemélyek és szakemberek számára, versenyképes 3,5%-os kamattal és gyors válasszal", "ctaAccount": "Fiók létrehozása", "ctaSimulator": "Hitel szimulálása", "response": "Válasz", "responseTime": "48 órán belül", "acceptanceValue": "97%", "acceptance": "elfogadási arány", "rateFrom": "Kamatok már", "rateValue": "3,5%"},
+    "solutions": {"title": "Finanszírozási Megoldásaink", "subtitle": "Találja meg az Önnek megfelelő hitelt", "viewAll": "Összes ajánlat megtekintése"},
+    "professional": {"title": "Professzionális Finanszírozás", "subtitle": "Kisvállalkozások, középvállalkozások és vállalkozók számára szabott megoldások", "avgRates": "Átlagos kamatok 2025", "avgRatesValue": "3,39%", "avgRatesDesc": "Jelentős csökkenés 2024-hez képest", "acceptanceRate": "Elfogadási arány", "acceptanceRateValue": "97%", "acceptanceRateDesc": "KKV befektetési hitelekre", "bpiGuarantee": "BPI Garancia", "bpiGuaranteeValue": "Akár 90%", "bpiGuaranteeDesc": "Megkönnyíti a finanszírozáshoz való hozzáférést", "amounts": "Összegek", "amountsValue": "5K€ - 2M€", "amountsDesc": "A projekt és profil szerint", "discoverOffers": "Fedezze fel professzionális ajánlatainkat"},
+    "whyUs": {"title": "Miért Altus Finance?", "fast": "Gyors", "fastDesc": "Kezdeti válasz 48 órán belül és pénzeszközök folyósítása 72 órán belül", "transparent": "Átlátható", "transparentDesc": "Kamatok és díjak egyértelműen megjelenítve, rejtett költségek nélkül", "flexible": "Rugalmas", "flexibleDesc": "Ingyenes előtörlesztés és fizetési halasztási lehetőségek", "advantageous": "Előnyös", "advantageousDesc": "Versenyképes kamatok és kialkudott feltételek"}
   },
-  "simulator": {
-    "title": "Hitel Szimulátor",
-    "loanType": "Hitel típusa",
-    "selectLoanType": "Válasszon hitel típust",
-    "amount": "Összeg",
-    "duration": "Időtartam",
-    "months": "hónap",
-    "calculate": "Számítás",
-    "calculating": "Számítás folyamatban...",
-    "error": "Hiba",
-    "pleaseSelectLoanType": "Kérjük, válasszon hitel típust",
-    "from": "Tól",
-    "to": "ig",
-    "fixedAPR": "Fix THM",
-    "monthlyPayment": "Havi Törlesztés",
-    "totalCreditCost": "Teljes Hitelköltség",
-    "totalAmountDue": "Összes Tartozás",
-    "interest": "Kamat"
+  "simulator": {"title": "Hitel Szimulátor", "loanType": "Hitel típusa", "selectLoanType": "Válasszon hitel típust", "amount": "Összeg", "duration": "Időtartam", "months": "hónap", "calculate": "Számítás", "calculating": "Számítás folyamatban...", "error": "Hiba", "pleaseSelectLoanType": "Kérjük, válasszon hitel típust", "from": "Tól", "to": "ig", "fixedAPR": "Fix THM", "monthlyPayment": "Havi Törlesztés", "totalCreditCost": "Teljes Hitelköltség", "totalAmountDue": "Összes Tartozás", "interest": "Kamat"},
+  "about": {"title": "Rólunk - Altus Finance", "subtitle": "Megbízható partnerük minden finanszírozási projekthez 2020 óta", "intro1": "Az Altus Finance Group egy online finanszírozási platform, amely személyi és üzleti hitelekben specializálódott. Küldetésünk, hogy mindenki számára egyszerűvé, gyorssá és átláthatóvá tegyük a hitelhez való hozzáférést.", "intro2": "2020-ban alapított vállalatunk célja a finanszírozáshoz való hozzáférés demokratizálása technológia és ügyfélközpontú megközelítés révén. Hiszünk abban, hogy minden projekt támogatást érdemel, ezért mind magánszemélyek, mind szakemberek számára alkalmazkodó finanszírozási megoldásokat kínálunk.", "security": "Biztonság", "securityDesc": "Védett adatok és biztonságos tranzakciók", "clients": "+10.000 ügyfél", "clientsDesc": "Támogat bennünket minden évben", "expertise": "Szakértelem", "expertiseDesc": "Szakemberek csapata az Ön szolgálatában", "innovation": "Innováció", "innovationDesc": "Élvonalbeli technológia az Ön kényelméért", "commitment": "Kötelezettségvállalásunk", "commitmentText": "Az Altus Finance-nál elkötelezettek vagyunk az átláthatóságon, reagálási készségen és személyre szabott támogatáson alapuló minőségi szolgáltatás nyújtása mellett. Minden kérelmet szakértőink alaposan megvizsgálnak, hogy a legjobb finanszírozási megoldást kínálhassuk Önnek.", "values": "Értékeink", "transparency": "Átláthatóság", "transparencyDesc": "Kamatok és feltételek egyértelműen megjelenítve, rejtett díjak nélkül", "speed": "Gyorsaság", "speedDesc": "Kezdeti válasz 48 órán belül és folyósítás 72 órán belül", "support": "Támogatás", "supportDesc": "Dedikált csapat minden lépésnél tanácsadásra", "flexibility": "Rugalmasság", "flexibilityDesc": "Személyes vagy professzionális helyzetéhez igazított megoldások", "innovationValue": "Innováció", "innovationValueDesc": "100%-ban online platform az eljárások egyszerűsítésére", "legalInfo": "Jogi Információk", "companyName": "Cégnév", "companyNameValue": "Altus Finance Group SAS", "headquarters": "Székhely", "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 Párizs, Franciaország", "siret": "SIREN / SIRET", "siretValue": "123 456 789 00012", "capital": "Alaptőke", "capitalValue": "€500.000", "accreditation": "ACPR Akkreditáció", "accreditationValue": "12345. szám - Hitelintézet", "contact": "Kapcsolat", "contactValue": "contact@altusfinance.fr<br />01 23 45 67 89", "legalDisclaimer": "Az Altus Finance Group az Autorité de Contrôle Prudentiel et de Résolution (ACPR) által jóváhagyott hitelintézet. Az ACPR ellenőrzése alatt áll - 4 Place de Budapest, CS 92459, 75436 Párizs Cedex 09."},
+  "contact": {"title": "Lépjen kapcsolatba velünk", "subtitle": "Csapatunk az Ön rendelkezésére áll kérdései megválaszolására", "sendMessage": "Küldjön nekünk üzenetet", "fullName": "Teljes név", "fullNamePlaceholder": "Nagy János", "email": "Email", "emailPlaceholder": "nagy.janos@pelda.hu", "phone": "Telefon", "phonePlaceholder": "+33 6 12 34 56 78", "subject": "Tárgy", "subjectPlaceholder": "Kérdés személyi kölcsönről", "message": "Üzenet", "messagePlaceholder": "Az Ön üzenete...", "send": "Üzenet küldése", "phoneLabel": "Telefon", "phoneValue": "01 23 45 67 89", "schedule": "H-P 9-18", "emailLabel": "Email", "emailValue": "contact@altusfinance.fr", "responseTime": "Válasz 24 órán belül", "address": "Cím", "addressValue": "123 Avenue des Champs-Élysées<br />75008 Párizs, Franciaország", "hours": "Nyitvatartás", "hoursValue": "Hétfő - Péntek: 9h - 18h<br />Szombat - Vasárnap: Zárva"},
+  "howItWorks": {"pageTitle": "Hogyan kaphat hitelt | Altus Finance", "pageDescription": "Fedezze fel, hogyan kaphat hitelt 4 egyszerű lépésben az Altus Finance-szal. Ingyenes szimuláció, gyors válasz 48 órán belül, pénzeszközök folyósítása 72 órán belül.", "title": "Hogyan kaphatja meg hitelét", "titleHighlight": "4 egyszerű lépésben", "subtitle": "100%-ban online folyamat, gyors és átlátható projektjei finanszírozására", "step1Title": "1. Szimulálja hitelét", "step1Desc": "Használja online szimulátorunk havi törlesztéseinek becslésére és találja meg a költségvetésének megfelelő ajánlatot.", "step1Duration": "2 perc", "step2Title": "2. Regisztráljon néhány kattintással", "step2Desc": "Hozza létre fiókját másodpercek alatt biztonságos személyes területéhez való hozzáféréshez és hitelkérelme benyújtásához.", "step2Duration": "1 perc", "step3Title": "3. Töltse ki kérelmét a Fiókomból", "step3Desc": "Jelentkezzen be irányítópultjára és töltse ki a kérelem űrlapot adataival. Minden 100%-ban online történik.", "step3Duration": "10 perc", "step4Title": "4. Kapjon gyors választ", "step4Desc": "Csapatunk elemzi kérelmét és 48 órán belül kezdeti választ ad. Kövesse nyomon a folyamatot valós időben fiókjában.", "step4Duration": "48h", "startCta": "Fiók létrehozása és kezdés", "whyUs": "Miért válassza az Altus Finance-t?", "whyUsSubtitle": "Modern platform, amelyet a finanszírozáshoz való hozzáférés egyszerűsítésére terveztek", "fast": "Gyors és hatékony", "fastDesc": "Válasz 48 órán belül és folyósítás 72 órán belül", "secure": "100%-ban biztonságos", "secureDesc": "Adatai védettek és titkosítottak", "online": "100%-ban online", "onlineDesc": "Nincs szükség utazásra", "personalized": "Személyre szabott támogatás", "personalizedDesc": "Dedikált csapat tanácsadásra", "faq": "Gyakran Ismételt Kérdések", "faqQ1": "Milyen dokumentumok szükségesek?", "faqA1": "Hitelkérelemhez szükséges egy személyazonosító okmány, friss lakcímigazolás és utolsó 3 fizetési csedje (vagy jövedelemigazolás szakemberek számára).", "faqQ2": "Előtörleszthetek?", "faqA2": "Igen, az előtörlesztés ingyenes az Altus Finance-nál. Bármikor törlesztheti hitelének egészét vagy egy részét további díjak nélkül.", "faqQ3": "Mi az elfogadási arány?", "faqA3": "Elfogadási arányunk profiltól függően változik, de minden kérelmet alaposan megvizsgálunk. Még ha máshol elutasították is, ne habozzon szimulációt végezni.", "faqQ4": "Hogyan követhetem nyomon kérelmemet?", "faqA4": "Kérelme benyújtása után valós időben követheti nyomon a folyamatot 'Fiókom' ügyfélterületén. Minden lépésnél e-mail értesítéseket is kap.", "readyTitle": "Készen áll projektje elindítására?", "readySubtitle": "Kapjon kezdeti választ 48 órán belül", "simulateCta": "Hitel szimulálása", "createAccountCta": "Fiók létrehozása"},
+  "offers": {"title": "Finanszírozási Ajánlataink", "subtitle": "Fedezze fel összes hitel megoldásunkat igényeire szabva", "allOffers": "Összes ajánlat", "individuals": "Magánszemélyek", "professionals": "Szakemberek"},
+  "footer": {"tagline": "Megbízható partnerük minden finanszírozási projekthez", "ourLoans": "Hiteleink", "personalLoan": "Személyi Kölcsön", "autoLoan": "Autóhitel", "renovationLoan": "Felújítási Hitel", "businessLoan": "Üzleti Hitel", "help": "Segítség", "legal": "Jogi", "legalNotice": "Jogi nyilatkozat", "privacyPolicy": "Adatvédelmi irányelvek", "copyright": "Minden jog fenntartva"},
+  "legal": {"warning": "A hitel kötelezettséget jelent és vissza kell fizetni. Ellenőrizze visszafizetési képességét mielőtt kötelezettséget vállal.", "sectionTitle": "Jogi Információk", "sectionSubtitle": "Átláthatóság és megfelelés az Ön nyugalma érdekében", "representativeExample": "Reprezentatív Példa", "borrowedAmount": "Kölcsönzött Összeg", "duration": "Időtartam", "months": "hónap", "fixed": "fix", "variable": "változó", "monthlyPayment": "Havi Törlesztés", "totalCreditCost": "Teljes Hitelköltség", "totalAmountDue": "Összes Tartozás", "withdrawalRight": "Elállási jog", "withdrawalRightText": "14 napos határidő áll rendelkezésére az elállási jog gyakorlására a hitelszerződés aláírásától számítva.", "taegTitle": "THM (Teljes Hiteldíj Mutató)", "taegText": "A THM a hitelfelvevő számára a hitel teljes költségét jelenti, a hitel teljes összegének éves százalékában kifejezve. Tartalmazza a névleges kamatot, valamint a hitelhez kapcsolódó összes kötelező díjat (kérelem díjai, kötelező biztosítás stb.).", "offerDisclaimer": "A hitelajánlat az Altus Finance Group által a kérelem elfogadásától függő. 14 napos megfontolási idő áll rendelkezésére a hitelajánlat elfogadására. A hitel kötelezettséget jelent és vissza kell fizetni. Ellenőrizze visszafizetési képességét mielőtt kötelezettséget vállal."},
+  "language": {"select": "Nyelv"},
+  "common": {"years": "év"},
+  "loan": {"amount": "Összeg", "rate": "Kamat", "rateFrom": "Kamat már", "duration": "Időtartam", "particular": "Magánszemély", "professional": "Szakember", "selectOffer": "Ajánlat kiválasztása", "noOffers": "Nincsenek elérhető ajánlatok ehhez a kategóriához"},
+  "loanApplication": {
+    "title": "Hitelkérelem", "step": "Lépés", "of": "/", "previous": "Előző", "next": "Következő", "submit": "Kérelem benyújtása",
+    "stepLoanType": {"title": "Hitel Típus Kiválasztása", "youAre": "Ön *", "chooseLoanType": "Válassza ki a hitel típusát *"},
+    "stepSimulation": {"title": "Hitel Szimuláció", "loanAmount": "Hitel összege *", "loanDuration": "Hitel időtartama *", "amountBetween": "Összeg között", "and": "és", "durationBetween": "Időtartam között", "estimatedRate": "Becsült kamat", "perYear": " / év", "estimatedMonthly": "Becsült havi törlesztés", "perMonth": "/hó", "totalCost": "Teljes költség", "includingInterest": "Kamattal együtt"},
+    "stepInformation": {"title": "Az Ön Információi", "personalInfo": "Személyes Információk", "companyInfo": "Vállalati Információk", "monthlyIncome": "Havi nettó jövedelem", "employmentStatus": "Foglalkoztatási státusz", "loanPurpose": "Hitel célja", "companyName": "Cégnév", "siret": "SIRET", "annualRevenue": "Éves bevétel"},
+    "stepConfirmation": {"title": "Megerősítés", "verifyInfo": "Ellenőrizze információit", "verifyInfoDesc": "Győződjön meg róla, hogy minden információ helyes a kérelem benyújtása előtt. Beküldés után kérelmét csapatunk 48 órán belül megvizsgálja.", "selectedLoan": "Kiválasztott hitel", "loanType": "Hitel típusa", "category": "Kategória", "loanNotSelected": "Hitel típusa nincs kiválasztva", "financialSimulation": "Pénzügyi Szimuláció", "requestedAmount": "Kért összeg", "interestRate": "Kamat", "estimatedMonthly": "Becsült havi törlesztés", "including": "Beleértve", "yourInfo": "Az Ön információi", "companyInfo": "Vállalati információk", "importantInfo": "Fontos információk:", "reviewTime": "Kérelmét 48 munkanapon belül megvizsgáljuk", "documentsRequired": "Dokumentumokra lesz szükség (személyazonosító okmány, lakcímigazolás, jövedelemigazolás)", "finalApproval": "A végleges jóváhagyás a teljes dosszié vizsgálatától függ"},
+    "success": {"title": "Kérelem sikeresen beküldve!", "message": "Hitelkérelmét beküldtük. Megvizsgáljuk és 48 órán belül visszajelzünk.", "viewApplications": "Kérelmeim megtekintése"}
   },
-  "footer": {
-    "tagline": "Megbízható partnerük minden finanszírozási projekthez",
-    "ourLoans": "Hiteleink",
-    "personalLoan": "Személyi Kölcsön",
-    "autoLoan": "Autóhitel",
-    "renovationLoan": "Felújítási Hitel",
-    "businessLoan": "Üzleti Hitel",
-    "help": "Segítség",
-    "legal": "Jogi",
-    "legalNotice": "Jogi nyilatkozat",
-    "privacyPolicy": "Adatvédelmi irányelvek",
-    "copyright": "Minden jog fenntartva"
-  },
-  "legal": {
-    "warning": "A hitel kötelezettséget jelent és vissza kell fizetni. Ellenőrizze visszafizetési képességét mielőtt kötelezettséget vállal."
-  },
-  "language": {
-    "select": "Nyelv"
-  }
+  "employmentStatus": {"cdi": "Határozatlan Idejű Szerződés (CDI)", "cdd": "Határozott Idejű Szerződés (CDD)", "freelance": "Önálló Vállalkozó / Szabadúszó", "retired": "Nyugdíjas", "student": "Diák", "unemployed": "Munkanélküli", "other": "Egyéb"},
+  "loanApplications": {"title": "Hitelkérelmeim", "subtitle": "Kövesse nyomon és kezelje hitelkérelmeit", "noApplications": "Még nincs hitelkérelem", "noApplicationsDesc": "Még nem nyújtott be hitelkérelmet. Kezdje egy hitel szimulálásával.", "startSimulation": "Hitel szimulálása", "newApplication": "Új kérelem", "loanApplication": "Hitelkérelem", "status": "Státusz", "requestedOn": "Kérve", "amount": "Összeg", "duration": "Időtartam", "viewDetails": "Részletek megtekintése"},
+  "loanStatus": {"pending": "Függőben", "under_review": "Vizsgálat alatt", "approved": "Jóváhagyva", "rejected": "Elutasítva", "funded": "Finanszírozva"}
 }

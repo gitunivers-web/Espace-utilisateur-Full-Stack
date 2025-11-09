@@ -2,6 +2,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import type { LoanType } from "@shared/schema";
 
 interface LoanCardProps {
@@ -10,6 +11,7 @@ interface LoanCardProps {
 }
 
 export function LoanCard({ loanType, onSelect }: LoanCardProps) {
+  const { t } = useTranslation();
   const minAmount = parseFloat(loanType.minAmount);
   const maxAmount = parseFloat(loanType.maxAmount);
   const minRate = parseFloat(loanType.minRate);
@@ -19,23 +21,23 @@ export function LoanCard({ loanType, onSelect }: LoanCardProps) {
       <CardHeader className="gap-2">
         <div className="flex items-start justify-between gap-2">
           <CardTitle>{loanType.name}</CardTitle>
-          <Badge variant="secondary">{loanType.category === "particular" ? "Particulier" : "Professionnel"}</Badge>
+          <Badge variant="secondary">{t(`loan.${loanType.category}`)}</Badge>
         </div>
         <CardDescription>{loanType.description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
-            <div className="text-muted-foreground">Montant</div>
+            <div className="text-muted-foreground">{t('loan.amount')}</div>
             <div className="font-semibold">{minAmount.toLocaleString()}€ - {maxAmount.toLocaleString()}€</div>
           </div>
           <div>
-            <div className="text-muted-foreground">Taux dès</div>
+            <div className="text-muted-foreground">{t('loan.rateFrom')}</div>
             <div className="font-semibold text-primary">{minRate}%</div>
           </div>
           <div>
-            <div className="text-muted-foreground">Durée</div>
-            <div className="font-semibold">{loanType.minDurationMonths} - {loanType.maxDurationMonths} mois</div>
+            <div className="text-muted-foreground">{t('loan.duration')}</div>
+            <div className="font-semibold">{loanType.minDurationMonths} - {loanType.maxDurationMonths} {t('simulator.months')}</div>
           </div>
         </div>
 
@@ -56,7 +58,7 @@ export function LoanCard({ loanType, onSelect }: LoanCardProps) {
             onClick={onSelect}
             data-testid={`button-select-loan-${loanType.id}`}
           >
-            Choisir cette offre
+            {t('loan.selectOffer')}
           </Button>
         )}
       </CardContent>

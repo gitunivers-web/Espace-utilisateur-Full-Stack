@@ -1,75 +1,31 @@
 {
-  "app": {
-    "name": "Altus Finance"
-  },
-  "nav": {
-    "home": "Strona główna",
-    "offers": "Nasze Oferty",
-    "simulator": "Symulator",
-    "howItWorks": "Jak to działa",
-    "about": "O nas",
-    "contact": "Kontakt",
-    "login": "Zaloguj się",
-    "createAccount": "Utwórz konto"
-  },
+  "app": {"name": "Altus Finance"},
+  "nav": {"home": "Strona główna", "offers": "Nasze Oferty", "simulator": "Symulator", "howItWorks": "Jak to działa", "about": "O nas", "contact": "Kontakt", "login": "Zaloguj się", "createAccount": "Utwórz konto"},
   "home": {
-    "hero": {
-      "title": "Sfinansuj swoje projekty z całkowitą",
-      "titleHighlight": "prostotą",
-      "subtitle": "Rozwiązania finansowe dla osób prywatnych i profesjonalistów, z konkurencyjnymi stawkami od 3,5% i szybką odpowiedzią",
-      "ctaAccount": "Utwórz konto",
-      "ctaSimulator": "Symuluj kredyt",
-      "response": "Odpowiedź",
-      "responseTime": "w ciągu 48h",
-      "acceptance": "akceptacji",
-      "rateFrom": "Stawki od"
-    },
-    "solutions": {
-      "title": "Nasze Rozwiązania Finansowe",
-      "subtitle": "Znajdź kredyt dopasowany do Twojej sytuacji",
-      "viewAll": "Zobacz wszystkie nasze oferty"
-    },
-    "professional": {
-      "title": "Finansowanie Profesjonalne",
-      "subtitle": "Rozwiązania dostosowane dla małych i średnich przedsiębiorstw oraz przedsiębiorców"
-    }
+    "hero": {"title": "Sfinansuj swoje projekty z całkowitą", "titleHighlight": "prostotą", "subtitle": "Rozwiązania finansowe dla osób prywatnych i profesjonalistów, z konkurencyjnymi stawkami od 3,5% i szybką odpowiedzią", "ctaAccount": "Utwórz konto", "ctaSimulator": "Symuluj kredyt", "response": "Odpowiedź", "responseTime": "w ciągu 48h", "acceptanceValue": "97%", "acceptance": "akceptacji", "rateFrom": "Stawki od", "rateValue": "3,5%"},
+    "solutions": {"title": "Nasze Rozwiązania Finansowe", "subtitle": "Znajdź kredyt dopasowany do Twojej sytuacji", "viewAll": "Zobacz wszystkie nasze oferty"},
+    "professional": {"title": "Finansowanie Profesjonalne", "subtitle": "Rozwiązania dostosowane dla małych i średnich przedsiębiorstw oraz przedsiębiorców", "avgRates": "Średnie stawki 2025", "avgRatesValue": "3,39%", "avgRatesDesc": "Znaczny spadek w porównaniu z 2024", "acceptanceRate": "Wskaźnik akceptacji", "acceptanceRateValue": "97%", "acceptanceRateDesc": "Dla kredytów inwestycyjnych MŚP", "bpiGuarantee": "Gwarancja BPI", "bpiGuaranteeValue": "Do 90%", "bpiGuaranteeDesc": "Ułatwia dostęp do finansowania", "amounts": "Kwoty", "amountsValue": "5K€ do 2M€", "amountsDesc": "Zgodnie z Twoim projektem i profilem", "discoverOffers": "Odkryj nasze oferty profesjonalne"},
+    "whyUs": {"title": "Dlaczego Altus Finance?", "fast": "Szybko", "fastDesc": "Wstępna odpowiedź w ciągu 48h i wypłata środków w ciągu 72h", "transparent": "Przejrzyście", "transparentDesc": "Stawki i opłaty wyraźnie pokazane, bez ukrytych kosztów", "flexible": "Elastycznie", "flexibleDesc": "Bezpłatna wcześniejsza spłata i opcje odroczenia płatności", "advantageous": "Korzystnie", "advantageousDesc": "Konkurencyjne stawki i wynegocjowane warunki"}
   },
-  "simulator": {
-    "title": "Symulator Kredytu",
-    "loanType": "Typ kredytu",
-    "selectLoanType": "Wybierz typ kredytu",
-    "amount": "Kwota",
-    "duration": "Czas trwania",
-    "months": "miesięcy",
-    "calculate": "Oblicz",
-    "calculating": "Obliczanie...",
-    "error": "Błąd",
-    "pleaseSelectLoanType": "Proszę wybrać typ kredytu",
-    "from": "Od",
-    "to": "do",
-    "fixedAPR": "Stała RRSO",
-    "monthlyPayment": "Rata Miesięczna",
-    "totalCreditCost": "Całkowity Koszt Kredytu",
-    "totalAmountDue": "Całkowita Kwota Do Spłaty",
-    "interest": "Odsetki"
+  "simulator": {"title": "Symulator Kredytu", "loanType": "Typ kredytu", "selectLoanType": "Wybierz typ kredytu", "amount": "Kwota", "duration": "Czas trwania", "months": "miesięcy", "calculate": "Oblicz", "calculating": "Obliczanie...", "error": "Błąd", "pleaseSelectLoanType": "Proszę wybrać typ kredytu", "from": "Od", "to": "do", "fixedAPR": "Stała RRSO", "monthlyPayment": "Rata Miesięczna", "totalCreditCost": "Całkowity Koszt Kredytu", "totalAmountDue": "Całkowita Kwota Do Spłaty", "interest": "Odsetki"},
+  "about": {"title": "O nas - Altus Finance", "subtitle": "Twój zaufany partner dla wszystkich projektów finansowych od 2020", "intro1": "Altus Finance Group to platforma finansowania online specjalizująca się w kredytach osobistych i biznesowych. Naszą misją jest uczynienie dostępu do kredytu prostym, szybkim i przejrzystym dla wszystkich.", "intro2": "Założona w 2020 roku, nasza firma ma na celu demokratyzację dostępu do finansowania poprzez technologię i podejście skoncentrowane na kliencie. Wierzymy, że każdy projekt zasługuje na wsparcie, dlatego oferujemy rozwiązania finansowe dostosowane zarówno do osób prywatnych, jak i profesjonalistów.", "security": "Bezpieczeństwo", "securityDesc": "Chronione dane i bezpieczne transakcje", "clients": "+10.000 klientów", "clientsDesc": "Wspiera nas każdego roku", "expertise": "Ekspertyza", "expertiseDesc": "Zespół profesjonalistów do Twojej dyspozycji", "innovation": "Innowacja", "innovationDesc": "Najnowocześniejsza technologia dla Twojej wygody", "commitment": "Nasze Zobowiązanie", "commitmentText": "W Altus Finance zobowiązujemy się do świadczenia wysokiej jakości usług opartych na przejrzystości, reaktywności i spersonalizowanym wsparciu. Każde zgłoszenie jest starannie rozpatrywane przez naszych ekspertów, aby zaoferować najlepsze rozwiązanie finansowe.", "values": "Nasze Wartości", "transparency": "Przejrzystość", "transparencyDesc": "Stawki i warunki wyraźnie wyświetlone, bez ukrytych opłat", "speed": "Szybkość", "speedDesc": "Wstępna odpowiedź w ciągu 48h i wypłata w ciągu 72h", "support": "Wsparcie", "supportDesc": "Dedykowany zespół, który doradzi Ci na każdym kroku", "flexibility": "Elastyczność", "flexibilityDesc": "Rozwiązania dostosowane do Twojej osobistej lub profesjonalnej sytuacji", "innovationValue": "Innowacja", "innovationValueDesc": "Platforma 100% online, aby uprościć Twoje procedury", "legalInfo": "Informacje Prawne", "companyName": "Nazwa Firmy", "companyNameValue": "Altus Finance Group SAS", "headquarters": "Siedziba", "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 Paryż, Francja", "siret": "SIREN / SIRET", "siretValue": "123 456 789 00012", "capital": "Kapitał Zakładowy", "capitalValue": "€500.000", "accreditation": "Akredytacja ACPR", "accreditationValue": "Nr 12345 - Instytucja kredytowa", "contact": "Kontakt", "contactValue": "contact@altusfinance.fr<br />01 23 45 67 89", "legalDisclaimer": "Altus Finance Group to instytucja kredytowa zatwierdzona przez Autorité de Contrôle Prudentiel et de Résolution (ACPR). Podlega kontroli ACPR - 4 Place de Budapest, CS 92459, 75436 Paryż Cedex 09."},
+  "contact": {"title": "Skontaktuj się z nami", "subtitle": "Nasz zespół jest do Twojej dyspozycji, aby odpowiedzieć na Twoje pytania", "sendMessage": "Wyślij nam wiadomość", "fullName": "Pełne imię i nazwisko", "fullNamePlaceholder": "Jan Kowalski", "email": "Email", "emailPlaceholder": "jan@przyklad.pl", "phone": "Telefon", "phonePlaceholder": "+33 6 12 34 56 78", "subject": "Temat", "subjectPlaceholder": "Pytanie o kredyt osobisty", "message": "Wiadomość", "messagePlaceholder": "Twoja wiadomość...", "send": "Wyślij wiadomość", "phoneLabel": "Telefon", "phoneValue": "01 23 45 67 89", "schedule": "Pn-Pt 9-18", "emailLabel": "Email", "emailValue": "contact@altusfinance.fr", "responseTime": "Odpowiedź w ciągu 24h", "address": "Adres", "addressValue": "123 Avenue des Champs-Élysées<br />75008 Paryż, Francja", "hours": "Godziny", "hoursValue": "Poniedziałek - Piątek: 9h - 18h<br />Sobota - Niedziela: Zamknięte"},
+  "howItWorks": {"pageTitle": "Jak uzyskać kredyt | Altus Finance", "pageDescription": "Odkryj, jak uzyskać kredyt w 4 prostych krokach z Altus Finance. Darmowa symulacja, szybka odpowiedź w ciągu 48h, wypłata środków w ciągu 72h.", "title": "Jak uzyskać kredyt w", "titleHighlight": "4 prostych krokach", "subtitle": "Proces 100% online, szybki i przejrzysty, aby sfinansować Twoje projekty", "step1Title": "1. Symuluj swój kredyt", "step1Desc": "Użyj naszego symulatora online, aby oszacować swoje miesięczne raty i znaleźć ofertę dopasowaną do Twojego budżetu.", "step1Duration": "2 min", "step2Title": "2. Zarejestruj się w kilku kliknięciach", "step2Desc": "Utwórz swoje konto w kilka sekund, aby uzyskać dostęp do bezpiecznej przestrzeni osobistej i złożyć wniosek kredytowy.", "step2Duration": "1 min", "step3Title": "3. Wypełnij wniosek z Mojego Konta", "step3Desc": "Zaloguj się do swojego panelu i wypełnij formularz wniosku swoimi danymi. Wszystko odbywa się 100% online.", "step3Duration": "10 min", "step4Title": "4. Otrzymaj szybką odpowiedź", "step4Desc": "Nasz zespół analizuje Twój wniosek i udziela wstępnej odpowiedzi w ciągu 48h. Śledź postęp w czasie rzeczywistym na swoim koncie.", "step4Duration": "48h", "startCta": "Utwórz konto i zacznij", "whyUs": "Dlaczego wybrać Altus Finance?", "whyUsSubtitle": "Nowoczesna platforma zaprojektowana, aby uprościć Twój dostęp do finansowania", "fast": "Szybko i efektywnie", "fastDesc": "Odpowiedź w ciągu 48h i wypłata w ciągu 72h", "secure": "100% bezpiecznie", "secureDesc": "Twoje dane są chronione i zaszyfrowane", "online": "100% online", "onlineDesc": "Nie wymaga podróży", "personalized": "Spersonalizowane wsparcie", "personalizedDesc": "Dedykowany zespół, który Ci doradzi", "faq": "Najczęściej Zadawane Pytania", "faqQ1": "Jakie dokumenty są wymagane?", "faqA1": "Do wniosku kredytowego potrzebny będzie dowód tożsamości, aktualny dowód zamieszkania i ostatnie 3 odcinki wypłaty (lub dowód dochodu dla profesjonalistów).", "faqQ2": "Czy mogę spłacić wcześniej?", "faqA2": "Tak, wcześniejsza spłata jest bezpłatna w Altus Finance. Możesz spłacić całość lub część kredytu w dowolnym momencie bez dodatkowych opłat.", "faqQ3": "Jaki jest wskaźnik akceptacji?", "faqA3": "Nasz wskaźnik akceptacji różni się w zależności od profili, ale starannie rozpatrujemy każdy wniosek. Nawet jeśli zostałeś odrzucony gdzie indziej, nie wahaj się przeprowadzić symulacji.", "faqQ4": "Jak śledzić mój wniosek?", "faqA4": "Po złożeniu wniosku możesz śledzić jego postęp w czasie rzeczywistym w strefie klienta 'Moje Konto'. Otrzymasz również powiadomienia e-mail na każdym etapie.", "readyTitle": "Gotowy do rozpoczęcia swojego projektu?", "readySubtitle": "Uzyskaj wstępną odpowiedź w ciągu 48h", "simulateCta": "Symuluj mój kredyt", "createAccountCta": "Utwórz moje konto"},
+  "offers": {"title": "Nasze Oferty Finansowe", "subtitle": "Odkryj wszystkie nasze rozwiązania kredytowe dostosowane do Twoich potrzeb", "allOffers": "Wszystkie oferty", "individuals": "Osoby prywatne", "professionals": "Profesjonaliści"},
+  "footer": {"tagline": "Twój zaufany partner dla wszystkich projektów finansowych", "ourLoans": "Nasze Kredyty", "personalLoan": "Kredyt Osobisty", "autoLoan": "Kredyt Samochodowy", "renovationLoan": "Kredyt Remontowy", "businessLoan": "Kredyt Biznesowy", "help": "Pomoc", "legal": "Prawne", "legalNotice": "Informacje prawne", "privacyPolicy": "Polityka prywatności", "copyright": "Wszelkie prawa zastrzeżone"},
+  "legal": {"warning": "Kredyt zobowiązuje i musi zostać spłacony. Sprawdź swoją zdolność kredytową przed zaciągnięciem zobowiązania.", "sectionTitle": "Informacje Prawne", "sectionSubtitle": "Przejrzystość i zgodność dla Twojego spokoju", "representativeExample": "Przykład Reprezentatywny", "borrowedAmount": "Kwota Pożyczona", "duration": "Czas trwania", "months": "miesięcy", "fixed": "stała", "variable": "zmienna", "monthlyPayment": "Rata Miesięczna", "totalCreditCost": "Całkowity Koszt Kredytu", "totalAmountDue": "Całkowita Kwota Do Spłaty", "withdrawalRight": "Prawo odstąpienia", "withdrawalRightText": "Masz okres 14 dni na skorzystanie z prawa odstąpienia od podpisania umowy kredytowej.", "taegTitle": "RRSO (Rzeczywista Roczna Stopa Oprocentowania)", "taegText": "RRSO reprezentuje całkowity koszt kredytu dla kredytobiorcy, wyrażony jako roczny procent całkowitej kwoty kredytu. Obejmuje nominalną stopę procentową oraz wszystkie obowiązkowe opłaty związane z kredytem (opłaty za wniosek, obowiązkowe ubezpieczenie itp.).", "offerDisclaimer": "Oferta kredytowa podlega akceptacji Twojego wniosku przez Altus Finance Group. Masz 14-dniowy okres na zastanowienie, aby zaakceptować ofertę kredytową. Kredyt zobowiązuje i musi zostać spłacony. Sprawdź swoją zdolność kredytową przed zaciągnięciem zobowiązania."},
+  "language": {"select": "Język"},
+  "common": {"years": "lat"},
+  "loan": {"amount": "Kwota", "rate": "Stawka", "rateFrom": "Stawka od", "duration": "Czas trwania", "particular": "Osoba prywatna", "professional": "Profesjonalista", "selectOffer": "Wybierz tę ofertę", "noOffers": "Brak dostępnych ofert dla tej kategorii"},
+  "loanApplication": {
+    "title": "Wniosek Kredytowy", "step": "Krok", "of": "z", "previous": "Poprzedni", "next": "Następny", "submit": "Złóż Wniosek",
+    "stepLoanType": {"title": "Wybór Typu Kredytu", "youAre": "Jesteś *", "chooseLoanType": "Wybierz typ kredytu *"},
+    "stepSimulation": {"title": "Symulacja Kredytu", "loanAmount": "Kwota kredytu *", "loanDuration": "Czas trwania kredytu *", "amountBetween": "Kwota między", "and": "a", "durationBetween": "Czas trwania między", "estimatedRate": "Szacunkowa stopa procentowa", "perYear": " / rok", "estimatedMonthly": "Szacunkowa rata miesięczna", "perMonth": "/miesiąc", "totalCost": "Całkowity koszt", "includingInterest": "Wraz z odsetkami"},
+    "stepInformation": {"title": "Twoje Informacje", "personalInfo": "Informacje Osobiste", "companyInfo": "Informacje o Firmie", "monthlyIncome": "Miesięczny dochód netto", "employmentStatus": "Status zatrudnienia", "loanPurpose": "Cel kredytu", "companyName": "Nazwa firmy", "siret": "SIRET", "annualRevenue": "Roczne przychody"},
+    "stepConfirmation": {"title": "Potwierdzenie", "verifyInfo": "Zweryfikuj swoje informacje", "verifyInfoDesc": "Upewnij się, że wszystkie informacje są poprawne przed złożeniem wniosku. Po złożeniu, Twój wniosek zostanie rozpatrzony przez nasz zespół w ciągu 48 godzin.", "selectedLoan": "Wybrany kredyt", "loanType": "Typ kredytu", "category": "Kategoria", "loanNotSelected": "Typ kredytu nie został wybrany", "financialSimulation": "Symulacja Finansowa", "requestedAmount": "Wnioskowana kwota", "interestRate": "Stopa procentowa", "estimatedMonthly": "Szacunkowa rata miesięczna", "including": "W tym", "yourInfo": "Twoje informacje", "companyInfo": "Informacje o firmie", "importantInfo": "Ważne informacje:", "reviewTime": "Twój wniosek zostanie rozpatrzony w ciągu 48 godzin roboczych", "documentsRequired": "Wymagane będą dokumenty (dowód tożsamości, dowód zamieszkania, dowód dochodu)", "finalApproval": "Ostateczne zatwierdzenie podlega przeglądowi Twojego pełnego wniosku"},
+    "success": {"title": "Wniosek złożony pomyślnie!", "message": "Twój wniosek kredytowy został złożony. Rozpatrzymy go i odpowiemy w ciągu 48 godzin.", "viewApplications": "Zobacz moje wnioski"}
   },
-  "footer": {
-    "tagline": "Twój zaufany partner dla wszystkich projektów finansowych",
-    "ourLoans": "Nasze Kredyty",
-    "personalLoan": "Kredyt Osobisty",
-    "autoLoan": "Kredyt Samochodowy",
-    "renovationLoan": "Kredyt Remontowy",
-    "businessLoan": "Kredyt Biznesowy",
-    "help": "Pomoc",
-    "legal": "Prawne",
-    "legalNotice": "Informacje prawne",
-    "privacyPolicy": "Polityka prywatności",
-    "copyright": "Wszelkie prawa zastrzeżone"
-  },
-  "legal": {
-    "warning": "Kredyt zobowiązuje i musi zostać spłacony. Sprawdź swoją zdolność kredytową przed zaciągnięciem zobowiązania."
-  },
-  "language": {
-    "select": "Język"
-  }
+  "employmentStatus": {"cdi": "Umowa Na Czas Nieokreślony (CDI)", "cdd": "Umowa Na Czas Określony (CDD)", "freelance": "Samozatrudniony / Freelancer", "retired": "Emeryt", "student": "Student", "unemployed": "Bezrobotny", "other": "Inne"},
+  "loanApplications": {"title": "Moje Wnioski Kredytowe", "subtitle": "Śledź i zarządzaj swoimi wnioskami kredytowymi", "noApplications": "Brak wniosków kredytowych", "noApplicationsDesc": "Nie złożyłeś jeszcze żadnego wniosku kredytowego. Zacznij od symulacji kredytu.", "startSimulation": "Symuluj kredyt", "newApplication": "Nowy wniosek", "loanApplication": "Wniosek kredytowy", "status": "Status", "requestedOn": "Wnioskowano dnia", "amount": "Kwota", "duration": "Czas trwania", "viewDetails": "Zobacz szczegóły"},
+  "loanStatus": {"pending": "Oczekujący", "under_review": "W trakcie rozpatrywania", "approved": "Zatwierdzony", "rejected": "Odrzucony", "funded": "Sfinansowany"}
 }
