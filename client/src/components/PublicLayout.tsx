@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { LegalNoticeBanner } from "@/components/legal/LegalNotice";
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -108,6 +109,8 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
           )}
         </nav>
       </header>
+
+      <LegalNoticeBanner />
 
       <main className="flex-1">{children}</main>
 

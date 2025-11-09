@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { LoanCard } from "@/components/loan/LoanCard";
 import { LoanSimulator } from "@/components/loan/LoanSimulator";
-import { LegalNoticeBanner, LegalDisclaimers, RepresentativeExample } from "@/components/legal/LegalNotice";
+import { LegalDisclaimers, RepresentativeExample } from "@/components/legal/LegalNotice";
 import { useLoanTypes } from "@/lib/queries";
 import { ArrowRight, Shield, Clock, Check, TrendingUp, FileText, UserCheck, Euro } from "lucide-react";
 
@@ -76,8 +76,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <LegalNoticeBanner />
 
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

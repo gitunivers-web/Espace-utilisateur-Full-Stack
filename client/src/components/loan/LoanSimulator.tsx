@@ -13,6 +13,7 @@ import {
 import { useLoanTypes, useLoanSimulation } from "@/lib/queries";
 import { Loader2, Calculator } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { LegalDisclaimers } from "@/components/legal/LegalNotice";
 
 export function LoanSimulator() {
   const { data: loanTypes, isLoading } = useLoanTypes();
@@ -188,10 +189,7 @@ export function LoanSimulator() {
                 </div>
               </div>
             </div>
-            <div className="text-xs text-muted-foreground p-3 bg-muted/50 rounded-md">
-              <p className="font-semibold mb-1">Informations légales</p>
-              <p>Vous disposez d'un délai de rétractation de 14 jours après la signature du contrat de crédit. Un crédit vous engage et doit être remboursé.</p>
-            </div>
+            <LegalDisclaimers />
           </div>
         )}
       </CardContent>

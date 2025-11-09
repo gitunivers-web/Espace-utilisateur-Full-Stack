@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle2 } from "lucide-react";
 import type { LoanType } from "@shared/schema";
 import type { CreateLoanApplication } from "@shared/schema";
+import { LegalDisclaimers } from "@/components/legal/LegalNotice";
 
 interface StepConfirmationProps {
   form: UseFormReturn<CreateLoanApplication>;
@@ -197,10 +198,11 @@ export function StepConfirmation({ form, selectedLoanType }: StepConfirmationPro
             <li>Votre demande sera étudiée sous 48h ouvrées</li>
             <li>Des justificatifs vous seront demandés (pièce d'identité, justificatif de domicile, de revenus)</li>
             <li>L'acceptation définitive est soumise à l'étude de votre dossier complet</li>
-            <li>Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager</li>
           </ul>
         </CardContent>
       </Card>
+
+      <LegalDisclaimers />
     </div>
   );
 }
