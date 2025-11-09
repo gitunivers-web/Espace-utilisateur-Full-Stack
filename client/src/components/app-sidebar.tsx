@@ -26,27 +26,35 @@ import { Link, useLocation } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 
 const menuItems = [
-  { title: "Tableau de bord", url: "/", icon: LayoutDashboard },
-  { title: "Comptes & Cartes", url: "/comptes", icon: CreditCard },
-  { title: "Prêts & Financements", url: "/prets", icon: TrendingUp },
-  { title: "Transferts", url: "/transferts", icon: ArrowRightLeft },
-  { title: "Historique", url: "/historique", icon: History },
-  { title: "Paramètres", url: "/parametres", icon: Settings },
+  { title: "Tableau de bord", url: "/mon-espace", icon: LayoutDashboard },
+  { title: "Comptes & Cartes", url: "/mon-espace/comptes", icon: CreditCard },
+  { title: "Mes Demandes", url: "/mon-espace/prets", icon: TrendingUp },
+  { title: "Transferts", url: "/mon-espace/transferts", icon: ArrowRightLeft },
+  { title: "Historique", url: "/mon-espace/historique", icon: History },
+  { title: "Paramètres", url: "/mon-espace/parametres", icon: Settings },
 ];
 
 export function AppSidebar() {
   const [location] = useLocation();
   const { toast } = useToast();
 
-  const handleLogout = () => {
-    toast({
-      title: "Déconnexion",
-      description: "Vous avez été déconnecté avec succès.",
-    });
-    
-    setTimeout(() => {
-      window.location.href = '/';
-    }, 1000);
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+      toast({
+        title: "Déconnexion",
+        description: "Vous avez été déconnecté avec succès.",
+      });
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 1000);
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Erreur",
+        description: "Erreur lors de la déconnexion",
+      });
+    }
   };
 
   return (

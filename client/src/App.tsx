@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import { PublicLayout } from "@/components/PublicLayout";
 import Topbar from "@/components/Topbar";
 import Dashboard from "@/pages/Dashboard";
 import Comptes from "@/pages/Comptes";
@@ -13,12 +14,16 @@ import Transferts from "@/pages/Transferts";
 import Historique from "@/pages/Historique";
 import Parametres from "@/pages/Parametres";
 import Login from "@/pages/Login";
+import Home from "@/pages/home";
+import Offers from "@/pages/offers";
+import Simulator from "@/pages/simulator";
+import About from "@/pages/about";
+import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import { useAuth } from "@/lib/api";
 
 function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: auth, isLoading, error } = useAuth();
-  const [location] = useLocation();
 
   if (isLoading) {
     return (
@@ -29,47 +34,29 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
   }
 
   if (error || !auth?.user) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/auth/connexion" />;
   }
 
   return <Component />;
 }
 
-function Router() {
-  const { data: auth } = useAuth();
-  const [location] = useLocation();
-
-  if (location === "/login" && auth?.user) {
-    return <Redirect to="/" />;
-  }
-
+function PublicRouter() {
   return (
-    <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/">
-        {() => <ProtectedRoute component={Dashboard} />}
-      </Route>
-      <Route path="/comptes">
-        {() => <ProtectedRoute component={Comptes} />}
-      </Route>
-      <Route path="/prets">
-        {() => <ProtectedRoute component={Prets} />}
-      </Route>
-      <Route path="/transferts">
-        {() => <ProtectedRoute component={Transferts} />}
-      </Route>
-      <Route path="/historique">
-        {() => <ProtectedRoute component={Historique} />}
-      </Route>
-      <Route path="/parametres">
-        {() => <ProtectedRoute component={Parametres} />}
-      </Route>
-      <Route component={NotFound} />
-    </Switch>
+    <PublicLayout>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/offres" component={Offers} />
+        <Route path="/simulateur" component={Simulator} />
+        <Route path="/a-propos" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/comment-ca-marche" component={About} />
+        <Route component={NotFound} />
+      </Switch>
+    </PublicLayout>
   );
 }
 
-function AuthenticatedLayout() {
+function ProtectedRouter() {
   const { data: auth } = useAuth();
   const style = {
     "--sidebar-width": "16rem",
@@ -83,7 +70,27 @@ function AuthenticatedLayout() {
         <div className="flex flex-col flex-1 overflow-hidden">
           <Topbar userName={auth?.user?.fullName || "Utilisateur"} />
           <main className="flex-1 overflow-auto">
-            <Router />
+            <Switch>
+              <Route path="/mon-espace">
+                {() => <ProtectedRoute component={Dashboard} />}
+              </Route>
+              <Route path="/mon-espace/comptes">
+                {() => <ProtectedRoute component={Comptes} />}
+              </Route>
+              <Route path="/mon-espace/prets">
+                {() => <ProtectedRoute component={Prets} />}
+              </Route>
+              <Route path="/mon-espace/transferts">
+                {() => <ProtectedRoute component={Transferts} />}
+              </Route>
+              <Route path="/mon-espace/historique">
+                {() => <ProtectedRoute component={Historique} />}
+              </Route>
+              <Route path="/mon-espace/parametres">
+                {() => <ProtectedRoute component={Parametres} />}
+              </Route>
+              <Route component={NotFound} />
+            </Switch>
           </main>
         </div>
       </div>
@@ -91,18 +98,32 @@ function AuthenticatedLayout() {
   );
 }
 
-export default function App() {
+function AppRoutes() {
   const [location] = useLocation();
-  const isLoginPage = location === "/login";
+  const { data: auth } = useAuth();
 
+  if (location === "/auth/connexion" && auth?.user) {
+    return <Redirect to="/mon-espace" />;
+  }
+
+  return (
+    <Switch>
+      <Route path="/auth/connexion" component={Login} />
+      <Route path="/mon-espace/:rest*">
+        {() => <ProtectedRouter />}
+      </Route>
+      <Route>
+        {() => <PublicRouter />}
+      </Route>
+    </Switch>
+  );
+}
+
+export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        {isLoginPage ? (
-          <Router />
-        ) : (
-          <AuthenticatedLayout />
-        )}
+        <AppRoutes />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

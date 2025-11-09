@@ -10,6 +10,7 @@ import {
   insertLoanSchema,
   registerUserSchema,
   loginUserSchema,
+  createLoanApplicationSchema,
   type User,
   type UserWithoutPassword,
 } from "@shared/schema";
@@ -345,6 +346,171 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const stats = await storage.getMonthlyStats(accountIds);
       res.json(stats);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get all active loan types (public)
+  app.get("/api/loan-types", async (req, res) => {
+    try {
+      const { category } = req.query;
+      const loanTypes = category && typeof category === 'string'
+        ? await storage.getLoanTypesByCategory(category)
+        : await storage.getAllActiveLoanTypes();
+      res.json(loanTypes);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get loan type by id (public)
+  app.get("/api/loan-types/:id", async (req, res) => {
+    try {
+      const loanType = await storage.getLoanType(req.params.id);
+      if (!loanType) {
+        return res.status(404).json({ error: "Type de prêt non trouvé" });
+      }
+      res.json(loanType);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Simulate loan (public)
+  app.post("/api/loan-simulator", async (req, res) => {
+    try {
+      const schema = z.object({
+        loanTypeId: z.string(),
+        amount: z.number().positive(),
+        durationMonths: z.number().int().positive(),
+      });
+
+      const { loanTypeId, amount, durationMonths } = schema.parse(req.body);
+
+      const loanType = await storage.getLoanType(loanTypeId);
+      if (!loanType) {
+        return res.status(404).json({ error: "Type de prêt non trouvé" });
+      }
+
+      const minAmount = parseFloat(loanType.minAmount);
+      const maxAmount = parseFloat(loanType.maxAmount);
+
+      if (amount < minAmount || amount > maxAmount) {
+        return res.status(400).json({ 
+          error: `Le montant doit être entre ${minAmount}€ et ${maxAmount}€` 
+        });
+      }
+
+      if (durationMonths < loanType.minDurationMonths || durationMonths > loanType.maxDurationMonths) {
+        return res.status(400).json({ 
+          error: `La durée doit être entre ${loanType.minDurationMonths} et ${loanType.maxDurationMonths} mois` 
+        });
+      }
+
+      const minRate = parseFloat(loanType.minRate);
+      const maxRate = parseFloat(loanType.maxRate);
+      const avgRate = (minRate + maxRate) / 2;
+      
+      const monthlyRate = avgRate / 100 / 12;
+      const monthlyPayment = amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -durationMonths));
+      const totalCost = monthlyPayment * durationMonths;
+      const totalInterest = totalCost - amount;
+      const taeg = avgRate;
+
+      res.json({
+        amount,
+        durationMonths,
+        monthlyPayment: Math.round(monthlyPayment * 100) / 100,
+        totalCost: Math.round(totalCost * 100) / 100,
+        totalInterest: Math.round(totalInterest * 100) / 100,
+        estimatedRate: avgRate,
+        taeg,
+      });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  // Get all loan applications for current user
+  app.get("/api/loan-applications", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const applications = await storage.getLoanApplicationsByUserId(user.id);
+      res.json(applications);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Create loan application
+  app.post("/api/loan-applications", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const validatedData = createLoanApplicationSchema.parse(req.body);
+
+      const loanType = await storage.getLoanType(validatedData.loanTypeId);
+      if (!loanType) {
+        return res.status(404).json({ error: "Type de prêt non trouvé" });
+      }
+
+      const minAmount = parseFloat(loanType.minAmount);
+      const maxAmount = parseFloat(loanType.maxAmount);
+
+      if (validatedData.amount < minAmount || validatedData.amount > maxAmount) {
+        return res.status(400).json({ 
+          error: `Le montant doit être entre ${minAmount}€ et ${maxAmount}€` 
+        });
+      }
+
+      if (validatedData.durationMonths < loanType.minDurationMonths || 
+          validatedData.durationMonths > loanType.maxDurationMonths) {
+        return res.status(400).json({ 
+          error: `La durée doit être entre ${loanType.minDurationMonths} et ${loanType.maxDurationMonths} mois` 
+        });
+      }
+
+      const application = await storage.createLoanApplication({
+        userId: user.id,
+        loanTypeId: validatedData.loanTypeId,
+        applicationType: validatedData.applicationType,
+        amount: validatedData.amount.toString(),
+        durationMonths: validatedData.durationMonths,
+        monthlyIncome: 'monthlyIncome' in validatedData ? validatedData.monthlyIncome.toString() : null,
+        employmentStatus: 'employmentStatus' in validatedData ? validatedData.employmentStatus : null,
+        purpose: validatedData.purpose,
+        companyName: 'companyName' in validatedData ? validatedData.companyName : null,
+        siret: 'siret' in validatedData ? validatedData.siret : null,
+        companyRevenue: 'companyRevenue' in validatedData ? validatedData.companyRevenue.toString() : null,
+        estimatedRate: validatedData.estimatedRate.toString(),
+        estimatedMonthlyPayment: validatedData.estimatedMonthlyPayment.toString(),
+        status: "pending",
+      });
+
+      res.status(201).json(application);
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  // Get loan application by id
+  app.get("/api/loan-applications/:id", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const application = await storage.getLoanApplication(req.params.id);
+      
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      if (application.userId !== user.id) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      res.json(application);
     } catch (error: any) {
       res.status(500).json({ error: error.message });
     }

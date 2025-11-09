@@ -9,6 +9,10 @@ import {
   type InsertTransaction,
   type Loan,
   type InsertLoan,
+  type LoanType,
+  type InsertLoanType,
+  type LoanApplication,
+  type InsertLoanApplication,
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -50,11 +54,23 @@ export interface IStorage {
 
   // Stats methods
   getMonthlyStats(accountIds: string[]): Promise<MonthlyStats[]>;
+
+  // LoanType methods
+  getLoanType(id: string): Promise<LoanType | undefined>;
+  getAllActiveLoanTypes(): Promise<LoanType[]>;
+  getLoanTypesByCategory(category: string): Promise<LoanType[]>;
+  createLoanType(loanType: InsertLoanType): Promise<LoanType>;
+  
+  // LoanApplication methods
+  getLoanApplication(id: string): Promise<LoanApplication | undefined>;
+  getLoanApplicationsByUserId(userId: string): Promise<LoanApplication[]>;
+  createLoanApplication(application: InsertLoanApplication): Promise<LoanApplication>;
+  updateLoanApplicationStatus(id: string, status: string, message?: string): Promise<LoanApplication | undefined>;
 }
 
 import { db } from "./db";
-import { users, accounts, cards, transactions, loans } from "@shared/schema";
-import { eq, desc } from "drizzle-orm";
+import { users, accounts, cards, transactions, loans, loanTypes, loanApplications } from "@shared/schema";
+import { eq, desc, and } from "drizzle-orm";
 
 export class DbStorage implements IStorage {
   // User methods
@@ -191,6 +207,60 @@ export class DbStorage implements IStorage {
       revenus: monthlyMap.get(month)?.revenus || 0,
       dépenses: monthlyMap.get(month)?.dépenses || 0,
     }));
+  }
+
+  // LoanType methods
+  async getLoanType(id: string): Promise<LoanType | undefined> {
+    const [loanType] = await db.select().from(loanTypes).where(eq(loanTypes.id, id));
+    return loanType;
+  }
+
+  async getAllActiveLoanTypes(): Promise<LoanType[]> {
+    return db.select().from(loanTypes).where(eq(loanTypes.active, true));
+  }
+
+  async getLoanTypesByCategory(category: string): Promise<LoanType[]> {
+    return db.select().from(loanTypes).where(
+      and(
+        eq(loanTypes.category, category),
+        eq(loanTypes.active, true)
+      )
+    );
+  }
+
+  async createLoanType(insertLoanType: InsertLoanType): Promise<LoanType> {
+    const [loanType] = await db.insert(loanTypes).values(insertLoanType).returning();
+    return loanType;
+  }
+
+  // LoanApplication methods
+  async getLoanApplication(id: string): Promise<LoanApplication | undefined> {
+    const [application] = await db.select().from(loanApplications).where(eq(loanApplications.id, id));
+    return application;
+  }
+
+  async getLoanApplicationsByUserId(userId: string): Promise<LoanApplication[]> {
+    return db.select()
+      .from(loanApplications)
+      .where(eq(loanApplications.userId, userId))
+      .orderBy(desc(loanApplications.submittedAt));
+  }
+
+  async createLoanApplication(insertApplication: InsertLoanApplication): Promise<LoanApplication> {
+    const [application] = await db.insert(loanApplications).values(insertApplication).returning();
+    return application;
+  }
+
+  async updateLoanApplicationStatus(id: string, status: string, message?: string): Promise<LoanApplication | undefined> {
+    const updates: any = { 
+      status,
+      reviewedAt: new Date()
+    };
+    if (message) {
+      updates.statusMessage = message;
+    }
+    const [application] = await db.update(loanApplications).set(updates).where(eq(loanApplications.id, id)).returning();
+    return application;
   }
 }
 
