@@ -52,7 +52,6 @@ function PublicRouter() {
         <Route path="/" component={Home} />
         <Route path="/offres" component={Offers} />
         <Route path="/simulateur" component={Simulator} />
-        <Route path="/demande" component={LoanApplication} />
         <Route path="/a-propos" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/comment-ca-marche" component={HowItWorks} />
@@ -84,6 +83,9 @@ function ProtectedRouter() {
               </Route>
               <Route path="/mon-espace/demandes">
                 {() => <ProtectedRoute component={LoanApplicationsList} />}
+              </Route>
+              <Route path="/mon-espace/nouvelle-demande">
+                {() => <ProtectedRoute component={LoanApplication} />}
               </Route>
               <Route path="/mon-espace/comptes">
                 {() => <ProtectedRoute component={Comptes} />}

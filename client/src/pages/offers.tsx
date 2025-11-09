@@ -54,7 +54,7 @@ export default function Offers() {
               <LoanCard
                 key={loanType.id}
                 loanType={loanType}
-                onSelect={() => setLocation(`/demande?type=${loanType.id}`)}
+                onSelect={() => setLocation(`/auth/connexion?redirect=/mon-espace&loanType=${loanType.id}`)}
               />
             ))}
           </div>

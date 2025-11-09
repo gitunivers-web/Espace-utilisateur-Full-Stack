@@ -26,9 +26,9 @@ export default function Home() {
                 avec des taux compétitifs dès 3,5% et une réponse rapide
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/demande">
+                <Link href="/auth/connexion">
                   <Button size="lg" className="gap-2" data-testid="button-hero-cta">
-                    Faire une demande
+                    Créer mon compte
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
@@ -88,7 +88,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredLoans?.map((loanType) => (
-              <Link key={loanType.id} href={`/demande?type=${loanType.id}`}>
+              <Link key={loanType.id} href={`/auth/connexion?redirect=/mon-espace&loanType=${loanType.id}`}>
                 <LoanCard loanType={loanType} />
               </Link>
             ))}

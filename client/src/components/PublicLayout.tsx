@@ -54,12 +54,12 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                   Connexion
                 </div>
               </Link>
-              <Link href="/demande">
+              <Link href="/auth/connexion">
                 <div
                   className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 bg-primary text-primary-foreground"
                   data-testid="button-demander-pret"
                 >
-                  Demander un prêt
+                  Créer mon compte
                 </div>
               </Link>
             </div>
@@ -96,12 +96,12 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                     Connexion
                   </div>
                 </Link>
-                <Link href="/demande">
+                <Link href="/auth/connexion">
                   <div
                     className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 w-full bg-primary text-primary-foreground"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    Demander un prêt
+                    Créer mon compte
                   </div>
                 </Link>
               </div>
