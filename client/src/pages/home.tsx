@@ -22,8 +22,8 @@ export default function Home() {
                 <span className="text-primary">simplicité</span>
               </h1>
               <p className="text-xl text-muted-foreground">
-                Des solutions de financement adaptées à vos besoins, avec une réponse rapide et
-                des taux compétitifs
+                Solutions de financement pour particuliers et professionnels, 
+                avec des taux compétitifs dès 3,5% et une réponse rapide
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/demande">
@@ -51,11 +51,11 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Shield className="h-5 w-5 text-primary" />
+                    <Check className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold">100%</div>
-                    <div className="text-sm text-muted-foreground">en ligne</div>
+                    <div className="font-semibold">97%</div>
+                    <div className="text-sm text-muted-foreground">d'acceptation</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -64,7 +64,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="font-semibold">Taux dès</div>
-                    <div className="text-sm text-muted-foreground">0,5%</div>
+                    <div className="text-sm text-muted-foreground">3,5%</div>
                   </div>
                 </div>
               </div>
@@ -98,6 +98,66 @@ export default function Home() {
             <Link href="/offres">
               <Button variant="outline" size="lg" data-testid="button-view-all-offers">
                 Voir toutes nos offres
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Financement Professionnel</h2>
+            <p className="text-xl text-muted-foreground">
+              Des solutions adaptées aux TPE, PME et entrepreneurs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              {
+                title: "Taux moyens 2025",
+                value: "3,39%",
+                description: "Baisse significative par rapport à 2024",
+                icon: TrendingUp,
+              },
+              {
+                title: "Taux d'acceptation",
+                value: "97%",
+                description: "Pour les crédits d'investissement PME",
+                icon: Check,
+              },
+              {
+                title: "Garantie BPI",
+                value: "Jusqu'à 90%",
+                description: "Facilite l'accès au financement",
+                icon: Shield,
+              },
+              {
+                title: "Montants",
+                value: "5K€ à 2M€",
+                description: "Selon votre projet et profil",
+                icon: Euro,
+              },
+            ].map((stat, index) => (
+              <Card key={index}>
+                <CardContent className="p-6 text-center space-y-2">
+                  <div className="mx-auto h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <stat.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="text-sm text-muted-foreground font-medium">{stat.title}</div>
+                  <div className="text-2xl font-bold">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground">{stat.description}</div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/offres">
+              <Button size="lg" data-testid="button-professional-offers">
+                Découvrir nos offres professionnelles
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
