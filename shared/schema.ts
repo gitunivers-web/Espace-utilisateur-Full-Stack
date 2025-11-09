@@ -117,16 +117,17 @@ export type Loan = typeof loans.$inferSelect;
 
 export const loanTypes = pgTable("loan_types", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  name: text("name").notNull(),
+  slug: text("slug").notNull().unique(),
+  nameKey: text("name_key").notNull(),
+  descriptionKey: text("description_key").notNull(),
   category: text("category").notNull(),
-  description: text("description").notNull(),
   minAmount: decimal("min_amount", { precision: 15, scale: 2 }).notNull(),
   maxAmount: decimal("max_amount", { precision: 15, scale: 2 }).notNull(),
   minDurationMonths: integer("min_duration_months").notNull(),
   maxDurationMonths: integer("max_duration_months").notNull(),
   minRate: decimal("min_rate", { precision: 5, scale: 2 }).notNull(),
   maxRate: decimal("max_rate", { precision: 5, scale: 2 }).notNull(),
-  features: jsonb("features").$type<string[]>().notNull().default([]),
+  featureKeys: jsonb("feature_keys").$type<string[]>().notNull().default([]),
   active: boolean("active").notNull().default(true),
 });
 

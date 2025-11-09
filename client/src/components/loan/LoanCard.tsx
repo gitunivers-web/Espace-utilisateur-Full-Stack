@@ -20,10 +20,10 @@ export function LoanCard({ loanType, onSelect }: LoanCardProps) {
     <Card className="hover-elevate" data-testid={`card-loan-${loanType.id}`}>
       <CardHeader className="gap-2">
         <div className="flex items-start justify-between gap-2">
-          <CardTitle>{loanType.name}</CardTitle>
+          <CardTitle>{t(loanType.nameKey)}</CardTitle>
           <Badge variant="secondary">{t(`loan.${loanType.category}`)}</Badge>
         </div>
-        <CardDescription>{loanType.description}</CardDescription>
+        <CardDescription>{t(loanType.descriptionKey)}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-4 text-sm">
@@ -41,12 +41,12 @@ export function LoanCard({ loanType, onSelect }: LoanCardProps) {
           </div>
         </div>
 
-        {loanType.features && loanType.features.length > 0 && (
+        {loanType.featureKeys && loanType.featureKeys.length > 0 && (
           <div className="space-y-2">
-            {loanType.features.slice(0, 3).map((feature, index) => (
+            {loanType.featureKeys.slice(0, 3).map((featureKey, index) => (
               <div key={index} className="flex items-start gap-2 text-sm">
                 <Check className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">{feature}</span>
+                <span className="text-muted-foreground">{t(featureKey)}</span>
               </div>
             ))}
           </div>

@@ -123,13 +123,13 @@ export function StepLoanType({ form, loanTypes }: StepLoanTypeProps) {
                           <RadioGroupItem value={loanType.id} id={loanType.id} />
                           <div className="flex-1 space-y-2">
                             <div className="flex items-center justify-between gap-2 flex-wrap">
-                              <h4 className="font-semibold">{loanType.name}</h4>
+                              <h4 className="font-semibold">{t(loanType.nameKey)}</h4>
                               <Badge variant="secondary">
                                 {t('loan.rateFrom')} {loanType.minRate}%
                               </Badge>
                             </div>
                             <p className="text-sm text-muted-foreground">
-                              {loanType.description}
+                              {t(loanType.descriptionKey)}
                             </p>
                             <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
                               <span>

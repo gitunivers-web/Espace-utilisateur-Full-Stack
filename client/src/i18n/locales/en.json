@@ -346,5 +346,87 @@
     "loading": "Loading...",
     "submit": "Submit",
     "back": "Back"
+  },
+  "loanTypes": {
+    "personal": {
+      "name": "Personal Loan",
+      "description": "Quick financing for your personal projects without usage justification",
+      "feature1": "Response within 48h",
+      "feature2": "100% online",
+      "feature3": "No processing fees",
+      "feature4": "Free early repayment"
+    },
+    "auto": {
+      "name": "Auto Loan",
+      "description": "Finance the purchase of your new or used vehicle",
+      "feature1": "Competitive rates from 3.9%",
+      "feature2": "Up to 7 years repayment",
+      "feature3": "Optional insurance",
+      "feature4": "First payment deferral possible"
+    },
+    "renovation": {
+      "name": "Home Improvement Loan",
+      "description": "Complete your renovation and home improvement projects",
+      "feature1": "Financing up to €75,000",
+      "feature2": "Progressive fund disbursement",
+      "feature3": "Advantageous rates from 3.8%",
+      "feature4": "Personalized support"
+    },
+    "student": {
+      "name": "Student Loan",
+      "description": "Finance your higher education with advantageous conditions",
+      "feature1": "Preferential rates from 0.9%",
+      "feature2": "Repayment deferral during studies",
+      "feature3": "No guarantor with State guarantee",
+      "feature4": "Up to 10 years repayment"
+    },
+    "businessLoan": {
+      "name": "Amortizing Business Loan",
+      "description": "Classic loan to finance your professional investments",
+      "feature1": "Adapted duration from 2 to 15 years",
+      "feature2": "Fixed rates from 3.2%",
+      "feature3": "Financing up to €500,000",
+      "feature4": "BPI France guarantee possible"
+    },
+    "leasing": {
+      "name": "Leasing / Hire Purchase",
+      "description": "Rent your equipment with purchase option at end of contract",
+      "feature1": "Cash flow preservation",
+      "feature2": "Tax-deductible rental payments",
+      "feature3": "Purchase option at end of contract",
+      "feature4": "Easy equipment renewal"
+    },
+    "cashAdvance": {
+      "name": "Cash Advance",
+      "description": "Quick solution for urgent cash flow needs",
+      "feature1": "Disbursement in 48h",
+      "feature2": "Amounts from €1,000 to €100,000",
+      "feature3": "Flexible use",
+      "feature4": "Repayment adapted to your activity"
+    },
+    "commercialRealEstate": {
+      "name": "Commercial Real Estate Loan",
+      "description": "Finance the purchase of your commercial premises, offices or warehouses",
+      "feature1": "Fixed rates from 1.9%",
+      "feature2": "Duration up to 20 years",
+      "feature3": "Financing up to €2M",
+      "feature4": "Down payment from 20%"
+    },
+    "equipment": {
+      "name": "Equipment Financing",
+      "description": "Equip your business with machinery, vehicles or IT equipment",
+      "feature1": "Exceptional rates from 3.5%",
+      "feature2": "Financing up to 100%",
+      "feature3": "Duration adapted to depreciation",
+      "feature4": "Tax deduction of interest"
+    },
+    "startup": {
+      "name": "Business Startup Loan",
+      "description": "Finance your business launch with personalized support",
+      "feature1": "No guarantee with BPI France",
+      "feature2": "Down payment from 20%",
+      "feature3": "Deferral period possible",
+      "feature4": "Dedicated advisor"
+    }
   }
 }

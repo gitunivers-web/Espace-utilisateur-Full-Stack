@@ -346,5 +346,87 @@
     "loading": "Chargement...",
     "submit": "Envoyer",
     "back": "Retour"
+  },
+  "loanTypes": {
+    "personal": {
+      "name": "Prêt Personnel",
+      "description": "Financement rapide pour vos projets personnels sans justificatif d'utilisation",
+      "feature1": "Réponse sous 48h",
+      "feature2": "100% en ligne",
+      "feature3": "Sans frais de dossier",
+      "feature4": "Remboursement anticipé gratuit"
+    },
+    "auto": {
+      "name": "Crédit Auto",
+      "description": "Financez l'achat de votre véhicule neuf ou d'occasion",
+      "feature1": "Taux compétitifs dès 3,9%",
+      "feature2": "Jusqu'à 7 ans de remboursement",
+      "feature3": "Assurance optionnelle",
+      "feature4": "Report de première échéance possible"
+    },
+    "renovation": {
+      "name": "Prêt Travaux",
+      "description": "Réalisez vos projets de rénovation et d'amélioration de l'habitat",
+      "feature1": "Financement jusqu'à 75 000€",
+      "feature2": "Déblocage progressif des fonds",
+      "feature3": "Taux avantageux dès 3,8%",
+      "feature4": "Accompagnement personnalisé"
+    },
+    "student": {
+      "name": "Prêt Étudiant",
+      "description": "Financez vos études supérieures avec des conditions avantageuses",
+      "feature1": "Taux préférentiels dès 0,9%",
+      "feature2": "Différé de remboursement pendant études",
+      "feature3": "Sans caution avec garantie État",
+      "feature4": "Jusqu'à 10 ans de remboursement"
+    },
+    "businessLoan": {
+      "name": "Prêt Amortissable Pro",
+      "description": "Prêt classique pour financer vos investissements professionnels",
+      "feature1": "Durée adaptée de 2 à 15 ans",
+      "feature2": "Taux fixes dès 3,2%",
+      "feature3": "Financement jusqu'à 500 000€",
+      "feature4": "Garantie BPI France possible"
+    },
+    "leasing": {
+      "name": "Crédit-Bail / Leasing",
+      "description": "Louez votre équipement avec option d'achat en fin de contrat",
+      "feature1": "Préservation de la trésorerie",
+      "feature2": "Loyers déductibles fiscalement",
+      "feature3": "Option d'achat en fin de contrat",
+      "feature4": "Renouvellement facilité du matériel"
+    },
+    "cashAdvance": {
+      "name": "Avance de Trésorerie",
+      "description": "Solution rapide pour faire face à vos besoins de trésorerie urgents",
+      "feature1": "Déblocage en 48h",
+      "feature2": "Montants de 1 000€ à 100 000€",
+      "feature3": "Utilisation flexible",
+      "feature4": "Remboursement adapté à votre activité"
+    },
+    "commercialRealEstate": {
+      "name": "Crédit Immobilier Professionnel",
+      "description": "Financez l'achat de vos locaux commerciaux, bureaux ou entrepôts",
+      "feature1": "Taux fixes dès 1,9%",
+      "feature2": "Durée jusqu'à 20 ans",
+      "feature3": "Financement jusqu'à 2M€",
+      "feature4": "Apport personnel à partir de 20%"
+    },
+    "equipment": {
+      "name": "Financement Équipement",
+      "description": "Équipez votre entreprise en machines, véhicules ou matériel informatique",
+      "feature1": "Taux exceptionnels dès 3,5%",
+      "feature2": "Financement jusqu'à 100%",
+      "feature3": "Durée adaptée à l'amortissement",
+      "feature4": "Déduction fiscale des intérêts"
+    },
+    "startup": {
+      "name": "Prêt Création d'Entreprise",
+      "description": "Financez le démarrage de votre activité avec un accompagnement personnalisé",
+      "feature1": "Sans garantie avec BPI France",
+      "feature2": "Apport personnel à partir de 20%",
+      "feature3": "Période de différé possible",
+      "feature4": "Conseiller dédié"
+    }
   }
 }

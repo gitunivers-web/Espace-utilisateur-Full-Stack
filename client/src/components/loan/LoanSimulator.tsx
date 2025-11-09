@@ -91,7 +91,7 @@ export function LoanSimulator() {
             <SelectContent>
               {loanTypes?.map((loanType) => (
                 <SelectItem key={loanType.id} value={loanType.id}>
-                  {loanType.name}
+                  {t(loanType.nameKey)}
                 </SelectItem>
               ))}
             </SelectContent>

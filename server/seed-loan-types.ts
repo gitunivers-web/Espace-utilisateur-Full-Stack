@@ -3,189 +3,192 @@ import { loanTypes } from "@shared/schema";
 
 const demoLoanTypes = [
   {
-    name: "Prêt Personnel",
+    slug: "pret-personnel",
+    nameKey: "loanTypes.personal.name",
+    descriptionKey: "loanTypes.personal.description",
     category: "particular",
-    description: "Financement rapide pour vos projets personnels sans justificatif d'utilisation",
-    minAmount: "500",
-    maxAmount: "75000",
+    minAmount: "1000",
+    maxAmount: "40000",
     minDurationMonths: 6,
     maxDurationMonths: 84,
-    minRate: "0.5",
-    maxRate: "9.9",
-    features: [
-      "Réponse sous 48h",
-      "100% en ligne",
-      "Sans frais de dossier",
-      "Remboursement anticipé gratuit"
+    minRate: "4.5",
+    maxRate: "8.5",
+    featureKeys: [
+      "loanTypes.personal.feature1",
+      "loanTypes.personal.feature2",
+      "loanTypes.personal.feature3",
+      "loanTypes.personal.feature4"
     ],
     active: true
   },
   {
-    name: "Crédit Auto",
+    slug: "credit-auto",
+    nameKey: "loanTypes.auto.name",
+    descriptionKey: "loanTypes.auto.description",
     category: "particular",
-    description: "Financez l'achat de votre véhicule neuf ou d'occasion",
     minAmount: "3000",
     maxAmount: "50000",
     minDurationMonths: 12,
     maxDurationMonths: 84,
-    minRate: "1.0",
+    minRate: "3.9",
     maxRate: "7.5",
-    features: [
-      "Taux compétitifs",
-      "Jusqu'à 7 ans de remboursement",
-      "Assurance incluse",
-      "Report de première échéance possible"
+    featureKeys: [
+      "loanTypes.auto.feature1",
+      "loanTypes.auto.feature2",
+      "loanTypes.auto.feature3",
+      "loanTypes.auto.feature4"
     ],
     active: true
   },
   {
-    name: "Prêt Travaux",
+    slug: "pret-travaux",
+    nameKey: "loanTypes.renovation.name",
+    descriptionKey: "loanTypes.renovation.description",
     category: "particular",
-    description: "Réalisez vos projets de rénovation et d'amélioration de l'habitat",
     minAmount: "1000",
     maxAmount: "75000",
     minDurationMonths: 12,
     maxDurationMonths: 120,
-    minRate: "1.5",
+    minRate: "3.8",
     maxRate: "8.0",
-    features: [
-      "Financement jusqu'à 75 000€",
-      "Déblocage progressif des fonds",
-      "Taux avantageux",
-      "Accompagnement personnalisé"
+    featureKeys: [
+      "loanTypes.renovation.feature1",
+      "loanTypes.renovation.feature2",
+      "loanTypes.renovation.feature3",
+      "loanTypes.renovation.feature4"
     ],
     active: true
   },
   {
-    name: "Crédit Immobilier Professionnel",
+    slug: "pret-etudiant",
+    nameKey: "loanTypes.student.name",
+    descriptionKey: "loanTypes.student.description",
+    category: "particular",
+    minAmount: "1000",
+    maxAmount: "50000",
+    minDurationMonths: 12,
+    maxDurationMonths: 120,
+    minRate: "0.9",
+    maxRate: "2.5",
+    featureKeys: [
+      "loanTypes.student.feature1",
+      "loanTypes.student.feature2",
+      "loanTypes.student.feature3",
+      "loanTypes.student.feature4"
+    ],
+    active: true
+  },
+  {
+    slug: "pret-amortissable-pro",
+    nameKey: "loanTypes.businessLoan.name",
+    descriptionKey: "loanTypes.businessLoan.description",
     category: "professional",
-    description: "Financez l'achat de vos locaux commerciaux, bureaux ou entrepôts",
+    minAmount: "10000",
+    maxAmount: "500000",
+    minDurationMonths: 24,
+    maxDurationMonths: 180,
+    minRate: "3.2",
+    maxRate: "5.5",
+    featureKeys: [
+      "loanTypes.businessLoan.feature1",
+      "loanTypes.businessLoan.feature2",
+      "loanTypes.businessLoan.feature3",
+      "loanTypes.businessLoan.feature4"
+    ],
+    active: true
+  },
+  {
+    slug: "credit-bail",
+    nameKey: "loanTypes.leasing.name",
+    descriptionKey: "loanTypes.leasing.description",
+    category: "professional",
+    minAmount: "5000",
+    maxAmount: "250000",
+    minDurationMonths: 24,
+    maxDurationMonths: 60,
+    minRate: "3.8",
+    maxRate: "5.0",
+    featureKeys: [
+      "loanTypes.leasing.feature1",
+      "loanTypes.leasing.feature2",
+      "loanTypes.leasing.feature3",
+      "loanTypes.leasing.feature4"
+    ],
+    active: true
+  },
+  {
+    slug: "avance-tresorerie",
+    nameKey: "loanTypes.cashAdvance.name",
+    descriptionKey: "loanTypes.cashAdvance.description",
+    category: "professional",
+    minAmount: "1000",
+    maxAmount: "100000",
+    minDurationMonths: 3,
+    maxDurationMonths: 36,
+    minRate: "4.0",
+    maxRate: "6.5",
+    featureKeys: [
+      "loanTypes.cashAdvance.feature1",
+      "loanTypes.cashAdvance.feature2",
+      "loanTypes.cashAdvance.feature3",
+      "loanTypes.cashAdvance.feature4"
+    ],
+    active: true
+  },
+  {
+    slug: "immobilier-pro",
+    nameKey: "loanTypes.commercialRealEstate.name",
+    descriptionKey: "loanTypes.commercialRealEstate.description",
+    category: "professional",
     minAmount: "50000",
     maxAmount: "2000000",
     minDurationMonths: 60,
     maxDurationMonths: 240,
-    minRate: "3.6",
+    minRate: "1.9",
     maxRate: "3.9",
-    features: [
-      "Taux fixes de 3,6% à 3,9%",
-      "Durée jusqu'à 20 ans",
-      "Financement jusqu'à 80% du projet",
-      "Garantie BPI France possible",
-      "Frais de dossier réduits"
+    featureKeys: [
+      "loanTypes.commercialRealEstate.feature1",
+      "loanTypes.commercialRealEstate.feature2",
+      "loanTypes.commercialRealEstate.feature3",
+      "loanTypes.commercialRealEstate.feature4"
     ],
     active: true
   },
   {
-    name: "Prêt Création d'Entreprise",
+    slug: "equipement-pro",
+    nameKey: "loanTypes.equipment.name",
+    descriptionKey: "loanTypes.equipment.description",
     category: "professional",
-    description: "Financez le démarrage de votre activité avec un accompagnement personnalisé",
+    minAmount: "2000",
+    maxAmount: "300000",
+    minDurationMonths: 12,
+    maxDurationMonths: 60,
+    minRate: "3.5",
+    maxRate: "5.2",
+    featureKeys: [
+      "loanTypes.equipment.feature1",
+      "loanTypes.equipment.feature2",
+      "loanTypes.equipment.feature3",
+      "loanTypes.equipment.feature4"
+    ],
+    active: true
+  },
+  {
+    slug: "creation-entreprise",
+    nameKey: "loanTypes.startup.name",
+    descriptionKey: "loanTypes.startup.description",
+    category: "professional",
     minAmount: "5000",
     maxAmount: "150000",
     minDurationMonths: 24,
     maxDurationMonths: 84,
     minRate: "3.5",
     maxRate: "5.5",
-    features: [
-      "Sans garantie avec BPI France",
-      "Apport personnel à partir de 20%",
-      "Période de différé possible",
-      "Conseiller dédié",
-      "Taux d'acceptation 97%"
-    ],
-    active: true
-  },
-  {
-    name: "Crédit Trésorerie Pro",
-    category: "professional",
-    description: "Optimisez votre besoin en fonds de roulement avec une solution flexible",
-    minAmount: "1000",
-    maxAmount: "100000",
-    minDurationMonths: 3,
-    maxDurationMonths: 36,
-    minRate: "4.29",
-    maxRate: "5.4",
-    features: [
-      "Déblocage en 48h",
-      "Taux moyen 4,29%",
-      "Utilisation flexible",
-      "Remboursement adapté à votre activité",
-      "Ligne de crédit renouvelable"
-    ],
-    active: true
-  },
-  {
-    name: "Financement Équipement",
-    category: "professional",
-    description: "Équipez votre entreprise en machines, véhicules ou matériel informatique",
-    minAmount: "2000",
-    maxAmount: "300000",
-    minDurationMonths: 12,
-    maxDurationMonths: 60,
-    minRate: "3.7",
-    maxRate: "3.73",
-    features: [
-      "Taux exceptionnels dès 3,7%",
-      "Financement jusqu'à 100%",
-      "Durée adaptée à l'amortissement",
-      "Déduction fiscale des intérêts",
-      "Option crédit-bail disponible"
-    ],
-    active: true
-  },
-  {
-    name: "Rachat de Fonds de Commerce",
-    category: "professional",
-    description: "Reprenez une activité existante avec un financement sur-mesure",
-    minAmount: "20000",
-    maxAmount: "500000",
-    minDurationMonths: 36,
-    maxDurationMonths: 120,
-    minRate: "4.1",
-    maxRate: "4.7",
-    features: [
-      "Financement du fonds et des stocks",
-      "Étude personnalisée du dossier",
-      "Apport personnel minimum 30%",
-      "Accompagnement dans la reprise",
-      "Crédit vendeur possible"
-    ],
-    active: true
-  },
-  {
-    name: "Prêt Investissement PME",
-    category: "professional",
-    description: "Développez votre entreprise : nouveaux locaux, expansion, digitalisation",
-    minAmount: "10000",
-    maxAmount: "500000",
-    minDurationMonths: 24,
-    maxDurationMonths: 84,
-    minRate: "3.54",
-    maxRate: "4.55",
-    features: [
-      "Taux PME préférentiels",
-      "Garantie BPI France jusqu'à 90%",
-      "Montants adaptés à votre projet",
-      "Sans caution personnelle possible",
-      "Financement de la croissance"
-    ],
-    active: true
-  },
-  {
-    name: "Crédit-Bail Professionnel",
-    category: "professional",
-    description: "Louez votre équipement avec option d'achat en fin de contrat",
-    minAmount: "5000",
-    maxAmount: "250000",
-    minDurationMonths: 24,
-    maxDurationMonths: 60,
-    minRate: "3.8",
-    maxRate: "4.5",
-    features: [
-      "Préservation de la trésorerie",
-      "Loyers déductibles fiscalement",
-      "Option d'achat en fin de contrat",
-      "Renouvellement du matériel facilité",
-      "Pas d'apport initial requis"
+    featureKeys: [
+      "loanTypes.startup.feature1",
+      "loanTypes.startup.feature2",
+      "loanTypes.startup.feature3",
+      "loanTypes.startup.feature4"
     ],
     active: true
   }
@@ -197,7 +200,7 @@ async function seedLoanTypes() {
   try {
     for (const loanType of demoLoanTypes) {
       await db.insert(loanTypes).values(loanType);
-      console.log(`✓ Added: ${loanType.name}`);
+      console.log(`✓ Added: ${loanType.slug}`);
     }
     console.log("\n✅ All loan types have been seeded successfully!");
   } catch (error) {

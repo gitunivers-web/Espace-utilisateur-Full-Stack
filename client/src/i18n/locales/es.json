@@ -27,5 +27,87 @@
   },
   "employmentStatus": {"cdi": "Contrato Indefinido (CDI)", "cdd": "Contrato Temporal (CDD)", "freelance": "Autónomo / Freelance", "retired": "Jubilado", "student": "Estudiante", "unemployed": "Desempleado", "other": "Otro"},
   "loanApplications": {"title": "Mis Solicitudes de Préstamo", "subtitle": "Siga y gestione sus solicitudes de préstamo", "noApplications": "Aún no hay solicitudes de préstamo", "noApplicationsDesc": "Todavía no ha enviado ninguna solicitud de préstamo. Comience simulando un préstamo.", "startSimulation": "Simular un préstamo", "newApplication": "Nueva solicitud", "loanApplication": "Solicitud de préstamo", "status": "Estado", "requestedOn": "Solicitado el", "amount": "Cantidad", "duration": "Duración", "viewDetails": "Ver detalles"},
-  "loanStatus": {"pending": "Pendiente", "under_review": "En revisión", "approved": "Aprobado", "rejected": "Rechazado", "funded": "Financiado"}
+  "loanStatus": {"pending": "Pendiente", "under_review": "En revisión", "approved": "Aprobado", "rejected": "Rechazado", "funded": "Financiado"},
+  "loanTypes": {
+    "personal": {
+      "name": "Préstamo Personal",
+      "description": "Financiación rápida para sus proyectos personales sin justificación de uso",
+      "feature1": "Respuesta en 48h",
+      "feature2": "100% en línea",
+      "feature3": "Sin gastos de gestión",
+      "feature4": "Reembolso anticipado gratuito"
+    },
+    "auto": {
+      "name": "Crédito Auto",
+      "description": "Financie la compra de su vehículo nuevo o usado",
+      "feature1": "Tasas competitivas desde 3,9%",
+      "feature2": "Hasta 7 años de reembolso",
+      "feature3": "Seguro opcional",
+      "feature4": "Aplazamiento del primer pago posible"
+    },
+    "renovation": {
+      "name": "Préstamo Reformas",
+      "description": "Realice sus proyectos de renovación y mejora del hogar",
+      "feature1": "Financiación hasta 75.000€",
+      "feature2": "Desembolso progresivo de fondos",
+      "feature3": "Tasas ventajosas desde 3,8%",
+      "feature4": "Apoyo personalizado"
+    },
+    "student": {
+      "name": "Préstamo Estudiantil",
+      "description": "Financie sus estudios superiores con condiciones ventajosas",
+      "feature1": "Tasas preferenciales desde 0,9%",
+      "feature2": "Diferimiento de reembolso durante estudios",
+      "feature3": "Sin aval con garantía del Estado",
+      "feature4": "Hasta 10 años de reembolso"
+    },
+    "businessLoan": {
+      "name": "Préstamo Amortizable Profesional",
+      "description": "Préstamo clásico para financiar sus inversiones profesionales",
+      "feature1": "Duración adaptada de 2 a 15 años",
+      "feature2": "Tasas fijas desde 3,2%",
+      "feature3": "Financiación hasta 500.000€",
+      "feature4": "Garantía BPI France posible"
+    },
+    "leasing": {
+      "name": "Arrendamiento / Leasing",
+      "description": "Alquile su equipo con opción de compra al final del contrato",
+      "feature1": "Preservación de tesorería",
+      "feature2": "Pagos de alquiler deducibles",
+      "feature3": "Opción de compra al final del contrato",
+      "feature4": "Renovación facilitada del equipo"
+    },
+    "cashAdvance": {
+      "name": "Anticipo de Tesorería",
+      "description": "Solución rápida para necesidades urgentes de tesorería",
+      "feature1": "Desembolso en 48h",
+      "feature2": "Cantidades de 1.000€ a 100.000€",
+      "feature3": "Uso flexible",
+      "feature4": "Reembolso adaptado a su actividad"
+    },
+    "commercialRealEstate": {
+      "name": "Crédito Inmobiliario Comercial",
+      "description": "Financie la compra de sus locales comerciales, oficinas o almacenes",
+      "feature1": "Tasas fijas desde 1,9%",
+      "feature2": "Duración hasta 20 años",
+      "feature3": "Financiación hasta 2M€",
+      "feature4": "Entrada desde el 20%"
+    },
+    "equipment": {
+      "name": "Financiación de Equipo",
+      "description": "Equipe su empresa con maquinaria, vehículos o equipos informáticos",
+      "feature1": "Tasas excepcionales desde 3,5%",
+      "feature2": "Financiación hasta el 100%",
+      "feature3": "Duración adaptada a la amortización",
+      "feature4": "Deducción fiscal de intereses"
+    },
+    "startup": {
+      "name": "Préstamo Creación de Empresa",
+      "description": "Financie el lanzamiento de su actividad con apoyo personalizado",
+      "feature1": "Sin garantía con BPI France",
+      "feature2": "Entrada desde el 20%",
+      "feature3": "Período de diferimiento posible",
+      "feature4": "Asesor dedicado"
+    }
+  }
 }
