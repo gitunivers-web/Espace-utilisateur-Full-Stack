@@ -11,7 +11,71 @@ Plateforme de financement en ligne complète pour particuliers et professionnels
 - **State Management**: React Query pour les données serveur
 - **Routing**: Architecture dual-layout (Public vs Protected)
 
-## Dernières modifications (9 nov 2024)
+## Dernières modifications (9 nov 2024 - Système de Réinitialisation de Mot de Passe)
+
+### Système de réinitialisation de mot de passe sécurisé
+**Implémentation complète avec email via Resend API:**
+- ✅ Table `password_reset_tokens` avec tokens hashés (bcrypt) pour sécurité maximale
+- ✅ Tokens avec expiration automatique (1 heure)
+- ✅ Envoi d'emails via Resend API (100 emails/jour gratuits)
+- ✅ Pages frontend : `/forgot-password` et `/reset-password`
+- ✅ Lien "Mot de passe oublié ?" sur la page de connexion
+- ✅ Validation complète côté backend (vérification token, expiration, etc.)
+
+**Architecture sécurisée:**
+```typescript
+// Tokens hashés avant stockage (server/routes.ts)
+const token = randomBytes(32).toString("hex");
+const hashedToken = await bcrypt.hash(token, 10);
+
+// Vérification par comparaison bcrypt
+const allTokens = await storage.getAllPasswordResetTokens();
+for (const dbToken of allTokens) {
+  const isValid = await bcrypt.compare(token, dbToken.token);
+  // ...
+}
+```
+
+**Fichiers créés/modifiés:**
+- `server/email.ts` - Service d'envoi d'emails avec Resend
+- `client/src/pages/forgot-password.tsx` - Page de demande de réinitialisation
+- `client/src/pages/reset-password.tsx` - Page de nouveau mot de passe
+- `shared/schema.ts` - Table passwordResetTokens ajoutée
+- `server/storage.ts` - Méthodes CRUD pour tokens
+- `server/routes.ts` - 3 endpoints: demande reset, vérification token, nouveau mot de passe
+
+### Séparation des parcours d'inscription
+**Deux pages d'inscription distinctes:**
+- ✅ `/register` - Page de choix du type de compte (particulier ou professionnel)
+- ✅ `/register/particulier` - Formulaire pour comptes individuels
+- ✅ `/register/professionnel` - Formulaire pour comptes professionnels
+- ✅ Navigation avec flèches de retour sur toutes les pages d'authentification
+
+**Design UX:**
+- Interface claire avec cartes cliquables pour choisir le type de compte
+- Formulaires adaptés selon le type (champs entreprise pour professionnels)
+- Cohérence visuelle avec le reste de l'application
+
+**Fichiers créés:**
+- `client/src/pages/register.tsx` - Page de choix
+- `client/src/pages/register-particular.tsx` - Inscription particuliers
+- `client/src/pages/register-professional.tsx` - Inscription professionnels
+
+### Améliorations UX Mobile
+- ✅ Boutons de retour (flèche) ajoutés sur login, register, forgot-password
+- ✅ Design responsive pour tous les formulaires d'authentification
+
+### Configuration Email (Resend)
+**Variables d'environnement requises:**
+- `RESEND_API_KEY` - Clé API Resend (déjà configurée)
+- Plan gratuit: 100 emails/jour, 3000 emails/mois
+
+**Template email:**
+- Email professionnel avec logo Altus Finance Group
+- Lien de réinitialisation sécurisé avec expiration 1h
+- Instructions claires en français
+
+## Dernières modifications (9 nov 2024 - Précédentes)
 
 ### Base de Données PostgreSQL sur Render (9 nov 2024)
 **Migration importante depuis Replit Agent:**
