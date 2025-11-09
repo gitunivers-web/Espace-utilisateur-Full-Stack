@@ -40,9 +40,9 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 pt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8">
                 <div className="flex items-center gap-2">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="h-10 w-10 shrink-0 rounded-full bg-primary/10 flex items-center justify-center">
                     <Clock className="h-5 w-5 text-primary" />
                   </div>
                   <div>
@@ -51,7 +51,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="h-10 w-10 shrink-0 rounded-full bg-primary/10 flex items-center justify-center">
                     <Check className="h-5 w-5 text-primary" />
                   </div>
                   <div>
@@ -60,7 +60,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="h-10 w-10 shrink-0 rounded-full bg-primary/10 flex items-center justify-center">
                     <TrendingUp className="h-5 w-5 text-primary" />
                   </div>
                   <div>
@@ -87,7 +87,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredLoans?.map((loanType) => (
               <Link key={loanType.id} href={`/auth/connexion?redirect=/mon-espace&loanType=${loanType.id}`}>
                 <LoanCard loanType={loanType} />
@@ -115,7 +115,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {[
               {
                 title: "Taux moyens 2025",
@@ -172,7 +172,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Pourquoi Altus Finance ?</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 title: "Rapide",

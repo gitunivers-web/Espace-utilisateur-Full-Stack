@@ -26,7 +26,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {[
             {
               title: "Sécurité",
@@ -86,7 +86,7 @@ export default function About() {
             <h2 className="text-2xl font-bold mb-4">Informations Légales</h2>
             <Card>
               <CardContent className="p-6 space-y-4">
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex items-start gap-3">
                     <Building className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
                     <div>

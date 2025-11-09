@@ -99,9 +99,9 @@ export function LoanSimulator() {
         </div>
 
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <Label>{t('simulator.amount')}</Label>
-            <div className="text-2xl font-bold text-primary">{amount.toLocaleString()}€</div>
+            <div className="text-xl sm:text-2xl font-bold text-primary">{amount.toLocaleString()}€</div>
           </div>
           <Slider
             value={[amount]}
@@ -120,9 +120,9 @@ export function LoanSimulator() {
         </div>
 
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <Label>{t('simulator.duration')}</Label>
-            <div className="text-2xl font-bold text-primary">{durationMonths} {t('simulator.months')}</div>
+            <div className="text-xl sm:text-2xl font-bold text-primary">{durationMonths} {t('simulator.months')}</div>
           </div>
           <Slider
             value={[durationMonths]}
@@ -157,33 +157,33 @@ export function LoanSimulator() {
 
         {simulate.data && (
           <div className="mt-6 space-y-4">
-            <div className="p-6 bg-primary/5 rounded-lg space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2 text-center pb-4 border-b">
+            <div className="p-4 sm:p-6 bg-primary/5 rounded-lg space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="col-span-1 sm:col-span-2 text-center pb-4 border-b">
                   <div className="text-sm text-muted-foreground mb-1">{t('simulator.fixedAPR')}</div>
-                  <div className="text-4xl font-bold text-primary">
+                  <div className="text-3xl sm:text-4xl font-bold text-primary">
                     {simulate.data.taeg.toFixed(2)}%
                   </div>
                 </div>
-                <div>
+                <div className="text-center sm:text-left">
                   <div className="text-sm text-muted-foreground">{t('simulator.monthlyPayment')}</div>
-                  <div className="text-3xl font-bold text-primary">
+                  <div className="text-2xl sm:text-3xl font-bold text-primary">
                     {simulate.data.monthlyPayment.toLocaleString()}€
                   </div>
                 </div>
-                <div>
+                <div className="text-center sm:text-left">
                   <div className="text-sm text-muted-foreground">{t('simulator.totalCreditCost')}</div>
-                  <div className="text-2xl font-semibold">
+                  <div className="text-xl sm:text-2xl font-semibold">
                     {simulate.data.totalInterest.toLocaleString()}€
                   </div>
                 </div>
-                <div>
+                <div className="text-center sm:text-left">
                   <div className="text-sm text-muted-foreground">{t('simulator.totalAmountDue')}</div>
                   <div className="text-lg font-semibold">
                     {simulate.data.totalCost.toLocaleString()}€
                   </div>
                 </div>
-                <div>
+                <div className="text-center sm:text-left">
                   <div className="text-sm text-muted-foreground">{t('simulator.interest')}</div>
                   <div className="text-lg font-semibold">
                     {simulate.data.totalInterest.toLocaleString()}€

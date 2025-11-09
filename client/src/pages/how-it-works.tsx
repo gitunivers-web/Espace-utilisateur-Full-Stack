@@ -139,7 +139,7 @@ export default function HowItWorks() {
       {/* Timeline Section - Processus en 4 étapes */}
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {PROCESS_STEPS.map((step, index) => (
               <Card 
                 key={index} 
@@ -213,7 +213,7 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {KEY_BENEFITS.map((benefit, index) => (
               <div 
                 key={index} 
