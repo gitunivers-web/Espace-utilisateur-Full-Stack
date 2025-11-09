@@ -7,11 +7,47 @@ Plateforme de financement en ligne complète pour particuliers et professionnels
 - **Frontend**: React 18 + TypeScript + Vite
 - **UI**: shadcn/ui components + Tailwind CSS
 - **Backend**: Express.js + TypeScript
-- **Database**: PostgreSQL (Neon) avec Drizzle ORM
+- **Database**: PostgreSQL (Render) avec Drizzle ORM + driver `pg`
 - **State Management**: React Query pour les données serveur
 - **Routing**: Architecture dual-layout (Public vs Protected)
 
 ## Dernières modifications (9 nov 2024)
+
+### Base de Données PostgreSQL sur Render (9 nov 2024)
+**Migration importante depuis Replit Agent:**
+- ✅ Configuration PostgreSQL sur Render avec driver `pg` (compatible production)
+- ✅ Base de données peuplée avec **10 types de prêts réalistes** basés sur le marché français 2024-2025
+- ✅ Endpoint d'administration: `POST /api/admin/seed-loan-types` pour réinitialisation
+- ✅ Traductions i18n complètes pour tous les types de prêts (7 langues)
+
+**Types de prêts créés (données réalistes):**
+- **Particuliers (4):** 
+  - Prêt Personnel (500€-75k, TAEG 0.9%)
+  - Crédit Auto (1k-75k, TAEG 0.9%)
+  - Crédit Moto (500€-50k, TAEG 1.99%)
+  - Prêt Travaux (1k-100k, TAEG 1.49%)
+- **Professionnels (6):**
+  - Prêt Professionnel (10k-500k, TAEG 2.9%)
+  - Financement Équipement (5k-1M, TAEG 2.5%)
+  - Crédit Trésorerie (5k-250k, TAEG 3.5%)
+  - Crédit Immobilier Pro (50k-5M, TAEG 2.7%)
+  - Leasing Professionnel (10k-500k, TAEG 3.2%)
+  - Affacturage (10k-1M, TAEG 1.8%)
+
+**Configuration technique:**
+```typescript
+// server/db.ts - Configuration PostgreSQL
+import { drizzle } from 'drizzle-orm/node-postgres';
+import pg from 'pg';
+const { Pool } = pg;
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
+```
+
+## Dernières modifications (9 nov 2024 - Précédentes)
 
 ### Migration vers Plateforme de Prêt en Ligne
 Le projet a été transformé d'une application bancaire complète vers une plateforme de prêt en ligne spécialisée avec deux interfaces distinctes:
@@ -89,9 +125,9 @@ Le projet a été transformé d'une application bancaire complète vers une plat
 
 ### Données de Démonstration
 
-**6 types de prêts pré-configurés:**
-- **Particuliers:** Prêt Personnel (500€-75k, 0.5%), Crédit Auto (5k-75k, 0.8%), Prêt Travaux (1k-75k, 0.6%)
-- **Professionnels:** Prêt Professionnel (10k-500k, 1.2%), Crédit Trésorerie (5k-250k, 1.5%), Financement Équipement (10k-1M, 1.0%)
+**10 types de prêts réalistes (marché français 2024-2025):**
+- **Particuliers (4):** Prêt Personnel (500€-75k, 0.9%), Crédit Auto (1k-75k, 0.9%), Crédit Moto (500€-50k, 1.99%), Prêt Travaux (1k-100k, 1.49%)
+- **Professionnels (6):** Prêt Pro (10k-500k, 2.9%), Financement Équipement (5k-1M, 2.5%), Crédit Trésorerie (5k-250k, 3.5%), Crédit Immo Pro (50k-5M, 2.7%), Leasing (10k-500k, 3.2%), Affacturage (10k-1M, 1.8%)
 
 ## Dernières modifications (8 nov 2024)
 
