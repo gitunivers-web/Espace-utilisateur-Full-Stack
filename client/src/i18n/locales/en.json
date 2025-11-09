@@ -210,7 +210,23 @@
     "copyright": "All rights reserved"
   },
   "legal": {
-    "warning": "A loan commits you and must be repaid. Check your repayment capacity before committing."
+    "warning": "A loan commits you and must be repaid. Check your repayment capacity before committing.",
+    "sectionTitle": "Legal Information",
+    "sectionSubtitle": "Transparency and compliance for your peace of mind",
+    "representativeExample": "Representative Example",
+    "borrowedAmount": "Borrowed Amount",
+    "duration": "Duration",
+    "months": "months",
+    "fixed": "fixed",
+    "variable": "variable",
+    "monthlyPayment": "Monthly Payment",
+    "totalCreditCost": "Total Credit Cost",
+    "totalAmountDue": "Total Amount Due",
+    "withdrawalRight": "Right of withdrawal",
+    "withdrawalRightText": "You have a period of 14 days to exercise your right of withdrawal from the signing of the credit contract.",
+    "taegTitle": "APR (Annual Percentage Rate)",
+    "taegText": "The APR represents the total cost of credit for the borrower, expressed as an annual percentage of the total credit amount. It includes the nominal interest rate as well as all mandatory fees related to the credit (application fees, mandatory insurance, etc.).",
+    "offerDisclaimer": "Loan offer subject to acceptance of your application by Altus Finance Group. You have a 14-day cooling-off period to accept the credit offer. A loan commits you and must be repaid. Check your repayment capacity before committing."
   },
   "language": {
     "select": "Language"

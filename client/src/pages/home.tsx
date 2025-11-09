@@ -213,9 +213,9 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Informations Légales</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('legal.sectionTitle')}</h2>
               <p className="text-xl text-muted-foreground">
-                Transparence et conformité pour votre tranquillité d'esprit
+                {t('legal.sectionSubtitle')}
               </p>
             </div>
             

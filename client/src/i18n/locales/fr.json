@@ -210,7 +210,23 @@
     "copyright": "Tous droits réservés"
   },
   "legal": {
-    "warning": "Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager."
+    "warning": "Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.",
+    "sectionTitle": "Informations Légales",
+    "sectionSubtitle": "Transparence et conformité pour votre tranquillité d'esprit",
+    "representativeExample": "Exemple représentatif",
+    "borrowedAmount": "Montant emprunté",
+    "duration": "Durée",
+    "months": "mois",
+    "fixed": "fixe",
+    "variable": "variable",
+    "monthlyPayment": "Mensualité",
+    "totalCreditCost": "Coût total du crédit",
+    "totalAmountDue": "Montant total dû",
+    "withdrawalRight": "Droit de rétractation",
+    "withdrawalRightText": "Vous disposez d'un délai de 14 jours pour exercer votre droit de rétractation à compter de la signature du contrat de crédit.",
+    "taegTitle": "TAEG (Taux Annuel Effectif Global)",
+    "taegText": "Le TAEG représente le coût total du crédit pour l'emprunteur, exprimé en pourcentage annuel du montant total du crédit. Il inclut le taux d'intérêt nominal ainsi que l'ensemble des frais obligatoires liés au crédit (frais de dossier, assurances obligatoires, etc.).",
+    "offerDisclaimer": "Offre de prêt sous réserve d'acceptation de votre dossier par Altus Finance Group. Vous disposez d'un délai de réflexion de 14 jours pour accepter l'offre de crédit. Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager."
   },
   "language": {
     "select": "Langue"

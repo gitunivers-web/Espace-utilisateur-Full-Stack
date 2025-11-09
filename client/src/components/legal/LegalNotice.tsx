@@ -1,13 +1,16 @@
 import { AlertTriangle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export function LegalNoticeBanner() {
+  const { t } = useTranslation();
+  
   return (
     <div className="bg-card border-y py-3" data-testid="legal-notice-banner">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3 text-sm">
           <AlertTriangle className="h-5 w-5 text-muted-foreground flex-shrink-0" />
           <p className="font-semibold">
-            Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
+            {t('legal.warning')}
           </p>
         </div>
       </div>
@@ -32,32 +35,34 @@ export function RepresentativeExample({
   totalCost,
   interestType = "fixe"
 }: RepresentativeExampleProps) {
+  const { t } = useTranslation();
+  
   return (
     <div className="p-6 bg-muted rounded-md space-y-4" data-testid="representative-example">
-      <h3 className="font-semibold text-lg">Exemple représentatif</h3>
+      <h3 className="font-semibold text-lg">{t('legal.representativeExample')}</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
         <div>
-          <p className="text-muted-foreground">Montant emprunté</p>
+          <p className="text-muted-foreground">{t('legal.borrowedAmount')}</p>
           <p className="font-semibold">{amount.toLocaleString()} €</p>
         </div>
         <div>
-          <p className="text-muted-foreground">Durée</p>
-          <p className="font-semibold">{durationMonths} mois</p>
+          <p className="text-muted-foreground">{t('legal.duration')}</p>
+          <p className="font-semibold">{durationMonths} {t('legal.months')}</p>
         </div>
         <div>
-          <p className="text-muted-foreground">TAEG {interestType}</p>
+          <p className="text-muted-foreground">TAEG {t(`legal.${interestType}`)}</p>
           <p className="font-bold text-xl text-primary">{taeg.toFixed(2)} %</p>
         </div>
         <div>
-          <p className="text-muted-foreground">Mensualité</p>
+          <p className="text-muted-foreground">{t('legal.monthlyPayment')}</p>
           <p className="font-semibold">{monthlyPayment.toLocaleString()} €</p>
         </div>
         <div>
-          <p className="text-muted-foreground">Coût total du crédit</p>
+          <p className="text-muted-foreground">{t('legal.totalCreditCost')}</p>
           <p className="font-semibold">{(totalCost - amount).toLocaleString()} €</p>
         </div>
         <div>
-          <p className="text-muted-foreground">Montant total dû</p>
+          <p className="text-muted-foreground">{t('legal.totalAmountDue')}</p>
           <p className="font-semibold">{totalCost.toLocaleString()} €</p>
         </div>
       </div>
@@ -66,21 +71,23 @@ export function RepresentativeExample({
 }
 
 export function LegalDisclaimers() {
+  const { t } = useTranslation();
+  
   return (
     <div className="space-y-4 text-sm text-muted-foreground">
       <p className="font-semibold text-foreground">
         <AlertTriangle className="inline h-4 w-4 mr-2" />
-        Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
+        {t('legal.warning')}
       </p>
       <div className="space-y-2">
         <p>
-          <strong>Droit de rétractation :</strong> Vous disposez d'un délai de 14 jours pour exercer votre droit de rétractation à compter de la signature du contrat de crédit.
+          <strong>{t('legal.withdrawalRight')} :</strong> {t('legal.withdrawalRightText')}
         </p>
         <p>
-          <strong>TAEG (Taux Annuel Effectif Global) :</strong> Le TAEG représente le coût total du crédit pour l'emprunteur, exprimé en pourcentage annuel du montant total du crédit. Il inclut le taux d'intérêt nominal ainsi que l'ensemble des frais obligatoires liés au crédit (frais de dossier, assurances obligatoires, etc.).
+          <strong>{t('legal.taegTitle')} :</strong> {t('legal.taegText')}
         </p>
         <p className="text-xs">
-          Offre de prêt sous réserve d'acceptation de votre dossier par Altus Finance Group. Vous disposez d'un délai de réflexion de 14 jours pour accepter l'offre de crédit. Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
+          {t('legal.offerDisclaimer')}
         </p>
       </div>
     </div>

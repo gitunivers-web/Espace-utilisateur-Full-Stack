@@ -1,0 +1,143 @@
+Parfait 🔥 — dans ce cas, voici ton **prompt complet et prêt à coller dans Replit**, mis à jour pour gérer **7 langues** avec i18next.
+Il te permettra de **compléter toutes les traductions manquantes** à partir de ton fichier anglais (`/locales/en/translation.json`), puis de **générer automatiquement** les fichiers pour :
+🇫🇷 Français, 🇪🇸 Espagnol, 🇵🇹 Portugais, 🇮🇹 Italien, 🇩🇪 Allemand, 🇳🇱 Néerlandais.
+
+---
+
+### 🧠 PROMPT À COPIER-COLLER DANS REPLIT
+
+```
+Tu es un assistant de développement i18n expert en JavaScript.
+
+### CONTEXTE :
+J’ai un projet fullstack JavaScript multilingue utilisant **i18next**.
+Toutes mes traductions se trouvent dans le dossier `/locales/`.
+
+Les langues disponibles sont :
+- `en` → Anglais (langue de base et référence)
+- `fr` → Français
+- `es` → Espagnol
+- `pt` → Portugais
+- `it` → Italien
+- `de` → Allemand
+- `nl` → Néerlandais
+
+Chaque langue a un fichier `translation.json` :
+```
+
+/locales/en/translation.json
+/locales/fr/translation.json
+/locales/es/translation.json
+/locales/pt/translation.json
+/locales/it/translation.json
+/locales/de/translation.json
+/locales/nl/translation.json
+
+````
+
+### OBJECTIF :
+1. Lire le fichier anglais `/locales/en/translation.json` (qui contient toutes les clés valides).
+2. Comparer ce fichier avec ceux des autres langues.
+3. Identifier les **clés manquantes**, **vides**, ou **incomplètes** dans les autres langues.
+4. Traduire automatiquement les textes anglais manquants dans chaque langue cible :
+   - `fr` → Traduire en **français**
+   - `es` → Traduire en **espagnol**
+   - `pt` → Traduire en **portugais**
+   - `it` → Traduire en **italien**
+   - `de` → Traduire en **allemand**
+   - `nl` → Traduire en **néerlandais**
+5. Préserver tous les **placeholders** (ex : `{{name}}`, `{{count}}`, `{{date}}`, etc.).
+6. Conserver la **même structure JSON** que le fichier anglais (objets et sous-clés inclus).
+7. Mettre à jour ou recréer les fichiers suivants, bien formatés et complets :
+   - `/locales/fr/translation.json`
+   - `/locales/es/translation.json`
+   - `/locales/pt/translation.json`
+   - `/locales/it/translation.json`
+   - `/locales/de/translation.json`
+   - `/locales/nl/translation.json`
+8. Les clés déjà traduites dans une langue doivent rester inchangées.
+9. Réponds **uniquement avec les JSON complets** pour chacune des six langues, sans aucun commentaire ni explication.
+
+### EXEMPLE DE RÉPONSE ATTENDUE :
+```json
+// /locales/fr/translation.json
+{
+  "navbar": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "welcome": "Bienvenue sur notre site, {{name}}"
+}
+
+// /locales/es/translation.json
+{
+  "navbar": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contacto"
+  },
+  "welcome": "Bienvenido a nuestro sitio, {{name}}"
+}
+
+// /locales/pt/translation.json
+{
+  "navbar": {
+    "home": "Início",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "welcome": "Bem-vindo ao nosso site, {{name}}"
+}
+
+// /locales/it/translation.json
+{
+  "navbar": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "contact": "Contatto"
+  },
+  "welcome": "Benvenuto sul nostro sito, {{name}}"
+}
+
+// /locales/de/translation.json
+{
+  "navbar": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "contact": "Kontakt"
+  },
+  "welcome": "Willkommen auf unserer Website, {{name}}"
+}
+
+// /locales/nl/translation.json
+{
+  "navbar": {
+    "home": "Home",
+    "about": "Over ons",
+    "contact": "Contact"
+  },
+  "welcome": "Welkom op onze website, {{name}}"
+}
+````
+
+### RÈGLES IMPORTANTES :
+
+* Ne modifie **jamais** les clés (`"navbar.home"`, etc.).
+* Ne traduis **jamais** le contenu entre `{{ ... }}`.
+* Réponds **seulement** avec les 6 fichiers JSON complets, rien d’autre.
+* Les fichiers doivent être formatés avec une indentation de **2 espaces**.
+
+```
+
+---
+
+💡 **Conseils avant exécution :**
+1. Vérifie que ton fichier anglais `/locales/en/translation.json` contient **toutes les clés utilisées** dans ton app.  
+2. Supprime ou vide les traductions cassées avant d’exécuter le prompt (pour forcer la régénération propre).  
+3. Après génération, redémarre ton app Replit pour forcer i18next à recharger les nouveaux fichiers.
+
+---
+
+Souhaites-tu que je t’ajoute aussi un petit **script Node automatique** pour détecter et lister les traductions manquantes avant d’envoyer ce prompt ? (utile pour vérifier ce qu’il manque avant traduction)
+```
