@@ -58,6 +58,9 @@
       "flexibleDesc": "Remboursement anticipé gratuit et report d'échéance possible",
       "advantageous": "Avantageux",
       "advantageousDesc": "Taux compétitifs et conditions négociées"
+    },
+    "testimonials": {
+      "basedOn": "Basé sur plus de 74 000 avis clients"
     }
   },
   "simulator": {
