@@ -113,6 +113,12 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
 
       <footer className="bg-card border-t mt-auto">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          <div className="mb-8 p-6 bg-muted/50 rounded-md">
+            <p className="text-sm font-semibold text-center">
+              Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="text-xl font-bold text-primary mb-4">Altus Finance</div>
@@ -133,16 +139,15 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
               <h3 className="font-semibold mb-4">Aide</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/comment-ca-marche"><span className="hover:text-foreground cursor-pointer">Comment ça marche</span></Link></li>
-                <li><Link href="/faq"><span className="hover:text-foreground cursor-pointer">FAQ</span></Link></li>
                 <li><Link href="/contact"><span className="hover:text-foreground cursor-pointer">Contact</span></Link></li>
+                <li><Link href="/a-propos"><span className="hover:text-foreground cursor-pointer">À propos</span></Link></li>
               </ul>
             </div>
             <div>
               <h3 className="font-semibold mb-4">Légal</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground">Mentions légales</a></li>
-                <li><a href="#" className="hover:text-foreground">Politique de confidentialité</a></li>
-                <li><a href="#" className="hover:text-foreground">CGU</a></li>
+                <li><Link href="/mentions-legales"><span className="hover:text-foreground cursor-pointer" data-testid="link-mentions-legales">Mentions légales</span></Link></li>
+                <li><Link href="/politique-confidentialite"><span className="hover:text-foreground cursor-pointer" data-testid="link-privacy-policy">Politique de confidentialité</span></Link></li>
               </ul>
             </div>
           </div>

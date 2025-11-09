@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { LoanCard } from "@/components/loan/LoanCard";
 import { LoanSimulator } from "@/components/loan/LoanSimulator";
+import { LegalNoticeBanner, LegalDisclaimers, RepresentativeExample } from "@/components/legal/LegalNotice";
 import { useLoanTypes } from "@/lib/queries";
-import { ArrowRight, Shield, Clock, Check, TrendingUp } from "lucide-react";
+import { ArrowRight, Shield, Clock, Check, TrendingUp, FileText, UserCheck, Euro } from "lucide-react";
 
 export default function Home() {
   const { data: loanTypes } = useLoanTypes();
@@ -76,6 +77,8 @@ export default function Home() {
         </div>
       </section>
 
+      <LegalNoticeBanner />
+
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -143,6 +146,32 @@ export default function Home() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Informations Légales</h2>
+              <p className="text-xl text-muted-foreground">
+                Transparence et conformité pour votre tranquillité d'esprit
+              </p>
+            </div>
+            
+            <div className="space-y-8">
+              <RepresentativeExample
+                amount={10000}
+                durationMonths={36}
+                taeg={4.5}
+                monthlyPayment={296}
+                totalCost={10656}
+                interestType="fixe"
+              />
+              
+              <LegalDisclaimers />
+            </div>
           </div>
         </div>
       </section>

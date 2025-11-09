@@ -22,6 +22,8 @@ import About from "@/pages/about";
 import Contact from "@/pages/contact";
 import HowItWorks from "@/pages/how-it-works";
 import LoanApplication from "@/pages/loan-application";
+import LegalNotice from "@/pages/legal-notice";
+import PrivacyPolicy from "@/pages/privacy-policy";
 import NotFound from "@/pages/not-found";
 import { useAuth } from "@/lib/api";
 
@@ -54,6 +56,8 @@ function PublicRouter() {
         <Route path="/a-propos" component={About} />
         <Route path="/contact" component={Contact} />
         <Route path="/comment-ca-marche" component={HowItWorks} />
+        <Route path="/mentions-legales" component={LegalNotice} />
+        <Route path="/politique-confidentialite" component={PrivacyPolicy} />
         <Route component={NotFound} />
       </Switch>
     </PublicLayout>

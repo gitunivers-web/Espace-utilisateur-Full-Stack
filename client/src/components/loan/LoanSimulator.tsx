@@ -153,30 +153,44 @@ export function LoanSimulator() {
         </Button>
 
         {simulate.data && (
-          <div className="mt-6 p-6 bg-primary/5 rounded-lg space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <div className="text-sm text-muted-foreground">Mensualité</div>
-                <div className="text-3xl font-bold text-primary">
-                  {simulate.data.monthlyPayment.toLocaleString()}€
+          <div className="mt-6 space-y-4">
+            <div className="p-6 bg-primary/5 rounded-lg space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-2 text-center pb-4 border-b">
+                  <div className="text-sm text-muted-foreground mb-1">TAEG Fixe</div>
+                  <div className="text-4xl font-bold text-primary">
+                    {simulate.data.taeg.toFixed(2)}%
+                  </div>
+                </div>
+                <div>
+                  <div className="text-sm text-muted-foreground">Mensualité</div>
+                  <div className="text-3xl font-bold text-primary">
+                    {simulate.data.monthlyPayment.toLocaleString()}€
+                  </div>
+                </div>
+                <div>
+                  <div className="text-sm text-muted-foreground">Coût total du crédit</div>
+                  <div className="text-2xl font-semibold">
+                    {simulate.data.totalInterest.toLocaleString()}€
+                  </div>
+                </div>
+                <div>
+                  <div className="text-sm text-muted-foreground">Montant total dû</div>
+                  <div className="text-lg font-semibold">
+                    {simulate.data.totalCost.toLocaleString()}€
+                  </div>
+                </div>
+                <div>
+                  <div className="text-sm text-muted-foreground">Intérêts</div>
+                  <div className="text-lg font-semibold">
+                    {simulate.data.totalInterest.toLocaleString()}€
+                  </div>
                 </div>
               </div>
-              <div>
-                <div className="text-sm text-muted-foreground">Taux (TAEG)</div>
-                <div className="text-2xl font-semibold">{simulate.data.taeg.toFixed(2)}%</div>
-              </div>
-              <div>
-                <div className="text-sm text-muted-foreground">Coût total</div>
-                <div className="text-lg font-semibold">
-                  {simulate.data.totalCost.toLocaleString()}€
-                </div>
-              </div>
-              <div>
-                <div className="text-sm text-muted-foreground">Intérêts</div>
-                <div className="text-lg font-semibold">
-                  {simulate.data.totalInterest.toLocaleString()}€
-                </div>
-              </div>
+            </div>
+            <div className="text-xs text-muted-foreground p-3 bg-muted/50 rounded-md">
+              <p className="font-semibold mb-1">Informations légales</p>
+              <p>Vous disposez d'un délai de rétractation de 14 jours après la signature du contrat de crédit. Un crédit vous engage et doit être remboursé.</p>
             </div>
           </div>
         )}
