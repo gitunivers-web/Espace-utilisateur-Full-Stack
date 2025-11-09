@@ -135,8 +135,22 @@ Données de démonstration créées pour "Sophie Martin" (sophie.martin@altusfin
 ✅ Mise à jour du profil utilisateur
 ✅ Recherche dans l'historique des transactions
 
+### Dernières modifications (9 nov 2024 - Suite)
+
+**Script de Réinitialisation Base de Données**
+- Création de `scripts/reset-database.ts` - Script automatique de restauration
+- Ajout de `npm run reset-db` - Commande pour restaurer les 10 types de prêts
+- Documentation complète : `IMPORTANT_LIRE_APRES_GIT_PULL.md`
+- README.md créé avec instructions de démarrage
+
+**Préparation Déploiement**
+- Configuration CORS pour production (server/index.ts)
+- Support variables d'environnement (VITE_API_URL)
+- Fichiers de configuration : vercel.json, .env.example
+- Guide de déploiement complet : DEPLOYMENT.md
+
 ### Prochaines étapes
-- [ ] Formulaire de demande de prêt multi-étapes (étape 1: type, étape 2: montant/durée, étape 3: infos personnelles, étape 4: documents)
+- [ ] Formulaire de demande de prêt multi-étapes
 - [ ] Adapter dashboard "Mon Espace" pour afficher et gérer les demandes de prêts
 - [ ] Configurer le thème professionnel (index.css) avec couleurs financières appropriées
 - [ ] Tests end-to-end du parcours complet (simulation → demande → suivi)
@@ -164,7 +178,19 @@ shared/
 ```bash
 npm run dev       # Démarre frontend + backend en développement
 npm run db:push   # Synchronise le schéma avec la base de données
+npm run reset-db  # ⚡ Restaure les 10 types de prêts et données de démo
 ```
+
+## ⚠️ Important : Code vs Données
+
+**Après chaque `git pull`, exécutez : `npm run reset-db`**
+
+Les données (types de prêts, utilisateurs, etc.) sont dans PostgreSQL, PAS dans Git.
+Le script `reset-db` restaure automatiquement :
+- ✅ 10 types de prêts (3 particuliers + 7 professionnels)
+- ✅ Toutes les données de démonstration
+
+📖 Consultez `IMPORTANT_LIRE_APRES_GIT_PULL.md` pour plus de détails.
 
 ## Variables d'environnement
 - `DATABASE_URL` - URL de connexion PostgreSQL (fourni par Replit)
