@@ -26,8 +26,8 @@ export default function Register() {
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-6">
-            <Card className="hover-elevate active-elevate-2 cursor-pointer transition-all" asChild>
-              <Link href="/register/particular" data-testid="card-register-particular">
+            <Link href="/register/particular" data-testid="card-register-particular">
+              <Card className="hover-elevate active-elevate-2 cursor-pointer transition-all">
                 <CardContent className="flex flex-col items-center justify-center p-8 text-center space-y-4">
                   <div className="rounded-full bg-primary/10 p-6">
                     <User className="w-12 h-12 text-primary" />
@@ -42,11 +42,11 @@ export default function Register() {
                     S'inscrire comme particulier
                   </Button>
                 </CardContent>
-              </Link>
-            </Card>
+              </Card>
+            </Link>
 
-            <Card className="hover-elevate active-elevate-2 cursor-pointer transition-all" asChild>
-              <Link href="/register/professional" data-testid="card-register-professional">
+            <Link href="/register/professional" data-testid="card-register-professional">
+              <Card className="hover-elevate active-elevate-2 cursor-pointer transition-all">
                 <CardContent className="flex flex-col items-center justify-center p-8 text-center space-y-4">
                   <div className="rounded-full bg-primary/10 p-6">
                     <Briefcase className="w-12 h-12 text-primary" />
@@ -61,16 +61,16 @@ export default function Register() {
                     S'inscrire comme professionnel
                   </Button>
                 </CardContent>
-              </Link>
-            </Card>
+              </Card>
+            </Link>
           </div>
 
           <div className="text-center mt-6">
             <p className="text-sm text-muted-foreground">
               Vous avez déjà un compte ?{" "}
-              <Button variant="link" asChild className="p-0 h-auto" data-testid="link-login">
-                <Link href="/auth/connexion">Se connecter</Link>
-              </Button>
+              <Link href="/auth/connexion" data-testid="link-login" className="text-primary hover:underline">
+                Se connecter
+              </Link>
             </p>
           </div>
         </CardContent>
