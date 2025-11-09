@@ -64,27 +64,27 @@ export default function Transferts() {
     <div className="flex flex-col min-h-screen">
       <InfoTicker />
       
-      <div className="flex-1 p-6 space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold">Transferts</h1>
-          <p className="text-muted-foreground mt-1">
+      <div className="flex-1 p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6">
+        <div className="space-y-1">
+          <h1 className="text-2xl sm:text-3xl font-bold">Transferts</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Effectuez vos virements en toute sécurité
           </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 xl:grid-cols-2">
           <Card data-testid="card-new-transfer">
             <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center">
-                  <ArrowRightLeft className="h-5 w-5 text-primary" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <ArrowRightLeft className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 </div>
-                <CardTitle>Nouveau transfert</CardTitle>
+                <CardTitle className="text-base sm:text-lg">Nouveau transfert</CardTitle>
               </div>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3 sm:space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="from-account">Depuis le compte</Label>
+                <Label htmlFor="from-account" className="text-sm">Depuis le compte</Label>
                 <Select value={selectedAccount || firstAccount?.id} onValueChange={setSelectedAccount} disabled={accountsLoading}>
                   <SelectTrigger id="from-account" data-testid="select-from-account">
                     <SelectValue />
@@ -100,7 +100,7 @@ export default function Transferts() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="recipient">Bénéficiaire</Label>
+                <Label htmlFor="recipient" className="text-sm">Bénéficiaire</Label>
                 <Input
                   id="recipient"
                   placeholder="Nom ou IBAN du bénéficiaire"
@@ -111,7 +111,7 @@ export default function Transferts() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="amount">Montant</Label>
+                <Label htmlFor="amount" className="text-sm">Montant</Label>
                 <div className="relative">
                   <Input
                     id="amount"
@@ -121,14 +121,14 @@ export default function Transferts() {
                     onChange={(e) => setAmount(e.target.value)}
                     data-testid="input-amount"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">
                     €
                   </span>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="reference">Référence (optionnel)</Label>
+                <Label htmlFor="reference" className="text-sm">Référence (optionnel)</Label>
                 <Input
                   id="reference"
                   placeholder="Motif du virement"
@@ -155,34 +155,34 @@ export default function Transferts() {
 
           <Card data-testid="card-recent-transfers">
             <CardHeader>
-              <CardTitle>Transferts récents</CardTitle>
+              <CardTitle className="text-base sm:text-lg">Transferts récents</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {recentTransfers.map((transfer) => (
                   <div
                     key={transfer.id}
-                    className="flex items-center justify-between p-3 rounded-lg hover-elevate border"
+                    className="flex items-center justify-between p-3 rounded-lg hover-elevate border gap-2"
                     data-testid={`row-recent-transfer-${transfer.id}`}
                   >
-                    <div className="flex items-center gap-3">
-                      <div className={`h-10 w-10 rounded-full flex items-center justify-center ${
+                    <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                      <div className={`h-8 w-8 sm:h-10 sm:w-10 rounded-full flex items-center justify-center flex-shrink-0 ${
                         transfer.status === 'completed' ? 'bg-chart-3/10' : 'bg-chart-2/10'
                       }`}>
                         {transfer.status === 'completed' ? (
-                          <CheckCircle2 className="h-5 w-5 text-chart-3" />
+                          <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-chart-3" />
                         ) : (
-                          <Clock className="h-5 w-5 text-chart-2" />
+                          <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-chart-2" />
                         )}
                       </div>
-                      <div>
-                        <p className="font-medium">{transfer.recipient}</p>
-                        <p className="text-sm text-muted-foreground">{transfer.date}</p>
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium text-sm sm:text-base truncate">{transfer.recipient}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{transfer.date}</p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold">-{transfer.amount.toLocaleString('fr-FR')} €</p>
-                      <Badge variant={transfer.status === 'completed' ? 'default' : 'secondary'} className="mt-1">
+                    <div className="text-right flex-shrink-0">
+                      <p className="font-semibold text-sm sm:text-base">-{transfer.amount.toLocaleString('fr-FR')} €</p>
+                      <Badge variant={transfer.status === 'completed' ? 'default' : 'secondary'} className="mt-1 text-xs">
                         {transfer.status === 'completed' ? 'Complété' : 'En attente'}
                       </Badge>
                     </div>

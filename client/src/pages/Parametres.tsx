@@ -61,37 +61,37 @@ export default function Parametres() {
     <div className="flex flex-col min-h-screen">
       <InfoTicker />
       
-      <div className="flex-1 p-6 space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold">Paramètres</h1>
-          <p className="text-muted-foreground mt-1">
+      <div className="flex-1 p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5 md:space-y-6">
+        <div className="space-y-1">
+          <h1 className="text-2xl sm:text-3xl font-bold">Paramètres</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">
             Gérez votre compte et vos préférences
           </p>
         </div>
 
         {error && (
-          <div className="p-4 border border-destructive bg-destructive/10 rounded-lg text-destructive">
+          <div className="p-3 sm:p-4 border border-destructive bg-destructive/10 rounded-lg text-destructive text-sm">
             Une erreur est survenue lors du chargement de vos paramètres.
           </div>
         )}
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 xl:grid-cols-2">
           <Card data-testid="card-profile-settings">
             <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center">
-                  <User className="h-5 w-5 text-primary" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <User className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 </div>
                 <div>
-                  <CardTitle>Informations personnelles</CardTitle>
-                  <CardDescription>Mettez à jour vos informations</CardDescription>
+                  <CardTitle className="text-base sm:text-lg">Informations personnelles</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">Mettez à jour vos informations</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Avatar className="h-20 w-20">
-                  <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
+            <CardContent className="space-y-3 sm:space-y-4">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <Avatar className="h-16 w-16 sm:h-20 sm:w-20">
+                  <AvatarFallback className="bg-primary text-primary-foreground text-xl sm:text-2xl">
                     SM
                   </AvatarFallback>
                 </Avatar>
@@ -101,7 +101,7 @@ export default function Parametres() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="name">Nom complet</Label>
+                <Label htmlFor="name" className="text-sm">Nom complet</Label>
                 <Input 
                   id="name" 
                   value={fullName} 
@@ -113,7 +113,7 @@ export default function Parametres() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-sm">Email</Label>
                 <Input 
                   id="email" 
                   type="email" 
@@ -126,7 +126,7 @@ export default function Parametres() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone">Téléphone</Label>
+                <Label htmlFor="phone" className="text-sm">Téléphone</Label>
                 <Input 
                   id="phone" 
                   type="tel" 
@@ -151,21 +151,21 @@ export default function Parametres() {
 
           <Card data-testid="card-security-settings">
             <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center">
-                  <Shield className="h-5 w-5 text-primary" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 </div>
                 <div>
-                  <CardTitle>Sécurité</CardTitle>
-                  <CardDescription>Protégez votre compte</CardDescription>
+                  <CardTitle className="text-base sm:text-lg">Sécurité</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">Protégez votre compte</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center justify-between p-4 rounded-lg border">
-                <div className="space-y-0.5">
-                  <Label htmlFor="2fa">Authentification à deux facteurs</Label>
-                  <p className="text-sm text-muted-foreground">
+            <CardContent className="space-y-3 sm:space-y-4">
+              <div className="flex items-center justify-between p-3 sm:p-4 rounded-lg border gap-3">
+                <div className="space-y-0.5 flex-1 min-w-0">
+                  <Label htmlFor="2fa" className="text-sm">Authentification à deux facteurs</Label>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Ajoutez une couche de sécurité supplémentaire
                   </p>
                 </div>
@@ -174,16 +174,17 @@ export default function Parametres() {
                   checked={twoFactorEnabled}
                   onCheckedChange={setTwoFactorEnabled}
                   data-testid="switch-2fa"
+                  className="flex-shrink-0"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="current-password">Mot de passe actuel</Label>
+                <Label htmlFor="current-password" className="text-sm">Mot de passe actuel</Label>
                 <Input id="current-password" type="password" data-testid="input-current-password" />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="new-password">Nouveau mot de passe</Label>
+                <Label htmlFor="new-password" className="text-sm">Nouveau mot de passe</Label>
                 <Input id="new-password" type="password" data-testid="input-new-password" />
               </div>
 
@@ -195,21 +196,21 @@ export default function Parametres() {
 
           <Card data-testid="card-notification-settings">
             <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center">
-                  <Bell className="h-5 w-5 text-primary" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Bell className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 </div>
                 <div>
-                  <CardTitle>Notifications</CardTitle>
-                  <CardDescription>Gérez vos préférences de notification</CardDescription>
+                  <CardTitle className="text-base sm:text-lg">Notifications</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">Gérez vos préférences de notification</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center justify-between p-4 rounded-lg border">
-                <div className="space-y-0.5">
-                  <Label htmlFor="email-notif">Notifications par email</Label>
-                  <p className="text-sm text-muted-foreground">
+            <CardContent className="space-y-3 sm:space-y-4">
+              <div className="flex items-center justify-between p-3 sm:p-4 rounded-lg border gap-3">
+                <div className="space-y-0.5 flex-1 min-w-0">
+                  <Label htmlFor="email-notif" className="text-sm">Notifications par email</Label>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Recevez des alertes par email
                   </p>
                 </div>
@@ -218,48 +219,49 @@ export default function Parametres() {
                   checked={emailNotifications}
                   onCheckedChange={setEmailNotifications}
                   data-testid="switch-email-notifications"
+                  className="flex-shrink-0"
                 />
               </div>
 
-              <div className="flex items-center justify-between p-4 rounded-lg border">
-                <div className="space-y-0.5">
-                  <Label htmlFor="sms-notif">Notifications SMS</Label>
-                  <p className="text-sm text-muted-foreground">
+              <div className="flex items-center justify-between p-3 sm:p-4 rounded-lg border gap-3">
+                <div className="space-y-0.5 flex-1 min-w-0">
+                  <Label htmlFor="sms-notif" className="text-sm">Notifications SMS</Label>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Recevez des alertes par SMS
                   </p>
                 </div>
-                <Switch id="sms-notif" data-testid="switch-sms-notifications" />
+                <Switch id="sms-notif" data-testid="switch-sms-notifications" className="flex-shrink-0" />
               </div>
 
-              <div className="flex items-center justify-between p-4 rounded-lg border">
-                <div className="space-y-0.5">
-                  <Label htmlFor="transaction-notif">Alertes de transaction</Label>
-                  <p className="text-sm text-muted-foreground">
+              <div className="flex items-center justify-between p-3 sm:p-4 rounded-lg border gap-3">
+                <div className="space-y-0.5 flex-1 min-w-0">
+                  <Label htmlFor="transaction-notif" className="text-sm">Alertes de transaction</Label>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Notifications pour chaque transaction
                   </p>
                 </div>
-                <Switch id="transaction-notif" defaultChecked data-testid="switch-transaction-notifications" />
+                <Switch id="transaction-notif" defaultChecked data-testid="switch-transaction-notifications" className="flex-shrink-0" />
               </div>
             </CardContent>
           </Card>
 
           <Card data-testid="card-documents">
             <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center">
-                  <FileText className="h-5 w-5 text-primary" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 </div>
                 <div>
-                  <CardTitle>Documents KYC</CardTitle>
-                  <CardDescription>Téléchargez vos justificatifs</CardDescription>
+                  <CardTitle className="text-base sm:text-lg">Documents KYC</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm">Téléchargez vos justificatifs</CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="border-2 border-dashed rounded-lg p-6 text-center hover-elevate">
-                <Upload className="h-10 w-10 mx-auto mb-3 text-muted-foreground" />
-                <p className="text-sm font-medium mb-1">Télécharger un document</p>
-                <p className="text-xs text-muted-foreground mb-3">
+            <CardContent className="space-y-3 sm:space-y-4">
+              <div className="border-2 border-dashed rounded-lg p-4 sm:p-6 text-center hover-elevate">
+                <Upload className="h-8 w-8 sm:h-10 sm:w-10 mx-auto mb-2 sm:mb-3 text-muted-foreground" />
+                <p className="text-xs sm:text-sm font-medium mb-1">Télécharger un document</p>
+                <p className="text-xs text-muted-foreground mb-2 sm:mb-3">
                   Pièce d'identité, justificatif de domicile, etc.
                 </p>
                 <Button variant="outline" size="sm" onClick={handleUploadDocument} data-testid="button-upload-document">
@@ -270,15 +272,15 @@ export default function Parametres() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
                   <div className="flex items-center gap-2">
-                    <FileText className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">Pièce d'identité</span>
+                    <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground flex-shrink-0" />
+                    <span className="text-xs sm:text-sm">Pièce d'identité</span>
                   </div>
                   <span className="text-xs text-chart-3">Vérifié</span>
                 </div>
                 <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
                   <div className="flex items-center gap-2">
-                    <FileText className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">Justificatif de domicile</span>
+                    <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground flex-shrink-0" />
+                    <span className="text-xs sm:text-sm">Justificatif de domicile</span>
                   </div>
                   <span className="text-xs text-chart-3">Vérifié</span>
                 </div>
