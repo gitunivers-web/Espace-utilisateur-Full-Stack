@@ -2,8 +2,10 @@ import InfoTicker from "@/components/InfoTicker";
 import DashboardCard from "@/components/DashboardCard";
 import VirtualCard from "@/components/VirtualCard";
 import StatsChart from "@/components/StatsChart";
-import { Wallet, CreditCard, TrendingUp, Banknote } from "lucide-react";
+import { Wallet, CreditCard, TrendingUp, Banknote, ArrowRightLeft, History, FileText } from "lucide-react";
 import { useAccounts, useCards, useLoans } from "@/lib/api";
+import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "wouter";
 
 export default function Dashboard() {
   const { data: accounts, isLoading: accountsLoading } = useAccounts();
@@ -15,6 +17,33 @@ export default function Dashboard() {
   const totalLoanAmount = loans?.reduce((sum, loan) => sum + parseFloat(loan.amount), 0) || 0;
   const borrowingCapacity = totalBalance * 3;
   const firstCard = cards?.[0];
+
+  const shortcuts = [
+    {
+      title: "Faire une demande de prêt",
+      description: "Simulez et demandez un prêt",
+      icon: TrendingUp,
+      href: "/prets",
+      color: "bg-chart-1/10",
+      iconColor: "text-chart-1",
+    },
+    {
+      title: "Voir l'historique",
+      description: "Consultez vos transactions",
+      icon: History,
+      href: "/historique",
+      color: "bg-chart-2/10",
+      iconColor: "text-chart-2",
+    },
+    {
+      title: "Faire un virement",
+      description: "Transférez de l'argent",
+      icon: ArrowRightLeft,
+      href: "/transferts",
+      color: "bg-chart-3/10",
+      iconColor: "text-chart-3",
+    },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -53,6 +82,33 @@ export default function Dashboard() {
             icon={Banknote}
             trend={{ value: "-8,3% ce mois", isPositive: true }}
           />
+        </div>
+
+        {/* Raccourcis rapides */}
+        <div>
+          <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Raccourcis rapides</h2>
+          <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {shortcuts.map((shortcut) => (
+              <Link key={shortcut.href} href={shortcut.href}>
+                <Card 
+                  className="hover-elevate cursor-pointer transition-all"
+                  data-testid={`card-shortcut-${shortcut.title.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  <CardContent className="p-4 sm:p-5">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-lg ${shortcut.color} flex items-center justify-center flex-shrink-0`}>
+                        <shortcut.icon className={`h-5 w-5 sm:h-6 sm:w-6 ${shortcut.iconColor}`} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-sm sm:text-base mb-0.5">{shortcut.title}</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{shortcut.description}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 lg:grid-cols-3">
