@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm install && npm run build:client",
-  "outputDirectory": "client/dist",
+  "buildCommand": "npm run build:client",
+  "outputDirectory": "dist/public",
   "framework": null,
   "installCommand": "npm install",
   "rewrites": [
