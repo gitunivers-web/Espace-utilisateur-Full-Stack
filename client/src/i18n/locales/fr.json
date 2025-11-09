@@ -230,5 +230,121 @@
   },
   "language": {
     "select": "Langue"
+  },
+  "loan": {
+    "amount": "Montant",
+    "rate": "Taux",
+    "rateFrom": "Taux dès",
+    "duration": "Durée",
+    "particular": "Particulier",
+    "professional": "Professionnel",
+    "selectOffer": "Choisir cette offre",
+    "noOffers": "Aucune offre disponible pour cette catégorie"
+  },
+  "loanApplication": {
+    "title": "Demande de Prêt",
+    "step": "Étape",
+    "of": "sur",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "submit": "Envoyer la demande",
+    "stepLoanType": {
+      "title": "Sélection du type de prêt",
+      "youAre": "Vous êtes *",
+      "chooseLoanType": "Choisissez le type de prêt *"
+    },
+    "stepSimulation": {
+      "title": "Simulation du prêt",
+      "loanAmount": "Montant du prêt *",
+      "loanDuration": "Durée du prêt *",
+      "amountBetween": "Montant entre",
+      "and": "et",
+      "durationBetween": "Durée entre",
+      "estimatedRate": "Taux d'intérêt estimé",
+      "perYear": "/ an",
+      "estimatedMonthly": "Mensualité estimée",
+      "perMonth": "/mois",
+      "totalCost": "Coût total",
+      "includingInterest": "Dont intérêts"
+    },
+    "stepInformation": {
+      "title": "Vos Informations",
+      "personalInfo": "Informations personnelles",
+      "companyInfo": "Informations de l'entreprise",
+      "monthlyIncome": "Revenu mensuel net",
+      "employmentStatus": "Statut d'emploi",
+      "loanPurpose": "Objet du prêt",
+      "companyName": "Nom de l'entreprise",
+      "siret": "SIRET",
+      "annualRevenue": "Chiffre d'affaires annuel"
+    },
+    "stepConfirmation": {
+      "title": "Confirmation",
+      "verifyInfo": "Vérifiez vos informations",
+      "verifyInfoDesc": "Assurez-vous que toutes les informations sont correctes avant de soumettre votre demande. Une fois envoyée, votre demande sera étudiée par notre équipe sous 48h.",
+      "selectedLoan": "Prêt sélectionné",
+      "loanType": "Type de prêt",
+      "category": "Catégorie",
+      "loanNotSelected": "Type de prêt non sélectionné",
+      "financialSimulation": "Simulation financière",
+      "requestedAmount": "Montant demandé",
+      "interestRate": "Taux d'intérêt",
+      "estimatedMonthly": "Mensualité estimée",
+      "including": "Dont",
+      "yourInfo": "Vos informations",
+      "companyInfo": "Informations de l'entreprise",
+      "importantInfo": "Informations importantes :",
+      "reviewTime": "Votre demande sera étudiée sous 48h ouvrées",
+      "documentsRequired": "Des justificatifs vous seront demandés (pièce d'identité, justificatif de domicile, de revenus)",
+      "finalApproval": "L'acceptation définitive est soumise à l'étude de votre dossier complet"
+    },
+    "success": {
+      "title": "Demande envoyée avec succès !",
+      "message": "Votre demande de prêt a été envoyée. Nous l'examinerons et vous recontacterons sous 48h.",
+      "viewApplications": "Voir mes demandes"
+    }
+  },
+  "employmentStatus": {
+    "cdi": "CDI (Contrat à Durée Indéterminée)",
+    "cdd": "CDD (Contrat à Durée Déterminée)",
+    "freelance": "Indépendant / Freelance",
+    "retired": "Retraité",
+    "student": "Étudiant",
+    "unemployed": "Sans emploi",
+    "other": "Autre"
+  },
+  "loanApplications": {
+    "title": "Mes Demandes de Prêt",
+    "subtitle": "Suivez et gérez vos demandes de prêt",
+    "noApplications": "Aucune demande de prêt",
+    "noApplicationsDesc": "Vous n'avez pas encore soumis de demande de prêt. Commencez par simuler un prêt.",
+    "startSimulation": "Simuler un prêt",
+    "newApplication": "Nouvelle demande",
+    "loanApplication": "Demande de prêt",
+    "status": "Statut",
+    "requestedOn": "Demandé le",
+    "viewDetails": "Voir les détails"
+  },
+  "status": {
+    "pending": "En attente",
+    "approved": "Approuvé",
+    "rejected": "Refusé",
+    "under_review": "En cours d'examen"
+  },
+  "stepper": {
+    "progressLabel": "Progression du formulaire",
+    "completed": "(terminée)"
+  },
+  "common": {
+    "years": "ans",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "confirm": "Confirmer",
+    "loading": "Chargement...",
+    "submit": "Envoyer",
+    "back": "Retour"
   }
 }

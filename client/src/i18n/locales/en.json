@@ -230,5 +230,121 @@
   },
   "language": {
     "select": "Language"
+  },
+  "loan": {
+    "amount": "Amount",
+    "rate": "Rate",
+    "rateFrom": "Rate from",
+    "duration": "Duration",
+    "particular": "Individual",
+    "professional": "Professional",
+    "selectOffer": "Select this offer",
+    "noOffers": "No offers available for this category"
+  },
+  "loanApplication": {
+    "title": "Loan Application",
+    "step": "Step",
+    "of": "of",
+    "previous": "Previous",
+    "next": "Next",
+    "submit": "Submit Application",
+    "stepLoanType": {
+      "title": "Loan Type Selection",
+      "youAre": "You are *",
+      "chooseLoanType": "Choose the type of loan *"
+    },
+    "stepSimulation": {
+      "title": "Loan Simulation",
+      "loanAmount": "Loan amount *",
+      "loanDuration": "Loan duration *",
+      "amountBetween": "Amount between",
+      "and": "and",
+      "durationBetween": "Duration between",
+      "estimatedRate": "Estimated interest rate",
+      "perYear": "/ year",
+      "estimatedMonthly": "Estimated monthly payment",
+      "perMonth": "/month",
+      "totalCost": "Total cost",
+      "includingInterest": "Including interest"
+    },
+    "stepInformation": {
+      "title": "Your Information",
+      "personalInfo": "Personal Information",
+      "companyInfo": "Company Information",
+      "monthlyIncome": "Net monthly income",
+      "employmentStatus": "Employment status",
+      "loanPurpose": "Loan purpose",
+      "companyName": "Company name",
+      "siret": "SIRET",
+      "annualRevenue": "Annual revenue"
+    },
+    "stepConfirmation": {
+      "title": "Confirmation",
+      "verifyInfo": "Verify your information",
+      "verifyInfoDesc": "Make sure all information is correct before submitting your application. Once submitted, your application will be reviewed by our team within 48 hours.",
+      "selectedLoan": "Selected loan",
+      "loanType": "Loan type",
+      "category": "Category",
+      "loanNotSelected": "Loan type not selected",
+      "financialSimulation": "Financial Simulation",
+      "requestedAmount": "Requested amount",
+      "interestRate": "Interest rate",
+      "estimatedMonthly": "Estimated monthly payment",
+      "including": "Including",
+      "yourInfo": "Your information",
+      "companyInfo": "Company information",
+      "importantInfo": "Important information:",
+      "reviewTime": "Your application will be reviewed within 48 business hours",
+      "documentsRequired": "Documents will be required (ID, proof of address, proof of income)",
+      "finalApproval": "Final approval is subject to review of your complete file"
+    },
+    "success": {
+      "title": "Application submitted successfully!",
+      "message": "Your loan application has been submitted. We will review it and get back to you within 48 hours.",
+      "viewApplications": "View my applications"
+    }
+  },
+  "employmentStatus": {
+    "cdi": "Permanent Contract (CDI)",
+    "cdd": "Fixed-Term Contract (CDD)",
+    "freelance": "Self-Employed / Freelance",
+    "retired": "Retired",
+    "student": "Student",
+    "unemployed": "Unemployed",
+    "other": "Other"
+  },
+  "loanApplications": {
+    "title": "My Loan Applications",
+    "subtitle": "Track and manage your loan applications",
+    "noApplications": "No loan applications yet",
+    "noApplicationsDesc": "You haven't submitted any loan applications yet. Start by simulating a loan.",
+    "startSimulation": "Simulate a loan",
+    "newApplication": "New application",
+    "loanApplication": "Loan application",
+    "status": "Status",
+    "requestedOn": "Requested on",
+    "viewDetails": "View details"
+  },
+  "status": {
+    "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "under_review": "Under Review"
+  },
+  "stepper": {
+    "progressLabel": "Form progress",
+    "completed": "(completed)"
+  },
+  "common": {
+    "years": "years",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "submit": "Submit",
+    "back": "Back"
   }
 }
