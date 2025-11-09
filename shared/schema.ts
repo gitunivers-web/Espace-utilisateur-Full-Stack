@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, decimal, timestamp, boolean, integer, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, decimal, timestamp, boolean, integer, pgEnum, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -126,7 +126,7 @@ export const loanTypes = pgTable("loan_types", {
   maxDurationMonths: integer("max_duration_months").notNull(),
   minRate: decimal("min_rate", { precision: 5, scale: 2 }).notNull(),
   maxRate: decimal("max_rate", { precision: 5, scale: 2 }).notNull(),
-  features: text("features").array(),
+  features: jsonb("features").$type<string[]>().notNull().default([]),
   active: boolean("active").notNull().default(true),
 });
 

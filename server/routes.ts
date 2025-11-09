@@ -358,6 +358,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const loanTypes = category && typeof category === 'string'
         ? await storage.getLoanTypesByCategory(category)
         : await storage.getAllActiveLoanTypes();
+      
+      // NOTE: Known issue with neon-http driver - PostgreSQL boolean fields 
+      // may be incorrectly deserialized. For production, consider switching 
+      // to the standard 'pg' driver instead of 'neon-http' for better type support.
+      
       res.json(loanTypes);
     } catch (error: any) {
       res.status(500).json({ error: error.message });

@@ -27,8 +27,9 @@ import { useToast } from "@/hooks/use-toast";
 
 const menuItems = [
   { title: "Tableau de bord", url: "/mon-espace", icon: LayoutDashboard },
+  { title: "Mes Demandes", url: "/mon-espace/demandes", icon: TrendingUp },
   { title: "Comptes & Cartes", url: "/mon-espace/comptes", icon: CreditCard },
-  { title: "Mes Demandes", url: "/mon-espace/prets", icon: TrendingUp },
+  { title: "Mes Prêts", url: "/mon-espace/prets", icon: TrendingUp },
   { title: "Transferts", url: "/mon-espace/transferts", icon: ArrowRightLeft },
   { title: "Historique", url: "/mon-espace/historique", icon: History },
   { title: "Paramètres", url: "/mon-espace/parametres", icon: Settings },
