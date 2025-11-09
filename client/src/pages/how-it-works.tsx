@@ -49,28 +49,28 @@ const PROCESS_STEPS = [
     bgColor: "bg-blue-500/10",
   },
   {
-    icon: FileText,
-    title: "2. Complétez votre demande",
-    description: "Remplissez le formulaire en ligne avec vos informations personnelles et professionnelles. Tout se fait 100% en ligne.",
-    duration: "10 min",
+    icon: Smartphone,
+    title: "2. Inscrivez-vous en quelques clics",
+    description: "Créez votre compte en quelques secondes pour accéder à votre espace personnel sécurisé et soumettre votre demande de prêt.",
+    duration: "1 min",
     color: "text-purple-500",
     bgColor: "bg-purple-500/10",
   },
   {
+    icon: FileText,
+    title: "3. Complétez votre demande depuis Mon Espace",
+    description: "Connectez-vous à votre tableau de bord et remplissez le formulaire de demande avec vos informations. Tout se fait 100% en ligne.",
+    duration: "10 min",
+    color: "text-indigo-500",
+    bgColor: "bg-indigo-500/10",
+  },
+  {
     icon: CheckCircle,
-    title: "3. Étude de votre dossier",
-    description: "Notre équipe analyse votre demande et vous donne une réponse de principe sous 48h ouvrées.",
+    title: "4. Recevez une réponse rapide",
+    description: "Notre équipe analyse votre demande et vous donne une réponse de principe sous 48h. Suivez l'avancement en temps réel dans votre espace.",
     duration: "48h",
     color: "text-amber-500",
     bgColor: "bg-amber-500/10",
-  },
-  {
-    icon: CreditCard,
-    title: "4. Déblocage des fonds",
-    description: "Une fois votre dossier validé, les fonds sont versés sur votre compte bancaire sous 72h.",
-    duration: "72h",
-    color: "text-green-500",
-    bgColor: "bg-green-500/10",
   },
 ];
 
@@ -184,13 +184,13 @@ export default function HowItWorks() {
 
           {/* CTA après les étapes */}
           <div className="mt-12 text-center">
-            <Link href="/demande">
+            <Link href="/auth/connexion">
               <Button 
                 size="lg" 
                 className="gap-2"
                 data-testid="button-start-application"
               >
-                Commencer ma demande
+                Créer mon compte et commencer
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -295,13 +295,13 @@ export default function HowItWorks() {
                 Simuler mon prêt
               </Button>
             </Link>
-            <Link href="/demande">
+            <Link href="/auth/connexion">
               <Button 
                 size="lg" 
                 className="gap-2"
                 data-testid="button-apply"
               >
-                Faire une demande
+                Créer mon compte
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
