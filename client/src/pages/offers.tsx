@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { useLocation } from "wouter";
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 export default function Offers() {
+  const { t } = useTranslation();
   const [, setLocation] = useLocation();
   const [category, setCategory] = useState<string | undefined>(undefined);
   const { data: loanTypes, isLoading } = useLoanTypes(category);
@@ -14,9 +16,9 @@ export default function Offers() {
     <div className="py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">Nos Offres de Financement</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('offers.title')}</h1>
           <p className="text-xl text-muted-foreground">
-            Découvrez toutes nos solutions de prêts adaptées à vos besoins
+            {t('offers.subtitle')}
           </p>
         </div>
 
@@ -26,21 +28,21 @@ export default function Offers() {
             onClick={() => setCategory(undefined)}
             data-testid="filter-all"
           >
-            Toutes les offres
+            {t('offers.allOffers')}
           </Button>
           <Button
             variant={category === "particular" ? "default" : "outline"}
             onClick={() => setCategory("particular")}
             data-testid="filter-particular"
           >
-            Particuliers
+            {t('offers.individuals')}
           </Button>
           <Button
             variant={category === "professional" ? "default" : "outline"}
             onClick={() => setCategory("professional")}
             data-testid="filter-professional"
           >
-            Professionnels
+            {t('offers.professionals')}
           </Button>
         </div>
 

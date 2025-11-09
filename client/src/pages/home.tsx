@@ -55,7 +55,7 @@ export default function Home() {
                     <Check className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold">97%</div>
+                    <div className="font-semibold">{t('home.hero.acceptanceValue')}</div>
                     <div className="text-sm text-muted-foreground">{t('home.hero.acceptance')}</div>
                   </div>
                 </div>
@@ -65,7 +65,7 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="font-semibold">{t('home.hero.rateFrom')}</div>
-                    <div className="text-sm text-muted-foreground">3,5%</div>
+                    <div className="text-sm text-muted-foreground">{t('home.hero.rateValue')}</div>
                   </div>
                 </div>
               </div>
@@ -118,27 +118,27 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {[
               {
-                title: "Taux moyens 2025",
-                value: "3,39%",
-                description: "Baisse significative par rapport à 2024",
+                titleKey: "home.professional.avgRates",
+                valueKey: "home.professional.avgRatesValue",
+                descriptionKey: "home.professional.avgRatesDesc",
                 icon: TrendingUp,
               },
               {
-                title: "Taux d'acceptation",
-                value: "97%",
-                description: "Pour les crédits d'investissement PME",
+                titleKey: "home.professional.acceptanceRate",
+                valueKey: "home.professional.acceptanceRateValue",
+                descriptionKey: "home.professional.acceptanceRateDesc",
                 icon: Check,
               },
               {
-                title: "Garantie BPI",
-                value: "Jusqu'à 90%",
-                description: "Facilite l'accès au financement",
+                titleKey: "home.professional.bpiGuarantee",
+                valueKey: "home.professional.bpiGuaranteeValue",
+                descriptionKey: "home.professional.bpiGuaranteeDesc",
                 icon: Shield,
               },
               {
-                title: "Montants",
-                value: "5K€ à 2M€",
-                description: "Selon votre projet et profil",
+                titleKey: "home.professional.amounts",
+                valueKey: "home.professional.amountsValue",
+                descriptionKey: "home.professional.amountsDesc",
                 icon: Euro,
               },
             ].map((stat, index) => (
@@ -147,9 +147,9 @@ export default function Home() {
                   <div className="mx-auto h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <stat.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium">{stat.title}</div>
-                  <div className="text-2xl font-bold">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground">{stat.description}</div>
+                  <div className="text-sm text-muted-foreground font-medium">{t(stat.titleKey)}</div>
+                  <div className="text-2xl font-bold">{t(stat.valueKey)}</div>
+                  <div className="text-xs text-muted-foreground">{t(stat.descriptionKey)}</div>
                 </CardContent>
               </Card>
             ))}
@@ -158,7 +158,7 @@ export default function Home() {
           <div className="text-center">
             <Link href="/offres">
               <Button size="lg" data-testid="button-professional-offers">
-                Découvrir nos offres professionnelles
+                {t('home.professional.discoverOffers')}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -169,29 +169,29 @@ export default function Home() {
       <section className="py-20 bg-card">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Pourquoi Altus Finance ?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.whyUs.title')}</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                title: "Rapide",
-                description: "Réponse de principe sous 48h et déblocage des fonds en 72h",
+                titleKey: "home.whyUs.fast",
+                descriptionKey: "home.whyUs.fastDesc",
                 icon: Clock,
               },
               {
-                title: "Transparent",
-                description: "Taux et frais clairement affichés, sans surprise",
+                titleKey: "home.whyUs.transparent",
+                descriptionKey: "home.whyUs.transparentDesc",
                 icon: Shield,
               },
               {
-                title: "Flexible",
-                description: "Remboursement anticipé gratuit et report d'échéance possible",
+                titleKey: "home.whyUs.flexible",
+                descriptionKey: "home.whyUs.flexibleDesc",
                 icon: Check,
               },
               {
-                title: "Avantageux",
-                description: "Taux compétitifs et conditions négociées",
+                titleKey: "home.whyUs.advantageous",
+                descriptionKey: "home.whyUs.advantageousDesc",
                 icon: TrendingUp,
               },
             ].map((feature, index) => (
@@ -200,8 +200,8 @@ export default function Home() {
                   <div className="mx-auto h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
                     <feature.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <h3 className="text-xl font-semibold">{t(feature.titleKey)}</h3>
+                  <p className="text-muted-foreground">{t(feature.descriptionKey)}</p>
                 </CardContent>
               </Card>
             ))}

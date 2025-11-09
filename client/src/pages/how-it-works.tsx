@@ -34,87 +34,109 @@ import {
   HeadphonesIcon
 } from "lucide-react";
 import { useEffect } from "react";
-
-/**
- * Étapes du processus de demande de prêt
- * Chaque étape contient un icône, un titre, une description et une durée estimée
- */
-const PROCESS_STEPS = [
-  {
-    icon: Search,
-    title: "1. Simulez votre prêt",
-    description: "Utilisez notre simulateur en ligne pour estimer vos mensualités et trouver l'offre adaptée à votre budget.",
-    duration: "2 min",
-    color: "text-blue-500",
-    bgColor: "bg-blue-500/10",
-  },
-  {
-    icon: Smartphone,
-    title: "2. Inscrivez-vous en quelques clics",
-    description: "Créez votre compte en quelques secondes pour accéder à votre espace personnel sécurisé et soumettre votre demande de prêt.",
-    duration: "1 min",
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
-  },
-  {
-    icon: FileText,
-    title: "3. Complétez votre demande depuis Mon Espace",
-    description: "Connectez-vous à votre tableau de bord et remplissez le formulaire de demande avec vos informations. Tout se fait 100% en ligne.",
-    duration: "10 min",
-    color: "text-indigo-500",
-    bgColor: "bg-indigo-500/10",
-  },
-  {
-    icon: CheckCircle,
-    title: "4. Recevez une réponse rapide",
-    description: "Notre équipe analyse votre demande et vous donne une réponse de principe sous 48h. Suivez l'avancement en temps réel dans votre espace.",
-    duration: "48h",
-    color: "text-amber-500",
-    bgColor: "bg-amber-500/10",
-  },
-];
-
-/**
- * Avantages clés de la plateforme
- */
-const KEY_BENEFITS = [
-  {
-    icon: Clock,
-    title: "Rapide et efficace",
-    description: "Réponse sous 48h et déblocage en 72h",
-  },
-  {
-    icon: Shield,
-    title: "100% sécurisé",
-    description: "Vos données sont protégées et chiffrées",
-  },
-  {
-    icon: Smartphone,
-    title: "100% en ligne",
-    description: "Pas de déplacement nécessaire",
-  },
-  {
-    icon: HeadphonesIcon,
-    title: "Accompagnement personnalisé",
-    description: "Une équipe dédiée pour vous conseiller",
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export default function HowItWorks() {
+  const { t } = useTranslation();
+
+  /**
+   * Étapes du processus de demande de prêt
+   * Chaque étape contient un icône, un titre, une description et une durée estimée
+   */
+  const processSteps = [
+    {
+      icon: Search,
+      titleKey: "howItWorks.step1Title",
+      descriptionKey: "howItWorks.step1Desc",
+      durationKey: "howItWorks.step1Duration",
+      color: "text-blue-500",
+      bgColor: "bg-blue-500/10",
+    },
+    {
+      icon: Smartphone,
+      titleKey: "howItWorks.step2Title",
+      descriptionKey: "howItWorks.step2Desc",
+      durationKey: "howItWorks.step2Duration",
+      color: "text-purple-500",
+      bgColor: "bg-purple-500/10",
+    },
+    {
+      icon: FileText,
+      titleKey: "howItWorks.step3Title",
+      descriptionKey: "howItWorks.step3Desc",
+      durationKey: "howItWorks.step3Duration",
+      color: "text-indigo-500",
+      bgColor: "bg-indigo-500/10",
+    },
+    {
+      icon: CheckCircle,
+      titleKey: "howItWorks.step4Title",
+      descriptionKey: "howItWorks.step4Desc",
+      durationKey: "howItWorks.step4Duration",
+      color: "text-amber-500",
+      bgColor: "bg-amber-500/10",
+    },
+  ];
+
+  /**
+   * Avantages clés de la plateforme
+   */
+  const keyBenefits = [
+    {
+      icon: Clock,
+      titleKey: "howItWorks.fast",
+      descriptionKey: "howItWorks.fastDesc",
+    },
+    {
+      icon: Shield,
+      titleKey: "howItWorks.secure",
+      descriptionKey: "howItWorks.secureDesc",
+    },
+    {
+      icon: Smartphone,
+      titleKey: "howItWorks.online",
+      descriptionKey: "howItWorks.onlineDesc",
+    },
+    {
+      icon: HeadphonesIcon,
+      titleKey: "howItWorks.personalized",
+      descriptionKey: "howItWorks.personalizedDesc",
+    },
+  ];
+
+  const faqs = [
+    {
+      questionKey: "howItWorks.faqQ1",
+      answerKey: "howItWorks.faqA1"
+    },
+    {
+      questionKey: "howItWorks.faqQ2",
+      answerKey: "howItWorks.faqA2"
+    },
+    {
+      questionKey: "howItWorks.faqQ3",
+      answerKey: "howItWorks.faqA3"
+    },
+    {
+      questionKey: "howItWorks.faqQ4",
+      answerKey: "howItWorks.faqA4"
+    },
+  ];
+
   /**
    * Mise à jour du title et meta description pour le SEO
    */
   useEffect(() => {
-    document.title = "Comment obtenir un prêt | Altus Finance";
+    document.title = t('howItWorks.pageTitle');
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         "content",
-        "Découvrez comment obtenir un prêt en 4 étapes simples avec Altus Finance. Simulation gratuite, réponse rapide sous 48h, déblocage des fonds en 72h."
+        t('howItWorks.pageDescription')
       );
     }
-  }, []);
+  }, [t]);
 
   return (
     <div className="pb-12">
@@ -126,11 +148,11 @@ export default function HowItWorks() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
               data-testid="heading-main"
             >
-              Comment obtenir votre prêt en{" "}
-              <span className="text-primary">4 étapes simples</span>
+              {t('howItWorks.title')}{" "}
+              <span className="text-primary">{t('howItWorks.titleHighlight')}</span>
             </h1>
             <p className="text-xl text-muted-foreground" data-testid="text-description">
-              Un processus 100% en ligne, rapide et transparent pour financer vos projets
+              {t('howItWorks.subtitle')}
             </p>
           </div>
         </div>
@@ -140,7 +162,7 @@ export default function HowItWorks() {
       <section className="py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {PROCESS_STEPS.map((step, index) => (
+            {processSteps.map((step, index) => (
               <Card 
                 key={index} 
                 className="hover-elevate"
@@ -160,20 +182,20 @@ export default function HowItWorks() {
                           className="text-xl font-semibold"
                           data-testid={`heading-step-${index + 1}`}
                         >
-                          {step.title}
+                          {t(step.titleKey)}
                         </h3>
                         <span 
                           className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full"
                           data-testid={`badge-duration-${index + 1}`}
                         >
-                          {step.duration}
+                          {t(step.durationKey)}
                         </span>
                       </div>
                       <p 
                         className="text-muted-foreground"
                         data-testid={`text-step-${index + 1}`}
                       >
-                        {step.description}
+                        {t(step.descriptionKey)}
                       </p>
                     </div>
                   </div>
@@ -190,7 +212,7 @@ export default function HowItWorks() {
                 className="gap-2"
                 data-testid="button-start-application"
               >
-                Créer mon compte et commencer
+                {t('howItWorks.startCta')}
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -206,15 +228,15 @@ export default function HowItWorks() {
               className="text-3xl md:text-4xl font-bold mb-4"
               data-testid="heading-benefits"
             >
-              Pourquoi choisir Altus Finance ?
+              {t('howItWorks.whyUs')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Une plateforme moderne pensée pour vous simplifier l'accès au financement
+              {t('howItWorks.whyUsSubtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {KEY_BENEFITS.map((benefit, index) => (
+            {keyBenefits.map((benefit, index) => (
               <div 
                 key={index} 
                 className="text-center space-y-4"
@@ -223,8 +245,8 @@ export default function HowItWorks() {
                 <div className="mx-auto h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center">
                   <benefit.icon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold">{benefit.title}</h3>
-                <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                <h3 className="text-lg font-semibold">{t(benefit.titleKey)}</h3>
+                <p className="text-sm text-muted-foreground">{t(benefit.descriptionKey)}</p>
               </div>
             ))}
           </div>
@@ -239,33 +261,16 @@ export default function HowItWorks() {
               className="text-3xl md:text-4xl font-bold mb-4"
               data-testid="heading-faq"
             >
-              Questions fréquentes
+              {t('howItWorks.faq')}
             </h2>
           </div>
 
           <div className="space-y-6">
-            {[
-              {
-                question: "Quels documents sont nécessaires ?",
-                answer: "Pour une demande de prêt, vous aurez besoin d'une pièce d'identité, d'un justificatif de domicile récent, et de vos 3 derniers bulletins de salaire (ou justificatif de revenus pour les professionnels)."
-              },
-              {
-                question: "Puis-je rembourser par anticipation ?",
-                answer: "Oui, le remboursement anticipé est gratuit chez Altus Finance. Vous pouvez rembourser tout ou partie de votre prêt à tout moment sans frais supplémentaires."
-              },
-              {
-                question: "Quel est le taux d'acceptation ?",
-                answer: "Notre taux d'acceptation varie selon les profils, mais nous étudions chaque dossier avec attention. Même si vous avez été refusé ailleurs, n'hésitez pas à faire une simulation."
-              },
-              {
-                question: "Comment suivre ma demande ?",
-                answer: "Une fois votre demande soumise, vous pouvez suivre son avancement en temps réel dans votre espace client 'Mon Espace'. Vous recevrez également des notifications par email à chaque étape."
-              },
-            ].map((faq, index) => (
+            {faqs.map((faq, index) => (
               <Card key={index} data-testid={`faq-${index + 1}`}>
                 <CardContent className="p-6 space-y-2">
-                  <h3 className="text-lg font-semibold">{faq.question}</h3>
-                  <p className="text-muted-foreground">{faq.answer}</p>
+                  <h3 className="text-lg font-semibold">{t(faq.questionKey)}</h3>
+                  <p className="text-muted-foreground">{t(faq.answerKey)}</p>
                 </CardContent>
               </Card>
             ))}
@@ -280,10 +285,10 @@ export default function HowItWorks() {
             className="text-3xl md:text-4xl font-bold"
             data-testid="heading-cta"
           >
-            Prêt à démarrer votre projet ?
+            {t('howItWorks.readyTitle')}
           </h2>
           <p className="text-xl text-muted-foreground">
-            Obtenez une réponse de principe en 48h
+            {t('howItWorks.readySubtitle')}
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/simulateur">
@@ -292,7 +297,7 @@ export default function HowItWorks() {
                 variant="outline"
                 data-testid="button-simulate"
               >
-                Simuler mon prêt
+                {t('howItWorks.simulateCta')}
               </Button>
             </Link>
             <Link href="/auth/connexion">
@@ -301,7 +306,7 @@ export default function HowItWorks() {
                 className="gap-2"
                 data-testid="button-apply"
               >
-                Créer mon compte
+                {t('howItWorks.createAccountCta')}
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>

@@ -4,15 +4,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 export default function Contact() {
+  const { t } = useTranslation();
+
   return (
     <div className="py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4">Contactez-nous</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('contact.title')}</h1>
           <p className="text-xl text-muted-foreground">
-            Notre équipe est à votre disposition pour répondre à vos questions
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -20,38 +23,38 @@ export default function Contact() {
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
-                <CardTitle>Envoyez-nous un message</CardTitle>
+                <CardTitle>{t('contact.sendMessage')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Nom complet</Label>
-                    <Input id="name" placeholder="Jean Dupont" data-testid="input-name" />
+                    <Label htmlFor="name">{t('contact.fullName')}</Label>
+                    <Input id="name" placeholder={t('contact.fullNamePlaceholder')} data-testid="input-name" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="jean@example.com" data-testid="input-email" />
+                    <Label htmlFor="email">{t('contact.email')}</Label>
+                    <Input id="email" type="email" placeholder={t('contact.emailPlaceholder')} data-testid="input-email" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Téléphone</Label>
-                  <Input id="phone" type="tel" placeholder="06 12 34 56 78" data-testid="input-phone" />
+                  <Label htmlFor="phone">{t('contact.phone')}</Label>
+                  <Input id="phone" type="tel" placeholder={t('contact.phonePlaceholder')} data-testid="input-phone" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Sujet</Label>
-                  <Input id="subject" placeholder="Question sur un prêt personnel" data-testid="input-subject" />
+                  <Label htmlFor="subject">{t('contact.subject')}</Label>
+                  <Input id="subject" placeholder={t('contact.subjectPlaceholder')} data-testid="input-subject" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message">{t('contact.message')}</Label>
                   <Textarea
                     id="message"
-                    placeholder="Votre message..."
+                    placeholder={t('contact.messagePlaceholder')}
                     rows={6}
                     data-testid="textarea-message"
                   />
                 </div>
                 <Button className="w-full" data-testid="button-send">
-                  Envoyer le message
+                  {t('contact.send')}
                 </Button>
               </CardContent>
             </Card>
@@ -65,9 +68,9 @@ export default function Contact() {
                     <Phone className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold">Téléphone</div>
-                    <div className="text-muted-foreground">01 23 45 67 89</div>
-                    <div className="text-sm text-muted-foreground">Lun-Ven 9h-18h</div>
+                    <div className="font-semibold">{t('contact.phoneLabel')}</div>
+                    <div className="text-muted-foreground">{t('contact.phoneValue')}</div>
+                    <div className="text-sm text-muted-foreground">{t('contact.schedule')}</div>
                   </div>
                 </div>
 
@@ -76,9 +79,9 @@ export default function Contact() {
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold">Email</div>
-                    <div className="text-muted-foreground">contact@altusfinance.fr</div>
-                    <div className="text-sm text-muted-foreground">Réponse sous 24h</div>
+                    <div className="font-semibold">{t('contact.emailLabel')}</div>
+                    <div className="text-muted-foreground">{t('contact.emailValue')}</div>
+                    <div className="text-sm text-muted-foreground">{t('contact.responseTime')}</div>
                   </div>
                 </div>
 
@@ -87,12 +90,8 @@ export default function Contact() {
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold">Adresse</div>
-                    <div className="text-muted-foreground">
-                      123 Avenue des Champs-Élysées
-                      <br />
-                      75008 Paris, France
-                    </div>
+                    <div className="font-semibold">{t('contact.address')}</div>
+                    <div className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: t('contact.addressValue') }} />
                   </div>
                 </div>
 
@@ -101,11 +100,8 @@ export default function Contact() {
                     <Clock className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <div className="font-semibold">Horaires</div>
-                    <div className="text-sm text-muted-foreground">
-                      Lundi - Vendredi: 9h - 18h<br />
-                      Samedi - Dimanche: Fermé
-                    </div>
+                    <div className="font-semibold">{t('contact.hours')}</div>
+                    <div className="text-sm text-muted-foreground" dangerouslySetInnerHTML={{ __html: t('contact.hoursValue') }} />
                   </div>
                 </div>
               </CardContent>
