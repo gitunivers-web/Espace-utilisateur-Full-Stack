@@ -45,31 +45,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const hashedPassword = await bcrypt.hash(data.password, 10);
-      const verificationToken = randomBytes(32).toString('hex');
-      const verificationTokenExpiry = new Date(Date.now() + 24 * 60 * 60 * 1000);
+      
+      // En développement, créer le compte comme déjà vérifié
+      const isDevelopment = process.env.NODE_ENV === 'development';
       
       const user = await storage.createUser({
         ...data,
         password: hashedPassword,
-        emailVerified: false,
-        verificationToken,
-        verificationTokenExpiry,
+        emailVerified: isDevelopment ? true : false,
+        verificationToken: isDevelopment ? null : randomBytes(32).toString('hex'),
+        verificationTokenExpiry: isDevelopment ? null : new Date(Date.now() + 24 * 60 * 60 * 1000),
       });
 
-      const baseUrl = process.env.REPLIT_DEV_DOMAIN 
-        ? `https://${process.env.REPLIT_DEV_DOMAIN}` 
-        : `http://localhost:${process.env.PORT || 5000}`;
-      const verificationLink = `${baseUrl}/verify-email?token=${verificationToken}`;
+      if (!isDevelopment) {
+        const baseUrl = process.env.REPLIT_DEV_DOMAIN 
+          ? `https://${process.env.REPLIT_DEV_DOMAIN}` 
+          : `http://localhost:${process.env.PORT || 5000}`;
+        const verificationLink = `${baseUrl}/verify-email?token=${user.verificationToken}`;
 
-      await sendVerificationEmail({
-        to: user.email,
-        verificationLink,
-        userName: user.fullName,
-      });
+        await sendVerificationEmail({
+          to: user.email,
+          verificationLink,
+          userName: user.fullName,
+        });
 
-      res.status(201).json({ 
-        message: "Inscription réussie ! Veuillez vérifier votre email pour activer votre compte." 
-      });
+        res.status(201).json({ 
+          message: "Inscription réussie ! Veuillez vérifier votre email pour activer votre compte." 
+        });
+      } else {
+        // En développement, connecter automatiquement l'utilisateur
+        req.login(user, (err) => {
+          if (err) {
+            return res.status(500).json({ error: "Erreur lors de la connexion" });
+          }
+          res.status(201).json({ 
+            message: "Inscription réussie ! Vous êtes maintenant connecté.",
+            user: omitPassword(user)
+          });
+        });
+      }
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }
