@@ -5,14 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { User, Shield, Bell, FileText, Upload } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useUser, useUpdateUser, useChangePassword } from "@/lib/api";
 import { queryClient } from "@/lib/queryClient";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 
 export default function Parametres() {
-  const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
   const [emailNotifications, setEmailNotifications] = useState(true);
   const { toast } = useToast();
   const { data: user, isLoading, error } = useUser();
@@ -27,6 +28,13 @@ export default function Parametres() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
 
+  const [show2FADialog, setShow2FADialog] = useState(false);
+  const [twoFactorMode, setTwoFactorMode] = useState<'enable' | 'disable'>('enable');
+  const [qrCodeUrl, setQrCodeUrl] = useState('');
+  const [twoFactorSecret, setTwoFactorSecret] = useState('');
+  const [verificationCode, setVerificationCode] = useState('');
+  const [processing2FA, setProcessing2FA] = useState(false);
+
   useEffect(() => {
     if (user) {
       setFullName(user.fullName || '');
@@ -34,6 +42,89 @@ export default function Parametres() {
       setPhone(user.phone || '');
     }
   }, [user]);
+
+  const handle2FAToggle = async (checked: boolean) => {
+    if (checked) {
+      try {
+        const response = await fetch('/api/2fa/setup', {
+          method: 'POST',
+          credentials: 'include',
+        });
+
+        if (!response.ok) {
+          throw new Error(await response.text());
+        }
+
+        const data = await response.json();
+        setQrCodeUrl(data.qrCode);
+        setTwoFactorSecret(data.secret);
+        setTwoFactorMode('enable');
+        setShow2FADialog(true);
+      } catch (error) {
+        toast({
+          title: "Erreur",
+          description: "Impossible de générer le code QR",
+          variant: "destructive",
+        });
+      }
+    } else {
+      setTwoFactorMode('disable');
+      setShow2FADialog(true);
+    }
+  };
+
+  const handle2FASubmit = async () => {
+    if (verificationCode.length !== 6) {
+      toast({
+        title: "Erreur",
+        description: "Le code doit contenir 6 chiffres",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setProcessing2FA(true);
+    try {
+      const endpoint = twoFactorMode === 'enable' ? '/api/2fa/enable' : '/api/2fa/disable';
+      const body = twoFactorMode === 'enable' 
+        ? { token: verificationCode, secret: twoFactorSecret }
+        : { token: verificationCode };
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(body),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error);
+      }
+
+      await queryClient.invalidateQueries({ queryKey: ['user'] });
+      
+      toast({
+        title: "Succès",
+        description: twoFactorMode === 'enable' 
+          ? "2FA activé avec succès" 
+          : "2FA désactivé avec succès",
+      });
+
+      setShow2FADialog(false);
+      setVerificationCode('');
+      setQrCodeUrl('');
+      setTwoFactorSecret('');
+    } catch (error: any) {
+      toast({
+        title: "Erreur",
+        description: error.message || "Code invalide",
+        variant: "destructive",
+      });
+    } finally {
+      setProcessing2FA(false);
+    }
+  };
 
   const handleSaveProfile = async () => {
     try {
@@ -255,15 +346,16 @@ export default function Parametres() {
                 <div className="space-y-0.5 flex-1 min-w-0">
                   <Label htmlFor="2fa" className="text-sm">Authentification à deux facteurs</Label>
                   <p className="text-xs sm:text-sm text-muted-foreground">
-                    Ajoutez une couche de sécurité supplémentaire
+                    {user?.twoFactorEnabled ? "Activée" : "Ajoutez une couche de sécurité supplémentaire"}
                   </p>
                 </div>
                 <Switch
                   id="2fa"
-                  checked={twoFactorEnabled}
-                  onCheckedChange={setTwoFactorEnabled}
+                  checked={user?.twoFactorEnabled || false}
+                  onCheckedChange={handle2FAToggle}
                   data-testid="switch-2fa"
                   className="flex-shrink-0"
+                  disabled={isLoading}
                 />
               </div>
 
@@ -415,6 +507,78 @@ export default function Parametres() {
           </Card>
         </div>
       </div>
+
+      <Dialog open={show2FADialog} onOpenChange={setShow2FADialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>
+              {twoFactorMode === 'enable' ? 'Activer 2FA' : 'Désactiver 2FA'}
+            </DialogTitle>
+            <DialogDescription>
+              {twoFactorMode === 'enable' 
+                ? 'Scannez le code QR avec votre application d\'authentification (Google Authenticator, Authy, etc.) puis entrez le code généré.'
+                : 'Entrez le code de votre application d\'authentification pour désactiver la 2FA.'
+              }
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            {twoFactorMode === 'enable' && qrCodeUrl && (
+              <div className="flex flex-col items-center gap-4">
+                <img src={qrCodeUrl} alt="QR Code" className="w-48 h-48" />
+                <div className="text-center space-y-2">
+                  <p className="text-sm text-muted-foreground">Secret manuel :</p>
+                  <code className="text-xs bg-muted px-2 py-1 rounded">{twoFactorSecret}</code>
+                </div>
+              </div>
+            )}
+
+            <div className="space-y-2">
+              <Label htmlFor="verification-code">Code de vérification</Label>
+              <div className="flex justify-center">
+                <InputOTP
+                  maxLength={6}
+                  value={verificationCode}
+                  onChange={setVerificationCode}
+                  data-testid="input-2fa-code"
+                >
+                  <InputOTPGroup>
+                    <InputOTPSlot index={0} />
+                    <InputOTPSlot index={1} />
+                    <InputOTPSlot index={2} />
+                    <InputOTPSlot index={3} />
+                    <InputOTPSlot index={4} />
+                    <InputOTPSlot index={5} />
+                  </InputOTPGroup>
+                </InputOTP>
+              </div>
+            </div>
+          </div>
+
+          <DialogFooter className="flex-col gap-2 sm:flex-row">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setShow2FADialog(false);
+                setVerificationCode('');
+                setQrCodeUrl('');
+                setTwoFactorSecret('');
+              }}
+              disabled={processing2FA}
+              data-testid="button-cancel-2fa"
+            >
+              Annuler
+            </Button>
+            <Button
+              onClick={handle2FASubmit}
+              disabled={verificationCode.length !== 6 || processing2FA}
+              data-testid="button-confirm-2fa"
+            >
+              {processing2FA ? 'Vérification...' : 'Confirmer'}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

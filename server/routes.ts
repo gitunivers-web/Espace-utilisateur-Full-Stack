@@ -35,6 +35,8 @@ import { fileURLToPath } from "url";
 import fs from "fs";
 import { PDFGenerator } from "./services/pdfGenerator";
 import { translateLoanType } from "./services/loanTypeTranslations";
+import speakeasy from "speakeasy";
+import QRCode from "qrcode";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -272,6 +274,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(401).json({ error: info?.message || "Email ou mot de passe incorrect" });
       }
 
+      if (user.twoFactorEnabled) {
+        (req.session as any).pending2FAUserId = user.id;
+        return res.json({ 
+          requires2FA: true,
+          email: user.email
+        });
+      }
+
       req.login(user, (err) => {
         if (err) {
           return res.status(500).json({ error: "Erreur lors de la connexion" });
@@ -447,6 +457,148 @@ export async function registerRoutes(app: Express): Promise<Server> {
       await storage.updateUser(user.id, { password: hashedPassword });
       
       res.json({ success: true, message: "Mot de passe modifié avec succès" });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  // 2FA Setup - Generate secret and QR code
+  app.post("/api/2fa/setup", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      
+      if (user.twoFactorEnabled) {
+        return res.status(400).json({ error: "2FA est déjà activé" });
+      }
+
+      const secret = speakeasy.generateSecret({
+        name: `Lendia (${user.email})`,
+        issuer: "Lendia",
+        length: 32,
+      });
+
+      const qrCodeDataUrl = await QRCode.toDataURL(secret.otpauth_url!);
+      
+      res.json({ 
+        secret: secret.base32,
+        qrCode: qrCodeDataUrl,
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // 2FA Enable - Verify token and save secret
+  app.post("/api/2fa/enable", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const { token, secret } = z.object({
+        token: z.string().length(6, "Le code doit contenir 6 chiffres"),
+        secret: z.string().min(1, "Secret requis"),
+      }).parse(req.body);
+
+      const verified = speakeasy.totp.verify({
+        secret: secret,
+        encoding: "base32",
+        token: token,
+        window: 2,
+      });
+
+      if (!verified) {
+        return res.status(400).json({ error: "Code invalide" });
+      }
+
+      await storage.updateUser(user.id, {
+        twoFactorEnabled: true,
+        twoFactorSecret: secret,
+      });
+
+      res.json({ success: true, message: "2FA activé avec succès" });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  // 2FA Disable - Verify token and disable
+  app.post("/api/2fa/disable", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      
+      if (!user.twoFactorEnabled || !user.twoFactorSecret) {
+        return res.status(400).json({ error: "2FA n'est pas activé" });
+      }
+
+      const { token } = z.object({
+        token: z.string().length(6, "Le code doit contenir 6 chiffres"),
+      }).parse(req.body);
+
+      const verified = speakeasy.totp.verify({
+        secret: user.twoFactorSecret,
+        encoding: "base32",
+        token: token,
+        window: 2,
+      });
+
+      if (!verified) {
+        return res.status(400).json({ error: "Code invalide" });
+      }
+
+      await storage.updateUser(user.id, {
+        twoFactorEnabled: false,
+        twoFactorSecret: null,
+      });
+
+      res.json({ success: true, message: "2FA désactivé avec succès" });
+    } catch (error: any) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+
+  // 2FA Verify - Verify token during login
+  app.post("/api/2fa/verify", async (req, res) => {
+    try {
+      const { email, token } = z.object({
+        email: z.string().email(),
+        token: z.string().length(6, "Le code doit contenir 6 chiffres"),
+      }).parse(req.body);
+
+      const pendingUserId = (req.session as any).pending2FAUserId;
+      if (!pendingUserId) {
+        return res.status(401).json({ error: "Aucune tentative de connexion en cours" });
+      }
+
+      const user = await storage.getUserByEmail(email);
+      
+      if (!user || user.id !== pendingUserId) {
+        return res.status(403).json({ error: "Tentative de connexion non autorisée" });
+      }
+
+      if (!user.twoFactorEnabled || !user.twoFactorSecret) {
+        return res.status(400).json({ error: "Configuration 2FA invalide" });
+      }
+
+      const verified = speakeasy.totp.verify({
+        secret: user.twoFactorSecret,
+        encoding: "base32",
+        token: token,
+        window: 2,
+      });
+
+      if (!verified) {
+        return res.status(400).json({ error: "Code invalide" });
+      }
+
+      delete (req.session as any).pending2FAUserId;
+
+      req.login(user, (err) => {
+        if (err) {
+          return res.status(500).json({ error: "Erreur lors de la connexion" });
+        }
+        res.json({ 
+          success: true,
+          user: omitPassword(user)
+        });
+      });
     } catch (error: any) {
       res.status(400).json({ error: error.message });
     }
