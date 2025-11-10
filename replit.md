@@ -27,9 +27,11 @@ The platform is built with a modern web stack.
     -   User authentication is managed securely, and sensitive operations are protected.
 -   **Core Features**:
     -   **Email Verification Flow**: New users must verify their email address before accessing their account. Upon registration, a verification email is sent with a unique token (24h expiration). Users click the verification link, which validates the token and automatically logs them into their dashboard.
+    -   **Automatic PDF Contract Generation**: When admins approve a loan application, the system automatically generates a professional PDF contract with all loan details, borrower information, and terms & conditions. Contracts are stored securely and accessible only to the borrower and admins via authenticated endpoints.
     -   Online loan simulation with real-time calculations.
     -   Multi-step loan application forms with distinct flows for individuals and professionals, leveraging Zod for validation (including discriminated unions).
-    -   Secure client area ("Mon Espace") for managing loan applications, tracking history, and accessing account settings.
+    -   Secure client area ("Mon Espace") for managing loan applications, tracking history, accessing contracts, and account settings.
+    -   Admin dashboard for managing all loan applications with approve/reject/request-info actions.
     -   Public-facing website with marketing content, loan offers catalog, and standalone simulator.
     -   Comprehensive user authentication system including login, distinct registration paths (individual/professional), email verification, and secure password reset mechanism via email.
     -   Responsive design and accessibility considerations (e.g., `data-testid`).
@@ -59,16 +61,29 @@ The platform is built with a modern web stack.
    - Stockage sécurisé dans public/uploads/documents/
    - Les documents ne sont accessibles que par leur propriétaire ou les admins
 
+4. **Génération automatique de contrats PDF**
+   - Service de génération PDF professionnel utilisant PDFKit (server/services/pdfGenerator.ts)
+   - Template de contrat complet avec en-tête, informations emprunteur, détails du prêt, conditions générales, section signature
+   - Service de traduction i18n pour les noms de types de prêt (server/services/loanTypeTranslations.ts)
+   - Intégration dans le workflow d'approbation admin : génération automatique lors de l'approbation
+   - Route sécurisée GET /api/contracts/:id/pdf avec authentification et vérification d'autorisation
+   - Stockage des fichiers PDF dans le dossier contracts/
+   - Les contrats ne sont accessibles que par l'emprunteur ou les admins
+   - Génération automatique de 5 codes de transfert avec chaque approbation (20%, 40%, 60%, 80%, 100%)
+
 ### Sécurité
 - **Uploads protégés**: Tous les fichiers uploadés sont maintenant servis via des routes protégées avec authentification
 - **Validation d'autorisation**: Vérification que les utilisateurs ne peuvent accéder qu'à leurs propres documents
-- **Pas de serving statique**: Retrait du serving statique public de /uploads pour empêcher l'accès non autorisé
+- **Pas de serving statique**: Retrait du serving statique public de /uploads et /contracts pour empêcher l'accès non autorisé
 - **Validation des données**: Utilisation des schémas Zod pour valider toutes les entrées utilisateur
+- **Contrats PDF sécurisés**: Accès aux contrats uniquement via endpoint authentifié avec vérification emprunteur/admin
 
 ### Architecture
 - **Multer**: Gestion des uploads de fichiers avec validation de type et taille
+- **PDFKit**: Génération de contrats PDF professionnels côté serveur
 - **Routes protégées**: Toutes les routes sensibles requièrent l'authentification
 - **Separation of concerns**: Les routes admin sont séparées des routes utilisateur
+- **Services modulaires**: Services séparés pour génération PDF et traductions i18n
 
 ## External Dependencies
 -   **PostgreSQL**: Primary database for all application data, hosted on Render.
@@ -79,3 +94,4 @@ The platform is built with a modern web stack.
 -   **bcrypt**: For hashing and comparing sensitive data like password reset tokens.
 -   **Zod**: Schema declaration and validation library, used for robust data validation on both frontend and backend.
 -   **Multer**: For handling multipart/form-data file uploads.
+-   **PDFKit**: For server-side PDF contract generation with professional formatting.
