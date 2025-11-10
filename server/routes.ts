@@ -428,6 +428,55 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Delete document (protected)
+  app.delete("/api/documents/:id", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const { id } = z.object({ id: z.string() }).parse(req.params);
+
+      const document = await storage.getDocument(id);
+      if (!document) {
+        return res.status(404).json({ error: "Document non trouvé" });
+      }
+
+      if (document.userId !== user.id && !(user as any).isAdmin) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      if (document.status === "approved") {
+        return res.status(409).json({ 
+          error: "Impossible de supprimer un document approuvé",
+          warning: "Veuillez contacter un administrateur si nécessaire"
+        });
+      }
+
+      if (document.loanApplicationId) {
+        const application = await storage.getLoanApplication(document.loanApplicationId);
+        if (application && (application.status === "approved" || application.status === "under_review")) {
+          return res.status(409).json({ 
+            error: "Impossible de supprimer un document d'une demande en cours ou approuvée"
+          });
+        }
+      }
+
+      const filename = document.fileUrl.split('/').pop();
+      if (filename) {
+        const filePath = path.join(__dirname, "../public/uploads/documents", filename);
+        try {
+          fs.unlinkSync(filePath);
+        } catch (err) {
+          console.error(`Failed to delete file ${filePath}:`, err);
+        }
+      }
+
+      await storage.deleteDocument(id);
+      
+      res.json({ success: true, message: "Document supprimé avec succès" });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   // Serve profile pictures (protected)
   app.get("/api/user/profile-picture/:filename", requireAuth, async (req, res) => {
     try {

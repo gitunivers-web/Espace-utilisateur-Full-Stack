@@ -43,6 +43,7 @@ import type { LoanType } from "@shared/schema";
 import { StepLoanType } from "@/components/loan/application/StepLoanType";
 import { StepSimulation } from "@/components/loan/application/StepSimulation";
 import { StepInformation } from "@/components/loan/application/StepInformation";
+import { StepDocuments } from "@/components/loan/application/StepDocuments";
 import { StepConfirmation } from "@/components/loan/application/StepConfirmation";
 
 /**
@@ -52,7 +53,8 @@ const WIZARD_STEPS: Step[] = [
   { id: 1, label: "Type de prêt", description: "Choisissez votre prêt" },
   { id: 2, label: "Simulation", description: "Montant et durée" },
   { id: 3, label: "Vos informations", description: "Complétez votre profil" },
-  { id: 4, label: "Confirmation", description: "Vérifiez et envoyez" },
+  { id: 4, label: "Documents", description: "Pièces justificatives" },
+  { id: 5, label: "Confirmation", description: "Vérifiez et envoyez" },
 ];
 
 /**
@@ -81,6 +83,9 @@ export default function LoanApplication() {
 
   // État local pour le type de prêt sélectionné
   const [selectedLoanType, setSelectedLoanType] = useState<LoanType | null>(null);
+
+  // État pour suivre si les documents requis sont uploadés
+  const [hasAllDocuments, setHasAllDocuments] = useState(false);
 
   // Mutation pour créer la demande de prêt
   const createApplication = useCreateLoanApplication();
@@ -140,6 +145,17 @@ export default function LoanApplication() {
         // car les champs dépendent du type de demandeur (discriminated union)
         return await form.trigger();
       case 4:
+        // Étape documents - vérifier que tous les documents requis sont uploadés
+        if (!hasAllDocuments) {
+          toast({
+            title: "Documents manquants",
+            description: "Veuillez télécharger tous les documents obligatoires avant de continuer.",
+            variant: "destructive",
+          });
+          return false;
+        }
+        return true;
+      case 5:
         // Dernière étape, validation complète
         return true;
       default:
@@ -205,7 +221,7 @@ export default function LoanApplication() {
             Demande de Prêt
           </h1>
           <p className="text-xl text-muted-foreground">
-            Complétez votre demande en 4 étapes simples
+            Complétez votre demande en 5 étapes simples
           </p>
         </div>
 
@@ -253,6 +269,13 @@ export default function LoanApplication() {
                 )}
 
                 {currentStep === 4 && (
+                  <StepDocuments
+                    applicationType={form.watch("applicationType")}
+                    onDocumentsUploaded={(hasAll) => setHasAllDocuments(hasAll)}
+                  />
+                )}
+
+                {currentStep === 5 && (
                   <StepConfirmation
                     form={form}
                     selectedLoanType={selectedLoanType}

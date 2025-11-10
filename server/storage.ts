@@ -97,6 +97,7 @@ export interface IStorage {
   getDocumentsByLoanApplicationId(loanApplicationId: string): Promise<Document[]>;
   createDocument(document: InsertDocument): Promise<Document>;
   updateDocumentStatus(id: string, status: string, reviewedBy?: string, rejectionReason?: string): Promise<Document | undefined>;
+  deleteDocument(id: string): Promise<Document | undefined>;
 
   // Notification methods
   getNotification(id: string): Promise<Notification | undefined>;
@@ -404,6 +405,11 @@ export class DbStorage implements IStorage {
       updates.rejectionReason = rejectionReason;
     }
     const [document] = await db.update(documents).set(updates).where(eq(documents.id, id)).returning();
+    return document;
+  }
+
+  async deleteDocument(id: string): Promise<Document | undefined> {
+    const [document] = await db.delete(documents).where(eq(documents.id, id)).returning();
     return document;
   }
 
