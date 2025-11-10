@@ -5,7 +5,7 @@ import { z } from "zod";
 
 export const applicationTypeEnum = pgEnum("application_type", ["particular", "professional"]);
 export const applicationStatusEnum = pgEnum("application_status", ["pending", "under_review", "approved", "rejected", "withdrawn"]);
-export const documentTypeEnum = pgEnum("document_type", ["identity", "proof_of_address", "income_proof", "company_registration", "tax_return", "bank_statement", "other"]);
+export const documentTypeEnum = pgEnum("document_type", ["identity", "proof_of_address", "income_proof", "company_registration", "tax_return", "bank_statement", "signed_contract", "other"]);
 export const documentStatusEnum = pgEnum("document_status", ["pending", "approved", "rejected"]);
 export const notificationTypeEnum = pgEnum("notification_type", ["info", "success", "warning", "error", "request"]);
 export const contractStatusEnum = pgEnum("contract_status", ["generated", "sent", "signed", "verified", "rejected"]);
@@ -344,7 +344,7 @@ export type CardOrder = typeof cardOrders.$inferSelect;
 
 // Validation schemas for API requests
 export const uploadDocumentSchema = z.object({
-  type: z.enum(["identity", "proof_of_address", "income_proof", "company_registration", "tax_return", "bank_statement", "other"]),
+  type: z.enum(["identity", "proof_of_address", "income_proof", "company_registration", "tax_return", "bank_statement", "signed_contract", "other"]),
   fileName: z.string().min(1, "Nom du fichier requis"),
   fileUrl: z.string().url("URL invalide"),
 });

@@ -27,6 +27,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2, Search, FileText, Plus, Calendar, CreditCard } from "lucide-react";
 import type { LoanApplication } from "@shared/schema";
+import { ContractSigning } from "@/components/loan/ContractSigning";
 
 /**
  * Configuration des couleurs de badge selon le statut
@@ -256,6 +257,13 @@ export default function LoanApplicationsList() {
                     </div>
                   </div>
                 </div>
+
+                {/* Signature de contrat pour les demandes approuvées */}
+                {application.status === "approved" && (
+                  <div className="pt-4 border-t">
+                    <ContractSigning loanApplicationId={application.id} />
+                  </div>
+                )}
               </CardContent>
             </Card>
           ))
