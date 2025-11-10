@@ -305,3 +305,57 @@ export function useChangePassword() {
       }),
   });
 }
+
+export function usePendingLoanApplications() {
+  return useQuery({
+    queryKey: ['/api/admin/loan-applications'],
+    queryFn: () => fetchApi("/admin/loan-applications"),
+  });
+}
+
+export function useApproveLoanApplication() {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: ({ id, message }: { id: string; message?: string }) =>
+      fetchApi(`/admin/loan-applications/${id}/approve`, {
+        method: "POST",
+        body: JSON.stringify({ message }),
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/admin/loan-applications'] });
+      queryClient.invalidateQueries({ queryKey: ['loanApplications'] });
+    },
+  });
+}
+
+export function useRejectLoanApplication() {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: ({ id, reason }: { id: string; reason: string }) =>
+      fetchApi(`/admin/loan-applications/${id}/reject`, {
+        method: "POST",
+        body: JSON.stringify({ reason }),
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/admin/loan-applications'] });
+      queryClient.invalidateQueries({ queryKey: ['loanApplications'] });
+    },
+  });
+}
+
+export function useRequestMoreInfo() {
+  const queryClient = useQueryClient();
+  
+  return useMutation({
+    mutationFn: ({ id, message }: { id: string; message: string }) =>
+      fetchApi(`/admin/loan-applications/${id}/request-info`, {
+        method: "POST",
+        body: JSON.stringify({ message }),
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['/api/admin/loan-applications'] });
+    },
+  });
+}

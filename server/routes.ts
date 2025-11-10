@@ -29,6 +29,67 @@ import { z } from "zod";
 import passport from "./auth";
 import { sendPasswordResetEmail, sendVerificationEmail } from "./email";
 import { randomBytes } from "crypto";
+import multer from "multer";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const profilePictureStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../public/uploads/profile-pictures"));
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+    cb(null, "profile-" + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const uploadProfilePicture = multer({
+  storage: profilePictureStorage,
+  limits: {
+    fileSize: 5 * 1024 * 1024
+  },
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png|webp/;
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = allowedTypes.test(file.mimetype);
+    
+    if (mimetype && extname) {
+      return cb(null, true);
+    } else {
+      cb(new Error("Seules les images (JPEG, PNG, WEBP) sont autorisées"));
+    }
+  }
+});
+
+const documentStorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../public/uploads/documents"));
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
+    cb(null, "doc-" + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const uploadDocument = multer({
+  storage: documentStorage,
+  limits: {
+    fileSize: 10 * 1024 * 1024
+  },
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = /jpeg|jpg|png|webp|pdf/;
+    const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimetype = allowedTypes.test(file.mimetype) || file.mimetype === 'application/pdf';
+    
+    if (mimetype && extname) {
+      return cb(null, true);
+    } else {
+      cb(new Error("Seuls les fichiers PDF et images sont autorisés"));
+    }
+  }
+});
 
 function requireAuth(req: Request, res: Response, next: NextFunction) {
   if (req.isAuthenticated()) {
@@ -257,6 +318,111 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(omitPassword(updated!));
     } catch (error: any) {
       res.status(400).json({ error: error.message });
+    }
+  });
+
+  // Upload profile picture
+  app.post("/api/user/profile-picture", requireAuth, uploadProfilePicture.single("profilePicture"), async (req, res) => {
+    try {
+      const user = req.user as User;
+      
+      if (!req.file) {
+        return res.status(400).json({ error: "Aucun fichier téléchargé" });
+      }
+
+      const profilePictureUrl = `/api/user/profile-picture/${req.file.filename}`;
+      
+      const updatedUser = await storage.updateUser(user.id, { profilePicture: profilePictureUrl });
+      if (!updatedUser) {
+        return res.status(404).json({ error: "Utilisateur non trouvé" });
+      }
+      
+      res.json({ 
+        success: true, 
+        profilePicture: profilePictureUrl,
+        user: omitPassword(updatedUser)
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Upload document file
+  app.post("/api/documents/upload", requireAuth, uploadDocument.single("document"), async (req, res) => {
+    try {
+      const user = req.user as User;
+      
+      if (!req.file) {
+        return res.status(400).json({ error: "Aucun fichier téléchargé" });
+      }
+
+      const { type, loanApplicationId } = req.body;
+      
+      if (!type) {
+        return res.status(400).json({ error: "Le type de document est requis" });
+      }
+
+      // Verify ownership of loan application if provided
+      if (loanApplicationId) {
+        const application = await storage.getLoanApplication(loanApplicationId);
+        if (!application) {
+          return res.status(404).json({ error: "Demande de prêt non trouvée" });
+        }
+        if (application.userId !== user.id && !(user as any).isAdmin) {
+          return res.status(403).json({ error: "Vous ne pouvez pas ajouter de documents à cette demande" });
+        }
+      }
+
+      const documentUrl = `/api/documents/file/${req.file.filename}`;
+      
+      const document = await storage.createDocument({
+        userId: user.id,
+        loanApplicationId: loanApplicationId || null,
+        type,
+        fileName: req.file.originalname,
+        fileUrl: documentUrl,
+        status: "pending",
+      });
+      
+      res.json({ 
+        success: true, 
+        document
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Serve document files (protected)
+  app.get("/api/documents/file/:filename", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const { filename } = req.params;
+      
+      // Find document by fileUrl
+      const allDocs = await storage.getDocumentsByUserId(user.id);
+      const document = allDocs.find(doc => doc.fileUrl.includes(filename));
+      
+      // Allow admins to access any document
+      if (!document && !(user as any).isAdmin) {
+        return res.status(404).json({ error: "Document non trouvé" });
+      }
+
+      const filePath = path.join(__dirname, "../public/uploads/documents", filename);
+      res.sendFile(filePath);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Serve profile pictures (protected)
+  app.get("/api/user/profile-picture/:filename", requireAuth, async (req, res) => {
+    try {
+      const { filename } = req.params;
+      const filePath = path.join(__dirname, "../public/uploads/profile-pictures", filename);
+      res.sendFile(filePath);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
     }
   });
 
@@ -930,7 +1096,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           userId: admin.id,
           type: "request",
           title: "Nouveau contrat à vérifier",
-          message: `Le contrat #${contract.contractNumber} a été signé par ${user.firstName} ${user.lastName} et nécessite une vérification.`,
+          message: `Le contrat #${contract.contractNumber} a été signé par ${user.fullName} et nécessite une vérification.`,
           actionUrl: `/admin/contracts/${contract.id}`,
         });
       }

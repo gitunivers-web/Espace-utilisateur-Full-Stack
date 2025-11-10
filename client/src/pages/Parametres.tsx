@@ -4,11 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User, Shield, Bell, FileText, Upload } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useUser, useUpdateUser, useChangePassword } from "@/lib/api";
+import { queryClient } from "@/lib/queryClient";
 
 export default function Parametres() {
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
@@ -17,6 +18,8 @@ export default function Parametres() {
   const { data: user, isLoading, error } = useUser();
   const updateUserMutation = useUpdateUser();
   const changePasswordMutation = useChangePassword();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadingPicture, setUploadingPicture] = useState(false);
   
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -60,6 +63,65 @@ export default function Parametres() {
     });
   };
 
+  const handleProfilePictureClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleProfilePictureChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.match(/^image\/(jpeg|jpg|png|webp)$/)) {
+      toast({
+        title: "Erreur",
+        description: "Seules les images JPEG, PNG et WEBP sont autorisées",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Erreur",
+        description: "La taille maximale du fichier est de 5 Mo",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setUploadingPicture(true);
+    const formData = new FormData();
+    formData.append('profilePicture', file);
+
+    try {
+      const response = await fetch('/api/user/profile-picture', {
+        method: 'POST',
+        body: formData,
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
+      const data = await response.json();
+      await queryClient.invalidateQueries({ queryKey: ['user'] });
+      
+      toast({
+        title: "Photo mise à jour",
+        description: "Votre photo de profil a été modifiée avec succès.",
+      });
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue lors de l'upload de la photo.",
+        variant: "destructive",
+      });
+    } finally {
+      setUploadingPicture(false);
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <InfoTicker />
@@ -94,13 +156,37 @@ export default function Parametres() {
             <CardContent className="space-y-3 sm:space-y-4">
               <div className="flex items-center gap-3 sm:gap-4">
                 <Avatar className="h-16 w-16 sm:h-20 sm:w-20">
+                  {user?.profilePicture && (
+                    <AvatarImage src={user.profilePicture} alt={user.fullName} />
+                  )}
                   <AvatarFallback className="bg-primary text-primary-foreground text-xl sm:text-2xl">
-                    SM
+                    {user?.fullName?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
-                <Button variant="outline" size="sm" data-testid="button-change-photo">
-                  Changer la photo
-                </Button>
+                <div className="flex flex-col gap-2">
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/jpg,image/png,image/webp"
+                    onChange={handleProfilePictureChange}
+                    className="hidden"
+                    data-testid="input-profile-picture"
+                  />
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={handleProfilePictureClick}
+                    disabled={uploadingPicture}
+                    data-testid="button-change-photo"
+                  >
+                    {uploadingPicture ? "Chargement..." : "Changer la photo"}
+                  </Button>
+                  {user?.profilePicture && (
+                    <p className="text-xs text-muted-foreground">
+                      Taille max : 5 Mo
+                    </p>
+                  )}
+                </div>
               </div>
 
               <div className="space-y-2">

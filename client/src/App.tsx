@@ -14,6 +14,7 @@ import Transferts from "@/pages/Transferts";
 import Historique from "@/pages/Historique";
 import Parametres from "@/pages/Parametres";
 import LoanApplicationsList from "@/pages/loan-applications-list";
+import AdminDashboard from "@/pages/admin-dashboard";
 import Login from "@/pages/Login";
 import Home from "@/pages/home";
 import Offers from "@/pages/offers";
@@ -106,6 +107,9 @@ function ProtectedRouter() {
               </Route>
               <Route path="/mon-espace/parametres">
                 {() => <ProtectedRoute component={Parametres} />}
+              </Route>
+              <Route path="/admin">
+                {() => <ProtectedRoute component={AdminDashboard} />}
               </Route>
               <Route component={NotFound} />
             </Switch>
