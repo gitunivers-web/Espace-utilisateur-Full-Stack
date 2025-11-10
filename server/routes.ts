@@ -33,6 +33,52 @@ function omitPassword(user: User): UserWithoutPassword {
   return userWithoutPassword;
 }
 
+async function seedUserData(userId: string) {
+  const accountNumber = `FR76 ${Math.random().toString().substring(2, 6)} ${Math.random().toString().substring(2, 6)} ${Math.random().toString().substring(2, 8)} ${Math.random().toString().substring(2, 4)} ${Math.random().toString().substring(2, 4)}`;
+  
+  const account = await storage.createAccount({
+    userId,
+    name: "Compte Courant",
+    accountNumber,
+    type: "Courant",
+    balance: "5000.00",
+  });
+
+  const cardNumber = `${Math.floor(1000 + Math.random() * 9000)} ${Math.floor(1000 + Math.random() * 9000)} ${Math.floor(1000 + Math.random() * 9000)} ${Math.floor(1000 + Math.random() * 9000)}`;
+  const expiryMonth = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+  const expiryYear = String(new Date().getFullYear() + 3 + Math.floor(Math.random() * 2)).substring(2);
+  
+  await storage.createCard({
+    userId,
+    accountId: account.id,
+    name: "Carte Visa",
+    cardNumber,
+    cardType: "Visa",
+    status: "active",
+    expiryDate: `${expiryMonth}/${expiryYear}`,
+  });
+
+  const sampleTransactions = [
+    { description: "Virement de bienvenue", amount: "5000.00", type: "credit", category: "Virement" },
+    { description: "Abonnement Netflix", amount: "-15.99", type: "debit", category: "Loisirs" },
+    { description: "Courses Carrefour", amount: "-67.42", type: "debit", category: "Alimentation" },
+    { description: "Salaire", amount: "2800.00", type: "credit", category: "Salaire" },
+    { description: "Loyer", amount: "-900.00", type: "debit", category: "Logement" },
+  ];
+
+  for (const txn of sampleTransactions) {
+    await storage.createTransaction({
+      accountId: account.id,
+      description: txn.description,
+      amount: txn.amount,
+      type: txn.type,
+      category: txn.category,
+      status: "completed",
+      date: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000),
+    });
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Auth endpoints
   app.post("/api/auth/register", async (req, res) => {
@@ -56,6 +102,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         verificationToken: isDevelopment ? null : randomBytes(32).toString('hex'),
         verificationTokenExpiry: isDevelopment ? null : new Date(Date.now() + 24 * 60 * 60 * 1000),
       });
+
+      await seedUserData(user.id);
 
       if (!isDevelopment) {
         const baseUrl = process.env.REPLIT_DEV_DOMAIN 

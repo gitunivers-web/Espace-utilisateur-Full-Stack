@@ -8,15 +8,22 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { TrendingUp, Calendar, Euro, Calculator } from "lucide-react";
-import { useLoans } from "@/lib/api";
+import { useLoans, useLoanTypes, useCreateLoanApplication } from "@/lib/api";
+import { queryClient } from "@/lib/queryClient";
 import { useState, useMemo } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "wouter";
 
 export default function Prets() {
   const { data: loans, isLoading: loansLoading } = useLoans();
+  const { data: loanTypes, isLoading: loanTypesLoading } = useLoanTypes();
+  const createLoanApplication = useCreateLoanApplication();
   const { toast } = useToast();
   const [loanAmount, setLoanAmount] = useState(50000);
   const [loanDuration, setLoanDuration] = useState("36");
+  const [selectedLoanTypeId, setSelectedLoanTypeId] = useState<string>("");
+  const [monthlyIncome, setMonthlyIncome] = useState(3000);
+  const [employmentStatus, setEmploymentStatus] = useState("CDI");
 
   // Calcul automatique du taux d'intérêt basé sur le montant et la durée
   const calculateInterestRate = (amount: number, duration: number): number => {
@@ -47,21 +54,48 @@ export default function Prets() {
     return totalAmount / duration;
   }, [loanAmount, loanDuration, interestRate]);
 
-  const handleLoanRequest = () => {
-    toast({
-      title: "Demande de prêt envoyée",
-      description: `Votre demande de ${loanAmount.toLocaleString('fr-FR')} € sur ${loanDuration} mois a été envoyée pour approbation.`,
-    });
-    
-    // Réinitialisation
-    setLoanAmount(50000);
-    setLoanDuration("36");
+  const handleLoanRequest = async () => {
+    if (!selectedLoanTypeId) {
+      toast({
+        title: "Type de prêt requis",
+        description: "Veuillez sélectionner un type de prêt avant de continuer.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      await createLoanApplication.mutateAsync({
+        applicationType: "particular",
+        loanTypeId: selectedLoanTypeId,
+        amount: loanAmount,
+        durationMonths: parseInt(loanDuration),
+        estimatedRate: interestRate,
+        estimatedMonthlyPayment: monthlyPayment,
+        monthlyIncome,
+        employmentStatus,
+        purpose: "Demande via simulateur de prêt",
+      });
+
+      toast({
+        title: "Demande envoyée avec succès",
+        description: `Votre demande de ${loanAmount.toLocaleString('fr-FR')} € sur ${loanDuration} mois a été soumise. Vous recevrez une réponse sous 48h.`,
+      });
+
+      setLoanAmount(50000);
+      setLoanDuration("36");
+      setSelectedLoanTypeId("");
+      setMonthlyIncome(3000);
+      setEmploymentStatus("CDI");
+    } catch (error: any) {
+      toast({
+        title: "Erreur",
+        description: error.message || "Une erreur est survenue lors de l'envoi de votre demande.",
+        variant: "destructive",
+      });
+    }
   };
 
-  const loanOffers = [
-    { id: '1', name: 'Prêt Expansion', rate: 2.3, maxAmount: 200000, duration: '5 ans' },
-    { id: '2', name: 'Prêt Équipement', rate: 1.9, maxAmount: 50000, duration: '3 ans' },
-  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -89,6 +123,26 @@ export default function Prets() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-5 sm:space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="loan-type" className="text-sm sm:text-base">Type de prêt</Label>
+                  <Select 
+                    value={selectedLoanTypeId} 
+                    onValueChange={setSelectedLoanTypeId}
+                    disabled={loanTypesLoading}
+                  >
+                    <SelectTrigger id="loan-type" data-testid="select-loan-type">
+                      <SelectValue placeholder="Sélectionnez un type de prêt" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {loanTypes && Array.isArray(loanTypes) && loanTypes.map((loanType: any) => (
+                        <SelectItem key={loanType.id} value={loanType.id}>
+                          {loanType.nameKey} - Taux dès {parseFloat(loanType.minRate)}%
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <Label className="text-sm sm:text-base">Montant du prêt</Label>
@@ -124,6 +178,35 @@ export default function Prets() {
                       <SelectItem value="48">48 mois (4 ans)</SelectItem>
                       <SelectItem value="60">60 mois (5 ans)</SelectItem>
                       <SelectItem value="72">72 mois (6 ans)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="monthly-income" className="text-sm sm:text-base">Revenu mensuel</Label>
+                  <Input
+                    id="monthly-income"
+                    type="number"
+                    value={monthlyIncome}
+                    onChange={(e) => setMonthlyIncome(Number(e.target.value))}
+                    min={0}
+                    step={100}
+                    data-testid="input-monthly-income"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="employment-status" className="text-sm sm:text-base">Statut d'emploi</Label>
+                  <Select value={employmentStatus} onValueChange={setEmploymentStatus}>
+                    <SelectTrigger id="employment-status" data-testid="select-employment-status">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="CDI">CDI</SelectItem>
+                      <SelectItem value="CDD">CDD</SelectItem>
+                      <SelectItem value="Indépendant">Indépendant</SelectItem>
+                      <SelectItem value="Retraité">Retraité</SelectItem>
+                      <SelectItem value="Autre">Autre</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -168,9 +251,10 @@ export default function Prets() {
                   className="w-full" 
                   size="lg"
                   onClick={handleLoanRequest}
+                  disabled={!selectedLoanTypeId || createLoanApplication.isPending}
                   data-testid="button-submit-loan-request"
                 >
-                  Faire une demande
+                  {createLoanApplication.isPending ? "Envoi en cours..." : "Envoyer la demande"}
                 </Button>
 
                 <p className="text-xs text-center text-muted-foreground">
@@ -241,38 +325,52 @@ export default function Prets() {
 
           {/* Offres de financement */}
           <div>
-            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Offres de financement</h2>
-            <div className="grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
-              {loanOffers.map((offer) => (
-                <Card key={offer.id} className="hover-elevate" data-testid={`card-loan-offer-${offer.id}`}>
-                  <CardHeader>
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-md bg-gold/10 flex items-center justify-center flex-shrink-0">
-                        <Euro className="h-4 w-4 sm:h-5 sm:w-5 text-gold" />
-                      </div>
-                      <CardTitle className="text-base sm:text-lg">{offer.name}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-xs sm:text-sm text-muted-foreground">Taux</span>
-                      <span className="text-sm sm:text-base font-semibold text-primary">{offer.rate}%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-xs sm:text-sm text-muted-foreground">Montant max</span>
-                      <span className="text-sm sm:text-base font-semibold">{offer.maxAmount.toLocaleString('fr-FR')} €</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-xs sm:text-sm text-muted-foreground">Durée</span>
-                      <span className="text-sm sm:text-base font-semibold">{offer.duration}</span>
-                    </div>
-                    <Button className="w-full mt-4" variant="outline" data-testid={`button-apply-loan-${offer.id}`}>
-                      Faire une demande
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <h2 className="text-lg sm:text-xl font-semibold">Offres de financement</h2>
+              <Link href="/mon-espace/nouvelle-demande">
+                <Button variant="outline" size="sm">Faire une demande</Button>
+              </Link>
             </div>
+            {loanTypesLoading ? (
+              <div className="text-center text-muted-foreground py-8 text-sm">Chargement...</div>
+            ) : loanTypes && Array.isArray(loanTypes) ? (
+              <div className="grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
+                {loanTypes.map((loanType: any) => (
+                  <Card key={loanType.id} className="hover-elevate" data-testid={`card-loan-offer-${loanType.id}`}>
+                    <CardHeader>
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-md bg-gold/10 flex items-center justify-center flex-shrink-0">
+                          <Euro className="h-4 w-4 sm:h-5 sm:w-5 text-gold" />
+                        </div>
+                        <CardTitle className="text-base sm:text-lg">{loanType.nameKey}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <p className="text-xs sm:text-sm text-muted-foreground">{loanType.descriptionKey}</p>
+                      <div className="flex justify-between">
+                        <span className="text-xs sm:text-sm text-muted-foreground">Taux à partir de</span>
+                        <span className="text-sm sm:text-base font-semibold text-primary">{parseFloat(loanType.minRate)}%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-xs sm:text-sm text-muted-foreground">Montant max</span>
+                        <span className="text-sm sm:text-base font-semibold">{parseFloat(loanType.maxAmount).toLocaleString('fr-FR')} €</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-xs sm:text-sm text-muted-foreground">Durée max</span>
+                        <span className="text-sm sm:text-base font-semibold">{loanType.maxDurationMonths} mois</span>
+                      </div>
+                      <Link href="/mon-espace/nouvelle-demande">
+                        <Button className="w-full mt-4" variant="outline" data-testid={`button-apply-loan-${loanType.id}`}>
+                          Faire une demande
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center text-muted-foreground py-8 text-sm">Aucune offre disponible</div>
+            )}
           </div>
         </div>
       </div>

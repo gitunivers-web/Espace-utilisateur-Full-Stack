@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { User, Shield, Bell, FileText, Upload } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { useUser, useUpdateUser } from "@/lib/api";
+import { useUser, useUpdateUser, useChangePassword } from "@/lib/api";
 
 export default function Parametres() {
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
@@ -16,10 +16,13 @@ export default function Parametres() {
   const { toast } = useToast();
   const { data: user, isLoading, error } = useUser();
   const updateUserMutation = useUpdateUser();
+  const changePasswordMutation = useChangePassword();
   
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
 
   useEffect(() => {
     if (user) {
@@ -180,15 +183,52 @@ export default function Parametres() {
 
               <div className="space-y-2">
                 <Label htmlFor="current-password" className="text-sm">Mot de passe actuel</Label>
-                <Input id="current-password" type="password" data-testid="input-current-password" />
+                <Input 
+                  id="current-password" 
+                  type="password" 
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  data-testid="input-current-password" 
+                />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="new-password" className="text-sm">Nouveau mot de passe</Label>
-                <Input id="new-password" type="password" data-testid="input-new-password" />
+                <Input 
+                  id="new-password" 
+                  type="password" 
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  data-testid="input-new-password" 
+                />
               </div>
 
-              <Button className="w-full" variant="outline" data-testid="button-change-password">
+              <Button 
+                className="w-full" 
+                variant="outline" 
+                onClick={async () => {
+                  try {
+                    await changePasswordMutation.mutateAsync({ currentPassword, newPassword });
+                    toast({
+                      title: "Mot de passe modifié",
+                      description: "Votre mot de passe a été modifié avec succès. Vous allez être déconnecté.",
+                    });
+                    setCurrentPassword('');
+                    setNewPassword('');
+                    setTimeout(() => {
+                      window.location.href = '/auth/connexion';
+                    }, 2000);
+                  } catch (error: any) {
+                    toast({
+                      title: "Erreur",
+                      description: error.message || "Une erreur est survenue lors du changement de mot de passe.",
+                      variant: "destructive",
+                    });
+                  }
+                }}
+                disabled={!currentPassword || !newPassword || changePasswordMutation.isPending}
+                data-testid="button-change-password"
+              >
                 Changer le mot de passe
               </Button>
             </CardContent>

@@ -3,7 +3,7 @@ import DashboardCard from "@/components/DashboardCard";
 import VirtualCard from "@/components/VirtualCard";
 import StatsChart from "@/components/StatsChart";
 import { Wallet, CreditCard, TrendingUp, Banknote, ArrowRightLeft, History, FileText } from "lucide-react";
-import { useAccounts, useCards, useLoans } from "@/lib/api";
+import { useAccounts, useCards, useLoans, useAuth } from "@/lib/api";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 
@@ -11,6 +11,7 @@ export default function Dashboard() {
   const { data: accounts, isLoading: accountsLoading } = useAccounts();
   const { data: cards, isLoading: cardsLoading } = useCards();
   const { data: loans, isLoading: loansLoading } = useLoans();
+  const { data: auth } = useAuth();
 
   const totalBalance = accounts?.reduce((sum, acc) => sum + parseFloat(acc.balance), 0) || 0;
   const totalBorrowed = loans?.reduce((sum, loan) => sum + parseFloat(loan.borrowed), 0) || 0;
@@ -120,7 +121,7 @@ export default function Dashboard() {
               </div>
             ) : (
               <VirtualCard
-                cardHolder="SOPHIE MARTIN"
+                cardHolder={auth?.user?.fullName?.toUpperCase() || "TITULAIRE"}
                 cardNumber={firstCard.cardNumber}
                 expiryDate={firstCard.expiryDate}
               />

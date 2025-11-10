@@ -265,3 +265,43 @@ export function useLogout() {
     },
   });
 }
+
+export function useLoanTypes() {
+  return useQuery({
+    queryKey: ["loanTypes"],
+    queryFn: () => fetchApi("/loan-types"),
+  });
+}
+
+export function useLoanApplications() {
+  return useQuery({
+    queryKey: ["loanApplications"],
+    queryFn: () => fetchApi("/loan-applications"),
+  });
+}
+
+export function useCreateLoanApplication() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (application: any) =>
+      fetchApi("/loan-applications", {
+        method: "POST",
+        body: JSON.stringify(application),
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["loanApplications"] });
+      queryClient.invalidateQueries({ queryKey: ["loans"] });
+    },
+  });
+}
+
+export function useChangePassword() {
+  return useMutation({
+    mutationFn: (data: { currentPassword: string; newPassword: string }) =>
+      fetchApi("/auth/change-password", {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+  });
+}

@@ -114,7 +114,7 @@ export default function Topbar({ userName }: TopbarProps) {
             <Button variant="ghost" size="icon" data-testid="button-user-menu">
               <Avatar className="h-8 w-8">
                 <AvatarFallback className="bg-primary text-primary-foreground text-sm">
-                  SM
+                  {userName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
             </Button>
