@@ -27,7 +27,12 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
             <div className="flex items-center gap-8">
               <Link href="/">
                 <div className="flex items-center gap-2 cursor-pointer">
-                  <img src="/lendia-logo.png" alt="Lendia" className="h-12" />
+                  <img 
+                    src="/lendia-logo.png" 
+                    alt="Lendia" 
+                    className="h-10"
+                    style={{ imageRendering: 'crisp-edges' }}
+                  />
                 </div>
               </Link>
               
