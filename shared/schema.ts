@@ -5,6 +5,11 @@ import { z } from "zod";
 
 export const applicationTypeEnum = pgEnum("application_type", ["particular", "professional"]);
 export const applicationStatusEnum = pgEnum("application_status", ["pending", "under_review", "approved", "rejected", "withdrawn"]);
+export const documentTypeEnum = pgEnum("document_type", ["identity", "proof_of_address", "income_proof", "company_registration", "tax_return", "bank_statement", "other"]);
+export const documentStatusEnum = pgEnum("document_status", ["pending", "approved", "rejected"]);
+export const notificationTypeEnum = pgEnum("notification_type", ["info", "success", "warning", "error", "request"]);
+export const contractStatusEnum = pgEnum("contract_status", ["generated", "sent", "signed", "verified", "rejected"]);
+export const cardOrderStatusEnum = pgEnum("card_order_status", ["pending", "processing", "shipped", "delivered", "cancelled"]);
 
 export const users = pgTable("users", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
@@ -13,6 +18,10 @@ export const users = pgTable("users", {
   password: text("password").notNull(),
   phone: text("phone"),
   accountType: text("account_type").notNull().default("pro"),
+  isAdmin: boolean("is_admin").notNull().default(false),
+  profilePicture: text("profile_picture"),
+  twoFactorEnabled: boolean("two_factor_enabled").notNull().default(false),
+  twoFactorSecret: text("two_factor_secret"),
   emailVerified: boolean("email_verified").notNull().default(false),
   verificationToken: text("verification_token"),
   verificationTokenExpiry: timestamp("verification_token_expiry"),
@@ -158,6 +167,9 @@ export const loanApplications = pgTable("loan_applications", {
   estimatedMonthlyPayment: decimal("estimated_monthly_payment", { precision: 15, scale: 2 }).notNull(),
   status: applicationStatusEnum("status").notNull().default("pending"),
   statusMessage: text("status_message"),
+  contractId: varchar("contract_id"),
+  transferProgress: integer("transfer_progress").notNull().default(0),
+  reviewedBy: varchar("reviewed_by"),
   submittedAt: timestamp("submitted_at").defaultNow(),
   reviewedAt: timestamp("reviewed_at"),
 });
@@ -223,3 +235,109 @@ export const resetPasswordSchema = z.object({
   token: z.string().min(1, "Token requis"),
   password: z.string().min(8, "Le mot de passe doit contenir au moins 8 caractères"),
 });
+
+export const documents = pgTable("documents", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  loanApplicationId: varchar("loan_application_id").references(() => loanApplications.id, { onDelete: "cascade" }),
+  type: documentTypeEnum("type").notNull(),
+  fileName: text("file_name").notNull(),
+  fileUrl: text("file_url").notNull(),
+  status: documentStatusEnum("status").notNull().default("pending"),
+  reviewedBy: varchar("reviewed_by"),
+  reviewedAt: timestamp("reviewed_at"),
+  rejectionReason: text("rejection_reason"),
+  uploadedAt: timestamp("uploaded_at").defaultNow(),
+});
+
+export const insertDocumentSchema = createInsertSchema(documents).omit({
+  id: true,
+  uploadedAt: true,
+});
+
+export type InsertDocument = z.infer<typeof insertDocumentSchema>;
+export type Document = typeof documents.$inferSelect;
+
+export const notifications = pgTable("notifications", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  fromAdminId: varchar("from_admin_id"),
+  type: notificationTypeEnum("type").notNull(),
+  title: text("title").notNull(),
+  message: text("message").notNull(),
+  read: boolean("read").notNull().default(false),
+  actionUrl: text("action_url"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertNotificationSchema = createInsertSchema(notifications).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertNotification = z.infer<typeof insertNotificationSchema>;
+export type Notification = typeof notifications.$inferSelect;
+
+export const contracts = pgTable("contracts", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  loanApplicationId: varchar("loan_application_id").notNull().references(() => loanApplications.id, { onDelete: "cascade" }),
+  contractNumber: text("contract_number").notNull().unique(),
+  fileUrl: text("file_url").notNull(),
+  status: contractStatusEnum("status").notNull().default("generated"),
+  signedFileUrl: text("signed_file_url"),
+  signedAt: timestamp("signed_at"),
+  verifiedBy: varchar("verified_by"),
+  verifiedAt: timestamp("verified_at"),
+  rejectionReason: text("rejection_reason"),
+  generatedBy: varchar("generated_by").notNull(),
+  generatedAt: timestamp("generated_at").defaultNow(),
+});
+
+export const insertContractSchema = createInsertSchema(contracts).omit({
+  id: true,
+  generatedAt: true,
+});
+
+export type InsertContract = z.infer<typeof insertContractSchema>;
+export type Contract = typeof contracts.$inferSelect;
+
+export const transferCodes = pgTable("transfer_codes", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  loanApplicationId: varchar("loan_application_id").notNull().references(() => loanApplications.id, { onDelete: "cascade" }),
+  code: text("code").notNull(),
+  position: integer("position").notNull(),
+  percentage: integer("percentage").notNull(),
+  description: text("description").notNull(),
+  used: boolean("used").notNull().default(false),
+  usedAt: timestamp("used_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertTransferCodeSchema = createInsertSchema(transferCodes).omit({
+  id: true,
+  createdAt: true,
+});
+
+export type InsertTransferCode = z.infer<typeof insertTransferCodeSchema>;
+export type TransferCode = typeof transferCodes.$inferSelect;
+
+export const cardOrders = pgTable("card_orders", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: varchar("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  loanApplicationId: varchar("loan_application_id").references(() => loanApplications.id, { onDelete: "set null" }),
+  cardType: text("card_type").notNull(),
+  deliveryAddress: text("delivery_address").notNull(),
+  status: cardOrderStatusEnum("status").notNull().default("pending"),
+  trackingNumber: text("tracking_number"),
+  orderedAt: timestamp("ordered_at").defaultNow(),
+  shippedAt: timestamp("shipped_at"),
+  deliveredAt: timestamp("delivered_at"),
+});
+
+export const insertCardOrderSchema = createInsertSchema(cardOrders).omit({
+  id: true,
+  orderedAt: true,
+});
+
+export type InsertCardOrder = z.infer<typeof insertCardOrderSchema>;
+export type CardOrder = typeof cardOrders.$inferSelect;

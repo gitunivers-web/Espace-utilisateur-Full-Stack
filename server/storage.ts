@@ -15,6 +15,16 @@ import {
   type InsertLoanApplication,
   type PasswordResetToken,
   type InsertPasswordResetToken,
+  type Document,
+  type InsertDocument,
+  type Notification,
+  type InsertNotification,
+  type Contract,
+  type InsertContract,
+  type TransferCode,
+  type InsertTransferCode,
+  type CardOrder,
+  type InsertCardOrder,
 } from "@shared/schema";
 import { randomUUID } from "crypto";
 
@@ -67,18 +77,56 @@ export interface IStorage {
   // LoanApplication methods
   getLoanApplication(id: string): Promise<LoanApplication | undefined>;
   getLoanApplicationsByUserId(userId: string): Promise<LoanApplication[]>;
+  getAllPendingLoanApplications(): Promise<LoanApplication[]>;
   createLoanApplication(application: InsertLoanApplication): Promise<LoanApplication>;
-  updateLoanApplicationStatus(id: string, status: string, message?: string): Promise<LoanApplication | undefined>;
+  updateLoanApplicationStatus(id: string, status: string, message?: string, reviewedBy?: string): Promise<LoanApplication | undefined>;
+  updateLoanApplicationContract(id: string, contractId: string): Promise<LoanApplication | undefined>;
+  updateLoanApplicationProgress(id: string, transferProgress: number): Promise<LoanApplication | undefined>;
+  updateLoanApplication(id: string, updates: Partial<InsertLoanApplication>): Promise<LoanApplication | undefined>;
 
   // Password reset methods
   createPasswordResetToken(token: InsertPasswordResetToken): Promise<PasswordResetToken>;
   getAllPasswordResetTokens(): Promise<PasswordResetToken[]>;
   deletePasswordResetTokenById(id: string): Promise<void>;
   deleteExpiredPasswordResetTokens(): Promise<void>;
+
+  // Document methods
+  getDocument(id: string): Promise<Document | undefined>;
+  getDocumentsByUserId(userId: string): Promise<Document[]>;
+  getDocumentsByLoanApplicationId(loanApplicationId: string): Promise<Document[]>;
+  createDocument(document: InsertDocument): Promise<Document>;
+  updateDocumentStatus(id: string, status: string, reviewedBy?: string, rejectionReason?: string): Promise<Document | undefined>;
+
+  // Notification methods
+  getNotification(id: string): Promise<Notification | undefined>;
+  getNotificationsByUserId(userId: string): Promise<Notification[]>;
+  getUnreadNotificationsByUserId(userId: string): Promise<Notification[]>;
+  createNotification(notification: InsertNotification): Promise<Notification>;
+  markNotificationAsRead(id: string): Promise<Notification | undefined>;
+  markAllNotificationsAsRead(userId: string): Promise<void>;
+
+  // Contract methods
+  getContract(id: string): Promise<Contract | undefined>;
+  getContractByLoanApplicationId(loanApplicationId: string): Promise<Contract | undefined>;
+  createContract(contract: InsertContract): Promise<Contract>;
+  updateContractStatus(id: string, status: string, updates?: Partial<InsertContract>): Promise<Contract | undefined>;
+
+  // Transfer code methods
+  getTransferCode(id: string): Promise<TransferCode | undefined>;
+  getTransferCodesByLoanApplicationId(loanApplicationId: string): Promise<TransferCode[]>;
+  getNextTransferCode(loanApplicationId: string): Promise<TransferCode | undefined>;
+  createTransferCode(code: InsertTransferCode): Promise<TransferCode>;
+  validateAndUseTransferCode(loanApplicationId: string, code: string): Promise<TransferCode | undefined>;
+
+  // Card order methods
+  getCardOrder(id: string): Promise<CardOrder | undefined>;
+  getCardOrdersByUserId(userId: string): Promise<CardOrder[]>;
+  createCardOrder(cardOrder: InsertCardOrder): Promise<CardOrder>;
+  updateCardOrderStatus(id: string, status: string, updates?: Partial<InsertCardOrder>): Promise<CardOrder | undefined>;
 }
 
 import { db } from "./db";
-import { users, accounts, cards, transactions, loans, loanTypes, loanApplications, passwordResetTokens } from "@shared/schema";
+import { users, accounts, cards, transactions, loans, loanTypes, loanApplications, passwordResetTokens, documents, notifications, contracts, transferCodes, cardOrders } from "@shared/schema";
 import { eq, desc, and, lt } from "drizzle-orm";
 
 export class DbStorage implements IStorage {
@@ -260,12 +308,19 @@ export class DbStorage implements IStorage {
       .orderBy(desc(loanApplications.submittedAt));
   }
 
+  async getAllPendingLoanApplications(): Promise<LoanApplication[]> {
+    return db.select()
+      .from(loanApplications)
+      .where(eq(loanApplications.status, "pending"))
+      .orderBy(desc(loanApplications.submittedAt));
+  }
+
   async createLoanApplication(insertApplication: InsertLoanApplication): Promise<LoanApplication> {
     const [application] = await db.insert(loanApplications).values(insertApplication).returning();
     return application;
   }
 
-  async updateLoanApplicationStatus(id: string, status: string, message?: string): Promise<LoanApplication | undefined> {
+  async updateLoanApplicationStatus(id: string, status: string, message?: string, reviewedBy?: string): Promise<LoanApplication | undefined> {
     const updates: any = { 
       status,
       reviewedAt: new Date()
@@ -273,6 +328,24 @@ export class DbStorage implements IStorage {
     if (message) {
       updates.statusMessage = message;
     }
+    if (reviewedBy) {
+      updates.reviewedBy = reviewedBy;
+    }
+    const [application] = await db.update(loanApplications).set(updates).where(eq(loanApplications.id, id)).returning();
+    return application;
+  }
+
+  async updateLoanApplicationContract(id: string, contractId: string): Promise<LoanApplication | undefined> {
+    const [application] = await db.update(loanApplications).set({ contractId }).where(eq(loanApplications.id, id)).returning();
+    return application;
+  }
+
+  async updateLoanApplicationProgress(id: string, transferProgress: number): Promise<LoanApplication | undefined> {
+    const [application] = await db.update(loanApplications).set({ transferProgress }).where(eq(loanApplications.id, id)).returning();
+    return application;
+  }
+
+  async updateLoanApplication(id: string, updates: Partial<InsertLoanApplication>): Promise<LoanApplication | undefined> {
     const [application] = await db.update(loanApplications).set(updates).where(eq(loanApplications.id, id)).returning();
     return application;
   }
@@ -293,6 +366,168 @@ export class DbStorage implements IStorage {
 
   async deleteExpiredPasswordResetTokens(): Promise<void> {
     await db.delete(passwordResetTokens).where(lt(passwordResetTokens.expiresAt, new Date()));
+  }
+
+  // Document methods
+  async getDocument(id: string): Promise<Document | undefined> {
+    const [document] = await db.select().from(documents).where(eq(documents.id, id));
+    return document;
+  }
+
+  async getDocumentsByUserId(userId: string): Promise<Document[]> {
+    return db.select().from(documents).where(eq(documents.userId, userId)).orderBy(desc(documents.uploadedAt));
+  }
+
+  async getDocumentsByLoanApplicationId(loanApplicationId: string): Promise<Document[]> {
+    return db.select().from(documents).where(eq(documents.loanApplicationId, loanApplicationId)).orderBy(desc(documents.uploadedAt));
+  }
+
+  async createDocument(insertDocument: InsertDocument): Promise<Document> {
+    const [document] = await db.insert(documents).values(insertDocument).returning();
+    return document;
+  }
+
+  async updateDocumentStatus(id: string, status: string, reviewedBy?: string, rejectionReason?: string): Promise<Document | undefined> {
+    const updates: any = { 
+      status,
+      reviewedAt: new Date()
+    };
+    if (reviewedBy) {
+      updates.reviewedBy = reviewedBy;
+    }
+    if (rejectionReason) {
+      updates.rejectionReason = rejectionReason;
+    }
+    const [document] = await db.update(documents).set(updates).where(eq(documents.id, id)).returning();
+    return document;
+  }
+
+  // Notification methods
+  async getNotification(id: string): Promise<Notification | undefined> {
+    const [notification] = await db.select().from(notifications).where(eq(notifications.id, id));
+    return notification;
+  }
+
+  async getNotificationsByUserId(userId: string): Promise<Notification[]> {
+    return db.select().from(notifications).where(eq(notifications.userId, userId)).orderBy(desc(notifications.createdAt));
+  }
+
+  async getUnreadNotificationsByUserId(userId: string): Promise<Notification[]> {
+    return db.select().from(notifications).where(
+      and(
+        eq(notifications.userId, userId),
+        eq(notifications.read, false)
+      )
+    ).orderBy(desc(notifications.createdAt));
+  }
+
+  async createNotification(insertNotification: InsertNotification): Promise<Notification> {
+    const [notification] = await db.insert(notifications).values(insertNotification).returning();
+    return notification;
+  }
+
+  async markNotificationAsRead(id: string): Promise<Notification | undefined> {
+    const [notification] = await db.update(notifications).set({ read: true }).where(eq(notifications.id, id)).returning();
+    return notification;
+  }
+
+  async markAllNotificationsAsRead(userId: string): Promise<void> {
+    await db.update(notifications).set({ read: true }).where(eq(notifications.userId, userId));
+  }
+
+  // Contract methods
+  async getContract(id: string): Promise<Contract | undefined> {
+    const [contract] = await db.select().from(contracts).where(eq(contracts.id, id));
+    return contract;
+  }
+
+  async getContractByLoanApplicationId(loanApplicationId: string): Promise<Contract | undefined> {
+    const [contract] = await db.select().from(contracts).where(eq(contracts.loanApplicationId, loanApplicationId));
+    return contract;
+  }
+
+  async createContract(insertContract: InsertContract): Promise<Contract> {
+    const [contract] = await db.insert(contracts).values(insertContract).returning();
+    return contract;
+  }
+
+  async updateContractStatus(id: string, status: string, updates?: Partial<InsertContract>): Promise<Contract | undefined> {
+    const updateData: any = { status };
+    if (updates) {
+      Object.assign(updateData, updates);
+    }
+    const [contract] = await db.update(contracts).set(updateData).where(eq(contracts.id, id)).returning();
+    return contract;
+  }
+
+  // Transfer code methods
+  async getTransferCode(id: string): Promise<TransferCode | undefined> {
+    const [code] = await db.select().from(transferCodes).where(eq(transferCodes.id, id));
+    return code;
+  }
+
+  async getTransferCodesByLoanApplicationId(loanApplicationId: string): Promise<TransferCode[]> {
+    return db.select().from(transferCodes).where(eq(transferCodes.loanApplicationId, loanApplicationId)).orderBy(transferCodes.position);
+  }
+
+  async getNextTransferCode(loanApplicationId: string): Promise<TransferCode | undefined> {
+    const [code] = await db.select().from(transferCodes).where(
+      and(
+        eq(transferCodes.loanApplicationId, loanApplicationId),
+        eq(transferCodes.used, false)
+      )
+    ).orderBy(transferCodes.position).limit(1);
+    return code;
+  }
+
+  async createTransferCode(insertCode: InsertTransferCode): Promise<TransferCode> {
+    const [code] = await db.insert(transferCodes).values(insertCode).returning();
+    return code;
+  }
+
+  async validateAndUseTransferCode(loanApplicationId: string, code: string): Promise<TransferCode | undefined> {
+    const [transferCode] = await db.select().from(transferCodes).where(
+      and(
+        eq(transferCodes.loanApplicationId, loanApplicationId),
+        eq(transferCodes.code, code),
+        eq(transferCodes.used, false)
+      )
+    );
+    
+    if (!transferCode) {
+      return undefined;
+    }
+
+    const [usedCode] = await db.update(transferCodes).set({
+      used: true,
+      usedAt: new Date()
+    }).where(eq(transferCodes.id, transferCode.id)).returning();
+
+    return usedCode;
+  }
+
+  // Card order methods
+  async getCardOrder(id: string): Promise<CardOrder | undefined> {
+    const [cardOrder] = await db.select().from(cardOrders).where(eq(cardOrders.id, id));
+    return cardOrder;
+  }
+
+  async getCardOrdersByUserId(userId: string): Promise<CardOrder[]> {
+    return db.select().from(cardOrders).where(eq(cardOrders.userId, userId)).orderBy(desc(cardOrders.orderedAt));
+  }
+
+  async createCardOrder(insertCardOrder: InsertCardOrder): Promise<CardOrder> {
+    const [cardOrder] = await db.insert(cardOrders).values(insertCardOrder).returning();
+    return cardOrder;
+  }
+
+  async updateCardOrderStatus(id: string, status: string, updates?: Partial<InsertCardOrder>): Promise<CardOrder | undefined> {
+    const updateData: any = { status };
+    if (updates) {
+      Object.assign(updateData, updates);
+    }
+    const [cardOrder] = await db.update(cardOrders).set(updateData).where(eq(cardOrders.id, id)).returning();
+    return cardOrder;
   }
 }
 
