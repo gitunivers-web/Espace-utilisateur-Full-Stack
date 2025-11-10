@@ -134,6 +134,9 @@ function AppRoutes() {
       <Route path="/register/professional" component={RegisterProfessional} />
       <Route path="/email-confirmation" component={EmailConfirmation} />
       <Route path="/verify-email" component={VerifyEmail} />
+      <Route path="/mon-espace">
+        {() => <ProtectedRouter />}
+      </Route>
       <Route path="/mon-espace/:rest*">
         {() => <ProtectedRouter />}
       </Route>
