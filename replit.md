@@ -34,6 +34,42 @@ The platform is built with a modern web stack.
     -   Comprehensive user authentication system including login, distinct registration paths (individual/professional), email verification, and secure password reset mechanism via email.
     -   Responsive design and accessibility considerations (e.g., `data-testid`).
 
+## Recent Changes (November 10, 2025)
+
+### Fonctionnalités Complétées
+1. **Système d'upload de photo de profil sécurisé**
+   - Configuration multer pour gérer les uploads (JPEG, PNG, WEBP, max 5MB)
+   - Route protégée POST /api/user/profile-picture pour uploader
+   - Route protégée GET /api/user/profile-picture/:filename pour servir les fichiers
+   - Interface utilisateur dans Parametres.tsx avec prévisualisation et gestion d'erreurs
+   - Validation côté serveur et stockage dans public/uploads/profile-pictures/
+
+2. **Dashboard Admin complet**
+   - Nouvelle page client/src/pages/admin-dashboard.tsx pour gérer toutes les demandes de prêt
+   - Interface avec filtres et recherche en temps réel
+   - Actions admin: Approuver, Rejeter, Demander plus d'infos
+   - Routes API: GET /api/admin/loan-applications, POST /api/admin/loan-applications/:id/approve, POST /api/admin/loan-applications/:id/reject, POST /api/admin/loan-applications/:id/request-info
+   - Hooks React Query dans client/src/lib/api.ts pour gérer les mutations
+
+3. **Système de gestion des documents KYC sécurisé**
+   - Configuration multer pour documents (PDF, images, max 10MB)
+   - Route protégée POST /api/documents/upload avec validation d'autorisation
+   - Route protégée GET /api/documents/file/:filename avec vérification de propriété
+   - Validation que le loanApplicationId appartient à l'utilisateur (ou admin)
+   - Stockage sécurisé dans public/uploads/documents/
+   - Les documents ne sont accessibles que par leur propriétaire ou les admins
+
+### Sécurité
+- **Uploads protégés**: Tous les fichiers uploadés sont maintenant servis via des routes protégées avec authentification
+- **Validation d'autorisation**: Vérification que les utilisateurs ne peuvent accéder qu'à leurs propres documents
+- **Pas de serving statique**: Retrait du serving statique public de /uploads pour empêcher l'accès non autorisé
+- **Validation des données**: Utilisation des schémas Zod pour valider toutes les entrées utilisateur
+
+### Architecture
+- **Multer**: Gestion des uploads de fichiers avec validation de type et taille
+- **Routes protégées**: Toutes les routes sensibles requièrent l'authentification
+- **Separation of concerns**: Les routes admin sont séparées des routes utilisateur
+
 ## External Dependencies
 -   **PostgreSQL**: Primary database for all application data, hosted on Render.
 -   **Resend API**: Used for sending transactional emails, including email verification for new users and password reset functionality. Falls back to console logging when API key is not configured (development mode).
@@ -42,3 +78,4 @@ The platform is built with a modern web stack.
 -   **Drizzle ORM**: Object-Relational Mapper for interacting with the PostgreSQL database.
 -   **bcrypt**: For hashing and comparing sensitive data like password reset tokens.
 -   **Zod**: Schema declaration and validation library, used for robust data validation on both frontend and backend.
+-   **Multer**: For handling multipart/form-data file uploads.
