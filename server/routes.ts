@@ -13,6 +13,15 @@ import {
   createLoanApplicationSchema,
   forgotPasswordSchema,
   resetPasswordSchema,
+  uploadDocumentSchema,
+  signContractSchema,
+  validateCodeSchema,
+  createCardOrderSchema,
+  reviewDocumentSchema,
+  approveRejectLoanSchema,
+  requestInfoSchema,
+  verifyContractSchema,
+  updateCardOrderStatusSchema,
   type User,
   type UserWithoutPassword,
 } from "@shared/schema";
@@ -26,6 +35,13 @@ function requireAuth(req: Request, res: Response, next: NextFunction) {
     return next();
   }
   res.status(401).json({ error: "Non authentifié" });
+}
+
+function requireAdmin(req: Request, res: Response, next: NextFunction) {
+  if (req.isAuthenticated() && (req.user as any).isAdmin) {
+    return next();
+  }
+  res.status(403).json({ error: "Accès admin requis" });
 }
 
 function omitPassword(user: User): UserWithoutPassword {
@@ -733,12 +749,677 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ error: "Demande non trouvée" });
       }
 
-      if (application.userId !== user.id) {
+      if (application.userId !== user.id && !(user as any).isAdmin) {
         return res.status(403).json({ error: "Accès refusé" });
       }
 
       res.json(application);
     } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get documents for a loan application
+  app.get("/api/loan-applications/:id/documents", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const application = await storage.getLoanApplication(req.params.id);
+      
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      if (application.userId !== user.id && !(user as any).isAdmin) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      const documents = await storage.getDocumentsByLoanApplicationId(req.params.id);
+      res.json(documents);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Upload document for a loan application
+  app.post("/api/loan-applications/:id/documents", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const application = await storage.getLoanApplication(req.params.id);
+      
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      if (application.userId !== user.id) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      const validatedData = uploadDocumentSchema.parse(req.body);
+
+      const document = await storage.createDocument({
+        userId: user.id,
+        loanApplicationId: application.id,
+        type: validatedData.type,
+        fileName: validatedData.fileName,
+        fileUrl: validatedData.fileUrl,
+        status: "pending",
+      });
+
+      res.status(201).json(document);
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get user notifications
+  app.get("/api/notifications", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const notifications = await storage.getNotificationsByUserId(user.id);
+      res.json(notifications);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get unread notifications count
+  app.get("/api/notifications/unread", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const unreadNotifications = await storage.getUnreadNotificationsByUserId(user.id);
+      res.json({ count: unreadNotifications.length, notifications: unreadNotifications });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Mark notification as read
+  app.patch("/api/notifications/:id/read", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const notification = await storage.getNotification(req.params.id);
+      
+      if (!notification) {
+        return res.status(404).json({ error: "Notification non trouvée" });
+      }
+
+      if (notification.userId !== user.id) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      const updatedNotification = await storage.markNotificationAsRead(req.params.id);
+      res.json(updatedNotification);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Mark all notifications as read
+  app.patch("/api/notifications/read-all", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      await storage.markAllNotificationsAsRead(user.id);
+      res.json({ success: true });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get contract for a loan application
+  app.get("/api/loan-applications/:id/contract", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const application = await storage.getLoanApplication(req.params.id);
+      
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      if (application.userId !== user.id && !(user as any).isAdmin) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      const contract = await storage.getContractByLoanApplicationId(req.params.id);
+      if (!contract) {
+        return res.status(404).json({ error: "Contrat non trouvé" });
+      }
+
+      res.json(contract);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Upload signed contract
+  app.post("/api/contracts/:id/sign", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const contract = await storage.getContract(req.params.id);
+      
+      if (!contract) {
+        return res.status(404).json({ error: "Contrat non trouvé" });
+      }
+
+      const application = await storage.getLoanApplication(contract.loanApplicationId);
+      if (!application || application.userId !== user.id) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      const validatedData = signContractSchema.parse(req.body);
+
+      const updatedContract = await storage.updateContractStatus(req.params.id, "signed", {
+        signedFileUrl: validatedData.signedFileUrl,
+        signedAt: new Date() as any,
+      });
+
+      // Create notification for user
+      await storage.createNotification({
+        userId: user.id,
+        type: "success",
+        title: "Contrat signé",
+        message: "Votre contrat a été signé avec succès. Il est en attente de vérification par notre équipe.",
+      });
+
+      // Notify all admins that a contract needs verification
+      const admins = await storage.getAllAdmins();
+      for (const admin of admins) {
+        await storage.createNotification({
+          userId: admin.id,
+          type: "request",
+          title: "Nouveau contrat à vérifier",
+          message: `Le contrat #${contract.contractNumber} a été signé par ${user.firstName} ${user.lastName} et nécessite une vérification.`,
+          actionUrl: `/admin/contracts/${contract.id}`,
+        });
+      }
+
+      res.json(updatedContract);
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get transfer codes for a loan application
+  app.get("/api/loan-applications/:id/transfer-codes", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const application = await storage.getLoanApplication(req.params.id);
+      
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      if (application.userId !== user.id) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      const codes = await storage.getTransferCodesByLoanApplicationId(req.params.id);
+      
+      // Don't send actual codes to client, only metadata
+      const sanitizedCodes = codes.map(code => ({
+        id: code.id,
+        position: code.position,
+        percentage: code.percentage,
+        description: code.description,
+        used: code.used,
+        usedAt: code.usedAt,
+      }));
+
+      res.json(sanitizedCodes);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get next transfer code
+  app.get("/api/loan-applications/:id/next-transfer-code", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const application = await storage.getLoanApplication(req.params.id);
+      
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      if (application.userId !== user.id) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      const nextCode = await storage.getNextTransferCode(req.params.id);
+      
+      if (!nextCode) {
+        return res.json({ message: "Tous les codes ont été utilisés" });
+      }
+
+      // Don't send actual code, only metadata
+      res.json({
+        position: nextCode.position,
+        percentage: nextCode.percentage,
+        description: nextCode.description,
+      });
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Validate transfer code
+  app.post("/api/loan-applications/:id/validate-code", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const application = await storage.getLoanApplication(req.params.id);
+      
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      if (application.userId !== user.id) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      const validatedData = validateCodeSchema.parse(req.body);
+
+      const validatedCode = await storage.validateAndUseTransferCode(req.params.id, validatedData.code);
+      
+      if (!validatedCode) {
+        return res.status(400).json({ 
+          error: "Code invalide ou déjà utilisé",
+          valid: false 
+        });
+      }
+
+      // Update transfer progress
+      await storage.updateLoanApplicationProgress(req.params.id, validatedCode.percentage);
+
+      // Create success notification
+      await storage.createNotification({
+        userId: user.id,
+        type: "success",
+        title: "Code validé",
+        message: `Code validé avec succès. Progression: ${validatedCode.percentage}%`,
+      });
+
+      res.json({ 
+        valid: true,
+        percentage: validatedCode.percentage,
+        description: validatedCode.description,
+        message: "Code validé avec succès"
+      });
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Get card orders
+  app.get("/api/card-orders", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const cardOrders = await storage.getCardOrdersByUserId(user.id);
+      res.json(cardOrders);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Create card order
+  app.post("/api/card-orders", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const validatedData = createCardOrderSchema.parse(req.body);
+
+      // Check if loan application is approved
+      const application = await storage.getLoanApplication(validatedData.loanApplicationId);
+      if (!application) {
+        return res.status(404).json({ error: "Demande de prêt non trouvée" });
+      }
+
+      if (application.userId !== user.id) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      if (application.status !== "approved") {
+        return res.status(400).json({ 
+          error: "La demande de prêt doit être approuvée pour commander une carte" 
+        });
+      }
+
+      // Check if funds are available (transfer progress must be exactly 100%)
+      if (application.transferProgress !== 100) {
+        return res.status(400).json({ 
+          error: "Les fonds doivent être entièrement transférés (100%) pour commander une carte" 
+        });
+      }
+
+      const cardOrder = await storage.createCardOrder({
+        userId: user.id,
+        loanApplicationId: validatedData.loanApplicationId,
+        cardType: validatedData.cardType,
+        deliveryAddress: validatedData.deliveryAddress,
+        status: "pending",
+      });
+
+      // Create notification
+      await storage.createNotification({
+        userId: user.id,
+        type: "success",
+        title: "Commande de carte",
+        message: `Votre commande de carte ${validatedData.cardType} a été créée avec succès`,
+      });
+
+      res.status(201).json(cardOrder);
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // ===== ADMIN ROUTES =====
+
+  // Get all pending loan applications (Admin only)
+  app.get("/api/admin/loan-applications", requireAdmin, async (req, res) => {
+    try {
+      const applications = await storage.getAllPendingLoanApplications();
+      res.json(applications);
+    } catch (error: any) {
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Review document (Admin only)
+  app.patch("/api/admin/documents/:id/review", requireAdmin, async (req, res) => {
+    try {
+      const admin = req.user as User;
+      const validatedData = reviewDocumentSchema.parse(req.body);
+
+      if (validatedData.status === "rejected" && !validatedData.rejectionReason) {
+        return res.status(400).json({ error: "Motif de rejet requis" });
+      }
+
+      const document = await storage.updateDocumentStatus(
+        req.params.id, 
+        validatedData.status, 
+        admin.id, 
+        validatedData.rejectionReason
+      );
+
+      if (!document) {
+        return res.status(404).json({ error: "Document non trouvé" });
+      }
+
+      // Create notification for user
+      await storage.createNotification({
+        userId: document.userId,
+        fromAdminId: admin.id,
+        type: validatedData.status === "approved" ? "success" : "warning",
+        title: validatedData.status === "approved" ? "Document approuvé" : "Document rejeté",
+        message: validatedData.status === "approved" 
+          ? `Votre document ${document.fileName} a été approuvé`
+          : `Votre document ${document.fileName} a été rejeté: ${validatedData.rejectionReason}`,
+      });
+
+      res.json(document);
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Approve loan application (Admin only)
+  app.post("/api/admin/loan-applications/:id/approve", requireAdmin, async (req, res) => {
+    try {
+      const admin = req.user as User;
+      const validatedData = approveRejectLoanSchema.parse(req.body);
+
+      const application = await storage.getLoanApplication(req.params.id);
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      // Check all documents are approved
+      const documents = await storage.getDocumentsByLoanApplicationId(req.params.id);
+      const hasRejectedDocs = documents.some(doc => doc.status === "rejected");
+      const hasPendingDocs = documents.some(doc => doc.status === "pending");
+
+      if (hasRejectedDocs || hasPendingDocs) {
+        return res.status(400).json({ 
+          error: "Tous les documents doivent être approuvés avant d'approuver la demande" 
+        });
+      }
+
+      // Update application status
+      const updatedApplication = await storage.updateLoanApplicationStatus(
+        req.params.id,
+        "approved",
+        validatedData.message || "Votre demande de prêt a été approuvée",
+        admin.id
+      );
+
+      // Generate contract
+      const contractNumber = `CTR-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+      const contract = await storage.createContract({
+        loanApplicationId: req.params.id,
+        contractNumber,
+        fileUrl: `/contracts/${contractNumber}.pdf`, // TODO: Generate actual PDF
+        status: "generated",
+        generatedBy: admin.id,
+      });
+
+      // Link contract to application
+      await storage.updateLoanApplicationContract(req.params.id, contract.id);
+
+      // Generate 5 transfer codes
+      const percentages = [20, 40, 60, 80, 100];
+      const descriptions = [
+        "Frais de dossier",
+        "Deuxième versement",
+        "Troisième versement",
+        "Quatrième versement",
+        "Versement final"
+      ];
+
+      for (let i = 0; i < 5; i++) {
+        const code = Math.random().toString(36).substr(2, 8).toUpperCase();
+        await storage.createTransferCode({
+          loanApplicationId: req.params.id,
+          code,
+          position: i + 1,
+          percentage: percentages[i],
+          description: descriptions[i],
+          used: false,
+        });
+      }
+
+      // Create notification for user
+      await storage.createNotification({
+        userId: application.userId,
+        fromAdminId: admin.id,
+        type: "success",
+        title: "Demande approuvée",
+        message: validatedData.message || "Votre demande de prêt a été approuvée. Votre contrat est disponible.",
+        actionUrl: `/dashboard/applications/${req.params.id}`,
+      });
+
+      res.json({ 
+        application: updatedApplication,
+        contract 
+      });
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Reject loan application (Admin only)
+  app.post("/api/admin/loan-applications/:id/reject", requireAdmin, async (req, res) => {
+    try {
+      const admin = req.user as User;
+      const validatedData = z.object({ message: z.string().min(1, "Motif de rejet requis") }).parse(req.body);
+
+      const application = await storage.getLoanApplication(req.params.id);
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      const updatedApplication = await storage.updateLoanApplicationStatus(
+        req.params.id,
+        "rejected",
+        validatedData.message,
+        admin.id
+      );
+
+      // Create notification for user
+      await storage.createNotification({
+        userId: application.userId,
+        fromAdminId: admin.id,
+        type: "error",
+        title: "Demande rejetée",
+        message: `Votre demande de prêt a été rejetée: ${validatedData.message}`,
+        actionUrl: `/dashboard/applications/${req.params.id}`,
+      });
+
+      res.json(updatedApplication);
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Request more information (Admin only)
+  app.post("/api/admin/loan-applications/:id/request-info", requireAdmin, async (req, res) => {
+    try {
+      const admin = req.user as User;
+      const validatedData = requestInfoSchema.parse(req.body);
+
+      const application = await storage.getLoanApplication(req.params.id);
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      // Update status to under_review
+      await storage.updateLoanApplicationStatus(
+        req.params.id,
+        "under_review",
+        "Informations supplémentaires requises",
+        admin.id
+      );
+
+      // Create notification for user
+      await storage.createNotification({
+        userId: application.userId,
+        fromAdminId: admin.id,
+        type: "request",
+        title: "Informations supplémentaires requises",
+        message: validatedData.message,
+        actionUrl: `/dashboard/applications/${req.params.id}`,
+      });
+
+      res.json({ success: true, message: "Demande d'informations envoyée" });
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Verify signed contract (Admin only)
+  app.post("/api/admin/contracts/:id/verify", requireAdmin, async (req, res) => {
+    try {
+      const admin = req.user as User;
+      const validatedData = verifyContractSchema.parse(req.body);
+
+      if (validatedData.status === "rejected" && !validatedData.rejectionReason) {
+        return res.status(400).json({ error: "Motif de rejet requis" });
+      }
+
+      const contract = await storage.getContract(req.params.id);
+      if (!contract) {
+        return res.status(404).json({ error: "Contrat non trouvé" });
+      }
+
+      const application = await storage.getLoanApplication(contract.loanApplicationId);
+      if (!application) {
+        return res.status(404).json({ error: "Demande non trouvée" });
+      }
+
+      const updatedContract = await storage.updateContractStatus(req.params.id, validatedData.status, {
+        verifiedBy: admin.id,
+        verifiedAt: new Date() as any,
+        rejectionReason: validatedData.rejectionReason,
+      });
+
+      // Create notification for user
+      await storage.createNotification({
+        userId: application.userId,
+        fromAdminId: admin.id,
+        type: validatedData.status === "verified" ? "success" : "warning",
+        title: validatedData.status === "verified" ? "Contrat vérifié" : "Contrat rejeté",
+        message: validatedData.status === "verified"
+          ? "Votre contrat a été vérifié. Le processus de transfert peut commencer."
+          : `Votre contrat a été rejeté: ${validatedData.rejectionReason}. Veuillez le resigner.`,
+        actionUrl: `/dashboard/applications/${contract.loanApplicationId}`,
+      });
+
+      res.json(updatedContract);
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      res.status(500).json({ error: error.message });
+    }
+  });
+
+  // Update card order status (Admin only)
+  app.patch("/api/admin/card-orders/:id/status", requireAdmin, async (req, res) => {
+    try {
+      const validatedData = updateCardOrderStatusSchema.parse(req.body);
+
+      const updates: any = { status: validatedData.status };
+      if (validatedData.trackingNumber) updates.trackingNumber = validatedData.trackingNumber;
+      if (validatedData.status === "shipped") updates.shippedAt = new Date();
+      if (validatedData.status === "delivered") updates.deliveredAt = new Date();
+
+      const cardOrder = await storage.updateCardOrderStatus(req.params.id, validatedData.status, updates);
+      
+      if (!cardOrder) {
+        return res.status(404).json({ error: "Commande non trouvée" });
+      }
+
+      // Create notification for user
+      let message = "Le statut de votre commande de carte a été mis à jour";
+      if (validatedData.status === "shipped") {
+        message = `Votre carte a été expédiée. Numéro de suivi: ${validatedData.trackingNumber}`;
+      } else if (validatedData.status === "delivered") {
+        message = "Votre carte a été livrée";
+      }
+
+      await storage.createNotification({
+        userId: cardOrder.userId,
+        type: "info",
+        title: "Commande de carte",
+        message,
+      });
+
+      res.json(cardOrder);
+    } catch (error: any) {
+      if (error.errors) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
       res.status(500).json({ error: error.message });
     }
   });

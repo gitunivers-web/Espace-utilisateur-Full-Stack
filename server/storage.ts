@@ -39,6 +39,7 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByEmail(email: string): Promise<User | undefined>;
   getUserByVerificationToken(token: string): Promise<User | undefined>;
+  getAllAdmins(): Promise<User[]>;
   createUser(user: InsertUser): Promise<User>;
   updateUser(id: string, updates: Partial<InsertUser>): Promise<User | undefined>;
 
@@ -144,6 +145,10 @@ export class DbStorage implements IStorage {
   async getUserByVerificationToken(token: string): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.verificationToken, token));
     return user;
+  }
+
+  async getAllAdmins(): Promise<User[]> {
+    return db.select().from(users).where(eq(users.isAdmin, true));
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {

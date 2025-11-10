@@ -341,3 +341,47 @@ export const insertCardOrderSchema = createInsertSchema(cardOrders).omit({
 
 export type InsertCardOrder = z.infer<typeof insertCardOrderSchema>;
 export type CardOrder = typeof cardOrders.$inferSelect;
+
+// Validation schemas for API requests
+export const uploadDocumentSchema = z.object({
+  type: z.enum(["identity", "proof_of_address", "income_proof", "company_registration", "tax_return", "bank_statement", "other"]),
+  fileName: z.string().min(1, "Nom du fichier requis"),
+  fileUrl: z.string().url("URL invalide"),
+});
+
+export const signContractSchema = z.object({
+  signedFileUrl: z.string().url("URL du contrat signé invalide"),
+});
+
+export const validateCodeSchema = z.object({
+  code: z.string().min(1, "Code requis"),
+});
+
+export const createCardOrderSchema = z.object({
+  loanApplicationId: z.string().uuid("ID de demande invalide"),
+  cardType: z.string().min(1, "Type de carte requis"),
+  deliveryAddress: z.string().min(10, "Adresse de livraison requise"),
+});
+
+export const reviewDocumentSchema = z.object({
+  status: z.enum(["approved", "rejected"]),
+  rejectionReason: z.string().optional(),
+});
+
+export const approveRejectLoanSchema = z.object({
+  message: z.string().optional(),
+});
+
+export const requestInfoSchema = z.object({
+  message: z.string().min(1, "Message requis"),
+});
+
+export const verifyContractSchema = z.object({
+  status: z.enum(["verified", "rejected"]),
+  rejectionReason: z.string().optional(),
+});
+
+export const updateCardOrderStatusSchema = z.object({
+  status: z.enum(["pending", "processing", "shipped", "delivered", "cancelled"]),
+  trackingNumber: z.string().optional(),
+});
