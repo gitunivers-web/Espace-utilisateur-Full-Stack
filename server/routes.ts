@@ -32,6 +32,9 @@ import { randomBytes } from "crypto";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
+import { PDFGenerator } from "./services/pdfGenerator";
+import { translateLoanType } from "./services/loanTypeTranslations";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -1059,6 +1062,56 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Secure PDF download endpoint
+  app.get("/api/contracts/:id/pdf", requireAuth, async (req, res) => {
+    try {
+      const user = req.user as User;
+      const contract = await storage.getContract(req.params.id);
+      
+      if (!contract) {
+        return res.status(404).json({ error: "Contrat non trouvé" });
+      }
+
+      // Get the associated loan application to check access
+      const application = await storage.getLoanApplication(contract.loanApplicationId);
+      if (!application) {
+        return res.status(404).json({ error: "Demande de prêt non trouvée" });
+      }
+
+      // Verify access: user must be the borrower or an admin
+      if (application.userId !== user.id && !(user as any).isAdmin) {
+        return res.status(403).json({ error: "Accès refusé" });
+      }
+
+      // Build the filename from the contract number
+      const filename = `${contract.contractNumber}.pdf`;
+      const filePath = path.join(process.cwd(), 'contracts', filename);
+      
+      // Check if file exists
+      if (!fs.existsSync(filePath)) {
+        return res.status(404).json({ error: "Fichier PDF non trouvé sur le serveur" });
+      }
+
+      // Set headers for PDF download
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `inline; filename="${filename}"`);
+      
+      // Stream the file
+      const fileStream = fs.createReadStream(filePath);
+      fileStream.pipe(res);
+      
+      fileStream.on('error', (error) => {
+        console.error('Error streaming PDF:', error);
+        if (!res.headersSent) {
+          res.status(500).json({ error: "Erreur lors de la lecture du fichier" });
+        }
+      });
+    } catch (error: any) {
+      console.error('Error serving PDF:', error);
+      res.status(500).json({ error: error.message });
+    }
+  });
+
   // Upload signed contract
   app.post("/api/contracts/:id/sign", requireAuth, async (req, res) => {
     try {
@@ -1371,14 +1424,67 @@ export async function registerRoutes(app: Express): Promise<Server> {
         admin.id
       );
 
+      // Get user and loan type data for PDF generation
+      const user = await storage.getUser(application.userId);
+      if (!user) {
+        return res.status(404).json({ error: "Utilisateur non trouvé" });
+      }
+      
+      const loanType = await storage.getLoanType(application.loanTypeId);
+      if (!loanType) {
+        return res.status(404).json({ error: "Type de prêt non trouvé" });
+      }
+
       // Generate contract
       const contractNumber = `CTR-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+      
+      // Generate PDF contract
+      let pdfUrl: string;
+      try {
+        pdfUrl = await PDFGenerator.generateLoanContract({
+          contractNumber,
+          borrower: {
+            fullName: user.fullName,
+            email: user.email,
+            phone: user.phone || undefined,
+          },
+          application: {
+            applicationType: application.applicationType,
+            amount: application.amount,
+            durationMonths: application.durationMonths,
+            estimatedRate: application.estimatedRate,
+            estimatedMonthlyPayment: application.estimatedMonthlyPayment,
+            purpose: application.purpose || undefined,
+            monthlyIncome: application.monthlyIncome || undefined,
+            employmentStatus: application.employmentStatus || undefined,
+            companyName: application.companyName || undefined,
+            siret: application.siret || undefined,
+            companyRevenue: application.companyRevenue || undefined,
+          },
+          loanType: translateLoanType(loanType.nameKey, loanType.descriptionKey),
+          generatedDate: new Date(),
+        });
+      } catch (pdfError: any) {
+        console.error("PDF generation failed:", pdfError);
+        return res.status(500).json({ 
+          error: "Échec de la génération du contrat PDF", 
+          details: pdfError.message 
+        });
+      }
+
+      // Create the contract record with the API endpoint URL
+      // The frontend will use this to access the PDF via the secure endpoint
       const contract = await storage.createContract({
         loanApplicationId: req.params.id,
         contractNumber,
-        fileUrl: `/contracts/${contractNumber}.pdf`, // TODO: Generate actual PDF
+        fileUrl: `/api/contracts/PLACEHOLDER/pdf`,
         status: "generated",
         generatedBy: admin.id,
+      });
+      
+      // Update with the actual contract ID in the URL
+      await storage.updateContractStatus(contract.id, "generated", {
+        fileUrl: `/api/contracts/${contract.id}/pdf`,
       });
 
       // Link contract to application
