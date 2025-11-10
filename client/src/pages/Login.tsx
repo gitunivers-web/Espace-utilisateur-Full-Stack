@@ -19,7 +19,7 @@ export default function Login() {
     e.preventDefault();
     try {
       await login.mutateAsync(loginForm);
-      setLocation("/");
+      setLocation("/mon-espace");
     } catch (error) {
       console.error("Erreur de connexion:", error);
     }
@@ -103,7 +103,7 @@ export default function Login() {
                     </Button>
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Compte de démonstration : sophie.martin@lendia.fr / password123
+                    Compte de démonstration : demo@lendia.fr / demo123
                   </p>
                 </div>
               </form>

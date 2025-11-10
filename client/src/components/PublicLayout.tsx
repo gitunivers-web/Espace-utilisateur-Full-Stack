@@ -1,15 +1,17 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { useState } from "react";
 import { LegalNoticeBanner } from "@/components/legal/LegalNotice";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "@/lib/api";
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
+  const { data: auth } = useAuth();
 
   const navigation = [
     { name: t('nav.home'), href: "/" },
@@ -54,14 +56,26 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
 
             <div className="hidden md:flex items-center gap-2">
               <LanguageSelector />
-              <Link href="/auth/connexion">
-                <div
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 bg-primary text-primary-foreground"
-                  data-testid="button-demander-pret"
-                >
-                  {t('nav.createAccount')}
-                </div>
-              </Link>
+              {auth?.user ? (
+                <Link href="/mon-espace">
+                  <div
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 gap-2 bg-primary text-primary-foreground"
+                    data-testid="button-mon-espace"
+                  >
+                    <User className="w-4 h-4" />
+                    {t('nav.mySpace')}
+                  </div>
+                </Link>
+              ) : (
+                <Link href="/auth/connexion">
+                  <div
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 bg-primary text-primary-foreground"
+                    data-testid="button-demander-pret"
+                  >
+                    {t('nav.createAccount')}
+                  </div>
+                </Link>
+              )}
             </div>
 
             <button
@@ -91,14 +105,26 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                 <div className="px-4 py-2">
                   <LanguageSelector />
                 </div>
-                <Link href="/auth/connexion">
-                  <div
-                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 w-full bg-primary text-primary-foreground"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {t('nav.createAccount')}
-                  </div>
-                </Link>
+                {auth?.user ? (
+                  <Link href="/mon-espace">
+                    <div
+                      className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 w-full gap-2 bg-primary text-primary-foreground"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <User className="w-4 h-4" />
+                      {t('nav.mySpace')}
+                    </div>
+                  </Link>
+                ) : (
+                  <Link href="/auth/connexion">
+                    <div
+                      className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover-elevate min-h-9 px-4 py-2 w-full bg-primary text-primary-foreground"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {t('nav.createAccount')}
+                    </div>
+                  </Link>
+                )}
               </div>
             </div>
           )}
