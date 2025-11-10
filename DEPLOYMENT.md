@@ -1,4 +1,4 @@
-# 🚀 Guide de Déploiement - Altus Finance
+# 🚀 Guide de Déploiement - Lendia
 
 Ce guide vous explique comment déployer votre application sur Vercel (frontend) et Render (backend + PostgreSQL).
 
@@ -19,7 +19,7 @@ Ce guide vous explique comment déployer votre application sur Vercel (frontend)
 1. Allez sur [Render.com](https://render.com) et connectez-vous
 2. Cliquez sur **"New +"** → **"PostgreSQL"**
 3. Configurez :
-   - **Name** : `altus-finance-db`
+   - **Name** : `lendia-db`
    - **Region** : Choisissez la région la plus proche (Europe West recommended)
    - **PostgreSQL Version** : 16 (ou la plus récente)
    - **Plan** : Free (pour commencer)
@@ -74,7 +74,7 @@ Assurez-vous que votre `package.json` contient les bons scripts :
 1. Sur Render, cliquez sur **"New +"** → **"Web Service"**
 2. Connectez votre dépôt Git (GitHub/GitLab)
 3. Configurez :
-   - **Name** : `altus-finance-api`
+   - **Name** : `lendia-api`
    - **Region** : Europe West (même région que la DB)
    - **Branch** : `main`
    - **Root Directory** : (laissez vide)
@@ -101,8 +101,8 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ### Étape 2.3 : Vérifier le déploiement backend
 
 1. Attendez que le build se termine (5-10 minutes)
-2. Votre API sera disponible sur : `https://altus-finance-api.onrender.com`
-3. Testez : `https://altus-finance-api.onrender.com/api/loan-types`
+2. Votre API sera disponible sur : `https://lendia-api.onrender.com`
+3. Testez : `https://lendia-api.onrender.com/api/loan-types`
 4. Si vous voyez les 10 types de prêts en JSON → ✅ Backend OK !
 
 ## 🎯 Partie 3 : Déploiement du Frontend sur Vercel
@@ -131,7 +131,7 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 2. Créez un fichier `.env.production` :
 
 ```bash
-VITE_API_URL=https://altus-finance-api.onrender.com
+VITE_API_URL=https://lendia-api.onrender.com
 ```
 
 ### Étape 3.2 : Modifier le client pour utiliser l'API backend
@@ -161,7 +161,7 @@ const API_URL = import.meta.env.VITE_API_URL || '';
 5. **Variables d'environnement** :
 
 ```bash
-VITE_API_URL=https://altus-finance-api.onrender.com
+VITE_API_URL=https://lendia-api.onrender.com
 ```
 
 6. Cliquez sur **"Deploy"**
@@ -220,7 +220,7 @@ Cela ajoutera les 10 types de prêts à votre base de données de production.
 
 ```
 Frontend (Vercel)  : https://votre-app.vercel.app
-Backend (Render)   : https://altus-finance-api.onrender.com
+Backend (Render)   : https://lendia-api.onrender.com
 Database (Render)  : Internal connection (non-public)
 ```
 
@@ -289,4 +289,4 @@ Pour toute question, consultez :
 
 ---
 
-🎉 **Votre application Altus Finance est maintenant déployée en production !**
+🎉 **Votre application Lendia est maintenant déployée en production !**

@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Altus Finance"
+    "name": "Lendia"
   },
   "nav": {
     "home": "Accueil",
@@ -49,7 +49,7 @@
       "discoverOffers": "Découvrir nos offres professionnelles"
     },
     "whyUs": {
-      "title": "Pourquoi Altus Finance ?",
+      "title": "Pourquoi Lendia ?",
       "fast": "Rapide",
       "fastDesc": "Réponse de principe sous 48h et déblocage des fonds en 72h",
       "transparent": "Transparent",
@@ -80,9 +80,9 @@
     "interest": "Intérêts"
   },
   "about": {
-    "title": "À Propos d'Altus Finance",
+    "title": "À Propos d'Lendia",
     "subtitle": "Votre partenaire de confiance pour tous vos projets de financement depuis 2020",
-    "intro1": "Altus Finance Group est une plateforme de financement en ligne spécialisée dans les prêts personnels et professionnels. Notre mission est de rendre l'accès au crédit simple, rapide et transparent pour tous.",
+    "intro1": "Lendia Group est une plateforme de financement en ligne spécialisée dans les prêts personnels et professionnels. Notre mission est de rendre l'accès au crédit simple, rapide et transparent pour tous.",
     "intro2": "Fondée en 2020, notre entreprise a pour ambition de démocratiser l'accès au financement grâce à la technologie et une approche centrée sur le client. Nous croyons que chaque projet mérite d'être soutenu, et c'est pourquoi nous proposons des solutions de financement adaptées aussi bien aux particuliers qu'aux professionnels.",
     "security": "Sécurité",
     "securityDesc": "Données protégées et transactions sécurisées",
@@ -93,7 +93,7 @@
     "innovation": "Innovation",
     "innovationDesc": "Technologie de pointe pour votre confort",
     "commitment": "Notre Engagement",
-    "commitmentText": "Chez Altus Finance, nous nous engageons à offrir un service de qualité basé sur la transparence, la réactivité et l'accompagnement personnalisé. Chaque demande est étudiée avec soin par nos experts pour vous proposer la meilleure solution de financement.",
+    "commitmentText": "Chez Lendia, nous nous engageons à offrir un service de qualité basé sur la transparence, la réactivité et l'accompagnement personnalisé. Chaque demande est étudiée avec soin par nos experts pour vous proposer la meilleure solution de financement.",
     "values": "Nos Valeurs",
     "transparency": "Transparence",
     "transparencyDesc": "Des taux et conditions clairement affichés, sans frais cachés",
@@ -107,7 +107,7 @@
     "innovationValueDesc": "Une plateforme 100% en ligne pour simplifier vos démarches",
     "legalInfo": "Informations Légales",
     "companyName": "Raison Sociale",
-    "companyNameValue": "Altus Finance Group SAS",
+    "companyNameValue": "Lendia Group SAS",
     "headquarters": "Siège Social",
     "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 Paris, France",
     "siret": "SIREN / SIRET",
@@ -117,8 +117,8 @@
     "accreditation": "Agrément ACPR",
     "accreditationValue": "N° 12345 - Établissement de crédit",
     "contact": "Contact",
-    "contactValue": "contact@altusfinance.fr<br />01 23 45 67 89",
-    "legalDisclaimer": "Altus Finance Group est un établissement de crédit agréé par l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). Soumis au contrôle de l'ACPR - 4 Place de Budapest, CS 92459, 75436 Paris Cedex 09."
+    "contactValue": "contact@lendia.fr<br />01 23 45 67 89",
+    "legalDisclaimer": "Lendia Group est un établissement de crédit agréé par l'Autorité de Contrôle Prudentiel et de Résolution (ACPR). Soumis au contrôle de l'ACPR - 4 Place de Budapest, CS 92459, 75436 Paris Cedex 09."
   },
   "contact": {
     "title": "Contactez-nous",
@@ -139,7 +139,7 @@
     "phoneValue": "01 23 45 67 89",
     "schedule": "Lun-Ven 9h-18h",
     "emailLabel": "Email",
-    "emailValue": "contact@altusfinance.fr",
+    "emailValue": "contact@lendia.fr",
     "responseTime": "Réponse sous 24h",
     "address": "Adresse",
     "addressValue": "123 Avenue des Champs-Élysées<br />75008 Paris, France",
@@ -147,8 +147,8 @@
     "hoursValue": "Lundi - Vendredi: 9h - 18h<br />Samedi - Dimanche: Fermé"
   },
   "howItWorks": {
-    "pageTitle": "Comment obtenir un prêt | Altus Finance",
-    "pageDescription": "Découvrez comment obtenir un prêt en 4 étapes simples avec Altus Finance. Simulation gratuite, réponse rapide sous 48h, déblocage des fonds en 72h.",
+    "pageTitle": "Comment obtenir un prêt | Lendia",
+    "pageDescription": "Découvrez comment obtenir un prêt en 4 étapes simples avec Lendia. Simulation gratuite, réponse rapide sous 48h, déblocage des fonds en 72h.",
     "title": "Comment obtenir votre prêt en",
     "titleHighlight": "4 étapes simples",
     "subtitle": "Un processus 100% en ligne, rapide et transparent pour financer vos projets",
@@ -165,7 +165,7 @@
     "step4Desc": "Notre équipe analyse votre demande et vous donne une réponse de principe sous 48h. Suivez l'avancement en temps réel dans votre espace.",
     "step4Duration": "48h",
     "startCta": "Créer mon compte et commencer",
-    "whyUs": "Pourquoi choisir Altus Finance ?",
+    "whyUs": "Pourquoi choisir Lendia ?",
     "whyUsSubtitle": "Une plateforme moderne pensée pour vous simplifier l'accès au financement",
     "fast": "Rapide et efficace",
     "fastDesc": "Réponse sous 48h et déblocage en 72h",
@@ -179,7 +179,7 @@
     "faqQ1": "Quels documents sont nécessaires ?",
     "faqA1": "Pour une demande de prêt, vous aurez besoin d'une pièce d'identité, d'un justificatif de domicile récent, et de vos 3 derniers bulletins de salaire (ou justificatif de revenus pour les professionnels).",
     "faqQ2": "Puis-je rembourser par anticipation ?",
-    "faqA2": "Oui, le remboursement anticipé est gratuit chez Altus Finance. Vous pouvez rembourser tout ou partie de votre prêt à tout moment sans frais supplémentaires.",
+    "faqA2": "Oui, le remboursement anticipé est gratuit chez Lendia. Vous pouvez rembourser tout ou partie de votre prêt à tout moment sans frais supplémentaires.",
     "faqQ3": "Quel est le taux d'acceptation ?",
     "faqA3": "Notre taux d'acceptation varie selon les profils, mais nous étudions chaque dossier avec attention. Même si vous avez été refusé ailleurs, n'hésitez pas à faire une simulation.",
     "faqQ4": "Comment suivre ma demande ?",
@@ -226,7 +226,7 @@
     "withdrawalRightText": "Vous disposez d'un délai de 14 jours pour exercer votre droit de rétractation à compter de la signature du contrat de crédit.",
     "taegTitle": "TAEG (Taux Annuel Effectif Global)",
     "taegText": "Le TAEG représente le coût total du crédit pour l'emprunteur, exprimé en pourcentage annuel du montant total du crédit. Il inclut le taux d'intérêt nominal ainsi que l'ensemble des frais obligatoires liés au crédit (frais de dossier, assurances obligatoires, etc.).",
-    "offerDisclaimer": "Offre de prêt sous réserve d'acceptation de votre dossier par Altus Finance Group. Vous disposez d'un délai de réflexion de 14 jours pour accepter l'offre de crédit. Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager."
+    "offerDisclaimer": "Offre de prêt sous réserve d'acceptation de votre dossier par Lendia Group. Vous disposez d'un délai de réflexion de 14 jours pour accepter l'offre de crédit. Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager."
   },
   "language": {
     "select": "Langue"

@@ -148,7 +148,7 @@ export default function Transferts() {
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                Les transferts sont traités instantanément entre comptes Altus
+                Les transferts sont traités instantanément entre comptes Lendia
               </p>
             </CardContent>
           </Card>

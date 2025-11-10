@@ -1,4 +1,4 @@
-# Design Guidelines: Altus Finance Group Banking Dashboard
+# Design Guidelines: Lendia Group Banking Dashboard
 
 ## Design Approach
 Professional banking application inspired by modern fintech platforms like Qonto and Hello Bank. Premium, trustworthy aesthetic with sophisticated visual design befitting a high-end digital bank.
@@ -31,7 +31,7 @@ Use Tailwind spacing units: 2, 4, 6, 8, 12, 16, 20, 24 for consistent rhythm
 ### Core Layout Structure
 
 **Sidebar (Fixed Left)**
-- Medium-sized Altus Finance Group logo at top
+- Medium-sized Lendia Group logo at top
 - Primary navigation with icons:
   - Tableau de bord
   - Comptes & Cartes

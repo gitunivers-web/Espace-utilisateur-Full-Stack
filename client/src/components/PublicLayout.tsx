@@ -27,7 +27,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
             <div className="flex items-center gap-8">
               <Link href="/">
                 <div className="flex items-center gap-2 cursor-pointer">
-                  <div className="text-2xl font-bold text-primary">Altus Finance</div>
+                  <img src="/lendia-logo.png" alt="Lendia" className="h-8" />
                 </div>
               </Link>
               

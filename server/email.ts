@@ -25,9 +25,9 @@ export async function sendPasswordResetEmail({ to, resetLink, userName }: SendPa
   
   try {
     const { data, error } = await resend.emails.send({
-      from: "Altus Finance <onboarding@resend.dev>",
+      from: "Lendia <onboarding@resend.dev>",
       to: [to],
-      subject: "Réinitialisation de votre mot de passe - Altus Finance",
+      subject: "Réinitialisation de votre mot de passe - Lendia",
       html: `
         <!DOCTYPE html>
         <html>
@@ -45,7 +45,7 @@ export async function sendPasswordResetEmail({ to, resetLink, userName }: SendPa
           <body>
             <div class="container">
               <div class="header">
-                <h1 style="margin: 0;">Altus Finance</h1>
+                <h1 style="margin: 0;">Lendia</h1>
               </div>
               <div class="content">
                 <h2>Bonjour ${userName},</h2>
@@ -56,10 +56,10 @@ export async function sendPasswordResetEmail({ to, resetLink, userName }: SendPa
                 </div>
                 <p>Ce lien est valide pendant 1 heure.</p>
                 <p>Si vous n'avez pas demandé cette réinitialisation, vous pouvez ignorer cet email en toute sécurité.</p>
-                <p>Cordialement,<br>L'équipe Altus Finance</p>
+                <p>Cordialement,<br>L'équipe Lendia</p>
               </div>
               <div class="footer">
-                <p>Cet email a été envoyé par Altus Finance</p>
+                <p>Cet email a été envoyé par Lendia</p>
               </div>
             </div>
           </body>
@@ -88,9 +88,9 @@ export async function sendVerificationEmail({ to, verificationLink, userName }: 
   
   try {
     const { data, error } = await resend.emails.send({
-      from: "Altus Finance <onboarding@resend.dev>",
+      from: "Lendia <onboarding@resend.dev>",
       to: [to],
-      subject: "Vérifiez votre adresse email - Altus Finance",
+      subject: "Vérifiez votre adresse email - Lendia",
       html: `
         <!DOCTYPE html>
         <html>
@@ -108,21 +108,21 @@ export async function sendVerificationEmail({ to, verificationLink, userName }: 
           <body>
             <div class="container">
               <div class="header">
-                <h1 style="margin: 0;">Altus Finance</h1>
+                <h1 style="margin: 0;">Lendia</h1>
               </div>
               <div class="content">
                 <h2>Bienvenue ${userName} !</h2>
-                <p>Merci de vous être inscrit sur Altus Finance.</p>
+                <p>Merci de vous être inscrit sur Lendia.</p>
                 <p>Pour finaliser votre inscription et accéder à votre compte, veuillez vérifier votre adresse email en cliquant sur le bouton ci-dessous :</p>
                 <div style="text-align: center;">
                   <a href="${verificationLink}" class="button">Vérifier mon email</a>
                 </div>
                 <p>Ce lien est valide pendant 24 heures.</p>
-                <p>Si vous n'avez pas créé de compte sur Altus Finance, vous pouvez ignorer cet email en toute sécurité.</p>
-                <p>Cordialement,<br>L'équipe Altus Finance</p>
+                <p>Si vous n'avez pas créé de compte sur Lendia, vous pouvez ignorer cet email en toute sécurité.</p>
+                <p>Cordialement,<br>L'équipe Lendia</p>
               </div>
               <div class="footer">
-                <p>Cet email a été envoyé par Altus Finance</p>
+                <p>Cet email a été envoyé par Lendia</p>
               </div>
             </div>
           </body>

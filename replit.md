@@ -1,7 +1,7 @@
-# Altus Finance Group - Plateforme de Prêt en Ligne
+# Lendia Group - Plateforme de Prêt en Ligne
 
 ## Overview
-Altus Finance Group offers a comprehensive online lending platform for individuals and professionals. It provides personalized loans, online simulation tools, a multi-step loan application process, and a secure client area ("Mon Espace"). The platform's vision is to streamline access to various loan products with a user-friendly and robust digital experience, targeting a broad market with diverse financial needs.
+Lendia Group offers a comprehensive online lending platform for individuals and professionals. It provides personalized loans, online simulation tools, a multi-step loan application process, and a secure client area ("Mon Espace"). The platform's vision is to streamline access to various loan products with a user-friendly and robust digital experience, targeting a broad market with diverse financial needs.
 
 ## User Preferences
 - Style de code: TypeScript strict, composants fonctionnels React

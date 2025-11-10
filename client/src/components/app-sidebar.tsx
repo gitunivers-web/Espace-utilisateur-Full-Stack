@@ -66,7 +66,7 @@ export function AppSidebar() {
             <Building2 className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="font-bold text-lg">Altus</h1>
+            <h1 className="font-bold text-lg">Lendia</h1>
             <p className="text-xs text-muted-foreground">Finance Group</p>
           </div>
         </div>

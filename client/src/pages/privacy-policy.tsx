@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
             <Card>
               <CardContent className="p-6 space-y-4">
                 <p className="text-muted-foreground">
-                  Altus Finance Group (ci-après « Altus Finance », « nous », « notre ») accorde une grande importance 
+                  Lendia Group (ci-après « Lendia », « nous », « notre ») accorde une grande importance 
                   à la protection de vos données personnelles et s'engage à les traiter de manière transparente, 
                   sécurisée et conforme au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés.
                 </p>
@@ -38,10 +38,10 @@ export default function PrivacyPolicy() {
                   Le responsable du traitement de vos données personnelles est :
                 </p>
                 <p className="text-muted-foreground">
-                  Altus Finance Group SAS<br />
+                  Lendia Group SAS<br />
                   123 Avenue des Champs-Élysées<br />
                   75008 Paris, France<br />
-                  Email : dpo@altusfinance.fr<br />
+                  Email : dpo@lendia.fr<br />
                   Téléphone : 01 23 45 67 89
                 </p>
               </CardContent>
@@ -227,8 +227,8 @@ export default function PrivacyPolicy() {
                 <div className="mt-4 pt-4 border-t">
                   <p className="text-muted-foreground mb-2">Pour exercer vos droits, contactez-nous :</p>
                   <ul className="space-y-1 text-muted-foreground">
-                    <li>• Par email : dpo@altusfinance.fr</li>
-                    <li>• Par courrier : Altus Finance Group - DPO, 123 Avenue des Champs-Élysées, 75008 Paris</li>
+                    <li>• Par email : dpo@lendia.fr</li>
+                    <li>• Par courrier : Lendia Group - DPO, 123 Avenue des Champs-Élysées, 75008 Paris</li>
                   </ul>
                   <p className="text-muted-foreground mt-3">
                     Nous nous engageons à répondre à votre demande dans un délai d'un mois maximum.
@@ -340,8 +340,8 @@ export default function PrivacyPolicy() {
                 </p>
                 <p className="text-muted-foreground">
                   <strong>Délégué à la Protection des Données (DPO)</strong><br />
-                  Altus Finance Group<br />
-                  Email : dpo@altusfinance.fr<br />
+                  Lendia Group<br />
+                  Email : dpo@lendia.fr<br />
                   Adresse : 123 Avenue des Champs-Élysées, 75008 Paris, France<br />
                   Téléphone : 01 23 45 67 89
                 </p>

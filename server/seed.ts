@@ -111,7 +111,7 @@ async function seed() {
   // Create user (password is "password123")
   const user = await storage.createUser({
     fullName: "Sophie Martin",
-    email: "sophie.martin@altusfinance.fr",
+    email: "sophie.martin@lendia.fr",
     password: "$2b$10$LZU9IYfsRNDvYTTM20sqsuZI2mh45JsRQPt28h8B7w.d9Uuu688zu",
     phone: "+33 6 12 34 56 78",
     accountType: "pro",

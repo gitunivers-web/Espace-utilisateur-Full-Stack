@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Altus Finance"
+    "name": "Lendia"
   },
   "nav": {
     "home": "Kezdőlap",
@@ -49,7 +49,7 @@
       "discoverOffers": "Fedezze fel professzionális ajánlatainkat"
     },
     "whyUs": {
-      "title": "Miért Altus Finance?",
+      "title": "Miért Lendia?",
       "fast": "Gyors",
       "fastDesc": "Kezdeti válasz 48 órán belül és pénzeszközök folyósítása 72 órán belül",
       "transparent": "Átlátható",
@@ -80,9 +80,9 @@
     "interest": "Kamat"
   },
   "about": {
-    "title": "Rólunk - Altus Finance",
+    "title": "Rólunk - Lendia",
     "subtitle": "Megbízható partnerük minden finanszírozási projekthez 2020 óta",
-    "intro1": "Az Altus Finance Group egy online finanszírozási platform, amely személyi és üzleti hitelekben specializálódott. Küldetésünk, hogy mindenki számára egyszerűvé, gyorssá és átláthatóvá tegyük a hitelhez való hozzáférést.",
+    "intro1": "Az Lendia Group egy online finanszírozási platform, amely személyi és üzleti hitelekben specializálódott. Küldetésünk, hogy mindenki számára egyszerűvé, gyorssá és átláthatóvá tegyük a hitelhez való hozzáférést.",
     "intro2": "2020-ban alapított vállalatunk célja a finanszírozáshoz való hozzáférés demokratizálása technológia és ügyfélközpontú megközelítés révén. Hiszünk abban, hogy minden projekt támogatást érdemel, ezért mind magánszemélyek, mind szakemberek számára alkalmazkodó finanszírozási megoldásokat kínálunk.",
     "security": "Biztonság",
     "securityDesc": "Védett adatok és biztonságos tranzakciók",
@@ -93,7 +93,7 @@
     "innovation": "Innováció",
     "innovationDesc": "Élvonalbeli technológia az Ön kényelméért",
     "commitment": "Kötelezettségvállalásunk",
-    "commitmentText": "Az Altus Finance-nál elkötelezettek vagyunk az átláthatóságon, reagálási készségen és személyre szabott támogatáson alapuló minőségi szolgáltatás nyújtása mellett. Minden kérelmet szakértőink alaposan megvizsgálnak, hogy a legjobb finanszírozási megoldást kínálhassuk Önnek.",
+    "commitmentText": "Az Lendia-nál elkötelezettek vagyunk az átláthatóságon, reagálási készségen és személyre szabott támogatáson alapuló minőségi szolgáltatás nyújtása mellett. Minden kérelmet szakértőink alaposan megvizsgálnak, hogy a legjobb finanszírozási megoldást kínálhassuk Önnek.",
     "values": "Értékeink",
     "transparency": "Átláthatóság",
     "transparencyDesc": "Kamatok és feltételek egyértelműen megjelenítve, rejtett díjak nélkül",
@@ -107,7 +107,7 @@
     "innovationValueDesc": "100%-ban online platform az eljárások egyszerűsítésére",
     "legalInfo": "Jogi Információk",
     "companyName": "Cégnév",
-    "companyNameValue": "Altus Finance Group SAS",
+    "companyNameValue": "Lendia Group SAS",
     "headquarters": "Székhely",
     "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 Párizs, Franciaország",
     "siret": "SIREN / SIRET",
@@ -117,8 +117,8 @@
     "accreditation": "ACPR Akkreditáció",
     "accreditationValue": "12345. szám - Hitelintézet",
     "contact": "Kapcsolat",
-    "contactValue": "contact@altusfinance.fr<br />01 23 45 67 89",
-    "legalDisclaimer": "Az Altus Finance Group az Autorité de Contrôle Prudentiel et de Résolution (ACPR) által jóváhagyott hitelintézet. Az ACPR ellenőrzése alatt áll - 4 Place de Budapest, CS 92459, 75436 Párizs Cedex 09."
+    "contactValue": "contact@lendia.fr<br />01 23 45 67 89",
+    "legalDisclaimer": "Az Lendia Group az Autorité de Contrôle Prudentiel et de Résolution (ACPR) által jóváhagyott hitelintézet. Az ACPR ellenőrzése alatt áll - 4 Place de Budapest, CS 92459, 75436 Párizs Cedex 09."
   },
   "contact": {
     "title": "Lépjen kapcsolatba velünk",
@@ -139,7 +139,7 @@
     "phoneValue": "01 23 45 67 89",
     "schedule": "H-P 9-18",
     "emailLabel": "Email",
-    "emailValue": "contact@altusfinance.fr",
+    "emailValue": "contact@lendia.fr",
     "responseTime": "Válasz 24 órán belül",
     "address": "Cím",
     "addressValue": "123 Avenue des Champs-Élysées<br />75008 Párizs, Franciaország",
@@ -147,8 +147,8 @@
     "hoursValue": "Hétfő - Péntek: 9h - 18h<br />Szombat - Vasárnap: Zárva"
   },
   "howItWorks": {
-    "pageTitle": "Hogyan kaphat hitelt | Altus Finance",
-    "pageDescription": "Fedezze fel, hogyan kaphat hitelt 4 egyszerű lépésben az Altus Finance-szal. Ingyenes szimuláció, gyors válasz 48 órán belül, pénzeszközök folyósítása 72 órán belül.",
+    "pageTitle": "Hogyan kaphat hitelt | Lendia",
+    "pageDescription": "Fedezze fel, hogyan kaphat hitelt 4 egyszerű lépésben az Lendia-szal. Ingyenes szimuláció, gyors válasz 48 órán belül, pénzeszközök folyósítása 72 órán belül.",
     "title": "Hogyan kaphatja meg hitelét",
     "titleHighlight": "4 egyszerű lépésben",
     "subtitle": "100%-ban online folyamat, gyors és átlátható projektjei finanszírozására",
@@ -165,7 +165,7 @@
     "step4Desc": "Csapatunk elemzi kérelmét és 48 órán belül kezdeti választ ad. Kövesse nyomon a folyamatot valós időben fiókjában.",
     "step4Duration": "48h",
     "startCta": "Fiók létrehozása és kezdés",
-    "whyUs": "Miért válassza az Altus Finance-t?",
+    "whyUs": "Miért válassza az Lendia-t?",
     "whyUsSubtitle": "Modern platform, amelyet a finanszírozáshoz való hozzáférés egyszerűsítésére terveztek",
     "fast": "Gyors és hatékony",
     "fastDesc": "Válasz 48 órán belül és folyósítás 72 órán belül",
@@ -179,7 +179,7 @@
     "faqQ1": "Milyen dokumentumok szükségesek?",
     "faqA1": "Hitelkérelemhez szükséges egy személyazonosító okmány, friss lakcímigazolás és utolsó 3 fizetési csedje (vagy jövedelemigazolás szakemberek számára).",
     "faqQ2": "Előtörleszthetek?",
-    "faqA2": "Igen, az előtörlesztés ingyenes az Altus Finance-nál. Bármikor törlesztheti hitelének egészét vagy egy részét további díjak nélkül.",
+    "faqA2": "Igen, az előtörlesztés ingyenes az Lendia-nál. Bármikor törlesztheti hitelének egészét vagy egy részét további díjak nélkül.",
     "faqQ3": "Mi az elfogadási arány?",
     "faqA3": "Elfogadási arányunk profiltól függően változik, de minden kérelmet alaposan megvizsgálunk. Még ha máshol elutasították is, ne habozzon szimulációt végezni.",
     "faqQ4": "Hogyan követhetem nyomon kérelmemet?",
@@ -226,7 +226,7 @@
     "withdrawalRightText": "14 napos határidő áll rendelkezésére az elállási jog gyakorlására a hitelszerződés aláírásától számítva.",
     "taegTitle": "THM (Teljes Hiteldíj Mutató)",
     "taegText": "A THM a hitelfelvevő számára a hitel teljes költségét jelenti, a hitel teljes összegének éves százalékában kifejezve. Tartalmazza a névleges kamatot, valamint a hitelhez kapcsolódó összes kötelező díjat (kérelem díjai, kötelező biztosítás stb.).",
-    "offerDisclaimer": "A hitelajánlat az Altus Finance Group által a kérelem elfogadásától függő. 14 napos megfontolási idő áll rendelkezésére a hitelajánlat elfogadására. A hitel kötelezettséget jelent és vissza kell fizetni. Ellenőrizze visszafizetési képességét mielőtt kötelezettséget vállal."
+    "offerDisclaimer": "A hitelajánlat az Lendia Group által a kérelem elfogadásától függő. 14 napos megfontolási idő áll rendelkezésére a hitelajánlat elfogadására. A hitel kötelezettséget jelent és vissza kell fizetni. Ellenőrizze visszafizetési képességét mielőtt kötelezettséget vállal."
   },
   "language": {
     "select": "Nyelv"

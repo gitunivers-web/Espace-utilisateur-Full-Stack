@@ -2,17 +2,17 @@
  * Page "Comment ça marche" - Explique le processus de demande de prêt
  * 
  * @component HowItWorks
- * @description Page publique détaillant les 4 étapes du processus de demande de prêt chez Altus Finance.
+ * @description Page publique détaillant les 4 étapes du processus de demande de prêt chez Lendia.
  * Comprend une timeline visuelle, les avantages clés, et des CTA pour démarrer une demande.
  * 
  * @section SEO
- * - Title: Comment obtenir un prêt | Altus Finance
- * - Description: Découvrez comment obtenir un prêt en 4 étapes simples avec Altus Finance
+ * - Title: Comment obtenir un prêt | Lendia
+ * - Description: Découvrez comment obtenir un prêt en 4 étapes simples avec Lendia
  * 
  * @section Sections
  * 1. Hero - Titre et description du processus
  * 2. Timeline - 4 étapes visuelles du processus
- * 3. Avantages - Pourquoi choisir Altus Finance
+ * 3. Avantages - Pourquoi choisir Lendia
  * 4. CTA - Appel à l'action pour démarrer une demande
  * 
  * @route /comment-ca-marche

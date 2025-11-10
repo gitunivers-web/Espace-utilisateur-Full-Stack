@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Altus Finance"
+    "name": "Lendia"
   },
   "nav": {
     "home": "Inicio",
@@ -49,7 +49,7 @@
       "discoverOffers": "Descubra nuestras ofertas profesionales"
     },
     "whyUs": {
-      "title": "¿Por qué Altus Finance?",
+      "title": "¿Por qué Lendia?",
       "fast": "Rápido",
       "fastDesc": "Respuesta inicial en 48h y desembolso de fondos en 72h",
       "transparent": "Transparente",
@@ -80,9 +80,9 @@
     "interest": "Intereses"
   },
   "about": {
-    "title": "Acerca de Altus Finance",
+    "title": "Acerca de Lendia",
     "subtitle": "Su socio de confianza para todos sus proyectos de financiación desde 2020",
-    "intro1": "Altus Finance Group es una plataforma de financiación en línea especializada en préstamos personales y profesionales. Nuestra misión es hacer que el acceso al crédito sea simple, rápido y transparente para todos.",
+    "intro1": "Lendia Group es una plataforma de financiación en línea especializada en préstamos personales y profesionales. Nuestra misión es hacer que el acceso al crédito sea simple, rápido y transparente para todos.",
     "intro2": "Fundada en 2020, nuestra empresa tiene como objetivo democratizar el acceso a la financiación a través de la tecnología y un enfoque centrado en el cliente. Creemos que cada proyecto merece apoyo, por eso ofrecemos soluciones de financiación adaptadas tanto a particulares como a profesionales.",
     "security": "Seguridad",
     "securityDesc": "Datos protegidos y transacciones seguras",
@@ -93,7 +93,7 @@
     "innovation": "Innovación",
     "innovationDesc": "Tecnología de vanguardia para su comodidad",
     "commitment": "Nuestro Compromiso",
-    "commitmentText": "En Altus Finance, nos comprometemos a brindar un servicio de calidad basado en la transparencia, la capacidad de respuesta y el apoyo personalizado. Cada solicitud es cuidadosamente revisada por nuestros expertos para ofrecerle la mejor solución de financiación.",
+    "commitmentText": "En Lendia, nos comprometemos a brindar un servicio de calidad basado en la transparencia, la capacidad de respuesta y el apoyo personalizado. Cada solicitud es cuidadosamente revisada por nuestros expertos para ofrecerle la mejor solución de financiación.",
     "values": "Nuestros Valores",
     "transparency": "Transparencia",
     "transparencyDesc": "Tasas y condiciones claramente mostradas, sin tarifas ocultas",
@@ -107,7 +107,7 @@
     "innovationValueDesc": "Una plataforma 100% en línea para simplificar sus trámites",
     "legalInfo": "Información Legal",
     "companyName": "Nombre de la Empresa",
-    "companyNameValue": "Altus Finance Group SAS",
+    "companyNameValue": "Lendia Group SAS",
     "headquarters": "Sede",
     "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 París, Francia",
     "siret": "SIREN / SIRET",
@@ -117,8 +117,8 @@
     "accreditation": "Acreditación ACPR",
     "accreditationValue": "Nº 12345 - Entidad de crédito",
     "contact": "Contacto",
-    "contactValue": "contact@altusfinance.fr<br />01 23 45 67 89",
-    "legalDisclaimer": "Altus Finance Group es una entidad de crédito aprobada por la Autorité de Contrôle Prudentiel et de Résolution (ACPR). Sujeto al control de ACPR - 4 Place de Budapest, CS 92459, 75436 París Cedex 09."
+    "contactValue": "contact@lendia.fr<br />01 23 45 67 89",
+    "legalDisclaimer": "Lendia Group es una entidad de crédito aprobada por la Autorité de Contrôle Prudentiel et de Résolution (ACPR). Sujeto al control de ACPR - 4 Place de Budapest, CS 92459, 75436 París Cedex 09."
   },
   "contact": {
     "title": "Contáctenos",
@@ -139,7 +139,7 @@
     "phoneValue": "01 23 45 67 89",
     "schedule": "Lun-Vie 9h-18h",
     "emailLabel": "Correo electrónico",
-    "emailValue": "contact@altusfinance.fr",
+    "emailValue": "contact@lendia.fr",
     "responseTime": "Respuesta en 24h",
     "address": "Dirección",
     "addressValue": "123 Avenue des Champs-Élysées<br />75008 París, Francia",
@@ -147,8 +147,8 @@
     "hoursValue": "Lunes - Viernes: 9h - 18h<br />Sábado - Domingo: Cerrado"
   },
   "howItWorks": {
-    "pageTitle": "Cómo obtener un préstamo | Altus Finance",
-    "pageDescription": "Descubra cómo obtener un préstamo en 4 sencillos pasos con Altus Finance. Simulación gratuita, respuesta rápida en 48h, desembolso de fondos en 72h.",
+    "pageTitle": "Cómo obtener un préstamo | Lendia",
+    "pageDescription": "Descubra cómo obtener un préstamo en 4 sencillos pasos con Lendia. Simulación gratuita, respuesta rápida en 48h, desembolso de fondos en 72h.",
     "title": "Cómo obtener su préstamo en",
     "titleHighlight": "4 sencillos pasos",
     "subtitle": "Un proceso 100% en línea, rápido y transparente para financiar sus proyectos",
@@ -165,7 +165,7 @@
     "step4Desc": "Nuestro equipo analiza su solicitud y le da una respuesta inicial en 48h. Siga el progreso en tiempo real en su cuenta.",
     "step4Duration": "48h",
     "startCta": "Crear mi cuenta y comenzar",
-    "whyUs": "¿Por qué elegir Altus Finance?",
+    "whyUs": "¿Por qué elegir Lendia?",
     "whyUsSubtitle": "Una plataforma moderna diseñada para simplificar su acceso a la financiación",
     "fast": "Rápido y eficiente",
     "fastDesc": "Respuesta en 48h y desembolso en 72h",
@@ -179,7 +179,7 @@
     "faqQ1": "¿Qué documentos se requieren?",
     "faqA1": "Para una solicitud de préstamo, necesitará un documento de identidad, un comprobante de domicilio reciente y sus últimas 3 nóminas (o comprobante de ingresos para profesionales).",
     "faqQ2": "¿Puedo reembolsar anticipadamente?",
-    "faqA2": "Sí, el reembolso anticipado es gratuito en Altus Finance. Puede reembolsar total o parcialmente su préstamo en cualquier momento sin cargos adicionales.",
+    "faqA2": "Sí, el reembolso anticipado es gratuito en Lendia. Puede reembolsar total o parcialmente su préstamo en cualquier momento sin cargos adicionales.",
     "faqQ3": "¿Cuál es la tasa de aceptación?",
     "faqA3": "Nuestra tasa de aceptación varía según los perfiles, pero revisamos cuidadosamente cada solicitud. Incluso si ha sido rechazado en otro lugar, no dude en hacer una simulación.",
     "faqQ4": "¿Cómo sigo mi solicitud?",
@@ -226,7 +226,7 @@
     "withdrawalRightText": "Tiene un período de 14 días para ejercer su derecho de desistimiento desde la firma del contrato de crédito.",
     "taegTitle": "TAE (Tasa Anual Equivalente)",
     "taegText": "La TAE representa el costo total del crédito para el prestatario, expresado como un porcentaje anual del monto total del crédito. Incluye la tasa de interés nominal así como todas las tarifas obligatorias relacionadas con el crédito (tarifas de solicitud, seguro obligatorio, etc.).",
-    "offerDisclaimer": "Oferta de préstamo sujeta a la aceptación de su solicitud por Altus Finance Group. Tiene un período de reflexión de 14 días para aceptar la oferta de crédito. Un préstamo le compromete y debe ser reembolsado. Verifique su capacidad de reembolso antes de comprometerse."
+    "offerDisclaimer": "Oferta de préstamo sujeta a la aceptación de su solicitud por Lendia Group. Tiene un período de reflexión de 14 días para aceptar la oferta de crédito. Un préstamo le compromete y debe ser reembolsado. Verifique su capacidad de reembolso antes de comprometerse."
   },
   "language": {
     "select": "Idioma"

@@ -114,7 +114,7 @@ export default function LoanApplication() {
    * Mise à jour du title pour le SEO
    */
   useEffect(() => {
-    document.title = "Demander un prêt | Altus Finance";
+    document.title = "Demander un prêt | Lendia";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {

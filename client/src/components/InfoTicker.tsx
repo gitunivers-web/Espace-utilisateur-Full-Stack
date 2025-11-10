@@ -8,7 +8,7 @@ interface TickerMessage {
 const messages: TickerMessage[] = [
   { id: 1, text: "Nouvelle offre : 0% de frais sur vos premiers transferts" },
   { id: 2, text: "Vos données sont protégées grâce au chiffrement AES-256" },
-  { id: 3, text: "Altus Finance Group : la confiance, notre priorité depuis 2020" },
+  { id: 3, text: "Lendia Group : la confiance, notre priorité depuis 2020" },
   { id: 4, text: "Disponible 24/7 pour répondre à vos besoins bancaires" },
 ];
 

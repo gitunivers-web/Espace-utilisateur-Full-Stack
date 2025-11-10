@@ -1,4 +1,4 @@
-# 🏦 Altus Finance Group - Plateforme de Prêt en Ligne
+# 🏦 Lendia Group - Plateforme de Prêt en Ligne
 
 Plateforme de financement complète pour particuliers et professionnels, avec simulation de prêts en ligne et espace client sécurisé.
 
@@ -43,7 +43,7 @@ Ce script restaure automatiquement :
 ## 📊 Structure du Projet
 
 ```
-altus-finance/
+lendia/
 ├── client/              # Frontend React + Vite
 │   ├── src/
 │   │   ├── components/  # Composants réutilisables
@@ -107,7 +107,7 @@ npm run check
 Le système utilise Passport.js avec sessions pour l'authentification.
 
 Utilisateur de test :
-- Email : `sophie.martin@altusfinance.fr`
+- Email : `sophie.martin@lendia.fr`
 - Mot de passe : `Sophie123!`
 
 ## 🛠️ Technologies
@@ -164,4 +164,4 @@ Pour toute question sur le projet, consultez :
 
 ---
 
-**Développé avec ❤️ pour Altus Finance Group**
+**Développé avec ❤️ pour Lendia Group**

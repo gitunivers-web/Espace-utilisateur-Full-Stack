@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Altus Finance"
+    "name": "Lendia"
   },
   "nav": {
     "home": "Home",
@@ -49,7 +49,7 @@
       "discoverOffers": "Discover our professional offers"
     },
     "whyUs": {
-      "title": "Why Altus Finance?",
+      "title": "Why Lendia?",
       "fast": "Fast",
       "fastDesc": "Initial response within 48h and funds disbursement in 72h",
       "transparent": "Transparent",
@@ -80,9 +80,9 @@
     "interest": "Interest"
   },
   "about": {
-    "title": "About Altus Finance",
+    "title": "About Lendia",
     "subtitle": "Your trusted partner for all your financing projects since 2020",
-    "intro1": "Altus Finance Group is an online financing platform specialized in personal and professional loans. Our mission is to make access to credit simple, fast and transparent for everyone.",
+    "intro1": "Lendia Group is an online financing platform specialized in personal and professional loans. Our mission is to make access to credit simple, fast and transparent for everyone.",
     "intro2": "Founded in 2020, our company aims to democratize access to financing through technology and a customer-centric approach. We believe that every project deserves support, which is why we offer financing solutions adapted to both individuals and professionals.",
     "security": "Security",
     "securityDesc": "Protected data and secure transactions",
@@ -93,7 +93,7 @@
     "innovation": "Innovation",
     "innovationDesc": "Cutting-edge technology for your comfort",
     "commitment": "Our Commitment",
-    "commitmentText": "At Altus Finance, we are committed to providing quality service based on transparency, responsiveness and personalized support. Each request is carefully reviewed by our experts to offer you the best financing solution.",
+    "commitmentText": "At Lendia, we are committed to providing quality service based on transparency, responsiveness and personalized support. Each request is carefully reviewed by our experts to offer you the best financing solution.",
     "values": "Our Values",
     "transparency": "Transparency",
     "transparencyDesc": "Rates and conditions clearly displayed, no hidden fees",
@@ -107,7 +107,7 @@
     "innovationValueDesc": "A 100% online platform to simplify your procedures",
     "legalInfo": "Legal Information",
     "companyName": "Company Name",
-    "companyNameValue": "Altus Finance Group SAS",
+    "companyNameValue": "Lendia Group SAS",
     "headquarters": "Headquarters",
     "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 Paris, France",
     "siret": "SIREN / SIRET",
@@ -117,8 +117,8 @@
     "accreditation": "ACPR Accreditation",
     "accreditationValue": "No. 12345 - Credit institution",
     "contact": "Contact",
-    "contactValue": "contact@altusfinance.fr<br />01 23 45 67 89",
-    "legalDisclaimer": "Altus Finance Group is a credit institution approved by the Autorité de Contrôle Prudentiel et de Résolution (ACPR). Subject to ACPR control - 4 Place de Budapest, CS 92459, 75436 Paris Cedex 09."
+    "contactValue": "contact@lendia.fr<br />01 23 45 67 89",
+    "legalDisclaimer": "Lendia Group is a credit institution approved by the Autorité de Contrôle Prudentiel et de Résolution (ACPR). Subject to ACPR control - 4 Place de Budapest, CS 92459, 75436 Paris Cedex 09."
   },
   "contact": {
     "title": "Contact Us",
@@ -139,7 +139,7 @@
     "phoneValue": "01 23 45 67 89",
     "schedule": "Mon-Fri 9am-6pm",
     "emailLabel": "Email",
-    "emailValue": "contact@altusfinance.fr",
+    "emailValue": "contact@lendia.fr",
     "responseTime": "Response within 24h",
     "address": "Address",
     "addressValue": "123 Avenue des Champs-Élysées<br />75008 Paris, France",
@@ -147,8 +147,8 @@
     "hoursValue": "Monday - Friday: 9am - 6pm<br />Saturday - Sunday: Closed"
   },
   "howItWorks": {
-    "pageTitle": "How to get a loan | Altus Finance",
-    "pageDescription": "Discover how to get a loan in 4 simple steps with Altus Finance. Free simulation, quick response within 48h, funds disbursement in 72h.",
+    "pageTitle": "How to get a loan | Lendia",
+    "pageDescription": "Discover how to get a loan in 4 simple steps with Lendia. Free simulation, quick response within 48h, funds disbursement in 72h.",
     "title": "How to get your loan in",
     "titleHighlight": "4 simple steps",
     "subtitle": "A 100% online process, fast and transparent to finance your projects",
@@ -165,7 +165,7 @@
     "step4Desc": "Our team analyzes your application and gives you an initial response within 48h. Track the progress in real-time in your account.",
     "step4Duration": "48h",
     "startCta": "Create my account and start",
-    "whyUs": "Why choose Altus Finance?",
+    "whyUs": "Why choose Lendia?",
     "whyUsSubtitle": "A modern platform designed to simplify your access to financing",
     "fast": "Fast and efficient",
     "fastDesc": "Response within 48h and disbursement in 72h",
@@ -179,7 +179,7 @@
     "faqQ1": "What documents are required?",
     "faqA1": "For a loan application, you will need an ID, a recent proof of address, and your last 3 pay slips (or proof of income for professionals).",
     "faqQ2": "Can I repay early?",
-    "faqA2": "Yes, early repayment is free at Altus Finance. You can repay all or part of your loan at any time without additional fees.",
+    "faqA2": "Yes, early repayment is free at Lendia. You can repay all or part of your loan at any time without additional fees.",
     "faqQ3": "What is the acceptance rate?",
     "faqA3": "Our acceptance rate varies depending on profiles, but we carefully review each application. Even if you have been refused elsewhere, do not hesitate to make a simulation.",
     "faqQ4": "How do I track my application?",
@@ -226,7 +226,7 @@
     "withdrawalRightText": "You have a period of 14 days to exercise your right of withdrawal from the signing of the credit contract.",
     "taegTitle": "APR (Annual Percentage Rate)",
     "taegText": "The APR represents the total cost of credit for the borrower, expressed as an annual percentage of the total credit amount. It includes the nominal interest rate as well as all mandatory fees related to the credit (application fees, mandatory insurance, etc.).",
-    "offerDisclaimer": "Loan offer subject to acceptance of your application by Altus Finance Group. You have a 14-day cooling-off period to accept the credit offer. A loan commits you and must be repaid. Check your repayment capacity before committing."
+    "offerDisclaimer": "Loan offer subject to acceptance of your application by Lendia Group. You have a 14-day cooling-off period to accept the credit offer. A loan commits you and must be repaid. Check your repayment capacity before committing."
   },
   "language": {
     "select": "Language"

@@ -41,7 +41,7 @@ export default function Login() {
         </Button>
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            Altus Finance Group
+            Lendia Group
           </CardTitle>
           <CardDescription>Espace bancaire professionnel sécurisé</CardDescription>
         </CardHeader>
@@ -103,7 +103,7 @@ export default function Login() {
                     </Button>
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    Compte de démonstration : sophie.martin@altusfinance.fr / password123
+                    Compte de démonstration : sophie.martin@lendia.fr / password123
                   </p>
                 </div>
               </form>
