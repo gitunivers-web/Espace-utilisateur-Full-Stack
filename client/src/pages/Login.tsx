@@ -98,7 +98,7 @@ export default function Login() {
           <div className="flex justify-center mb-2">
             <LendiaLogo className="h-16" showText={true} size="lg" />
           </div>
-          <CardDescription>Espace bancaire professionnel sécurisé</CardDescription>
+          <CardDescription>Votre avenir financier commence ici</CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="login" className="w-full">
