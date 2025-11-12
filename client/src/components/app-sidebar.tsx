@@ -20,10 +20,10 @@ import {
   History,
   Settings,
   LogOut,
-  Building2,
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useToast } from "@/hooks/use-toast";
+import { LendiaLogo } from "@/components/LendiaLogo";
 
 const menuItems = [
   { title: "Tableau de bord", url: "/mon-espace", icon: LayoutDashboard },
@@ -62,13 +62,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader className="p-6">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
-            <Building2 className="h-6 w-6 text-primary-foreground" />
-          </div>
-          <div>
-            <h1 className="font-bold text-lg">Lendia</h1>
-            <p className="text-xs text-muted-foreground">Finance Group</p>
-          </div>
+          <LendiaLogo className="h-10" showText={true} size="md" />
         </div>
       </SidebarHeader>
 
