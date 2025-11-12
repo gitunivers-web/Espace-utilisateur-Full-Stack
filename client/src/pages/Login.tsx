@@ -10,6 +10,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ArrowLeft } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { useToast } from "@/hooks/use-toast";
+import { LendiaLogo } from "@/components/LendiaLogo";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -94,9 +95,9 @@ export default function Login() {
           </Link>
         </Button>
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-            Lendia Group
-          </CardTitle>
+          <div className="flex justify-center mb-2">
+            <LendiaLogo className="h-16" showText={true} size="lg" />
+          </div>
           <CardDescription>Espace bancaire professionnel sécurisé</CardDescription>
         </CardHeader>
         <CardContent>
