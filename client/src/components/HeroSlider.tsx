@@ -22,7 +22,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
     const timer = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
@@ -53,7 +53,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
   const slide = slides[currentIndex];
 
   return (
-    <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-muted to-background">
+    <div className="relative w-full h-80 md:h-96 lg:h-[420px] rounded-3xl overflow-hidden bg-gradient-to-br from-muted to-background shadow-2xl">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
 
@@ -70,7 +70,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
             x: { type: "spring", stiffness: 300, damping: 30 },
             opacity: { duration: 0.5 },
           }}
-          className="absolute inset-0 flex items-center justify-between px-8 md:px-12"
+          className="absolute inset-0 flex items-center justify-between px-8 md:px-12 lg:px-16"
         >
           {/* Left content */}
           <div className="flex-1 space-y-4">
@@ -78,7 +78,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-bold"
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground"
             >
               {slide.title}
             </motion.h3>
@@ -86,7 +86,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-base md:text-lg text-muted-foreground max-w-md"
+              className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-md"
             >
               {slide.description}
             </motion.p>
@@ -94,12 +94,12 @@ export function HeroSlider({ slides }: HeroSliderProps) {
 
           {/* Right visual element */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className={`hidden md:flex items-center justify-center w-64 h-64 rounded-2xl ${slide.color} flex-shrink-0`}
+            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            className={`hidden md:flex items-center justify-center w-48 md:w-56 lg:w-64 h-48 md:h-56 lg:h-64 rounded-2xl ${slide.color} flex-shrink-0 shadow-xl`}
           >
-            <div className="text-white/80">{slide.icon}</div>
+            <div className="text-white/90">{slide.icon}</div>
           </motion.div>
         </motion.div>
       </AnimatePresence>
@@ -107,17 +107,17 @@ export function HeroSlider({ slides }: HeroSliderProps) {
       {/* Navigation buttons */}
       <button
         onClick={() => paginate(-1)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 transition-colors text-white backdrop-blur-sm"
         data-testid="button-slider-prev"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
       </button>
       <button
         onClick={() => paginate(1)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 transition-colors text-white backdrop-blur-sm"
         data-testid="button-slider-next"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
       </button>
 
       {/* Indicators */}
@@ -129,12 +129,13 @@ export function HeroSlider({ slides }: HeroSliderProps) {
               setDirection(index > currentIndex ? 1 : -1);
               setCurrentIndex(index);
             }}
-            className={`h-2 rounded-full transition-all ${
+            className={`transition-all duration-300 rounded-full ${
               index === currentIndex
-                ? "w-8 bg-white"
-                : "w-2 bg-white/40 hover:bg-white/60"
+                ? "w-8 h-3 bg-white shadow-lg"
+                : "w-2 h-2 bg-white/40 hover:bg-white/70"
             }`}
             data-testid={`button-slide-indicator-${index}`}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
