@@ -148,7 +148,7 @@ export default function Transferts() {
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                Les transferts sont traités instantanément entre comptes Lendia
+                Les transferts sont traites instantanement entre comptes Solventis
               </p>
             </CardContent>
           </Card>

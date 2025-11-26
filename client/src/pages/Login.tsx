@@ -10,7 +10,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ArrowLeft } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { useToast } from "@/hooks/use-toast";
-import { LendiaLogo } from "@/components/LendiaLogo";
+import { SolventisLogo } from "@/components/SolventisLogo";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -96,9 +96,9 @@ export default function Login() {
         </Button>
         <CardHeader className="text-center">
           <div className="flex justify-center mb-2">
-            <LendiaLogo className="h-16" showText={true} size="lg" />
+            <SolventisLogo showText={true} size="lg" />
           </div>
-          <CardDescription>Votre avenir financier commence ici</CardDescription>
+          <CardDescription>Votre solution de credit fiable et rapide</CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="login" className="w-full">
@@ -159,7 +159,7 @@ export default function Login() {
                       </Button>
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      Compte de démonstration : demo@lendia.fr / demo123
+                      Compte de demonstration : demo@solventis-group.fr / demo123
                     </p>
                   </div>
                 </form>

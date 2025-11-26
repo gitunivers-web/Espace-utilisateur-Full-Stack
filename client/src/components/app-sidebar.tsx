@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useToast } from "@/hooks/use-toast";
-import { LendiaLogo } from "@/components/LendiaLogo";
+import { SolventisLogo } from "@/components/SolventisLogo";
 
 const menuItems = [
   { title: "Tableau de bord", url: "/mon-espace", icon: LayoutDashboard },
@@ -62,7 +62,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader className="p-6">
         <div className="flex items-center gap-3">
-          <LendiaLogo className="h-10" showText={true} size="md" />
+          <SolventisLogo showText={true} size="md" />
         </div>
       </SidebarHeader>
 

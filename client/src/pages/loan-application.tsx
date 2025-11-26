@@ -119,7 +119,7 @@ export default function LoanApplication() {
    * Mise à jour du title pour le SEO
    */
   useEffect(() => {
-    document.title = "Demander un prêt | Lendia";
+    document.title = "Demander un pret | Solventis Group";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {

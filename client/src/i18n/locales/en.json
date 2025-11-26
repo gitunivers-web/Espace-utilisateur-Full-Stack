@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Lendia"
+    "name": "Solventis Group"
   },
   "nav": {
     "home": "Home",
@@ -10,15 +10,15 @@
     "about": "About",
     "contact": "Contact",
     "login": "Login",
-    "createAccount": "Create my account",
+    "createAccount": "Apply for a loan",
     "mySpace": "My Space"
   },
   "home": {
     "hero": {
-      "title": "Finance your projects with complete",
-      "titleHighlight": "simplicity",
-      "subtitle": "Financing solutions for individuals and professionals, with competitive rates from 3.5% and quick response",
-      "ctaAccount": "Create my account",
+      "title": "Your reliable and fast",
+      "titleHighlight": "credit solution",
+      "subtitle": "Simple, secure and transparent financing solutions. Get a response in 48h with competitive rates from 3.5%.",
+      "ctaAccount": "Apply for a loan now",
       "ctaSimulator": "Simulate my loan",
       "response": "Response",
       "responseTime": "within 48h",
@@ -26,6 +26,47 @@
       "acceptance": "acceptance",
       "rateFrom": "Rates from",
       "rateValue": "3.5%"
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "subtitle": "Get your loan in 3 simple steps",
+      "step1Title": "Submit your application",
+      "step1Desc": "Fill out our online form in minutes. Simple, fast and 100% secure.",
+      "step2Title": "Express analysis",
+      "step2Desc": "Our team reviews your file and gives you an initial response within 48h.",
+      "step3Title": "Receive your funds",
+      "step3Desc": "Once approved, funds are deposited directly into your account within 72h."
+    },
+    "whyUs": {
+      "title": "Why choose Solventis Group",
+      "subtitle": "Advantages that make the difference",
+      "security": "Maximum security",
+      "securityDesc": "Your data is protected by bank-level encryption. GDPR compliance guaranteed.",
+      "speed": "Speed of execution",
+      "speedDesc": "Initial response in 48h and funds released in 72h. No time wasted.",
+      "flexibility": "Total flexibility",
+      "flexibilityDesc": "Free early repayment, payment deferral available. Adapt your loan to your life.",
+      "support": "Dedicated customer service",
+      "supportDesc": "A team of experts available to support you at every step of your project."
+    },
+    "testimonials": {
+      "title": "They trust us",
+      "subtitle": "Discover our customer reviews",
+      "testimonial1": {
+        "name": "Marie L.",
+        "role": "Entrepreneur",
+        "text": "Simple and fast process. I got my business loan in less than a week. Impeccable service!"
+      },
+      "testimonial2": {
+        "name": "Thomas D.",
+        "role": "Individual",
+        "text": "Excellent rate for my auto loan. The team supported me from start to finish. Highly recommend."
+      },
+      "testimonial3": {
+        "name": "Sophie M.",
+        "role": "Merchant",
+        "text": "Very satisfied with my collaboration with Solventis. Total transparency and no surprise fees."
+      }
     },
     "solutions": {
       "title": "Our Financing Solutions",
@@ -45,20 +86,14 @@
       "bpiGuaranteeValue": "Up to 90%",
       "bpiGuaranteeDesc": "Facilitates access to financing",
       "amounts": "Amounts",
-      "amountsValue": "5K€ to 2M€",
+      "amountsValue": "5K to 2M",
       "amountsDesc": "According to your project and profile",
       "discoverOffers": "Discover our professional offers"
     },
-    "whyUs": {
-      "title": "Why Lendia?",
-      "fast": "Fast",
-      "fastDesc": "Initial response within 48h and funds disbursement in 72h",
-      "transparent": "Transparent",
-      "transparentDesc": "Rates and fees clearly displayed, no hidden charges",
-      "flexible": "Flexible",
-      "flexibleDesc": "Free early repayment and payment deferral options",
-      "advantageous": "Advantageous",
-      "advantageousDesc": "Competitive rates and negotiated conditions"
+    "cta": {
+      "title": "Ready to fund your project?",
+      "subtitle": "Get an initial response in 48h",
+      "button": "Start my application"
     }
   },
   "simulator": {
@@ -81,10 +116,10 @@
     "interest": "Interest"
   },
   "about": {
-    "title": "About Lendia",
+    "title": "About Solventis Group",
     "subtitle": "Your trusted partner for all your financing projects since 2020",
-    "intro1": "Lendia Group is an online financing platform specialized in personal and professional loans. Our mission is to make access to credit simple, fast and transparent for everyone.",
-    "intro2": "Founded in 2020, our company aims to democratize access to financing through technology and a customer-centric approach. We believe that every project deserves support, which is why we offer financing solutions adapted to both individuals and professionals.",
+    "intro1": "Solventis Group is an online financing platform specialized in personal and professional loans. Our mission is to make access to credit simple, fast and transparent for everyone.",
+    "intro2": "Founded in 2020, our company aims to democratize access to financing through technology and a customer-centric approach.",
     "security": "Security",
     "securityDesc": "Protected data and secure transactions",
     "clients": "+10,000 clients",
@@ -94,7 +129,7 @@
     "innovation": "Innovation",
     "innovationDesc": "Cutting-edge technology for your comfort",
     "commitment": "Our Commitment",
-    "commitmentText": "At Lendia, we are committed to providing quality service based on transparency, responsiveness and personalized support. Each request is carefully reviewed by our experts to offer you the best financing solution.",
+    "commitmentText": "At Solventis Group, we are committed to providing quality service based on transparency, responsiveness and personalized support.",
     "values": "Our Values",
     "transparency": "Transparency",
     "transparencyDesc": "Rates and conditions clearly displayed, no hidden fees",
@@ -108,18 +143,18 @@
     "innovationValueDesc": "A 100% online platform to simplify your procedures",
     "legalInfo": "Legal Information",
     "companyName": "Company Name",
-    "companyNameValue": "Lendia Group SAS",
+    "companyNameValue": "Solventis Group SAS",
     "headquarters": "Headquarters",
-    "headquartersValue": "123 Avenue des Champs-Élysées<br />75008 Paris, France",
+    "headquartersValue": "15 Avenue de l'Opera<br />75001 Paris, France",
     "siret": "SIREN / SIRET",
-    "siretValue": "123 456 789 00012",
+    "siretValue": "912 345 678 00015",
     "capital": "Share Capital",
-    "capitalValue": "€500,000",
+    "capitalValue": "1,000,000 EUR",
     "accreditation": "ACPR Accreditation",
-    "accreditationValue": "No. 12345 - Credit institution",
+    "accreditationValue": "No. 23456 - Credit institution",
     "contact": "Contact",
-    "contactValue": "contact@lendia.fr<br />01 23 45 67 89",
-    "legalDisclaimer": "Lendia Group is a credit institution approved by the Autorité de Contrôle Prudentiel et de Résolution (ACPR). Subject to ACPR control - 4 Place de Budapest, CS 92459, 75436 Paris Cedex 09."
+    "contactValue": "contact@solventis-group.fr<br />01 44 55 66 77",
+    "legalDisclaimer": "Solventis Group is a credit institution approved by the Autorite de Controle Prudentiel et de Resolution (ACPR)."
   },
   "contact": {
     "title": "Contact Us",
@@ -137,36 +172,36 @@
     "messagePlaceholder": "Your message...",
     "send": "Send message",
     "phoneLabel": "Phone",
-    "phoneValue": "01 23 45 67 89",
+    "phoneValue": "01 44 55 66 77",
     "schedule": "Mon-Fri 9am-6pm",
     "emailLabel": "Email",
-    "emailValue": "contact@lendia.fr",
+    "emailValue": "contact@solventis-group.fr",
     "responseTime": "Response within 24h",
     "address": "Address",
-    "addressValue": "123 Avenue des Champs-Élysées<br />75008 Paris, France",
+    "addressValue": "15 Avenue de l'Opera<br />75001 Paris, France",
     "hours": "Hours",
     "hoursValue": "Monday - Friday: 9am - 6pm<br />Saturday - Sunday: Closed"
   },
   "howItWorks": {
-    "pageTitle": "How to get a loan | Lendia",
-    "pageDescription": "Discover how to get a loan in 4 simple steps with Lendia. Free simulation, quick response within 48h, funds disbursement in 72h.",
+    "pageTitle": "How to get a loan | Solventis Group",
+    "pageDescription": "Discover how to get a loan in 4 simple steps with Solventis Group.",
     "title": "How to get your loan in",
     "titleHighlight": "4 simple steps",
     "subtitle": "A 100% online process, fast and transparent to finance your projects",
     "step1Title": "1. Simulate your loan",
-    "step1Desc": "Use our online simulator to estimate your monthly payments and find the offer that fits your budget.",
+    "step1Desc": "Use our online simulator to estimate your monthly payments.",
     "step1Duration": "2 min",
     "step2Title": "2. Sign up in a few clicks",
-    "step2Desc": "Create your account in seconds to access your secure personal space and submit your loan application.",
+    "step2Desc": "Create your account in seconds to access your secure personal space.",
     "step2Duration": "1 min",
     "step3Title": "3. Complete your application from My Account",
-    "step3Desc": "Log in to your dashboard and fill out the application form with your information. Everything is done 100% online.",
+    "step3Desc": "Log in to your dashboard and fill out the application form.",
     "step3Duration": "10 min",
     "step4Title": "4. Receive a quick response",
-    "step4Desc": "Our team analyzes your application and gives you an initial response within 48h. Track the progress in real-time in your account.",
+    "step4Desc": "Our team analyzes your application and gives you an initial response within 48h.",
     "step4Duration": "48h",
     "startCta": "Create my account and start",
-    "whyUs": "Why choose Lendia?",
+    "whyUs": "Why choose Solventis Group?",
     "whyUsSubtitle": "A modern platform designed to simplify your access to financing",
     "fast": "Fast and efficient",
     "fastDesc": "Response within 48h and disbursement in 72h",
@@ -178,13 +213,13 @@
     "personalizedDesc": "A dedicated team to advise you",
     "faq": "Frequently Asked Questions",
     "faqQ1": "What documents are required?",
-    "faqA1": "For a loan application, you will need an ID, a recent proof of address, and your last 3 pay slips (or proof of income for professionals).",
+    "faqA1": "For a loan application, you will need an ID, a recent proof of address, and your last 3 pay slips.",
     "faqQ2": "Can I repay early?",
-    "faqA2": "Yes, early repayment is free at Lendia. You can repay all or part of your loan at any time without additional fees.",
+    "faqA2": "Yes, early repayment is free at Solventis Group.",
     "faqQ3": "What is the acceptance rate?",
-    "faqA3": "Our acceptance rate varies depending on profiles, but we carefully review each application. Even if you have been refused elsewhere, do not hesitate to make a simulation.",
+    "faqA3": "Our acceptance rate varies depending on profiles, but we carefully review each application.",
     "faqQ4": "How do I track my application?",
-    "faqA4": "Once your application is submitted, you can track its progress in real-time in your 'My Account' client area. You will also receive email notifications at each step.",
+    "faqA4": "You can track its progress in real-time in your client area.",
     "readyTitle": "Ready to start your project?",
     "readySubtitle": "Get an initial response within 48h",
     "simulateCta": "Simulate my loan",
@@ -198,7 +233,7 @@
     "professionals": "Professionals"
   },
   "footer": {
-    "tagline": "Your trusted partner for all your financing projects",
+    "tagline": "Your reliable and fast credit solution for all your projects",
     "ourLoans": "Our Loans",
     "personalLoan": "Personal Loan",
     "autoLoan": "Auto Loan",
@@ -224,10 +259,10 @@
     "totalCreditCost": "Total Credit Cost",
     "totalAmountDue": "Total Amount Due",
     "withdrawalRight": "Right of withdrawal",
-    "withdrawalRightText": "You have a period of 14 days to exercise your right of withdrawal from the signing of the credit contract.",
+    "withdrawalRightText": "You have a period of 14 days to exercise your right of withdrawal.",
     "taegTitle": "APR (Annual Percentage Rate)",
-    "taegText": "The APR represents the total cost of credit for the borrower, expressed as an annual percentage of the total credit amount. It includes the nominal interest rate as well as all mandatory fees related to the credit (application fees, mandatory insurance, etc.).",
-    "offerDisclaimer": "Loan offer subject to acceptance of your application by Lendia Group. You have a 14-day cooling-off period to accept the credit offer. A loan commits you and must be repaid. Check your repayment capacity before committing."
+    "taegText": "The APR represents the total cost of credit for the borrower.",
+    "offerDisclaimer": "Loan offer subject to acceptance of your application by Solventis Group."
   },
   "language": {
     "select": "Language"
@@ -282,7 +317,7 @@
     "stepConfirmation": {
       "title": "Confirmation",
       "verifyInfo": "Verify your information",
-      "verifyInfoDesc": "Make sure all information is correct before submitting your application. Once submitted, your application will be reviewed by our team within 48 hours.",
+      "verifyInfoDesc": "Make sure all information is correct before submitting your application.",
       "selectedLoan": "Selected loan",
       "loanType": "Loan type",
       "category": "Category",
@@ -296,7 +331,7 @@
       "companyInfo": "Company information",
       "importantInfo": "Important information:",
       "reviewTime": "Your application will be reviewed within 48 business hours",
-      "documentsRequired": "Documents will be required (ID, proof of address, proof of income)",
+      "documentsRequired": "Documents will be required",
       "finalApproval": "Final approval is subject to review of your complete file"
     },
     "success": {
@@ -318,7 +353,7 @@
     "title": "My Loan Applications",
     "subtitle": "Track and manage your loan applications",
     "noApplications": "No loan applications yet",
-    "noApplicationsDesc": "You haven't submitted any loan applications yet. Start by simulating a loan.",
+    "noApplicationsDesc": "You haven't submitted any loan applications yet.",
     "startSimulation": "Simulate a loan",
     "newApplication": "New application",
     "loanApplication": "Loan application",
@@ -351,7 +386,7 @@
   "loanTypes": {
     "personal": {
       "name": "Personal Loan",
-      "description": "Flexible financing up to €75,000 for all your personal projects, no proof of use required. Quick response within 48h and funds released in 72h.",
+      "description": "Flexible financing up to 75,000 EUR for all your personal projects.",
       "features": {
         "noproof": "No proof of use required",
         "freeuse": "Free use of funds",
@@ -361,7 +396,7 @@
     },
     "auto": {
       "name": "Auto Loan",
-      "description": "Finance your new or used vehicle up to €75,000 with competitive rates from 0.90%. Fast release and insurance included.",
+      "description": "Finance your new or used vehicle up to 75,000 EUR.",
       "features": {
         "newused": "New and used vehicles",
         "zerodownpayment": "Possible without down payment",
@@ -371,7 +406,7 @@
     },
     "motorcycle": {
       "name": "Motorcycle Loan",
-      "description": "Finance your two-wheeler from €500 to €50,000. All brands accepted, new or used. Equipment financing available.",
+      "description": "Finance your two-wheeler from 500 EUR to 50,000 EUR.",
       "features": {
         "allbrands": "All brands accepted",
         "newused": "New or used",
@@ -381,7 +416,7 @@
     },
     "home": {
       "name": "Home Improvement Loan",
-      "description": "Renovate your home with financing from €1,000 to €75,000. Energy transition, renovation, development. Tax credit possible.",
+      "description": "Renovate your home with financing from 1,000 EUR to 75,000 EUR.",
       "features": {
         "renovation": "Renovation and development",
         "energytransition": "Energy transition",
@@ -391,7 +426,7 @@
     },
     "business": {
       "name": "Business Loan",
-      "description": "Financing for your business development from €10,000 to €500,000. Competitive SME rates from 2.50%. BPI France guarantee possible.",
+      "description": "Financing for your business development.",
       "features": {
         "development": "Business development",
         "bpibackup": "BPI France guarantee possible",
@@ -401,7 +436,7 @@
     },
     "cashflow": {
       "name": "Working Capital",
-      "description": "Manage your cash flow with financing from €5,000 to €250,000. Flexible and fast, for short-term or seasonal needs.",
+      "description": "Manage your cash flow with flexible financing.",
       "features": {
         "quickaccess": "Quick access to funds",
         "flexible": "Flexible amount and duration",
@@ -411,7 +446,7 @@
     },
     "equipment": {
       "name": "Equipment Financing",
-      "description": "Equip your business with financing up to €1,000,000. Machinery, vehicles, IT equipment. Amortization over asset life.",
+      "description": "Equip your business with adapted financing.",
       "features": {
         "allequipment": "All types of equipment",
         "amortization": "Adapted amortization",
@@ -421,7 +456,7 @@
     },
     "commercial": {
       "name": "Commercial Real Estate",
-      "description": "Acquire your professional premises with financing from €50,000 to €2,000,000. Offices, warehouses, shops. Fixed rates over 20 years.",
+      "description": "Acquire your professional premises.",
       "features": {
         "officewarehouse": "Offices, warehouses, shops",
         "longterm": "Terms up to 20 years",
@@ -431,7 +466,7 @@
     },
     "startup": {
       "name": "Business Creation",
-      "description": "Launch your project with financing from €5,000 to €150,000. BPI France support. Honor guarantee possible. Payment deferral.",
+      "description": "Launch your entrepreneurial project.",
       "features": {
         "zerotothree": "Companies 0 to 3 years old",
         "honorguarantee": "Honor guarantee accepted",
@@ -441,7 +476,7 @@
     },
     "acquisition": {
       "name": "Business Acquisition",
-      "description": "Acquire a business with financing from €20,000 to €1,000,000. Goodwill, shares, commercial walls. Structured financing.",
+      "description": "Acquire a business with structured financing.",
       "features": {
         "fullacquisition": "Total or partial acquisition",
         "equity": "Share financing",

@@ -6,7 +6,7 @@ import { LegalNoticeBanner } from "@/components/legal/LegalNotice";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/lib/api";
-import { LendiaLogo } from "@/components/LendiaLogo";
+import { SolventisLogo } from "@/components/SolventisLogo";
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -30,7 +30,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
             <div className="flex items-center gap-8">
               <Link href="/">
                 <div className="flex items-center gap-2 cursor-pointer">
-                  <LendiaLogo className="h-10" showText={true} size="md" />
+                  <SolventisLogo showText={true} size="md" />
                 </div>
               </Link>
               

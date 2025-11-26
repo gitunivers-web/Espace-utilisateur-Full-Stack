@@ -1,19 +1,19 @@
 /**
- * Page "Comment ça marche" - Explique le processus de demande de prêt
+ * Page "Comment ca marche" - Explique le processus de demande de pret
  * 
  * @component HowItWorks
- * @description Page publique détaillant les 4 étapes du processus de demande de prêt chez Lendia.
- * Comprend une timeline visuelle, les avantages clés, et des CTA pour démarrer une demande.
+ * @description Page publique detaillant les 4 etapes du processus de demande de pret chez Solventis Group.
+ * Comprend une timeline visuelle, les avantages cles, et des CTA pour demarrer une demande.
  * 
  * @section SEO
- * - Title: Comment obtenir un prêt | Lendia
- * - Description: Découvrez comment obtenir un prêt en 4 étapes simples avec Lendia
+ * - Title: Comment obtenir un pret | Solventis Group
+ * - Description: Decouvrez comment obtenir un pret en 4 etapes simples avec Solventis Group
  * 
  * @section Sections
  * 1. Hero - Titre et description du processus
- * 2. Timeline - 4 étapes visuelles du processus
- * 3. Avantages - Pourquoi choisir Lendia
- * 4. CTA - Appel à l'action pour démarrer une demande
+ * 2. Timeline - 4 etapes visuelles du processus
+ * 3. Avantages - Pourquoi choisir Solventis Group
+ * 4. CTA - Appel a l'action pour demarrer une demande
  * 
  * @route /comment-ca-marche
  * @layout PublicLayout

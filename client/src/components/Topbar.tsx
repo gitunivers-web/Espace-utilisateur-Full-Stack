@@ -13,7 +13,7 @@ import { Bell, Globe, Moon, Sun, User, Settings, LogOut } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useBankStore } from "@/lib/store";
 import { useToast } from "@/hooks/use-toast";
-import { LendiaLogo } from "@/components/LendiaLogo";
+import { SolventisLogo } from "@/components/SolventisLogo";
 
 interface TopbarProps {
   userName: string;
@@ -38,7 +38,7 @@ export default function Topbar({ userName }: TopbarProps) {
     <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex items-center gap-4">
         <SidebarTrigger data-testid="button-sidebar-toggle" />
-        <LendiaLogo className="h-8 hidden md:block" showText={false} size="md" />
+        <SolventisLogo className="hidden md:block" showText={false} size="md" />
         <h2 className="text-lg font-semibold hidden sm:block">
           Bonjour, {userName} 👋
         </h2>
