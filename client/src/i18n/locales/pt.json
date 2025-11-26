@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Lendia"
+    "name": "Solventis Group"
   },
   "nav": {
     "home": "Início",
@@ -118,7 +118,7 @@
     "accreditation": "Credenciamento ACPR",
     "accreditationValue": "Nº 12345 - Instituição de crédito",
     "contact": "Contato",
-    "contactValue": "contact@lendia.fr<br />01 23 45 67 89",
+    "contactValue": "contact@solventis-group.fr<br />01 23 45 67 89",
     "legalDisclaimer": "Lendia Group é uma instituição de crédito aprovada pela Autorité de Contrôle Prudentiel et de Résolution (ACPR). Sujeito ao controle ACPR - 4 Place de Budapest, CS 92459, 75436 Paris Cedex 09."
   },
   "contact": {
@@ -140,7 +140,7 @@
     "phoneValue": "01 23 45 67 89",
     "schedule": "Seg-Sex 9h-18h",
     "emailLabel": "E-mail",
-    "emailValue": "contact@lendia.fr",
+    "emailValue": "contact@solventis-group.fr",
     "responseTime": "Resposta em 24h",
     "address": "Endereço",
     "addressValue": "123 Avenue des Champs-Élysées<br />75008 Paris, França",

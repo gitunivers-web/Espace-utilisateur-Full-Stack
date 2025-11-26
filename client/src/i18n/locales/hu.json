@@ -1,6 +1,6 @@
 {
   "app": {
-    "name": "Lendia"
+    "name": "Solventis Group"
   },
   "nav": {
     "home": "Kezdőlap",
@@ -118,7 +118,7 @@
     "accreditation": "ACPR Akkreditáció",
     "accreditationValue": "12345. szám - Hitelintézet",
     "contact": "Kapcsolat",
-    "contactValue": "contact@lendia.fr<br />01 23 45 67 89",
+    "contactValue": "contact@solventis-group.fr<br />01 23 45 67 89",
     "legalDisclaimer": "Az Lendia Group az Autorité de Contrôle Prudentiel et de Résolution (ACPR) által jóváhagyott hitelintézet. Az ACPR ellenőrzése alatt áll - 4 Place de Budapest, CS 92459, 75436 Párizs Cedex 09."
   },
   "contact": {
@@ -140,7 +140,7 @@
     "phoneValue": "01 23 45 67 89",
     "schedule": "H-P 9-18",
     "emailLabel": "Email",
-    "emailValue": "contact@lendia.fr",
+    "emailValue": "contact@solventis-group.fr",
     "responseTime": "Válasz 24 órán belül",
     "address": "Cím",
     "addressValue": "123 Avenue des Champs-Élysées<br />75008 Párizs, Franciaország",
