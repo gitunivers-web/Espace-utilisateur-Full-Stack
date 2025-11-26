@@ -1,0 +1,99 @@
+Contexte & Objectif du projet
+
+Application web / site de crédit — interface grand public et back‑office (dashboard client).
+
+Front‑end déployé sur Vercel, backend + base Postgresql sur Render — performance et UX fluide sont un must.
+
+Public visé : plutôt “clients sérieux, tech-savvy ou premium” — confiance, clarté, modernité.
+
+Style attendu : aspiration “fintech 2025” : mélange d’élégance, de high‑tech, de profondeur visuelle, de sobriété + “wow factor”.
+
+💡 Prompt UI/UX & Design Spec (à copier/coller / adapter)
+
+“Design a premium fintech web application interface for a credit‑lending platform (desktop + responsive mobile/tablet). The style is ultra‑modern 2025: elegant, immersive, refined — think high‑end fintech meets futuristic minimalism.
+
+Style & Visual Identity
+
+Use a colour palette that evokes trust, sophistication and subtlety — e.g. deep midnight‑blue / navy (#0D1B2A), gradient overlays blending from cool navy → teal (#0D1B2A → #1B4F72 → #2E7A99), with accent highlights in soft electric teal or cyan (#3CD1E0 / #40E0D0) and occasional warm contrast (soft coral or muted gold, e.g. #FFB78C or #F9C784) for calls‑to‑action, emphasis, alerts, success.
+
+Implement glass‑morphism / frosted‑glass panels for overlays, modals, cards or dashboards — semi‑transparent backgrounds with blurred backdrop, subtle light refractions for depth. Hover & focus states slightly sharpen the glass, increase opacity, or add subtle glow.
+
+Combine with soft shadows, gentle depth (“neumorphism 2.0 / soft‑UI”) for buttons, toggles, cards — tactile but minimal. Use subtle inner & outer shadows to give a “layered, embossed” feel without heavy skeuomorphism.
+
+Typography: adopt bold, architectural typography — large headings, variable / responsive font‑scales, generous line‑height, modern sans‑serif (or geometric‑sans) — to create clarity and brand authority. Body text should be clean, highly readable, good contrast. Use typographic hierarchy intentionally (hero titles, section‑titles, sub‑titles, captions).
+
+Mood: futuristic but trustworthy, “premium tool / financial vault” — mix de sérieux & esthétisme, profondeur visuelle, sobriété + légères touches high-tech.
+
+Interactions & Animations
+
+Micro‑interactions riches et raffinées : hover effects (buttons/cards gently lift, glow, or soften), click animations (smooth, 150‑250 ms), toggles/sliders with soft transitions, input focus animations (border/glass highlight), form submission feedback (smooth loading spinners / progress bars, success tick animations).
+
+Motion & transitions UI fluides : smooth page transitions, content fade‑in, sliding panels, subtle parallax or depth scroll effect on large backgrounds or hero sections.
+
+Where relevant, consider light 3D or pseudo‑3D effects (e.g. rotating graphs or 3D‑style data widgets) for dashboards or data visualization, but keep performance in mind (use WebGL / lightweight 3D lib only if necessary and optimized).
+
+Support dark mode & light mode — design both themes from start (glass / glassmorphism + neumorphism + soft UI + gradients adapt elegantly in dark mode) with good contrast, accessible colors, readability.
+
+Structure & Layout
+
+Use a responsive, adaptive layout (grid / flex) — for desktop, tablet, mobile; optimize for wide displays but remain performant on small screens.
+
+Navigation should be intuitive, minimal, discrète — maybe un “sidebar collapsible” sur desktop, “hamburger + bottom nav” sur mobile.
+
+On landing / marketing pages: grandes sections hero (full‑width), images/illustrations minimales / stylisées, maybe un léger fond en gradient ou texture soft, avec overlay glass‑morphism cards pour les CTA.
+
+On dashboard / application interne : cards, widgets, data panels, modals — tout en glass + soft UI / neumorphism pour hiérarchie visuelle, profondeur, lisibilité.
+
+Formulaires & flux utilisateurs (inscription, demande de crédit, onboarding, verification KYC, dashboard prêt, etc.) doivent être clairs, simples, ergonomiques — avec focus sur feedback visuel, statuts, erreurs, progress bar, micro‑animations.
+
+Performance, Accessibilité & Best Practices
+
+Design pour performance : images optimisées (WebP / AVIF), lazy‑loading, animations JS / CSS légères, éviter DOM over‑complex.
+
+Accessibilité (contraste, tab‑navigation, aria‑labels, support clavier, readability) — garantir que glass‑morphism / soft UI n’entrave pas la lisibilité ; prévoir fallback pour défiler & lisibilité si blur / transparence est désactivée.
+
+Thème global : light + dark + (si possible) auto‑switch selon préférence système ou horaire.
+
+Envisager modularité / composants UI réutilisables (cards, modals, buttons, inputs, toggles, notifications) — pour faciliter dev front (Next.js, React) + cohérence sur tout le site.
+
+Pages & Flows clés (à maquetter / prototyper)
+
+Landing / Home page “accueil crédit” – hero + valeur proposition, CTA, avantages, témoignages, FAQ, footer minimal.
+
+Signup / Login / Onboarding – interface fluide, simple, rassurante, avec micro‑animations.
+
+Dashboard client – overview des crédits, historique, épargne/financement, CTA “Demander un crédit”, “Simuler”, “Profil”. Utiliser cards glassmorphism + data widgets + KPI + graphiques stylisés.
+
+Formulaire de demande de crédit – multi‑étapes, clair, feedback instantané, validation, loader, transitions douces.
+
+Zone back‑office / admin (si nécessaire) – interface sobre, high‑efficiency, dark‑mode-friendly, tableaux/lists stylisées, filtres, modals, notifications.
+
+Pages légales, contact, aide/FAQ – clean & lisible, typographie soignée, harmonie visuelle.
+
+Ton & Émotion
+
+Ton : confiance, modernité, premium, sécurisé, minimaliste, tech‑savvy.
+
+Emotion : “calme mais puissant”, “haut de gamme mais accessible”, “fiabilité + sophistication”.
+
+L’expérience doit dégager un sentiment de sérieux & clarté financière (important pour une fintech), tout en donnant “envie d’utiliser / faire un prêt” — design rassurant + design désirable.
+
+Technos & Contraintes Déploiement
+
+Produire des composants compatibles React / Next.js (styled-components / CSS‑in‑JS / Tailwind / CSS‑modules selon votre stack).
+
+Optimisation pour Vercel (SSR / SSG / ISR selon besoins), lazy‑loading, code‑splitting, bundle minimal.
+
+Backend / API (Render + PostgreSQL) non visible, mais prévoir UI pour affichage données : loaders, états “chargement”, “erreur”, “vide”.
+
+Prévoir système de thèmes (dark / light), mode performance (désactivation animations) / accessibilité (contraste, reduce‑motion).
+
+Output attendu :
+
+Un kit UI (maquette Figma / Sketch / Figma + design system) complet, incluant palette, typographie, composants, states (hover/focus/active), layout grid, responsive breakpoints + mode dark/light.
+
+Un prototype interactif (navigation, micro‑animations, transitions, flows clés).
+
+Documentation des guidelines pour développement frontend (styles, spacing, composant, accessibility).
+
+Inspiration / Ambiance générale : “futuriste mais sobre”, “verre et lumière”, “finance high‑tech, confiance & élégance”, “digital vault” — une interface qui évoque la sécurité, la transparence, la modernité, sans lourdeur visuelle.
