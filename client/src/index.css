@@ -240,7 +240,7 @@
 
   /* ==================== PREMIUM BUTTON STYLES ==================== */
   .btn-premium {
-    @apply relative overflow-hidden font-medium transition-all duration-200 group;
+    @apply relative overflow-hidden font-medium transition-all duration-200;
   }
 
   .btn-premium::before {
