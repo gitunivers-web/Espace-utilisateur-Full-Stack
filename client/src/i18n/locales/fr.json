@@ -11,7 +11,8 @@
     "contact": "Contact",
     "login": "Connexion",
     "createAccount": "Demander un credit",
-    "mySpace": "Mon Espace"
+    "mySpace": "Mon Espace",
+    "applyLoan": "Demander un credit"
   },
   "home": {
     "hero": {

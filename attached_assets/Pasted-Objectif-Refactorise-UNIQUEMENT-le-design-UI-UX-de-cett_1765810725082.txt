@@ -1,0 +1,132 @@
+Objectif :
+Refactorise UNIQUEMENT le design UI/UX de cette landing page de crédit professionnel, sans modifier le contenu métier, les textes clés ni les CTA existants.
+Le rendu doit être radicalement plus moderne, premium et fintech, inspiré de Qonto, Stripe, Linear, tout en restant original.
+
+Contraintes importantes
+
+❌ Ne pas supprimer :
+
+le nom Solventis Group
+
+les titres existants
+
+les CTA (« Demander un crédit », « Simuler mon prêt »)
+
+les sections (hero, offres, navigation)
+
+✅ Tu peux :
+
+reformuler légèrement les paragraphes pour les rendre plus percutants
+
+ajouter des micro-textes de confiance (sécurité, rapidité, conformité)
+
+Nouveau style visuel (priorité absolue)
+Direction artistique
+
+Style fintech premium / SaaS
+
+Fond blanc pur
+
+Aucune grosse carte colorée
+
+Espaces larges, respiration, hiérarchie claire
+
+Ombres très légères et subtiles
+
+Typographie
+
+Police principale : Inter ou Poppins
+
+Titres : très grands, gras, sobres
+
+Texte secondaire : gris foncé, lisible
+
+Header (à refaire)
+
+Logo texte minimaliste à gauche
+
+Menu discret au centre
+
+À droite :
+
+Sélecteur de langue simple (icône globe)
+
+Bouton principal noir : « Demander un crédit »
+
+Header collant (sticky), fond blanc, légère bordure basse
+
+Hero Section (refonte complète)
+
+Mise en page 2 colonnes
+
+Colonne gauche
+
+Titre existant mis en valeur avec :
+
+mots clés en noir
+
+accent subtil (bleu/vert) sur « fiable et rapide »
+
+Texte descriptif plus aéré
+
+Deux boutons :
+
+CTA principal : noir plein
+
+CTA secondaire : contour noir
+
+Colonne droite
+
+Mockup UI moderne (dashboard crédit, graphiques, cartes)
+
+Design abstrait si nécessaire (pas d’illustration cartoon)
+
+Sections de confiance (à ajouter)
+
+Ligne horizontale avec icônes :
+
+Réponse sous 48h
+
+Taux transparents
+
+Sécurité des données
+
+Conforme réglementation
+
+Couleurs
+
+Noir #0B0B0B
+
+Gris texte #4B5563
+
+Gris clair fond #F9FAFB
+
+Accent unique (bleu ou vert, utilisé avec parcimonie)
+
+Tech
+
+HTML + CSS moderne (ou React si projet React)
+
+Flexbox / Grid
+
+Animations légères (hover, fade-in)
+
+Code clair, structuré et commenté
+
+Résultat attendu
+
+Une landing page qui :
+
+inspire confiance immédiate
+
+ressemble à une fintech haut de gamme
+
+donne envie de cliquer sur « Demander un crédit »
+
+semble prête pour une levée de fonds ou une banque partenaire
+
+🔥 PROMPT BONUS (si Replit comprend bien)
+
+Ajoute à la fin :
+
+Si nécessaire, crée un nouveau fichier CSS ou refactorise complètement l’existant pour atteindre ce niveau de design.
